@@ -1,0 +1,6 @@
+<h1>Welcome!</h1>
+<%= link_to "Login", login_path %>
+
+<% @players.each do |player| %>
+  <p><%= player.full_name %></p>
+<% end %>
