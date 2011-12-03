@@ -16,6 +16,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'twitter-bootstrap-rails'
 
 ## Mongo DB
 gem "mongoid", ">= 2.3.3"
