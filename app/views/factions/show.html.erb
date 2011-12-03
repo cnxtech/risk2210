@@ -1,0 +1,11 @@
+<h1><%= @faction.name %></h1>
+<h2><%= @faction.classification %></h2>
+<p>Official Faction: <%= yes_or_no(@faction.official?) %></p>
+<h3>Starting Resources:</h3>
+<ul>
+  <% @faction.starting_resources.each do |resource| %>
+    <li><%= resource %></li>
+  <% end %>
+</ul>
+<p><%= @faction.abilities %></p>
+<%= faction_card_image(@faction) %>
