@@ -17,7 +17,11 @@ end
 
 gem 'jquery-rails'
 
+## Mongo DB
 gem "mongoid", ">= 2.3.3"
+gem "bson_ext", ">= 1.3.1"
+
+## Omniauth
 gem "omniauth", ">= 1.0.0"
 gem "omniauth-facebook"
 
@@ -34,6 +38,8 @@ gem 'passenger'
 
 group :development, :test do
   gem "rspec-rails", ">= 2.8.0.rc1", :group => [:development, :test]
-  #gem "mongoid-rspec", ">= 1.4.4", :group => :test
+  gem "mongoid-rspec", ">= 1.4.4"
   gem "factory_girl_rails", ">= 1.4.0", :group => :test
+  gem "mocha"
+  gem 'database_cleaner'
 end
