@@ -1,0 +1,13 @@
+<h2><%= @player.full_name %></h2>
+<%= link_to "Edit Profile", edit_player_path(@player) %><br />
+<br />
+Handle: <%= @player.handle %><br />
+<%= image_tag @player.image_url %>
+Location: <%= @player.city %>, <%= @player.state %> <%= @player.zip_code %><br />
+
+<% if @player.website.present? %>
+  <%= link_to @player.website, @player.website, :target => "_blank" %>
+<% end %>
+<br /><br />
+Bio:
+<p><%= @player.bio %></p>

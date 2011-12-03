@@ -7,6 +7,7 @@ Risk2210::Application.routes.draw do
   match '/logout' => 'sessions#destroy', :as => :logout
   
   resources :factions, only: [:index, :show]
+  resources :players, only: [:index, :show, :edit, :update, :destroy]
   
   root to: 'home#index'
 

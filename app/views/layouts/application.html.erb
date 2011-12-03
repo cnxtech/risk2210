@@ -13,7 +13,7 @@
       <div class="user_navigation">
         <% if current_player %>
           Welcome <%= current_player.full_name %>!<br />
-          <%= link_to "Edit Profile", "#" %> | 
+          <%= link_to "Edit Profile", edit_player_path(current_player) %> | 
           <%= link_to "Logout", logout_path, :method => :delete %>
         <% else %>
           <%= link_to "Login", login_path %>
