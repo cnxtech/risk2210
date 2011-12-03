@@ -6,3 +6,20 @@
  *= require twitter/bootstrap
  *= require_tree . 
 */
+
+html, body{
+  background: url(/assets/stars_background.jpg) repeat;
+  padding-top: 20px;
+}
+
+.main{
+  background-color: #fff;
+  min-height: 800px;
+  padding: 25px;
+  margin-bottom: 30px;
+}
+
+.user_navigation{
+  float: right;
+  margin: 10px;
+}

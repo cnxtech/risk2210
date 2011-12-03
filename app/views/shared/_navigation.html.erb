@@ -1,0 +1,37 @@
+<script type="text/javascript" charset="utf-8">
+  $(function(){
+      
+    $("body").bind("click", function (e) {
+      $('.dropdown-toggle, .menu').parent("li").removeClass("open");
+    });
+    $(".dropdown-toggle, .menu").click(function (e) {
+      var $li = $(this).parent("li").toggleClass('open');
+      return false;
+    });
+  
+});
+</script>
+<div class="topbar-wrapper" style="z-index: 5;">
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="container">
+        <h3><%= link_to "RiskTracker", root_path %></h3>
+        <ul class="nav">
+          <li class="active"><%= link_to "Home", root_path %></li>
+          <li><%= link_to "Players", "#" %></li>
+          <li><%= link_to "Factions", "#" %></li>
+          <li><%= link_to "Forums", "#" %></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle">Games</a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "All Games", "#" %></li>
+              <li><%= link_to "New Game", "#" %></li>
+              <li class="divider"></li>
+              <li><a href="#">Another link</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

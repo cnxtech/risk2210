@@ -1,14 +1,25 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Risk2210</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-<%= yield %>
-
-</body>
+  <head>
+    <title>Risk2210</title>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="container main">
+      <%= render :partial => "shared/navigation" %>
+      <%= flash_messages %>
+      <div class="user_navigation">
+        <% if current_player %>
+          Welcome <%= current_player.full_name %>!<br />
+          <%= link_to "Edit Profile", "#" %> | 
+          <%= link_to "Logout", logout_path, :method => :delete %>
+        <% else %>
+          <%= link_to "Login", login_path %>
+        <% end %>
+      </div>
+      <%= yield %>
+    </div>
+  </body>
 </html>

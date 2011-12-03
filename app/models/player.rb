@@ -12,6 +12,7 @@ class Player
   field :zip_code, type: String
   field :bio, type: String
   field :website, type: String
+  field :image_url, type: String
    
   attr_accessible :email, :first_name, :last_name, :handle, :city, :state, :zip_code, :bio, :website
   
@@ -37,6 +38,7 @@ class Player
          player.email = auth['info']['email'] || ""
          player.handle = auth['info']['nickname'] || ""
          player.website = auth["info"]["urls"]["Facebook"]
+         player.image_url = auth["info"]["image"] || ""
          
          location = auth["extra"]["raw_info"]["location"]["name"].split(",")
          player.city = location[0].strip
