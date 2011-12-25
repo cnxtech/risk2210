@@ -1,0 +1,18 @@
+<% @topics.each do |topic| %>
+  <p><%= link_to topic.subject, forum_topic_path(@forum, topic) %></p>
+<% end %>
+
+<h2>New topic</h2>
+<%= form_for @topic, url: forum_topics_path(@forum), html: {class: "form-stacked"} do |f| %>
+  <p>
+    <%= f.label :subject %>
+    <%= f.text_field :subject %>
+  </p>
+  <%= f.fields_for :comments do |comment| %>
+    <p>
+      <%= comment.label :body %>
+      <%= comment.text_area :body, :class => "xxlarge" %>
+    </p>
+  <% end %>
+  <%= button("Submit") %>
+<% end %>

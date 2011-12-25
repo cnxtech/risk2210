@@ -1,10 +1,10 @@
 class FactionsController < ApplicationController
-  respond_to :html, :xml, :json
+  respond_to :html, :json
   
   def index
     @factions = Faction.all
     respond_to do |format|
-      format.json {render :json => {:factions => @factions,  :callback => params["_dc"]}}
+      format.json {render json: {:factions => @factions,  callback: params["_dc"]}}
       format.html{}
     end
   end

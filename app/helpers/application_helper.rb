@@ -62,8 +62,8 @@ module ApplicationHelper
     boolean ? "Yes" : "No"
   end
   
-  # def logged_in?
-  #   current_player.present?
-  # end
+  def logged_in?
+    current_player.present?
+  end
   
 end

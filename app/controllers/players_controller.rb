@@ -1,15 +1,15 @@
 class PlayersController < ApplicationController
   
-  respond_to :html, :xml, :json
+  respond_to :html, :json
   
-  before_filter :login_required, :only => [:edit, :update, :destroy]
-  before_filter :find_player, :only => [:show, :edit, :update, :destroy]
-  before_filter :authorize_current_player, :only => [:edit, :update, :destroy]
+  before_filter :login_required, only: [:edit, :update, :destroy]
+  before_filter :find_player, only: [:show, :edit, :update, :destroy]
+  before_filter :authorize_current_player, only: [:edit, :update, :destroy]
   
   def index
     @players = Player.all
     respond_to do |format|
-      format.json {render :json => {:players => @players,  :callback => params["_dc"]}}
+      format.json {render json: {players: @players, callback: params["_dc"]}}
       format.html{}
     end
   end
@@ -38,28 +38,28 @@ class PlayersController < ApplicationController
   
   def update
     if @player.update_attributes(params[:player])
-      redirect_to player_path(@player), :notice => "Thanks for updating your profile!"
+      redirect_to player_path(@player), notice: "Thanks for updating your profile!"
     else
       flash.now.alert = "There was an error with your profile."
-      render :action => :edit
+      render action: :edit
     end
   end
   
   def destroy
     @player.destroy
     logout
-    redirect_to root_path, :notice => "Successfully removed your account."
+    redirect_to root_path, notice: "Successfully removed your account."
   end
   
   private
   
   def find_player
-    @player = Player.find(params[:id])
+    @player = Player.find_by_slug(params[:id])
   end
   
   def authorize_current_player
     if current_player != @player
-      redirect_to root_path, :alert => "You aren't authorized to edit that player!"
+      redirect_to root_path, alert: "You aren't authorized to edit that player!"
     end
   end
   

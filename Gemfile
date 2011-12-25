@@ -21,6 +21,7 @@ gem 'twitter-bootstrap-rails'
 ## Mongo DB
 gem "mongoid", ">= 2.3.3"
 gem "bson_ext", ">= 1.3.1"
+gem "mongoid_slug", "0.8.3"
 
 ## Omniauth
 gem "omniauth", ">= 1.0.0"

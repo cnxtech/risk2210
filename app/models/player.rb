@@ -1,6 +1,7 @@
 class Player
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::Slug
   
   field :provider, type: String
   field :uid, type: String
@@ -14,6 +15,11 @@ class Player
   field :bio, type: String
   field :website, type: String
   field :image_url, type: String
+  
+  slug :handle
+  
+  has_many :topics, dependent: :destroy, autosave: true
+  has_many :comments, dependent: :destroy, autosave: true
    
   attr_accessible :email, :first_name, :last_name, :handle, :city, :state, :zip_code, :bio, :website
   

@@ -1,0 +1,17 @@
+<div style="margin: 10px; padding: 10px; border:1px solid black;">
+  <%= image_tag(comment.player.image_url, :style => "float: left; margin: 0 10px 10px 0;") %>
+  <b><%= link_to "Player: #{comment.player.full_name}", player_path(comment.player) %></b>
+  <br />
+  <b>Posted: <%= format_timestamp(comment.created_at) %></b>
+  <p style="clear: both;">
+    <%= format_comment(comment.body) %>
+  </p>
+  <br />
+  <a href='#' onclick="$(this).siblings('.comment_form_container').slideToggle(); return false;">Reply to this comment</a>
+  <div class="comment_form_container" style="display: none;">
+    <%= render :partial => "topics/comment_form", :locals => {:parent_id => comment.id} %>
+  </div>
+</div>
+<div style="margin-left: 60px;">
+  <%= render :partial => "topics/comment", :collection => comment.comments %>
+</div>

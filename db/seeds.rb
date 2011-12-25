@@ -73,7 +73,7 @@ Faction.create(:name => "Tranquility",
                :starting_resources => "3 Energy\nLand Commander\nDiplomat Commander\n1 Space Station\n1 Cease Fire Card (from deck)", 
                :abilities => "When purchasing Command Cards, Can gain 1 Diplomat Card per turn free (This additional card may exceed the 4 card per turn limit).")
 
-# Forum.find_or_create_by_name("Questions & Answers")
-# Forum.find_or_create_by_name("Command Cards")
-# Forum.find_or_create_by_name("General")
-# Forum.find_or_create_by_name("Strategies")
+Forum.create(name: "Questions & Answers")
+Forum.create(name: "Command Cards")
+Forum.create(name: "General")
+Forum.create(name: "Strategies")
