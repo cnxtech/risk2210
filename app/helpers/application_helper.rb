@@ -3,7 +3,7 @@ module ApplicationHelper
   def error_messages_for(object)
     return if object.errors.empty?
     header_message = pluralize(object.errors.size, "error") + (object.errors.size > 1 ? " require" : " requires") + " your attention"
-    content_tag(:div, :class => "alert-message block-message error") do
+    content_tag(:div, class: "alert-message block-message error") do
       concat(content_tag(:h2, header_message))
       concat(content_tag(:ul) do
         object.errors.full_messages.each do |message|
@@ -21,7 +21,7 @@ module ApplicationHelper
         when :notice ; "success"
         when :alert ; "error"
       end
-      html += content_tag(:div, (content_tag(:a, "x", :class => "close", :href => "#", :onclick => "$(this).parent().fadeOut(); return false;") + content_tag(:p, value)), :class => "alert-message #{style_class}") 
+      html += content_tag(:div, (content_tag(:a, "x", class: "close", href: "#") + content_tag(:p, value)), class: "alert-message #{style_class}") 
     end
     return html.html_safe
   end
@@ -38,7 +38,7 @@ module ApplicationHelper
   
   def button(text, options={})
     type = options[:type] || :submit
-    content_tag(:button, text, :class => "btn primary", :type => type)
+    content_tag(:button, text, class: "btn primary", type: type)
   end
   
   def page_title
@@ -52,8 +52,8 @@ module ApplicationHelper
   
   def link_to_add_fields(name, form, association)
     new_object = form.object.class.reflect_on_association(association).klass.new
-    fields = form.fields_for(association, new_object, :child_index => "new_#{association}") do |builder|
-      render(form.object.class.name.pluralize.downcase + "/" + association.to_s.singularize + "_fields", :form => builder)
+    fields = form.fields_for(association, new_object, child_index: "new_#{association}") do |builder|
+      render(form.object.class.name.pluralize.downcase + "/" + association.to_s.singularize + "_fields", form: builder)
     end
     link_to_function(name, "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")")
   end
