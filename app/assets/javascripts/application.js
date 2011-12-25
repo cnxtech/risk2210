@@ -10,11 +10,3 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
-
-// Close Flash messages
-$(function(){
-  $("a.close").click(function(){
-    $(this).parent().fadeOut();
-    return false;
-  });
-});
