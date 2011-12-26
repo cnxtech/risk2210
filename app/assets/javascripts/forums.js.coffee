@@ -1,3 +1,3 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+$(".nested_comment_link").click ->
+  $(this).siblings('.comment_form_container').slideToggle()
+  return false

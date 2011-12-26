@@ -7,7 +7,7 @@
     <%= format_markdown(comment.body) %>
   </p>
   <br />
-  <a href='#' onclick="$(this).siblings('.comment_form_container').slideToggle(); return false;">Reply to this comment</a>
+  <a href='#' class='nested_comment_link'>Reply to this comment</a>
   <div class="comment_form_container" style="display: none;">
     <%= render :partial => "topics/comment_form", :locals => {:parent_id => comment.id} %>
   </div>
