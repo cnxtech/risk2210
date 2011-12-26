@@ -6,7 +6,7 @@ Handle: <%= @player.handle %><br />
 Location: <%= @player.city %>, <%= @player.state %> <%= @player.zip_code %><br />
 
 <% if @player.website.present? %>
-  <%= link_to @player.website, @player.website, :target => "_blank" %>
+  <%= link_to @player.website, @player.website, target: "_blank" %>
 <% end %>
 <br /><br />
 Bio:
