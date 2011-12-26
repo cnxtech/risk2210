@@ -66,4 +66,8 @@ module ApplicationHelper
     current_player.present?
   end
   
+  def format_markdown(string)
+    MARKDOWN_RENDERER.render(string).html_safe
+  end
+  
 end
