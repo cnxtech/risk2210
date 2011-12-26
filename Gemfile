@@ -30,13 +30,12 @@ gem 'passenger'
 # Deploy with Capistrano
 # gem 'capistrano'
 
-# To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
 
 group :development, :test do
-  gem "rspec-rails", ">= 2.8.0.rc1", :group => [:development, :test]
+  gem "rspec-rails", ">= 2.8.0.rc1"
   gem "mongoid-rspec", ">= 1.4.4"
-  gem "factory_girl_rails", ">= 1.4.0", :group => :test
+  gem "factory_girl_rails", ">= 1.4.0"
   gem "mocha"
   gem 'database_cleaner'
+  gem 'ruby-debug19', require: 'ruby-debug'
 end
