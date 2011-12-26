@@ -1,14 +1,9 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Risk2210</title>
-    <%= stylesheet_link_tag    "application" %>
-    <%= javascript_include_tag "application" %>
-    <%= csrf_meta_tags %>
-  </head>
+  <%= render partial: "layouts/head" %>
   <body>
     <div class="container main">
-      <%= render :partial => "shared/navigation" %>
+      <%= render partial: "shared/navigation" %>
       <%= flash_messages %>
       <div class="user_navigation">
         <% if current_player %>
@@ -21,5 +16,6 @@
       </div>
       <%= yield %>
     </div>
+    <%= render partial: "layouts/tail" %>
   </body>
 </html>
