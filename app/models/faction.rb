@@ -15,10 +15,6 @@ class Faction
   
   validates_presence_of :name, :classification, :starting_resources, :abilities
   
-  def to_param
-    slug
-  end
-
   def starting_resources
     read_attribute(:starting_resources).split("\n")
   end

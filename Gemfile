@@ -1,11 +1,11 @@
 source :rubygems
 
-gem 'rails', '3.1.3'
+gem 'rails', '3.2.0'
 
 group :assets do
-  gem 'sass-rails',   '~> 3.1.5'
-  gem 'coffee-rails', '~> 3.1.1'
-  gem 'uglifier', '>= 1.0.3'
+  gem 'sass-rails'
+  gem 'coffee-rails'
+  gem 'uglifier'
 end
 
 ## Frontend / Views
@@ -32,10 +32,10 @@ gem 'passenger'
 
 
 group :development, :test do
-  gem "rspec-rails", ">= 2.8.0.rc1"
+  gem "rspec-rails", ">= 2.8.1"
   gem "mongoid-rspec", ">= 1.4.4"
   gem "factory_girl_rails", ">= 1.4.0"
   gem "mocha"
   gem 'database_cleaner'
-  gem 'ruby-debug19', require: 'ruby-debug'
+  #gem 'ruby-debug19', require: 'ruby-debug'
 end
