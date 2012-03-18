@@ -17,6 +17,8 @@ class Player
   field :image_url, type: String
   
   slug :handle
+
+  validates_presence_of :email
   
   has_many :topics, dependent: :destroy, autosave: true
   has_many :comments, dependent: :destroy, autosave: true
