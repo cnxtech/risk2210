@@ -18,10 +18,10 @@ module ApplicationHelper
     html = ""
     flash.each do |key, value|
       style_class = case key
-        when :notice ; "success"
-        when :alert ; "error"
+        when :notice ; "alert-success"
+        when :alert ; "alert-error"
       end
-      html += content_tag(:div, (content_tag(:a, "x", class: "close", href: "#") + content_tag(:p, value)), class: "alert-message #{style_class}") 
+      html += content_tag(:div, (content_tag(:a, "&times;".html_safe, "data-dismiss" => "alert", :class => "close", :href => "#") + value), class: "alert fade in #{style_class}") 
     end
     return html.html_safe
   end
