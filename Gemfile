@@ -7,12 +7,12 @@ group :assets do
   gem 'coffee-rails'
   gem 'uglifier'
 
-  gem 'twitter-bootstrap-rails'#, git: "git://github.com/seyhunak/twitter-bootstrap-rails.git"
+  gem 'twitter-bootstrap-rails'
 end
 
 ## Frontend / Views
 gem 'jquery-rails'
-gem 'redcarpet'#, '2.0.1'
+gem 'redcarpet'
 gem 'simple_form'
 
 ## Mongo DB
