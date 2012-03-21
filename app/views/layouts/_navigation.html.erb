@@ -1,0 +1,29 @@
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <%= link_to "Risk Tracker", root_path, class: "brand" %>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li><%= link_to "Players", players_path %></li>
+          <li><%= link_to "Factions", factions_path %></li>
+          <li><%= link_to "Forum", forums_path %></li>
+          <li><%= link_to "Contact Us", "#" %></li>
+        </ul>
+        <ul class="nav pull-right">
+          <% if current_player %>
+            <li>Welcome <%= current_player.full_name %>!</li>
+            <li><%= link_to "Edit Profile", edit_player_path(current_player) %></li>
+            <li><%= link_to "Logout", logout_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to "Login", login_path %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

@@ -3,6 +3,7 @@ class SessionsController < ApplicationController
   def create
     auth = request.env["omniauth.auth"]
     player = Player.omniauthorize(auth)
+    puts player.inspect
     login(player)
     redirect_to root_path, notice: "Signed in!"
   end

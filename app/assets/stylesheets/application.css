@@ -3,24 +3,6 @@
  * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
  * the top of the compiled file, but it's generally better to create a new file per style scope.
  *= require_self
- *= require twitter/bootstrap
+ *= require bootstrap_and_overrides
  *= require_tree . 
 */
-
-html, body{
-  background: url(/assets/stars_background.jpg) repeat;
-  padding-top: 20px;
-}
-
-.main{
-  background-color: #fff;
-  min-height: 800px;
-  padding: 25px;
-  margin-bottom: 30px;
-  margin-top: 40px;
-}
-
-.user_navigation{
-  float: right;
-  margin: 10px;
-}

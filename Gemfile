@@ -1,25 +1,27 @@
 source :rubygems
 
-gem 'rails', '3.2.0'
+gem 'rails', '3.2.2'
 
 group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
   gem 'uglifier'
+
+  gem 'twitter-bootstrap-rails'#, git: "git://github.com/seyhunak/twitter-bootstrap-rails.git"
 end
 
 ## Frontend / Views
 gem 'jquery-rails'
-gem 'twitter-bootstrap-rails'
-gem 'redcarpet', '2.0.1'
+gem 'redcarpet'#, '2.0.1'
+gem 'simple_form'
 
 ## Mongo DB
 gem "mongoid", ">= 2.3.3"
 gem "bson_ext", ">= 1.3.1"
-gem "mongoid_slug", "0.8.3"
+gem "mongoid_slug"#, "0.8.3"
 
 ## Omniauth
-gem "omniauth", ">= 1.0.0"
+gem "omniauth"#, ">= 1.0.0"
 gem "omniauth-facebook"
 
 # To use ActiveModel has_secure_password
