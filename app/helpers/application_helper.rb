@@ -38,7 +38,9 @@ module ApplicationHelper
   
   def button(text, options={})
     type = options[:type] || :submit
-    content_tag(:button, text, class: "btn primary", type: type)
+    icon = content_tag(:i, "", class: "icon-shopping-cart icon-white")
+    content_tag(:a, icon + " " + text, class: "btn primary", type: type)
+
   end
   
   def page_title
