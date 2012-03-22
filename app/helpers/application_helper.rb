@@ -38,10 +38,26 @@ module ApplicationHelper
   end
   
   def button(text, options={})
-    type = options[:type] || :submit
-    icon = content_tag(:i, "", class: "icon-shopping-cart icon-white")
-    content_tag(:button, icon + " " + text, class: "btn primary", type: type)
+    
+    if options[:icon]
+      icon_color = options[:icon_grey] && options[:icon_grey] == true ? "" : " icon-white"
+      icon = content_tag(:i, "", class: "icon-#{options[:icon]}#{icon_color}") + " "
+    else
+      icon = ""
+    end
+    
+    button_type = options[:button_type] || "primary"
+    tag_options = {class: "btn #{button_type}"}
 
+    if options[:href]
+      tag = :a 
+      tag_options[:href] = options[:href]
+    else
+      tag = :button
+      tag_options[:type] = options[:type] || :submit
+    end
+
+    content_tag(tag, icon + text, tag_options)
   end
   
   def page_title

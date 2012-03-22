@@ -5,8 +5,4 @@
   <p><%= image_tag player.image_url %><%= player.full_name %></p>
 <% end %>
 
-<%= button("Help!") %>
-
-<p>
-<a class="btn btn-success" href="#"><i class="icon-shopping-cart icon-white"></i> Checkout</a>
-</p>
+<%= button("Help!", icon: "eye-open", href: "http://www.google.com", button_type: "primary") %>
