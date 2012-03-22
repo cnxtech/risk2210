@@ -1,4 +1,6 @@
-<h1>Forums</h1>
-<% @forums.each do |forum| %>
-  <p><%= link_to forum.name, forum_path(forum) %></p>
-<% end %>
+<div class="hero-unit">
+  <h1>Forums</h1>
+  <% @forums.each do |forum| %>
+    <p><%= link_to forum.name, forum_path(forum) %></p>
+  <% end %>
+</div>

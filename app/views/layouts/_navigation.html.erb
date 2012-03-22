@@ -11,12 +11,13 @@
         <ul class="nav">
           <li><%= link_to "Players", players_path %></li>
           <li><%= link_to "Factions", factions_path %></li>
-          <li><%= link_to "Forum", forums_path %></li>
+          <li><%= link_to "Forums", forums_path %></li>
+          <li><%= link_to "Tracker", "#" %></li>
+          <li><%= link_to "Expansions", "#" %></li>
           <li><%= link_to "Contact Us", "#" %></li>
         </ul>
         <ul class="nav pull-right">
           <% if current_player %>
-            <li>Welcome <%= current_player.full_name %>!</li>
             <li><%= link_to "Edit Profile", edit_player_path(current_player) %></li>
             <li><%= link_to "Logout", logout_path, method: :delete %></li>
           <% else %>
