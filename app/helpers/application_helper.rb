@@ -3,8 +3,9 @@ module ApplicationHelper
   def error_messages_for(object)
     return if object.errors.empty?
     header_message = pluralize(object.errors.size, "error") + (object.errors.size > 1 ? " require" : " requires") + " your attention"
-    content_tag(:div, class: "alert-message block-message error") do
-      concat(content_tag(:h2, header_message))
+    content_tag(:div, class: "alert alert-block alert-error") do
+      concat(content_tag(:a, "x", class: "close", "data-dismiss" => "alert"))
+      concat(content_tag(:h4, header_message, class: "alert-heading"))
       concat(content_tag(:ul) do
         object.errors.full_messages.each do |message|
           concat(content_tag(:li, message))
@@ -12,7 +13,7 @@ module ApplicationHelper
       end)
     end
   end
-  
+
   def flash_messages
     return if flash.empty?
     html = ""
@@ -39,7 +40,7 @@ module ApplicationHelper
   def button(text, options={})
     type = options[:type] || :submit
     icon = content_tag(:i, "", class: "icon-shopping-cart icon-white")
-    content_tag(:a, icon + " " + text, class: "btn primary", type: type)
+    content_tag(:button, icon + " " + text, class: "btn primary", type: type)
 
   end
   
