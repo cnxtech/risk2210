@@ -15,10 +15,12 @@ class Player
   field :bio, type: String
   field :website, type: String
   field :image_url, type: String
+  field :image_source, type: String
   
   slug :handle
 
   validates_presence_of :email
+  #validates_inclusion_of :image_source, in: %w(Facebook Gravatar)
   
   has_many :topics, dependent: :destroy, autosave: true
   has_many :comments, dependent: :destroy, autosave: true
@@ -34,10 +36,16 @@ class Player
   def self.omniauthorize(auth)
     Player.where(provider: auth['provider'], uid: auth['uid']).first || self.create_with_omniauth(auth)
   end
+
+  def profile_image_path(size="normal")
+    # square, small, normal, large
+    image_url + "?type=#{size}"
+  end
   
   private
   
   def self.create_with_omniauth(auth)
+    puts auth
     create! do |player|
       player.provider = auth['provider']
       player.uid = auth['uid']
@@ -47,13 +55,18 @@ class Player
          player.email = auth['info']['email'] || ""
          player.handle = auth['info']['nickname'] || ""
          player.website = auth["info"]["urls"]["Facebook"]
-         player.image_url = auth["info"]["image"] || ""
+         player.image_url = sanitize_facebook_image(auth["info"]["image"])
          
          location = auth["extra"]["raw_info"]["location"]["name"].split(",")
          player.city = location[0].strip
          player.state = States.decode(location[1])
       end
     end
+  end
+
+  def self.sanitize_facebook_image(facebook_image_url)
+    return "" if facebook_image_url.strip.blank?
+    return facebook_image_url.gsub("?type=square", "")
   end
   
 end
