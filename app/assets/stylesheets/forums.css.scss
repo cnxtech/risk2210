@@ -1,3 +1,43 @@
-// Place all the styles related to the forums controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+#topic{
+  h1{
+    margin-bottom: 20px;
+  }
+
+  .comment{
+    img{
+      float: left; 
+      margin: 0 10px 10px 0;
+    }
+    .profile-link{
+      font-weight: bold;
+    }
+    .timestamp{
+      font-weight: bold;
+    }
+    .body{
+      clear: both;
+      margin-bottom: 10px;
+    }
+  }
+  .nested-comments{
+    margin-left: 60px;
+  }
+  .comment-form {
+    margin-top: 20px;
+    textarea{
+      width: 400px; height: 100px;
+    }
+  }
+
+}
+
+#markdown-examples{
+  table{
+    border-collapse: collapse;
+    td{
+      border: 2px solid #000;
+      padding: 5px 11px;
+    }
+  }
+}
+

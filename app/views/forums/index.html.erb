@@ -1,6 +1,6 @@
 <div class="hero-unit">
   <h1>Forums</h1>
   <% @forums.each do |forum| %>
-    <p><%= link_to forum.name, forum_path(forum) %></p>
+    <p><%= link_to forum.name, forum_path(forum) %> &ndash; (<%= forum.topics.count %>)</p>
   <% end %>
 </div>
