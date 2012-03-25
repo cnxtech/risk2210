@@ -1,4 +1,6 @@
 class ForumsController < ApplicationController
+
+  active_tab :forums
   
   def index
     @forums = Forum.all

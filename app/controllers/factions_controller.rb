@@ -1,5 +1,8 @@
 class FactionsController < ApplicationController
+
   respond_to :html, :json
+
+  active_tab :factions
   
   def index
     @factions = Faction.all

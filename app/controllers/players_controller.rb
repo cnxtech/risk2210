@@ -5,6 +5,8 @@ class PlayersController < ApplicationController
   before_filter :login_required, only: [:edit, :update, :destroy]
   before_filter :find_player, only: [:show, :edit, :update, :destroy]
   before_filter :authorize_current_player, only: [:edit, :update, :destroy]
+
+  active_tab :players
   
   def index
     @players = Player.all

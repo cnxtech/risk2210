@@ -9,9 +9,9 @@
       <%= link_to "Risk Tracker", root_path, class: "brand" %>
       <div class="nav-collapse">
         <ul class="nav">
-          <li><%= link_to "Players", players_path %></li>
-          <li><%= link_to "Factions", factions_path %></li>
-          <li><%= link_to "Forums", forums_path %></li>
+          <%= navigation_item("Players", players_path, :players) %>
+          <%= navigation_item("Factions", factions_path, :factions) %>
+          <%= navigation_item("Forums", forums_path, :forums) %>
           <li><%= link_to "Tracker", "#" %></li>
           <li><%= link_to "Expansions", "#" %></li>
           <li><%= link_to "Contact Us", "#" %></li>

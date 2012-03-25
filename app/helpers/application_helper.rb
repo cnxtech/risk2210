@@ -26,6 +26,13 @@ module ApplicationHelper
     end
     return html.html_safe
   end
+
+  def navigation_item(title, path, key)
+    style_class = ""
+    style_class = "active" if key == controller.active_tab
+    content_tag(:li, link_to(title, path), class: style_class)
+  end
+
   
   def format_timestamp(timestamp)
     return if timestamp.blank?
