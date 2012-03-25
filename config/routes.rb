@@ -3,12 +3,16 @@ Risk2210::Application.routes.draw do
   ## Sessions
   get '/login' => 'sessions#new', as: :login
   post '/login' => 'sessions#create', as: :create_session  
-  match '/logout' => 'sessions#destroy', as: :logout
+  delete '/logout' => 'sessions#destroy', as: :logout
   
   ## Facebook Sessions
   match '/login/facebook' => redirect('/auth/facebook'), as: :facebook_authentication
   match '/auth/:provider/callback' => 'sessions#authenticate_facebook'
   match '/auth/failure' => 'sessions#failure'
+
+  ## Change Password
+  get "/account/password" => "passwords#edit", as: :edit_password
+  put "/account/password" => "passwords#update", as: :update_password
   
   resources :factions, only: [:index, :show]
   resources :players

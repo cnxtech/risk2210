@@ -1,0 +1,17 @@
+<h2>Change Password</h2>
+<%= simple_form_for @player, url: update_password_path, html: {class: 'form-vertical well'} do |f| %>
+  <%= error_messages_for @player %>
+  <fieldset>
+    <% if @player.password_digest.present? %>
+      <%= f.input :old_password %>
+    <% else %>
+      <p>You don't have a password because you created your account through Facebook. Add your password here and you will then be able to login without going through Facebook!</p>
+    <% end %>
+    <%= f.input :password %>
+    <%= f.input :password_confirmation %>
+    <div class="form-actions">
+      <%= f.submit "Update Password", class: 'btn btn-primary' %>
+      <%= link_to 'Cancel', players_path, class: 'btn' %>
+    </div>
+  </fieldset>
+<% end %>

@@ -9,7 +9,7 @@ class PlayersController < ApplicationController
   active_tab :players
   
   def index
-    @players = Player.public
+    @players = Player.public_profiles
     respond_to do |format|
       format.json {render json: {players: @players, callback: params["_dc"]}}
       format.html{}

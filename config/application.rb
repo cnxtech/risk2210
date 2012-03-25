@@ -51,5 +51,13 @@ module Risk2210
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    config.generators do |generator|
+      generator.test_framework :rspec, fixture: false
+      generator.stylesheets false
+      generator.javascripts false
+      generator.helper      false
+    end
+
   end
 end

@@ -1,8 +1,10 @@
+require 'better_secure_password'
+
 class Player
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Slug
-  include ActiveModel::SecurePassword
+  include ActiveModel::SecurePasswordBetter
 
   IMAGE_SOURCES = %w(Facebook Gravatar)
   
@@ -33,7 +35,7 @@ class Player
   slug :handle
   has_secure_password
 
-  attr_accessible :email, :first_name, :last_name, :handle, :city, :state, :zip_code, :bio, :website, :image_source, :public_profile, :password, :password_confirmation
+  attr_accessible :email, :first_name, :last_name, :handle, :city, :state, :zip_code, :bio, :website, :image_source, :public_profile, :password, :password_confirmation, :old_password
 
   ## Callbacks
   before_save :generate_gravatar_hash, if: :email_changed?
@@ -45,7 +47,7 @@ class Player
   validates_format_of :email, with: EmailAddressValidation::EMAIL_ADDRESS_EXACT_PATTERN, allow_blank: true
 
   ## Scopes
-  scope :public, where(public_profile: true)
+  scope :public_profiles, where(public_profile: true)
   
   def full_name
     return handle if handle.present?
@@ -72,9 +74,19 @@ class Player
       return "http://www.gravatar.com/avatar/#{gravatar_hash}?size=#{gravatar_size}"
     end
   end
+
+  def change_password(password_attributes={})
+    if password_digest.present? && !authenticate(password_attributes.delete(:old_password))
+      errors.add(:base, "Old password doesn't match") 
+      return false
+    else
+      return update_attributes(password_attributes)
+    end
+  end
   
   private
   
+  ## Refactor to find existing Player by email first
   def self.create_with_omniauth(auth)
     puts auth
     create! do |player|
