@@ -6,7 +6,6 @@ group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
   gem 'uglifier'
-
   gem 'twitter-bootstrap-rails'
 end
 
@@ -20,15 +19,15 @@ gem "mongoid", ">= 2.3.3"
 gem "bson_ext", ">= 1.3.1"
 gem "mongoid_slug"#, "0.8.3"
 
-## Omniauth
+## Authentication
 gem "omniauth"#, ">= 1.0.0"
 gem "omniauth-facebook"
-
 gem 'bcrypt-ruby'#, '~> 3.0.0'
 
+## Application Server
 gem 'passenger'
 
-# Deploy with Capistrano
+## Deployment
 # gem 'capistrano'
 
 

@@ -28,9 +28,9 @@ class PlayersController < ApplicationController
     @player = Player.new(params[:player])
     if @player.save
       login(@player)
-      redirect_to player_path(@player), notice: "Thanks for registering!"
+      redirect_to edit_player_path(@player), notice: "Thanks for registering! Please fill out your profile."
     else
-      flash.now.alert = "There was an error with your account."
+      flash.now.alert = "There was an error creating your account."
       render action: :new
     end
   end
@@ -42,7 +42,7 @@ class PlayersController < ApplicationController
     if @player.update_attributes(params[:player])
       redirect_to player_path(@player), notice: "Thanks for updating your profile!"
     else
-      flash.now.alert = "There was an error with your profile."
+      flash.now.alert = "There was an error updating your profile."
       render action: :edit
     end
   end
@@ -50,7 +50,7 @@ class PlayersController < ApplicationController
   def destroy
     @player.destroy
     logout
-    redirect_to root_path, notice: "Successfully removed your account."
+    redirect_to root_path, notice: "Your account has been removed. Sorry to see you go."
   end
   
   private

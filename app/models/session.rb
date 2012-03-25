@@ -1,6 +1,7 @@
 class Session
-  include ActiveModel::Conversion
   extend ActiveModel::Naming
+  extend ActiveModel::Translation
+  include ActiveModel::Conversion
   include ActiveModel::Validations
     
   attr_accessor :email, :password
@@ -10,7 +11,7 @@ class Session
 
   def initialize(attributes = {})  
      attributes.each do |name, value|  
-       send("#{name}=", value)  
+       public_send("#{name}=", value)  
      end  
    end 
     
@@ -20,7 +21,7 @@ class Session
   
   def authenticated?
     @player = Player.where(email: email).first
-    if @player && @player.authenticate(password)
+    if @player && @player.password_digest && @player.authenticate(password)
       return true
     else
       return false
@@ -30,5 +31,5 @@ class Session
   def player
     @player
   end
-  
+
 end

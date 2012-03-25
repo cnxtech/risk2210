@@ -1,4 +1,20 @@
-<h1>Welcome!</h1>
-<%= link_to "Login with Facebook", facebook_authorization_path %>
-<br />
-<%= link_to "Login", login_path %>
+<p>
+  Welcome to RiskTracker, the premier website for Risk 2210 AD.  You can find all sorts of resources related to the best board game in the universe as well as a system for tracking your games.  
+  We are working hard on adding additional features, if you have any suggestions please feel free to reach out.
+</p>
+<div class="row">
+  <div class="span4">
+    <h2>Regular Authentication</h2>
+    <p>If you already have an account you can login using that</p>
+    <%= link_to "Login", login_path %>
+    <br />
+    <%= link_to "Register", new_player_path %>
+  </div>
+  <div class="span4">
+    <h2>Facebook Authentication</h2>
+    <p>You can login using your Facebook account</p>
+    <%= link_to "Login with Facebook", facebook_authorization_path %>
+  </div>
+</div>
+
+

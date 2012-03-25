@@ -6,6 +6,7 @@ class Player
 
   IMAGE_SOURCES = %w(Facebook Gravatar)
   
+  ## Field Definitions
   field :provider, type: String
   field :uid, type: String
   field :first_name, type: String
@@ -22,20 +23,28 @@ class Player
   field :gravatar_hash, type: String
   field :public_profile, type: Boolean, default: true
   field :password_digest, type: String
+  field :remember_me_token, type: String
+
+  ## Associations
+  has_many :topics, dependent: :destroy, autosave: true
+  has_many :comments, dependent: :destroy, autosave: true  
   
+  ## Plugins
   slug :handle
   has_secure_password
 
-  validates_presence_of :email
-  validates_inclusion_of :image_source, in: IMAGE_SOURCES, allow_blank: true
-  
-  has_many :topics, dependent: :destroy, autosave: true
-  has_many :comments, dependent: :destroy, autosave: true
-   
   attr_accessible :email, :first_name, :last_name, :handle, :city, :state, :zip_code, :bio, :website, :image_source, :public_profile, :password, :password_confirmation
 
+  ## Callbacks
   before_save :generate_gravatar_hash, if: :email_changed?
 
+  ## Validations
+  validates_presence_of :email, :handle
+  validates_uniqueness_of :email, :handle
+  validates_inclusion_of :image_source, in: IMAGE_SOURCES, allow_blank: true
+  validates_format_of :email, with: EmailAddressValidation::EMAIL_ADDRESS_EXACT_PATTERN, allow_blank: true
+
+  ## Scopes
   scope :public, where(public_profile: true)
   
   def full_name
@@ -96,6 +105,10 @@ class Player
       hash = Digest::MD5.hexdigest(email)
       write_attribute(:gravatar_hash, hash)
     end
+  end
+
+  def generate_remember_me_token
+    remember_me_token = SecureRandom.hex(8)
   end
 
 end

@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
 
-  def create_facebook
+  def authenticate_facebook
     auth = request.env["omniauth.auth"]
     player = Player.omniauthorize(auth)
     puts player.inspect
@@ -23,13 +23,13 @@ class SessionsController < ApplicationController
       login(@session.player)
       redirect_to root_path, :notice => "Logged in!"
     else
-      flash.now.alert = "Invalid email or password"
+      flash.now.alert = "We are sorry, but either your email or password is invalid."
       render :action => :new
     end
   end
   
   def failure
-    redirect_to root_path, alert: "Authentication error: #{params[:message].humanize}"
+    redirect_to root_path, alert: "Facebook authentication error: #{params[:message].humanize}"
   end
   
 end

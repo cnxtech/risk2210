@@ -4,7 +4,7 @@ module ApplicationHelper
     return if object.errors.empty?
     header_message = pluralize(object.errors.size, "error") + (object.errors.size > 1 ? " require" : " requires") + " your attention"
     content_tag(:div, class: "alert alert-block alert-error") do
-      concat(content_tag(:a, "x", class: "close", "data-dismiss" => "alert"))
+      concat(content_tag(:a, "&times;".html_safe, class: "close", "data-dismiss" => "alert"))
       concat(content_tag(:h4, header_message, class: "alert-heading"))
       concat(content_tag(:ul) do
         object.errors.full_messages.each do |message|

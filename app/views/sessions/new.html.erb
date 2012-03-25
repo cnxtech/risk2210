@@ -1,7 +1,11 @@
 <h1>Log in</h2>
-<%= simple_form_for @session, url: create_session_path do |f| %>
+<%= simple_form_for @session, url: create_session_path, html: {class: 'form-vertical well'} do |f| %>
   <%= error_messages_for(@session) %>
-  <%= f.input :email %>
-  <%= f.input :password %>
-  <%= f.submit "Login" %>
+  <fieldset>
+    <%= f.input :email %>
+    <%= f.input :password %>
+    <div class="form-actions">
+      <%= f.submit "Login", class: 'btn btn-primary' %>
+    </div>
+  </fieldset>
 <% end %>

@@ -1,15 +1,17 @@
 Risk2210::Application.routes.draw do
   
   ## Sessions
-  match '/auth/:provider/callback' => 'sessions#create_facebook'
-  match '/auth/failure' => 'sessions#failure'
   get '/login' => 'sessions#new', as: :login
-  post '/login' => 'sessions#create', as: :create_session
-  match '/login/facebook' => redirect('/auth/facebook'), as: :facebook_authorization
+  post '/login' => 'sessions#create', as: :create_session  
   match '/logout' => 'sessions#destroy', as: :logout
   
+  ## Facebook Sessions
+  match '/login/facebook' => redirect('/auth/facebook'), as: :facebook_authorization
+  match '/auth/:provider/callback' => 'sessions#authenticate_facebook'
+  match '/auth/failure' => 'sessions#failure'
+  
   resources :factions, only: [:index, :show]
-  resources :players, except: [:destroy]
+  resources :players
   
   resources :forums, only: [:index, :show] do
     resources :topics do
