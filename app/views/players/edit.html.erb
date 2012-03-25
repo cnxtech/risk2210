@@ -3,13 +3,13 @@
   <%= error_messages_for @player %>
   <fieldset>
     <div class="row">
-      <div class="span4">
+      <div class="span3">
         <%= f.input :first_name %>
         <%= f.input :last_name %>
         <%= f.input :email %>
         <%= f.input :handle %>
       </div>
-      <div class="span4">
+      <div class="span3">
         <%= f.input :city %>
         <%= f.input :state, collection: us_states_options %>
         <%= f.input :zip_code %>

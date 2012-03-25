@@ -1,4 +1,6 @@
-class TopicsController < ApplicationController  
+class TopicsController < ApplicationController
+
+  active_tab :forums
   
   before_filter :find_forum
   before_filter :find_topic, only: [:show, :create_comment]
