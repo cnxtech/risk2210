@@ -11,11 +11,11 @@
     <% if @player.website.present? %>
       <div class='site'>
         <strong>Site:</strong> <%= link_to @player.website, @player.website, target: "_blank" %>
-      </site>
+      </div>
     <% end %>
     <div class='bio'>
       <strong>Bio:</strong><br />
       <p><%= @player.bio %></p>
     </div>
   </div>
-</div
+</div>

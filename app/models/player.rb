@@ -83,6 +83,10 @@ class Player
       return update_attributes(password_attributes)
     end
   end
+
+  def nearby_players
+    Player.public_profiles
+  end
   
   private
   
