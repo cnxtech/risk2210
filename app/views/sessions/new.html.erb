@@ -1,0 +1,7 @@
+<h1>Log in</h2>
+<%= simple_form_for @session, url: create_session_path do |f| %>
+  <%= error_messages_for(@session) %>
+  <%= f.input :email %>
+  <%= f.input :password %>
+  <%= f.submit "Login" %>
+<% end %>

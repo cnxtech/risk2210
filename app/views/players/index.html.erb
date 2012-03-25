@@ -1,4 +1,19 @@
 <h1>All Players</h1>
-<% @players.each do |player| %>
-  <p><%= link_to player.full_name, player_path(player) %></p>
-<% end %>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Handle</th>
+      <th>Location</th>
+      <th>Wins</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @players.each do |player| %>
+      <tr>
+        <td><%= link_to player.handle, player_path(player) %></td>
+        <td><%= player.city %>, <%= player.state %></td>
+        <td>49</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

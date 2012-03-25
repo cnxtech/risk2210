@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
 
-  def create
+  def create_facebook
     auth = request.env["omniauth.auth"]
     player = Player.omniauthorize(auth)
     puts player.inspect
@@ -12,9 +12,20 @@ class SessionsController < ApplicationController
     logout
     redirect_to root_path, notice: 'Signed out!'
   end
-  
+
   def new
-    redirect_to '/auth/facebook'
+    @session = Session.new
+  end
+  
+  def create
+    @session = Session.new(params[:session])
+    if @session.valid? && @session.authenticated?
+      login(@session.player)
+      redirect_to root_path, :notice => "Logged in!"
+    else
+      flash.now.alert = "Invalid email or password"
+      render :action => :new
+    end
   end
   
   def failure

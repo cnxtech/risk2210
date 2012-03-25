@@ -14,6 +14,7 @@
         <%= f.input :state, collection: us_states_options %>
         <%= f.input :zip_code %>
         <%= f.input :image_source, collection: Player::IMAGE_SOURCES, as: :radio %>
+        <%= f.input :public_profile, as: :boolean %>
       </div>
     </div>
     <div class="row">

@@ -1,13 +1,15 @@
 Risk2210::Application.routes.draw do
   
-  ## Omniauth Sessions
-  match '/auth/:provider/callback' => 'sessions#create'
+  ## Sessions
+  match '/auth/:provider/callback' => 'sessions#create_facebook'
   match '/auth/failure' => 'sessions#failure'
-  match '/login' => 'sessions#new', as: :login
+  get '/login' => 'sessions#new', as: :login
+  post '/login' => 'sessions#create', as: :create_session
+  match '/login/facebook' => redirect('/auth/facebook'), as: :facebook_authorization
   match '/logout' => 'sessions#destroy', as: :logout
   
   resources :factions, only: [:index, :show]
-  resources :players, only: [:index, :show, :edit, :update, :destroy]
+  resources :players, except: [:destroy]
   
   resources :forums, only: [:index, :show] do
     resources :topics do

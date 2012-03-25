@@ -24,8 +24,7 @@ gem "mongoid_slug"#, "0.8.3"
 gem "omniauth"#, ">= 1.0.0"
 gem "omniauth-facebook"
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby'#, '~> 3.0.0'
 
 gem 'passenger'
 

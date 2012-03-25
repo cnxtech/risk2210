@@ -9,7 +9,7 @@ class PlayersController < ApplicationController
   active_tab :players
   
   def index
-    @players = Player.all
+    @players = Player.public
     respond_to do |format|
       format.json {render json: {players: @players, callback: params["_dc"]}}
       format.html{}
@@ -20,20 +20,20 @@ class PlayersController < ApplicationController
     respond_with(@player)
   end
   
-  # def new
-  #   @player = Player.new
-  # end
-  # 
-  # def create
-  #   @player = Player.new(params[:player])
-  #   if @player.save
-  #     login(@player)
-  #     redirect_to player_path(@player), :notice => "Thanks for registering!"
-  #   else
-  #     flash.now.alert = "There was an error with your account."
-  #     render :action => :new
-  #   end
-  # end
+  def new
+    @player = Player.new
+  end
+  
+  def create
+    @player = Player.new(params[:player])
+    if @player.save
+      login(@player)
+      redirect_to player_path(@player), notice: "Thanks for registering!"
+    else
+      flash.now.alert = "There was an error with your account."
+      render action: :new
+    end
+  end
   
   def edit
   end

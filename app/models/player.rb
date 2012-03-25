@@ -2,6 +2,7 @@ class Player
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Slug
+  include ActiveModel::SecurePassword
 
   IMAGE_SOURCES = %w(Facebook Gravatar)
   
@@ -19,8 +20,11 @@ class Player
   field :facebook_image_url, type: String
   field :image_source, type: String
   field :gravatar_hash, type: String
+  field :public_profile, type: Boolean, default: true
+  field :password_digest, type: String
   
   slug :handle
+  has_secure_password
 
   validates_presence_of :email
   validates_inclusion_of :image_source, in: IMAGE_SOURCES, allow_blank: true
@@ -28,9 +32,11 @@ class Player
   has_many :topics, dependent: :destroy, autosave: true
   has_many :comments, dependent: :destroy, autosave: true
    
-  attr_accessible :email, :first_name, :last_name, :handle, :city, :state, :zip_code, :bio, :website, :image_source
+  attr_accessible :email, :first_name, :last_name, :handle, :city, :state, :zip_code, :bio, :website, :image_source, :public_profile, :password, :password_confirmation
 
   before_save :generate_gravatar_hash, if: :email_changed?
+
+  scope :public, where(public_profile: true)
   
   def full_name
     return handle if handle.present?

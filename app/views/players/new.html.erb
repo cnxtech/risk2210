@@ -1,0 +1,11 @@
+<h2>New Player Account</h2>
+<%= simple_form_for @player, html: {class: 'form-vertical well'} do |f| %>
+  <%= error_messages_for @player %>
+  <fieldset>
+    <%= f.input :email %>
+    <%= f.input :handle %>
+    <%= f.input :password %>
+    <%= f.input :password_confirmation %>
+    <%= f.submit "Update Profile", class: 'btn btn-primary' %>
+  </fieldset>
+<% end %>
