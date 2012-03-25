@@ -30,7 +30,6 @@ gem 'passenger'
 ## Deployment
 # gem 'capistrano'
 
-
 group :development, :test do
   gem "rspec-rails", ">= 2.8.1"
   gem "mongoid-rspec", ">= 1.4.4"

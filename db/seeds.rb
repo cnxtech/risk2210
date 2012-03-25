@@ -1,11 +1,12 @@
-# Map.find_or_create_by_name(:name => "Earth")
-# Map.find_or_create_by_name(:name => "Moon", :moon => true)
-# Map.find_or_create_by_name(:name => "Mars")
-# Map.find_or_create_by_name(:name => "Phobos & Deimos", :moon => true)
-# Map.find_or_create_by_name(:name => "Asteroids", :moon => true)
-# Map.find_or_create_by_name(:name => "Io")
-# Map.find_or_create_by_name(:name => "Europa")
-# Map.find_or_create_by_name(:name => "Pluto")
+Map.create(:name => "Earth")
+Map.create(:name => "Moon", :moon => true)
+Map.create(:name => "Mars")
+Map.create(:name => "Phobos & Deimos", :moon => true)
+Map.create(:name => "Asteroid Colonies", :moon => true)
+Map.create(:name => "Io")
+Map.create(:name => "Europa")
+Map.create(:name => "Pluto")
+Map.create(:name => "Venus")
 
 Faction.create(:name => "Primus Oceanus", 
                :classification => "Oceanographers", 
