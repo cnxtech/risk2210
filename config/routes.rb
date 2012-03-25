@@ -6,7 +6,7 @@ Risk2210::Application.routes.draw do
   match '/logout' => 'sessions#destroy', as: :logout
   
   ## Facebook Sessions
-  match '/login/facebook' => redirect('/auth/facebook'), as: :facebook_authorization
+  match '/login/facebook' => redirect('/auth/facebook'), as: :facebook_authentication
   match '/auth/:provider/callback' => 'sessions#authenticate_facebook'
   match '/auth/failure' => 'sessions#failure'
   
