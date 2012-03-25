@@ -2,7 +2,7 @@
   <h2><%= @player.handle %></h2>
   <div class="well">
     <div class='photo-container'>
-      <%= image_tag @player.profile_image_path %>
+      <%= image_tag @player.profile_image_path("large") %>
     </div>
     <div class='location'>
       <strong>Location:</strong> <%= @player.city %>, <%= @player.state %> <%= @player.zip_code %>

@@ -2,6 +2,8 @@ class Player
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Slug
+
+  IMAGE_SOURCES = %w(Facebook Gravatar)
   
   field :provider, type: String
   field :uid, type: String
@@ -14,18 +16,21 @@ class Player
   field :zip_code, type: String
   field :bio, type: String
   field :website, type: String
-  field :image_url, type: String
+  field :facebook_image_url, type: String
   field :image_source, type: String
+  field :gravatar_hash, type: String
   
   slug :handle
 
   validates_presence_of :email
-  #validates_inclusion_of :image_source, in: %w(Facebook Gravatar)
+  validates_inclusion_of :image_source, in: IMAGE_SOURCES, allow_blank: true
   
   has_many :topics, dependent: :destroy, autosave: true
   has_many :comments, dependent: :destroy, autosave: true
    
-  attr_accessible :email, :first_name, :last_name, :handle, :city, :state, :zip_code, :bio, :website
+  attr_accessible :email, :first_name, :last_name, :handle, :city, :state, :zip_code, :bio, :website, :image_source
+
+  before_save :generate_gravatar_hash, if: :email_changed?
   
   def full_name
     return handle if handle.present?
@@ -37,9 +42,20 @@ class Player
     Player.where(provider: auth['provider'], uid: auth['uid']).first || self.create_with_omniauth(auth)
   end
 
+  ## Facebook image size options
+  ## square=50x50, small=50xVariable, normal=100xVariable, large=200xVariable
+
   def profile_image_path(size="normal")
-    # square, small, normal, large
-    image_url + "?type=#{size}"
+    if image_source == "Facebook"
+      return facebook_image_url + "?type=#{size}"
+    elsif image_source == "Gravatar"
+      gravatar_size = case size
+        when "square", "small" ; 50
+        when "normal" ; 100
+        when "large" ; 200
+      end
+      return "http://www.gravatar.com/avatar/#{gravatar_hash}?size=#{gravatar_size}"
+    end
   end
   
   private
@@ -55,7 +71,7 @@ class Player
          player.email = auth['info']['email'] || ""
          player.handle = auth['info']['nickname'] || ""
          player.website = auth["info"]["urls"]["Facebook"]
-         player.image_url = sanitize_facebook_image(auth["info"]["image"])
+         player.facebook_image_url = sanitize_facebook_image(auth["info"]["image"])
          
          location = auth["extra"]["raw_info"]["location"]["name"].split(",")
          player.city = location[0].strip
@@ -68,7 +84,14 @@ class Player
     return "" if facebook_image_url.strip.blank?
     return facebook_image_url.gsub("?type=square", "")
   end
-  
+
+  def generate_gravatar_hash
+    if email.present?
+      hash = Digest::MD5.hexdigest(email)
+      write_attribute(:gravatar_hash, hash)
+    end
+  end
+
 end
 
 
