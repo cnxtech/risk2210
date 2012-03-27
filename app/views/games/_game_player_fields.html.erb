@@ -1,0 +1,6 @@
+<div class="fields">
+  <%= form.input :player_id, collection: Player.all.map{|player| [player.handle, player.id]} %>
+  <%= form.input :faction_id, collection: Faction.all %>
+  <br />
+  <%= link_to_remove_fields "remove", form %>
+</div>

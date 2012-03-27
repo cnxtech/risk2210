@@ -1,0 +1,29 @@
+<h2>New Game</h2>
+<%= simple_form_for @game, html: {class: 'form-vertical well'} do |f| %>
+  <%= error_messages_for @game %>
+  <fieldset>
+    <div class="row">
+      <div class="span3">
+        <%= f.input :location %>
+        <%= f.input :years, collection: (5..10), include_blank: false %>
+        <%= f.input :notes, as: :text %>
+      </div>
+      <div class="span3">
+        <%= f.association :maps, as: :check_boxes, collection: Map.all %>
+        <div id="game-players">
+          <%= f.fields_for :game_players do |game_player_fields| %>
+            <%= render partial: "games/game_player_fields", locals: {form: game_player_fields} %>
+          <% end %>
+          <%= link_to_add_fields "Add Player", f, :game_players %>
+        </div>
+      </div>
+    </div>
+    <div class="form-actions">
+      <%= f.submit "Create Game", class: 'btn btn-primary' %>
+      <%= link_to 'Cancel', root_path, class: 'btn' %>
+    </div>
+  </fieldset>
+<% end %>
+
+<% content_for :sidebar do %>
+<% end %>

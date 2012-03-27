@@ -29,7 +29,9 @@ class Player
 
   ## Associations
   has_many :topics, dependent: :destroy, autosave: true
-  has_many :comments, dependent: :destroy, autosave: true  
+  has_many :comments, dependent: :destroy, autosave: true
+  has_many :game_players
+  has_many :games, as: :creator
   
   ## Plugins
   slug :handle

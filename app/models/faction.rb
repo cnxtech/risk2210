@@ -9,6 +9,8 @@ class Faction
   field :starting_resources, type: String
   field :official, type: Boolean, default: true
 
+  has_many :game_players
+
   slug :name
   
   attr_accessible :name, :classification, :starting_resources, :abilities, :official
