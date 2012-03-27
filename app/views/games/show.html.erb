@@ -1,2 +1,13 @@
-<%= @game.attributes.inspect %>
-<%= @game.map_names %>
+<div class="hero-unit">
+  <h2><%= @game.map_names %></h2>
+  <p>Location: <%= @game.location %></p>
+  <p><%= @game.years %> Years</p>
+  <% if @game.notes.present? %>
+    <p><%= @game.notes %></p>
+  <% end %>
+  <ul>
+    <% @game.game_players.each do |game_player| %>
+      <li><%= game_player.player.handle %> &ndash; <%= game_player.faction.name %></li>
+    <% end %>
+  </ul>
+</div>
