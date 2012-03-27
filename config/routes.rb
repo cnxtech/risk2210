@@ -6,7 +6,7 @@ Risk2210::Application.routes.draw do
   delete '/logout' => 'sessions#destroy', as: :logout
   
   ## Facebook Sessions
-  match '/login/facebook' => redirect('/auth/facebook'), as: :facebook_authentication
+  get '/login/facebook' => redirect('/auth/facebook'), as: :facebook_authentication
   match '/auth/:provider/callback' => 'sessions#authenticate_facebook'
   match '/auth/failure' => 'sessions#failure'
 
@@ -17,8 +17,12 @@ Risk2210::Application.routes.draw do
   resources :factions, only: [:index, :show]
   resources :players
   
+  ## Game Tracker
+  resources :games
+  
+  ## Forums
   resources :forums, only: [:index, :show] do
-    resources :topics do
+    resources :topics, only: [:show, :create] do
       post :create_comment, on: :member
     end
   end

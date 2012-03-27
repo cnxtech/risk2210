@@ -59,5 +59,19 @@ module Risk2210
       generator.helper      false
     end
 
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      :address              => "smtp.gmail.com",
+      :port                 => 587,
+      :domain               => 'risk2210.net',
+      :user_name            => 'risk2210.net',
+      :password             => 'risk2210ad.net',
+      :authentication       => 'plain',
+      :enable_starttls_auto => true 
+    }
+      
+  end
+
+
   end
 end
