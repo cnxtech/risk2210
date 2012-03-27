@@ -14,18 +14,30 @@ Risk2210::Application.routes.draw do
   get "/account/password" => "passwords#edit", as: :edit_password
   put "/account/password" => "passwords#update", as: :update_password
   
-  resources :factions, only: [:index, :show]
   resources :players
   
   ## Game Tracker
-  resources :games
+  resources :games, only: [:new, :create, :show] do
+    #resources :turns, only: [:create]
+  end
   
   ## Forums
   resources :forums, only: [:index, :show] do
     resources :topics, only: [:show, :create] do
-      post :create_comment, on: :member
+      resources :comments, only: [:create, :edit, :update]
     end
   end
+
+  ## Expansions
+  namespace :expansions do
+    resources :factions, only: [:index, :show]
+    get "/mars" => "maps#mars", as: :mars
+    get "/io" => "maps#io", as: :io
+    get "/europa" => "maps#europa", as: :europa
+    get "/tech-commander" => "commanders#tech", as: :tech_commander
+    get "/resistance-commander" => "commanders#resistance", as: :resistance_commander
+  end
+
   
   root to: 'home#index'
 

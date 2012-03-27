@@ -1,7 +1,7 @@
 <div class="comment-form">
   <% if logged_in? %>
     <% parent_id ||= nil %>
-    <%= simple_form_for @comment, url: create_comment_forum_topic_path(@forum, @topic, comment_parent_id: parent_id), html: {class: 'form-vertical'} do |f| %>
+    <%= simple_form_for @comment, url: forum_topic_comments_path(@forum, @topic, comment_parent_id: parent_id), html: {class: 'form-vertical'} do |f| %>
       <%= error_messages_for @comment %>
       <%= f.input :body, as: :text, label: false, input_html: {class: 'comment-text'} %>
       <%= f.submit "Comment", class: 'btn btn-primary' %>

@@ -24,17 +24,4 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
   end
 
-  def edit
-  end
-
-  def update
-  end
-
-  def add_player
-  end
-
-  def add_turn
-  end
-
-
 end

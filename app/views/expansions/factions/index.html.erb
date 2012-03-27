@@ -3,7 +3,7 @@
 
   
     <% @factions.each do |faction| %>
-      <p><%= link_to faction.name, faction_path(faction) %></p>
+      <p><%= link_to faction.name, expansions_faction_path(faction) %></p>
     <% end %> 
   
 </div>

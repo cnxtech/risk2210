@@ -3,8 +3,8 @@ class TopicsController < ApplicationController
   active_tab :forums
   
   before_filter :find_forum
-  before_filter :find_topic, only: [:show, :create_comment]
-  before_filter :login_required, only: [:create, :create_comment]
+  before_filter :find_topic, only: [:show]
+  before_filter :login_required, only: [:create]
   
   def show
     @topic.increment_view_counter
@@ -24,23 +24,7 @@ class TopicsController < ApplicationController
       render template: "forums/show"
     end
   end
-  
-  def create_comment
-    if params[:comment_parent_id].present?
-      parent_comment = Comment.find(params[:comment_parent_id])
-      @comment = parent_comment.comments.build(params[:comment])
-    else
-      @comment = @topic.comments.build(params[:comment])
-    end
     
-    @comment.player = current_player
-    if @comment.save
-      redirect_to forum_topic_path(@forum, @topic), notice: "Thanks for posting!"
-    else
-      render action: :show
-    end
-  end
-  
   private
   
   def find_forum
