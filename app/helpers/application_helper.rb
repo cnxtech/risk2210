@@ -73,7 +73,8 @@ module ApplicationHelper
   end
   
   def link_to_remove_fields(name, form)
-    form.hidden_field(:_destroy) + link_to_function(name, "remove_fields(this)")
+    icon = content_tag(:i, nil, class: "icon-minus icon-white").html_safe
+    form.hidden_field(:_destroy) + link_to_function(icon + " " + name, "remove_fields(this)", class: "btn btn-mini btn-danger")
   end
   
   def link_to_add_fields(name, form, association)
@@ -81,7 +82,8 @@ module ApplicationHelper
     fields = form.fields_for(association, new_object, child_index: "new_#{association}") do |builder|
       render(form.object.class.name.pluralize.downcase + "/" + association.to_s.singularize + "_fields", form: builder)
     end
-    link_to_function(name, "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")")
+    icon = content_tag(:i, nil, class: "icon-plus icon-white").html_safe
+    link_to_function(icon + " " + name, "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")", class: "btn btn-success")
   end
   
   def yes_or_no(boolean)

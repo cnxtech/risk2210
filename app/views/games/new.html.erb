@@ -6,15 +6,17 @@
       <div class="span3">
         <%= f.input :location %>
         <%= f.input :years, collection: (5..10), include_blank: false %>
-        <%= f.input :notes, as: :text %>
+        <%= f.input :notes, as: :text, input_html: {rows: 3} %>
+        <%= f.association :maps, as: :check_boxes, collection: Map.all %>
       </div>
       <div class="span3">
-        <%= f.association :maps, as: :check_boxes, collection: Map.all %>
         <div id="game-players">
           <%= f.fields_for :game_players do |game_player_fields| %>
             <%= render partial: "games/game_player_fields", locals: {form: game_player_fields} %>
           <% end %>
-          <%= link_to_add_fields "Add Player", f, :game_players %>
+          <div class="add-player-button-container">
+            <%= link_to_add_fields "Add Player", f, :game_players %>
+          </div>
         </div>
       </div>
     </div>
