@@ -1,6 +1,8 @@
 module Expansions
   class MapsController < ApplicationController
 
+    active_tab :expansions
+
     def mars
     end
 
@@ -8,6 +10,9 @@ module Expansions
     end
 
     def europa
+    end
+
+    def astroid_colonies
     end
 
   end

@@ -1,6 +1,8 @@
 module Expansions
   class CommandersController < ApplicationController
 
+    active_tab :expansions
+
     def tech
     end
 

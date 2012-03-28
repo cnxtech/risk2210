@@ -10,11 +10,24 @@
       <div class="nav-collapse">
         <ul class="nav">
           <%= navigation_item("Players", players_path, :players) %>
-          <%= navigation_item("Factions", expansions_factions_path, :factions) %>
           <%= navigation_item("Forums", forums_path, :forums) %>
           <%= navigation_item("Tracker", new_game_path, :tracker) %>
-          <li><%= link_to "Expansions", "#" %></li>
-          <li><%= link_to "Contact Us", "#" %></li>
+          <li class="dropdown <%= controller.active_tab == :expansions ? 'active' : '' %>">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Expansions <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <%= navigation_item("Factions", expansions_factions_path, nil) %>
+              <li class="divider"></li>
+              <%= navigation_item("Mars", expansions_mars_path, nil) %>
+              <%= navigation_item("Io", expansions_io_path, nil) %>
+              <%= navigation_item("Europa", expansions_europa_path, nil) %>
+              <%= navigation_item("Asteroid Colonies", expansions_asteroid_colonies_path, nil) %>
+              <li class="divider"></li>
+              <%= navigation_item("Tech Commander", expansions_tech_commander_path, nil) %>
+              <%= navigation_item("Resistance Commander", expansions_resistance_commander_path, nil) %>
+              <li class="divider"></li>
+              <%= navigation_item("Amoebas", expansions_amoebas_path, nil) %>
+            </ul>
+          </li>
         </ul>
         <ul class="nav pull-right">
           <% if current_player %>

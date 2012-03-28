@@ -3,7 +3,7 @@ module Expansions
 
     respond_to :html, :json
 
-    active_tab :factions
+    active_tab :expansions
     
     def index
       @factions = Faction.all
