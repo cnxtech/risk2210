@@ -1,0 +1,13 @@
+<div id="topic">
+  <div class="comment-form">
+    <%= simple_form_for @comment, url: forum_topic_comment_path(@forum, @topic, @comment), html: {class: 'form-vertical'} do |f| %>
+      <%= f.input :body, as: :text, label: false, input_html: {class: 'comment-text'} %>
+      <%= f.submit "Update", class: 'btn btn-primary' %>
+      <%= link_to 'Cancel', forum_topic_path(@forum, @topic), class: 'btn' %>
+    <% end %>
+  </div>
+</div>
+
+<% content_for :sidebar do %>
+  <%= render partial: "shared/markdown_examples" %>
+<% end %>

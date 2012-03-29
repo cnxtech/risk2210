@@ -24,6 +24,20 @@ class CommentsController < ApplicationController
     end
   end
 
+  def edit
+    @comment = current_player.comments.find(params[:id])
+  end
+
+  def update
+    @comment = current_player.comments.find(params[:id])
+    if @comment.update_attributes(params[:comment])
+      redirect_to forum_topic_path(@forum, @topic), notice: "Successfully updated your comment."
+    else
+      flash.now.alert = "You can't post blank comments!"
+      render action: :edit
+    end
+  end
+
   private
   
   def find_forum
