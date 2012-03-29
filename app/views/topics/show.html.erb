@@ -3,7 +3,16 @@
   <%= render :partial => "comments/comment", :collection => @comments %>
 
   <h3>Reply (Top Level)</h3>
-  <%= render :partial => "comments/form", locals: {hide_cancel: true} %>
+  <div class="comment-form">
+    <% if logged_in? %>
+      <%= simple_form_for :comment, url: forum_topic_comments_path(@forum, @topic), html: {class: 'form-vertical'} do |f| %>
+        <%= f.input :body, as: :text, label: false, input_html: {class: 'comment-text'} %>
+        <%= f.submit "Comment", class: 'btn btn-primary' %>
+      <% end %>
+    <% else %>
+      <%= link_to "Login to comment", login_path %>
+    <% end %>
+  </div>
 </div>
 
 <% content_for :sidebar do %>

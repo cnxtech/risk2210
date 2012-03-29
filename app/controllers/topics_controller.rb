@@ -9,7 +9,6 @@ class TopicsController < ApplicationController
   def show
     @topic.increment_view_counter
     @comments = @topic.comments
-    @comment = Comment.new
   end
   
   def create
@@ -20,6 +19,7 @@ class TopicsController < ApplicationController
     if @topic.save
       redirect_to forum_topic_path(@forum, @topic), notice: "Thanks for posting!"
     else
+      @topics = @forum.topics.all
       flash.now.alert = "There was an creating your topic."
       render template: "forums/show"
     end

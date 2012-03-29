@@ -1,4 +1,4 @@
-<% if current_player %>
+<% if logged_in? %>
   <p>The following Risk 2210 A.D. players live nearby!</p>
   <% current_player.nearby_players.each do |player| %>
     <p><%= link_to player.handle, player_path(player) %> &ndash; <%= player.city %>, <%= player.state %></p>

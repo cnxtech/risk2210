@@ -6,7 +6,6 @@ class CommentsController < ApplicationController
   before_filter :find_topic
   before_filter :login_required
 
-
   def create
     if params[:comment_parent_id].present?
       parent_comment = Comment.find(params[:comment_parent_id])
@@ -19,7 +18,9 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to forum_topic_path(@forum, @topic), notice: "Thanks for posting!"
     else
-      render action: :show
+      @comments = @topic.comments.all
+      flash.now.alert = "You can't post blank comments!"
+      render template: "topics/show"
     end
   end
 

@@ -12,6 +12,8 @@ class Topic
   belongs_to :forum
   has_many :comments, as: :commentable, dependent: :destroy, autosave: true
 
+  validates_presence_of :subject
+
   accepts_nested_attributes_for :comments
   
   def increment_view_counter
