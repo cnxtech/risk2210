@@ -7,6 +7,7 @@ group :assets do
   gem 'coffee-rails'
   gem 'uglifier'
   gem 'twitter-bootstrap-rails'
+  gem 'less-rails-fontawesome'
 end
 
 ## Frontend / Views
@@ -24,10 +25,8 @@ gem "omniauth"#, ">= 1.0.0"
 gem "omniauth-facebook"
 gem 'bcrypt-ruby'#, '~> 3.0.0'
 
-## Application Server
+## Operations
 gem 'passenger'
-
-## Deployment
 # gem 'capistrano'
 
 group :development, :test do
