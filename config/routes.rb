@@ -38,6 +38,7 @@ Risk2210::Application.routes.draw do
     get "/tech-commander" => "commanders#tech", as: :tech_commander
     get "/resistance-commander" => "commanders#resistance", as: :resistance_commander
     get "/invasion-of-the-giant-amoebas" => "misc#amoebas", as: :amoebas
+    get "galactic-risk" => "misc#galactic", as: :galactic
   end
 
   
