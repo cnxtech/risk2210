@@ -7,7 +7,10 @@ class TopicsController < ApplicationController
   before_filter :login_required, only: [:create]
   
   def show
-    @topic.increment_view_counter
+    unless topics_viewed.include?(@topic.id)
+      @topic.increment_view_counter
+      topics_viewed << @topic.id
+    end
     @comments = @topic.comments
   end
   
@@ -33,6 +36,10 @@ class TopicsController < ApplicationController
   
   def find_topic
     @topic = Topic.find_by_slug(params[:id])
+  end
+
+  def topics_viewed
+    session[:topics_viewed] ||= []
   end
   
 end
