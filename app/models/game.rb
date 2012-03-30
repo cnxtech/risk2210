@@ -9,8 +9,8 @@ class Game
   attr_accessible :location, :years, :notes, :map_ids, :game_players_attributes
   
   has_and_belongs_to_many :maps
-  embeds_many :game_players
-  embeds_many :turns, order: "order"
+  has_many :game_players, autosave: true
+  has_many :turns, order: "order"
   belongs_to :creator, class_name: "Player"
     
   accepts_nested_attributes_for :game_players

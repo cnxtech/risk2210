@@ -10,4 +10,17 @@
       <li><%= game_player.player.handle %> &ndash; <%= game_player.faction.name %></li>
     <% end %>
   </ul>
+  <h2>Turns</h2>
+  <ol>
+    <% @game.turns.each do |turn| %>
+      <li><%= turn.game_player.player.handle %></li>
+    <% end %>
+  </ol>
+  <h2>New Turn</h2>
+  <%= simple_form_for :turn, url: game_turns_path(@game) do |f| %>
+    <%= f.input :game_player_id, collection: @game.game_players.map{|game_player| [game_player.player.handle, game_player.id]} %>
+    <%= f.input :units_collected %>
+    <%= f.input :energy_collected %>
+    <%= f.submit "Create Turn", class: 'btn btn-primary' %>
+  <% end %>
 </div>

@@ -6,6 +6,9 @@ class Turn
   field :units_collected, type: Integer, default: 3
   field :energy_collected, type: Integer, default: 3
 
+  attr_accessible :energy_collected, :units_collected, :game_player_id
+
   belongs_to :game_player
+  belongs_to :game
 
 end

@@ -5,5 +5,6 @@ class GamePlayer
   belongs_to :game
   belongs_to :player
   belongs_to :faction
+  has_many :turns
   
 end

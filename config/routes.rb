@@ -18,7 +18,7 @@ Risk2210::Application.routes.draw do
   
   ## Game Tracker
   resources :games, only: [:new, :create, :show] do
-    #resources :turns, only: [:create]
+    resources :turns, only: [:create]
   end
   
   ## Forums
@@ -41,7 +41,6 @@ Risk2210::Application.routes.draw do
     get "galactic-risk" => "misc#galactic", as: :galactic
   end
 
-  
   root to: 'home#index'
 
 end
