@@ -1,22 +1,24 @@
 <h1>All Players</h1>
-<table class="table table-bordered table-striped">
-  <thead>
-    <tr>
-      <th>Handle</th>
-      <th>Location</th>
-      <th>Wins</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @players.each do |player| %>
+<div id="player-listing">
+  <table class="table table-bordered table-striped">
+    <thead>
       <tr>
-        <td><%= link_to player.handle, player_path(player) %></td>
-        <td><%= player.city %>, <%= player.state %></td>
-        <td>49</td>
+        <th>Handle</th>
+        <th>Location</th>
+        <th>Games Played</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @players.each do |player| %>
+        <tr>
+          <td><%= link_to player.handle, player_path(player) %></td>
+          <td><%= location(player) %></td>
+          <td><%= player.game_players.size %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
 <% content_for :sidebar do %>
   <%= render partial: "shared/nearby_players" %>

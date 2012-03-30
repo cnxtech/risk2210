@@ -1,21 +1,24 @@
 <div id="player-profile">
   <h2><%= @player.handle %></h2>
   <div class="well">
-    <div class='photo-container'>
-      <%= image_tag @player.profile_image_path("large") %>
-    </div>
-    <div class='location'>
-      <strong>Location:</strong> <%= @player.city %>, <%= @player.state %> <%= @player.zip_code %>
-    </div>
-
-    <% if @player.website.present? %>
-      <div class='site'>
-        <strong>Site:</strong> <%= link_to @player.website, @player.website, target: "_blank" %>
+    <div class="row">
+      <div class="span2">
+        <div class='photo-container'>
+          <%= image_tag @player.profile_image_path("large") %>
+        </div>
+        <div class='location'>
+          <strong>From:</strong><br />
+          <%= location(@player) %>
+        </div>
+        <% if @player.website.present? %>
+          <div class='site'>
+            <strong>Site:</strong> <%= link_to @player.website, @player.website, target: "_blank" %>
+          </div>
+        <% end %>
       </div>
-    <% end %>
-    <div class='bio'>
-      <strong>Bio:</strong><br />
-      <p><%= @player.bio %></p>
+      <div class="span5" style="float: right;">
+        <p><%= @player.bio %></p>
+      </div>
     </div>
   </div>
 </div>
