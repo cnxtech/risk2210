@@ -1,0 +1,14 @@
+<% unless logged_in? %>
+  <div class="modal fade sign-in" id="login-modal" style="display: none;">
+    <%= simple_form_for :session, url: create_session_path, html: {class: 'form-vertical'} do |f| %>
+      <div class="modal-body">
+        <%= f.input :email %>
+        <%= f.input :password %>
+      </div>
+      <div class="modal-footer">
+        <%= f.submit "Login", class: 'btn btn-danger' %><br /><br />
+        <%= facebook_button %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

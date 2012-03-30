@@ -73,5 +73,10 @@ module ApplicationHelper
   def format_markdown(string)
     MARKDOWN_RENDERER.render(string).html_safe
   end
+
+  def facebook_button
+    button = content_tag(:i, "", class: "icon-facebook-sign icon-large") + " Login with Facebook"
+    link_to button, facebook_authentication_path, class: "btn btn-inverse"
+  end
   
 end
