@@ -6,5 +6,7 @@ class GamePlayer
   belongs_to :player
   belongs_to :faction
   has_many :turns
+
+  delegate :handle, to: :player
   
 end

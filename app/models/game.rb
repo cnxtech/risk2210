@@ -23,7 +23,7 @@ class Game
   end
   
   def map_names
-    maps.collect(&:name).join(", ")
+    maps.collect(&:name).to_sentence
   end
   
   private
