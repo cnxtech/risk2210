@@ -1,9 +1,19 @@
-<div class="hero-unit">
-  <h1>Factions</h1>
+<h1>Factions</h1>
+<p>Throughout histroy different factions have vied for control wihtin various societies and govermnets.  Each has their own agenda.  Now choose which faction you think will help you win on the battlefield in Risk 2210!</p>
+<p>This expansion pack includes the official Frontline factions as well as fan made factions.  View each faction page for more details.</p>
 
-  
-    <% @factions.each do |faction| %>
-      <p><%= link_to faction.name, expansions_faction_path(faction) %></p>
-    <% end %> 
-  
+<h2>Rules</h2>
+<p>The official rules say that the first player chooses their faction.  We play by shuffling the cards everybody randomly selecting one.</p>
+
+<hr />
+
+<div style="margin: 20px 0;">
+  <%= link_to "Download Bundled Expansion Pack", "/expansions/factions_expansion.zip", class: "btn btn-danger btn-large" %>
+  <p style="margin-top: 15px;">The bundled expansion pack contains high-resolution versions of all Faction cards.</p>
 </div>
+  
+<hr />
+
+<% @factions.each do |faction| %>
+  <p><%= link_to faction.name, expansions_faction_path(faction) %></p>
+<% end %> 
