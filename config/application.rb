@@ -63,7 +63,6 @@ module Risk2210
       generator.helper      false
     end
 
-    #config.action_mailer.prepend_view_path "#{Rails.root}/app/mailer_views"
     ActionMailer::Base.prepend_view_path "#{Rails.root}/app/mailer_views"
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
