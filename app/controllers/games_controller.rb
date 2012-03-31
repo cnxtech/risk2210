@@ -22,7 +22,6 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
-    @turns = @game.turns.all
     @turn = @game.turns.build
   end
 

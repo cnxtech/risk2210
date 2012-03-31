@@ -3,7 +3,7 @@ class Game
   include Mongoid::Timestamps
 
   field :location, type: String
-  field :years, type: Integer, default: 5
+  field :number_of_years, type: Integer, default: 5
   field :notes, type: String
 
   attr_accessible :location, :years, :notes, :map_ids, :game_players_attributes
@@ -27,7 +27,11 @@ class Game
   end
 
   def percent_complete
-    (turns.count.to_f / (years * game_players.count).to_f) * 100
+    (turns.count.to_f / (number_of_years * game_players.count).to_f) * 100
+  end
+
+  def years
+    turns / game_players.count
   end
 
   private

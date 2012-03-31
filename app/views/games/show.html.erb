@@ -23,7 +23,7 @@
   <% if @game.location.present? %>
     <h3>Location: <%= @game.location %></h3>
   <% end %>
-  <h4><%= @game.years %> Year Game</h4>
+  <h4><%= @game.number_of_years %> Year Game</h4>
   <% if @game.notes.present? %>
     <p>Notes: <%= @game.notes %></p>
   <% end %>
@@ -36,10 +36,15 @@
   </ul>
 
   <h2>Turns</h2>
-  <ol>
-    <% @turns.each do |turn| %>
-      <li><%= turn.game_player.handle %> &ndash; Units: <%= turn.energy_collected %>, Energy: <%= turn.units_collected %></li>
+  <% @game.years.size.times do |year| %>
+    <% if @game.years[year].present? %>
+      <h3>Year: <%= year + 1 %></h3>
+      <ol>
+        <% @game.years[year].reject{|turn| turn.new_record?}.each do |turn| %>
+          <li><%= turn.game_player.handle %> &ndash; Units: <%= turn.energy_collected %>, Energy: <%= turn.units_collected %></li>
+        <% end %>
+      </ol>
     <% end %>
-  </ol>
+  <% end %>
 
 <% end %>
