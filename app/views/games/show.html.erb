@@ -1,4 +1,6 @@
 <h2><%= @game.map_names %></h2>
+<p>Game Progress:</p>
+<%= progress_bar(@game) %>
 <%= simple_form_for @turn, url: game_turns_path(@game), html: {class: 'form-vertical well'}  do |f| %>
   <div class="row">
     <div class="span3">

@@ -26,6 +26,10 @@ class Game
     maps.collect(&:name).to_sentence
   end
 
+  def percent_complete
+    (turns.count.to_f / (years * game_players.count).to_f) * 100
+  end
+
   private
   
   def number_of_players
