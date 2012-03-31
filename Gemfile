@@ -1,6 +1,6 @@
 source :rubygems
 
-gem 'rails', '3.2.3.rc1'
+gem 'rails', '3.2.3'
 
 group :assets do
   gem 'sass-rails'
