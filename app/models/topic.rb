@@ -5,6 +5,8 @@ class Topic
   
   field :subject, type: String
   field :view_count, type: Integer, default: 1
+  field :comment_count, type: Integer, default: 0
+  field :last_comment_date, type: DateTime
 
   slug :subject
   
@@ -17,7 +19,7 @@ class Topic
   accepts_nested_attributes_for :comments
   
   def increment_view_counter
-    update_attribute(:view_count, self.view_count + 1)
+    inc(:view_count, 1)
   end
-  
+
 end

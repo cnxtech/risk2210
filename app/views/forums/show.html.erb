@@ -11,8 +11,8 @@
     <% @topics.each do |topic| %>
       <tr>
         <td><%= link_to topic.subject, forum_topic_path(@forum, topic) %></td>
-        <td><%= topic.comments.count %></td>
-        <td><%= topic.view_count %></td>
+        <td><span class="badge badge-success"><%= topic.comment_count %></span></td>
+        <td><span class="badge badge-error"><%= topic.view_count %></span></td>
         <td><%= format_timestamp(topic.comments.last.created_at) %></td>
       </tr>
     <% end %>
