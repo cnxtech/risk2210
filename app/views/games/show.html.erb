@@ -1,29 +1,21 @@
-<div class="hero-unit">
-  <h2><%= @game.map_names %></h2>
-  <h2>Turns</h2>
-  <ol>
-    <% @turns.each do |turn| %>
-      <li><%= turn.game_player.handle %> &ndash; Units: <%= turn.energy_collected %>, Energy: <%= turn.units_collected %></li>
-    <% end %>
-  </ol>
-  <h2>New Turn</h2>
-  <%= simple_form_for @turn, url: game_turns_path(@game) do |f| %>
-    <div class="row">
-      <div class="span3">
-        <%= f.input :game_player_id, collection: @game.game_players.map{|game_player| [game_player.player.handle, game_player.id]} %>
-        <%= f.input :units_collected %>
-        <%= f.input :energy_collected %>
-        <%= f.input :territories_held %>
-        <%= f.submit "Create Turn", class: 'btn btn-primary' %>
-      </div>
-      <div class="span3">
-        <% @game.maps.each do |map| %>
-          <%= f.association :continents, as: :check_boxes, collection: map.continents.map{|continent| ["#{continent.name} (#{continent.type})", continent.id]}, label: "#{map.name} Bonuses", label_html: {class: 'continental-bonus-header'} %>
-        <% end %>
-      </div>
+<h2><%= @game.map_names %></h2>
+<%= simple_form_for @turn, url: game_turns_path(@game), html: {class: 'form-vertical well'}  do |f| %>
+  <div class="row">
+    <div class="span3">
+      <%= f.input :game_player_id, collection: @game.game_players.map{|game_player| [game_player.player.handle, game_player.id]}, label: "Player" %>
+      <%= f.input :units_collected %>
+      <%= f.input :energy_collected %>
+      <%= f.input :territories_held %>
+      <%= f.submit "Save Turn", class: 'btn btn-primary' %>
     </div>
-  <% end %>
-</div>
+    <div class="span3">
+      <% @game.maps.each do |map| %>
+        <%= f.association :continents, as: :check_boxes, collection: map.continents.map{|continent| ["#{continent.name} (#{continent.type})", continent.id]}, label: "#{map.name} Bonuses", label_html: {class: 'continental-bonus-header'} %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
 
 <% content_for :sidebar do %>
   <% if @game.location.present? %>
@@ -40,5 +32,12 @@
       <li><%= game_player.player.handle %> &ndash; <%= game_player.faction.name %></li>
     <% end %>
   </ul>
+
+  <h2>Turns</h2>
+  <ol>
+    <% @turns.each do |turn| %>
+      <li><%= turn.game_player.handle %> &ndash; Units: <%= turn.energy_collected %>, Energy: <%= turn.units_collected %></li>
+    <% end %>
+  </ol>
 
 <% end %>
