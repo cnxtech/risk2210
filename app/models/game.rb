@@ -25,7 +25,7 @@ class Game
   def map_names
     maps.collect(&:name).to_sentence
   end
-  
+
   private
   
   def number_of_players
