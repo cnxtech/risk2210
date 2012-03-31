@@ -3,6 +3,8 @@ module Expansions
 
     active_tab :expansions
 
+    layout "no_sidebar"
+
     def mars
     end
 
