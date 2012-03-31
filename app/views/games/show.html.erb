@@ -1,6 +1,7 @@
 <h2><%= @game.map_names %></h2>
 <p>Game Progress:</p>
 <%= progress_bar(@game) %>
+
 <%= simple_form_for @turn, url: game_turns_path(@game), html: {class: 'form-vertical well'}  do |f| %>
   <div class="row">
     <div class="span3">
@@ -12,12 +13,11 @@
     </div>
     <div class="span3">
       <% @game.maps.each do |map| %>
-        <%= f.association :continents, as: :check_boxes, collection: map.continents.map{|continent| ["#{continent.name} (#{continent.type})", continent.id]}, label: "#{map.name} Bonuses", label_html: {class: 'continental-bonus-header'} %>
+        <%= f.association :continents, as: :check_boxes, collection: map.continents.map{|continent| ["#{continent.name} (#{continent.type})", continent.id]}, label: "#{map.name} Continental Bonuses", label_html: {class: 'continental-bonus-header'} %>
       <% end %>
     </div>
   </div>
 <% end %>
-
 
 <% content_for :sidebar do %>
   <% if @game.location.present? %>
@@ -37,14 +37,12 @@
 
   <h2>Turns</h2>
   <% @game.years.size.times do |year| %>
-    <% if @game.years[year].present? %>
-      <h3>Year: <%= year + 1 %></h3>
-      <ol>
-        <% @game.years[year].reject{|turn| turn.new_record?}.each do |turn| %>
-          <li><%= turn.game_player.handle %> &ndash; Units: <%= turn.energy_collected %>, Energy: <%= turn.units_collected %></li>
-        <% end %>
-      </ol>
-    <% end %>
+    <h3>Year: <%= year + 1 %></h3>
+    <ol>
+      <% @game.years[year].reject{|turn| turn.new_record?}.each do |turn| %>
+        <li><%= turn.game_player.handle %> &ndash; Units: <%= turn.energy_collected %>, Energy: <%= turn.units_collected %></li>
+      <% end %>
+    </ol>
   <% end %>
 
 <% end %>

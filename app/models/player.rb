@@ -41,6 +41,7 @@ class Player
 
   ## Callbacks
   before_save :generate_gravatar_hash, if: :email_changed?
+  after_create :deliver_welcome_email
 
   ## Validations
   validates_presence_of :email, :handle
@@ -127,6 +128,10 @@ class Player
 
   def generate_remember_me_token
     remember_me_token = SecureRandom.hex(8)
+  end
+
+  def deliver_welcome_email
+    PlayerMailer.welcome_email(self).deliver
   end
 
 end
