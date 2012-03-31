@@ -11,6 +11,7 @@
     <%= f.input :game_player_id, collection: @game.game_players.map{|game_player| [game_player.player.handle, game_player.id]} %>
     <%= f.input :units_collected %>
     <%= f.input :energy_collected %>
+    <%= f.input :territories_held %>
     <%= f.submit "Create Turn", class: 'btn btn-primary' %>
   <% end %>
 </div>
