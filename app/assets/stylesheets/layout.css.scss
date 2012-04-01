@@ -9,5 +9,12 @@
 }
 
 footer{
-  margin-top: 50px;
+  width: 100%;
+  text-align: left;
+  margin: 35px 0;
+  ul{
+    li{
+      display: inline;
+    }
+  }
 }

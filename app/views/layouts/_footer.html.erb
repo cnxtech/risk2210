@@ -1,3 +1,10 @@
 <footer>
-  <p>RiskTracker <%= Date.today.year %></p>
+  <hr />
+  <ul>
+    <li><%= link_to "About", about_path %></li>
+    <li> / </li>
+    <li><%= link_to "Contact", contact_path %></li>
+    <li> / </li>
+    <li><%= link_to content_tag(:i, "", class: "icon-twitter-sign icon-white") + " Twitter", "http://twitter.com/Risk2210", target: "_blank" %></li>
+  </ul>
 </footer>

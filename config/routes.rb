@@ -14,6 +14,7 @@ Risk2210::Application.routes.draw do
   get "/account/password" => "passwords#edit", as: :edit_password
   put "/account/password" => "passwords#update", as: :update_password
   
+  ## Players
   resources :players
   
   ## Game Tracker
@@ -44,7 +45,9 @@ Risk2210::Application.routes.draw do
   ## Misc
   get "/about" => "pages#about", as: :about
   get "/resources" => "pages#resources", as: :resources
+  get "/contact" => "pages#contact", as: :contact
 
+  ## Root
   root to: 'pages#home'
 
 end
