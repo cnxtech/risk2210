@@ -41,6 +41,10 @@ Risk2210::Application.routes.draw do
     get "galactic-risk" => "misc#galactic", as: :galactic
   end
 
+  ## Misc
+  get "/about" => "pages#about", as: :about
+  get "/resources" => "pages#resources", as: :resources
+
   root to: 'pages#home'
 
 end
