@@ -41,6 +41,6 @@ Risk2210::Application.routes.draw do
     get "galactic-risk" => "misc#galactic", as: :galactic
   end
 
-  root to: 'home#index'
+  root to: 'pages#home'
 
 end

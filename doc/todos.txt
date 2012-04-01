@@ -3,9 +3,23 @@ Meta tags
 Game completion page
   - charts
   - collect final scores
-  
+
 Additional Faction pages
 About site page listing technologies used
 Resources page
   - links
   - misc files
+
+
+## Future Enhancements
+Q&A with upvoting and comments
+Textareas can have hover links to command card database with info bubble CC:Combat Enhancers
+File uploads - Photos
+player to player messaging
+Command card database
+stats (cards bought, played, #colonial influences)
+stats (total units lost per year) -- short of saving the units we take off not sure how to do this
+calculate yearly bonus (check off bonuses + neutral territories) - faction variable
+Show "nearby" players based on location
+page to organize "meetups" for games
+Player Leaderboard
