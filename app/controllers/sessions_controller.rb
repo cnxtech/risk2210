@@ -5,7 +5,6 @@ class SessionsController < ApplicationController
     player = Player.omniauthorize(auth)
     puts player.inspect
     login(player)
-    redirect_to root_path, notice: "Signed in!"
   end
   
   def destroy
@@ -21,7 +20,6 @@ class SessionsController < ApplicationController
     @session = Session.new(params[:session])
     if @session.valid? && @session.authenticated?
       login(@session.player)
-      redirect_to root_path, :notice => "Logged in!"
     else
       flash.now.alert = "We are sorry, but either your email or password is invalid."
       render :action => :new

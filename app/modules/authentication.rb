@@ -36,6 +36,7 @@ module Authentication
 
   def login(player)
     session[:player_id] = player.id
+    redirect_back_or_default(:back, notice: "Welcome Back!")
   end
   
 end

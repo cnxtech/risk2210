@@ -6,6 +6,6 @@
       <%= link_to 'Cancel', players_path, class: 'btn nested_comment_cancel_button' %>
     <% end %>
   <% else %>
-    <%= link_to "Login to comment", login_path %>
+    <a data-toggle="modal" href="#login-modal" class="btn btn-primary">Login to comment</a>
   <% end %>
 </div>
