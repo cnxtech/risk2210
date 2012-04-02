@@ -1,8 +1,8 @@
 <h2><%= @game.map_names %></h2>
 <p>Game Progress:</p>
-<%= progress_bar(@game) %>
+<%= progress_bar(@game, id: "game-progress-bar") %>
 
-<%= simple_form_for @turn, url: game_turns_path(@game), html: {class: 'form-vertical well'}  do |f| %>
+<%= simple_form_for @turn, url: game_turns_path(@game), remote: true, html: {class: 'form-vertical well'}  do |f| %>
   <div class="row">
     <div class="span3">
       <%= f.input :game_player_id, collection: @game.game_players.map{|game_player| [game_player.player.handle, game_player.id]}, label: "Player" %>
@@ -11,9 +11,9 @@
       <%= f.input :territories_held %>
       <%= f.submit "Save Turn", class: 'btn btn-primary' %>
     </div>
-    <div class="span3">
+    <div class="span4" id="continental-bonuses">
       <% @game.maps.each do |map| %>
-        <%= f.association :continents, as: :check_boxes, collection: map.continents.map{|continent| ["#{continent.name} (#{continent.type})", continent.id]}, label: "#{map.name} Continental Bonuses", label_html: {class: 'continental-bonus-header'} %>
+        <%= f.association :continents, as: :check_boxes, collection: map.continents.ordered.map{|continent| ["#{continent.name} (#{continent.type})", continent.id]}, label: "#{map.name} Continental Bonuses", label_html: {class: 'continental-bonus-header'} %>
       <% end %>
     </div>
   </div>
@@ -36,13 +36,8 @@
   </ul>
 
   <h2>Turns</h2>
-  <% @game.years.size.times do |year| %>
-    <h3>Year: <%= year + 1 %></h3>
-    <ol>
-      <% @game.years[year].reject{|turn| turn.new_record?}.each do |turn| %>
-        <li><%= turn.game_player.handle %> &ndash; Units: <%= turn.energy_collected %>, Energy: <%= turn.units_collected %></li>
-      <% end %>
-    </ol>
-  <% end %>
+  <div id="turns-container">
+    <%= render partial: "games/turns", locals: {game: @game} %>
+  </div>
 
 <% end %>

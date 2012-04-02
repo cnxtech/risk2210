@@ -70,11 +70,13 @@ class Player
       return facebook_image_url + "?type=#{size}"
     elsif image_source == "Gravatar"
       gravatar_size = case size
-        when :square, "small" ; 50
+        when :square, :small ; 50
         when :normal ; 100
         when :large ; 200
       end
       return "http://www.gravatar.com/avatar/#{gravatar_hash}?size=#{gravatar_size}"
+    else
+      return nil
     end
   end
 
@@ -93,7 +95,7 @@ class Player
   
   private
   
-  ## Refactor to find existing Player by email first
+  ## TODO Refactor to find existing Player by email first
   def self.create_with_omniauth(auth)
     puts auth
     create! do |player|

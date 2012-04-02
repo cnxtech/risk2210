@@ -7,11 +7,10 @@ class TurnsController < ApplicationController
 
   def create
     @turn = @game.turns.build(params[:turn])
-    if @turn.save
-      redirect_to game_path(@game), notice: "Turn added"
-    else
-      flash.now.error = "Invalid turn!"
-      render template: "games/show"
+    if !@turn.save
+      ## TODO -- handle erros
+      #flash.now.error = "Invalid turn!"
+      #render template: "games/show"
     end
   end
 

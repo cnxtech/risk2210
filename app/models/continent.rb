@@ -11,4 +11,6 @@ class Continent
 
   belongs_to :map
 
+  scope :ordered, order_by(type: "asc").order_by(name: "asc")
+
 end
