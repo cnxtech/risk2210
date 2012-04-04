@@ -4,6 +4,9 @@ class GamesController < ApplicationController
 
   active_tab :tracker
 
+  def index
+  end
+
   def new
     @game = Game.new
     @game.game_players.build

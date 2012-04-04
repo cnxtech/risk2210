@@ -1,5 +1,18 @@
+Screen shots as tracker progresses for blog
+v0.1 - http://bit.ly/HmuXSC
+
+API
+Seed Forums
 Page titles
 Meta tags
+Quick Start
+  - Templates
+Color code contnients
+Group continents by type
+Better game tracker (backbone.js based) w/ drag and drop continents & player groupings
+Start year / End year differences
+Link to Gravatar
+
 Game completion page
   - charts
   - collect final scores
@@ -17,7 +30,6 @@ Google Analytics
 v1.1
 Additional Expansion pages
 Player Leaderboard
-API
 
 V1.2
 Friends

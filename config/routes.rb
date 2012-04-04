@@ -18,7 +18,7 @@ Risk2210::Application.routes.draw do
   resources :players
   
   ## Game Tracker
-  resources :games, only: [:new, :create, :show] do
+  resources :games, only: [:new, :create, :show, :index] do
     resources :turns, only: [:create]
   end
   
@@ -48,7 +48,8 @@ Risk2210::Application.routes.draw do
   get "/contact" => "pages#contact", as: :contact
 
   scope "api/v1" do
-    resources :factions, only: [:index, :show]
+    get "/factions" => "expansions/factions#index", as: :factions
+    get "/factions/:id" => "expansions/factions#show", as: :faction
   end
 
   ## Root

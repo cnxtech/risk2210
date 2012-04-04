@@ -15,6 +15,10 @@ gem 'jquery-rails'
 gem 'redcarpet'
 gem 'simple_form'
 
+## Backbone
+gem "ejs"
+gem "eco"
+
 ## Mongo DB
 gem "mongoid", ">= 2.3.3"
 gem "bson_ext", ">= 1.3.1"

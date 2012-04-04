@@ -1,0 +1,7 @@
+<h1>Factions</h1>
+
+<ul>
+<% for faction in @factions.models: %>
+  <li><%= faction.get('name') %></li>
+<% end %>
+</ul>

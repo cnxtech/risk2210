@@ -1,0 +1,1 @@
+class RiskTracker.Models.Faction extends Backbone.Model

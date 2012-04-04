@@ -9,7 +9,7 @@
 //= require jquery-ui
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require_tree .
+//= require forums
 
 function remove_fields(link) {
   if(confirm("Are you sure?")){
