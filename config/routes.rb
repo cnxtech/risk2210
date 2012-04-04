@@ -47,6 +47,10 @@ Risk2210::Application.routes.draw do
   get "/resources" => "pages#resources", as: :resources
   get "/contact" => "pages#contact", as: :contact
 
+  scope "api/v1" do
+    resources :factions, only: [:index, :show]
+  end
+
   ## Root
   root to: 'pages#home'
 
