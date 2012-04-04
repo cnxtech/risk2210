@@ -2,7 +2,7 @@
   <h3>Year: <%= year + 1 %></h3>
   <ol>
     <% game.years[year].reject{|turn| turn.new_record?}.each do |turn| %>
-      <li><%= turn.game_player.handle %> &ndash; Units: <%= turn.energy_collected %>, Energy: <%= turn.units_collected %></li>
+      <li><%= turn.game_player.handle %> &ndash; Units: <%= turn.units_collected %>, Energy: <%= turn.energy_collected %></li>
     <% end %>
   </ol>
 <% end %>
