@@ -34,9 +34,11 @@ module Authentication
     reset_session
   end
 
-  def login(player)
+  def login(player, options={})
+    path = options[:redirect_to] || :back
+    notice = options[:notice] || "Welcome Back!"
     session[:player_id] = player.id
-    redirect_back_or_default(:back, notice: "Welcome Back!")
+    redirect_back_or_default(path, notice: notice)
   end
   
 end

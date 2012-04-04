@@ -27,8 +27,7 @@ class PlayersController < ApplicationController
   def create
     @player = Player.new(params[:player])
     if @player.save
-      login(@player)
-      redirect_to edit_player_path(@player), notice: "Thanks for registering! Please fill out your profile."
+      login(@player, redirect_to: edit_player_path(@player), notice: "Thanks for registering! Please fill out your profile.")
     else
       flash.now.alert = "There was an error creating your account."
       render action: :new
