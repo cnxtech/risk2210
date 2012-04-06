@@ -1,5 +1,9 @@
 /*
  *= require_self
- *= require_tree . 
  *= require bootstrap_and_overrides
+ *= require layout 
+ *= require expansions
+ *= require forums
+ *= require games
+ *= require players
 */
