@@ -9,6 +9,8 @@ class Continent
   field :type, type: String
   field :bonus, type: Integer
 
+  slug :name
+
   belongs_to :map
 
   scope :ordered, order_by(type: "asc").order_by(name: "asc")
