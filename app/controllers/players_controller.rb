@@ -10,10 +10,8 @@ class PlayersController < ApplicationController
   
   def index
     @players = Player.public_profiles
-    respond_to do |format|
-      format.json {render json: {players: @players, callback: params["_dc"]}}
-      format.html{}
-    end
+
+    respond_with(@players)
   end
   
   def show
@@ -39,10 +37,18 @@ class PlayersController < ApplicationController
   
   def update
     if @player.update_attributes(params[:player])
-      redirect_to player_path(@player), notice: "Thanks for updating your profile!"
+      respond_to do |format|
+        format.html { redirect_to player_path(@player), notice: "Thanks for updating your profile!" }
+        format.json { render nothing: true }
+      end
     else
-      flash.now.alert = "There was an error updating your profile."
-      render action: :edit
+      respond_to do |format|
+        format.html { 
+          flash.now.alert = "There was an error updating your profile."
+          render action: :edit
+        }
+        format.json { render json: @player.errors.full_messages, status: 400 }
+      end
     end
   end
   

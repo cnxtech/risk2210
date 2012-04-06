@@ -92,6 +92,10 @@ class Player
   def nearby_players
     Player.public_profiles
   end
+
+  def as_json(options={})
+    super(only: [:id, :first_name, :last_name, :email, :bio, :handle, :city, :state, :zip_code, :slug, :website], methods: [:profile_image_path])
+  end
   
   private
   

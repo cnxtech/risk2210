@@ -20,5 +20,9 @@ class Faction
   def starting_resources
     read_attribute(:starting_resources).split("\n")
   end
+
+  def self.random
+    Faction.all.sample(1).first
+  end
     
 end
