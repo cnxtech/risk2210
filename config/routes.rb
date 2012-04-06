@@ -1,5 +1,5 @@
 Risk2210::Application.routes.draw do
-  
+
   ## Sessions
   get '/login' => 'sessions#new', as: :login
   post '/login' => 'sessions#create', as: :create_session  
@@ -47,10 +47,14 @@ Risk2210::Application.routes.draw do
   get "/resources" => "pages#resources", as: :resources
   get "/contact" => "pages#contact", as: :contact
 
+  ## API Endpoints
   scope "api/v1" do
     get "/factions" => "expansions/factions#index", as: :factions
     get "/factions/:id" => "expansions/factions#show", as: :faction
   end
+
+  ## Mobile Application
+  get "/mobile", to: "mobile#index", as: :mobile
 
   ## Root
   root to: 'pages#home'
