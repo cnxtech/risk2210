@@ -12,6 +12,8 @@ Group continents by type
 Better game tracker (backbone.js based) w/ drag and drop continents & player groupings
 Start year / End year differences
 Link to Gravatar
+password reset
+remember me checkbox
 
 Game completion page
   - charts
