@@ -2,7 +2,6 @@ Screen shots as tracker progresses for blog
 v0.1 - http://bit.ly/HmuXSC
 
 Seed Forums
-Page titles
 Meta tags
 Quick Start
   - Templates
@@ -24,7 +23,6 @@ About site page listing technologies used
   - backbone
   - sencha touch
 
-404 / 500 pages
 Google Analytics
 
 ## Future Enhancements
