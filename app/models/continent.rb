@@ -8,6 +8,7 @@ class Continent
   field :name, type: String
   field :type, type: String
   field :bonus, type: Integer
+  field :color, type: String
 
   slug :name
 
