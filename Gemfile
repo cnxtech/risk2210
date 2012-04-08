@@ -6,7 +6,7 @@ group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
   gem 'uglifier'
-  gem 'twitter-bootstrap-rails', git: "git://github.com/nick-desteffen/twitter-bootstrap-rails.git"
+  gem 'twitter-bootstrap-rails', git: "git://github.com/seyhunak/twitter-bootstrap-rails.git"
 end
 
 ## Frontend / Views
@@ -31,6 +31,7 @@ gem 'bcrypt-ruby'#, '~> 3.0.0'
 ## Operations
 gem 'passenger'
 # gem 'capistrano'
+gem 'exception_notification'
 
 group :development, :test do
   gem "rspec-rails", ">= 2.8.1"
