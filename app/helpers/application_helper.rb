@@ -44,7 +44,7 @@ module ApplicationHelper
   end
   
   def page_title
-    return "#{@page_title} | Risk Tracker" if defined?(@page_title)
+    return "#{@page_title} | Risk 2210 A.D. | Risk Tracker" if defined?(@page_title)
     return "Risk Tracker"
   end
   

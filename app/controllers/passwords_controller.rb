@@ -1,6 +1,7 @@
 class PasswordsController < ApplicationController
 
   before_filter :find_player
+  before_filter :setup_title
 
   def edit
   end
@@ -18,6 +19,10 @@ class PasswordsController < ApplicationController
 
   def find_player
     @player = current_player
+  end
+
+  def setup_title
+    @page_title = "Change Password"
   end
 
 end

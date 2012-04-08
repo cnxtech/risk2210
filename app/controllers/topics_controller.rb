@@ -5,6 +5,7 @@ class TopicsController < ApplicationController
   before_filter :find_forum
   before_filter :find_topic, only: [:show]
   before_filter :login_required, only: [:create]
+  before_filter :setup_title
   
   def show
     unless topics_viewed.include?(@topic.id)
@@ -40,6 +41,10 @@ class TopicsController < ApplicationController
 
   def topics_viewed
     session[:topics_viewed] ||= []
+  end
+
+  def setup_title
+    @page_title = "#{@topic.subject} | #{@forum.name}"
   end
   
 end

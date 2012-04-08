@@ -13,10 +13,12 @@ class SessionsController < ApplicationController
   end
 
   def new
+    @page_title = "Login"
     @session = Session.new
   end
   
   def create
+    @page_title = "Login"
     @session = Session.new(params[:session])
     if @session.valid? && @session.authenticated?
       login(@session.player)
