@@ -1,12 +1,3 @@
-GIT
-  remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
-  revision: ea411bb37a7f46ce2cb4667c4daf5a57a323954f
-  specs:
-    twitter-bootstrap-rails (2.0.6)
-      actionpack (>= 3.1)
-      less-rails (~> 2.2.0)
-      railties (>= 3.1)
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -101,7 +92,7 @@ GEM
       metaclass (~> 0.0.1)
     mongo (1.6.2)
       bson (~> 1.6.2)
-    mongoid (2.4.7)
+    mongoid (2.4.8)
       activemodel (~> 3.1)
       mongo (~> 1.3)
       tzinfo (~> 0.3.22)
@@ -189,7 +180,11 @@ GEM
     treetop (1.4.10)
       polyglot
       polyglot (>= 0.3.1)
-    tzinfo (0.3.32)
+    twitter-bootstrap-rails (2.0.6)
+      actionpack (>= 3.1)
+      less-rails (~> 2.2.0)
+      railties (>= 3.1)
+    tzinfo (0.3.33)
     uglifier (1.2.4)
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
@@ -219,5 +214,5 @@ DEPENDENCIES
   rspec-rails (>= 2.8.1)
   sass-rails
   simple_form
-  twitter-bootstrap-rails!
+  twitter-bootstrap-rails
   uglifier
