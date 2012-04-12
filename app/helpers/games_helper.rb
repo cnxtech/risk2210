@@ -6,4 +6,8 @@ module GamesHelper
     end
   end
 
+  def color_class(game_player)
+    "#{game_player.color.downcase}"
+  end
+
 end

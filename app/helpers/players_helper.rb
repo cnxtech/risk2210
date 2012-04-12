@@ -21,7 +21,7 @@ module PlayersHelper
 
   def avatar(player, options={})
     size = options[:size] || :large
-    image_path = @player.profile_image_path(size)
+    image_path = player.profile_image_path(size)
     return if image_path.blank?
     return image_tag image_path
   end

@@ -17,7 +17,11 @@
       <% end %>
     </div>
   </div>
+
 <% end %>
+
+<%= render partial: "games/game_player", collection: @game.game_players %>
+
 
 <% content_for :sidebar do %>
   <% if @game.location.present? %>

@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "Gunship";
+  src: font-path('gun4f.ttf');
+}
+
 #game-players{
   .add-player-button-container{
     margin-top: 15px;
@@ -14,3 +19,84 @@
   font-size: 16px;
   font-weight: bold;
 }
+
+$red: #c65148;
+$green: #4bc649;
+$blue: #488dc6;
+$black: #9b9b9b;
+$gold: #c69e49;
+
+
+@mixin glowingBorder($color) {
+  border: 2px solid $color;
+  -webkit-box-shadow: 0 0 15px $color;
+  -moz-box-shadow: 0 0 15px $color;
+  box-shadow: 0 0 15px $color;
+}
+
+.player-card{
+  // span.label{
+  //   -webkit-text-stroke: 1px black;
+  //   font-size: 1.1em;
+  // }
+  background-image: url('player_card_backgrounds/background2.png');
+  margin: 20px; 
+  clear: left; 
+  padding: 10px;
+  min-height: 150px;
+  display: inline-block;
+  width: 700px;
+
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+
+  .avatar{
+    width: 100px;
+    float: left;
+  }
+  .faction-logo{
+    float: right;
+  }
+  .territories{
+    float: left;
+    width: 140px;
+    // margin: 5px;
+    border: 1px solid black;
+    background: #272B30;
+    h3{
+      padding-left: 25px;
+      text-align: left;
+      font-family: "Gunship";
+    }
+    ul{
+      list-style: none;
+    }
+  }
+  .unit-count{
+    font-family: "Gunship";
+    font-size: 40px;
+    color: #b51500;
+  }
+  .turn-controls{
+    clear: both;
+    margin: 10px 0;
+  }
+}
+
+.red{
+  @include glowingBorder($red);
+}
+.green{
+  @include glowingBorder($green);
+}
+.blue{
+  @include glowingBorder($blue);
+}
+.black{
+  @include glowingBorder($black);
+}
+.gold{
+  @include glowingBorder($gold);
+}
+

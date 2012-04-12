@@ -66,7 +66,7 @@ class Player
   ## square=50x50, small=50xVariable, normal=100xVariable, large=200xVariable
 
   def profile_image_path(size=:normal)
-    if image_source == "Facebook"
+    if image_source == "Facebook" && facebook_image_url
       return facebook_image_url + "?type=#{size}"
     elsif image_source == "Gravatar"
       gravatar_size = case size
