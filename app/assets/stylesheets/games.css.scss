@@ -20,6 +20,7 @@
   font-weight: bold;
 }
 
+
 $red: #c65148;
 $green: #4bc649;
 $blue: #488dc6;
@@ -34,53 +35,100 @@ $gold: #c69e49;
   box-shadow: 0 0 15px $color;
 }
 
+@mixin rounded($border_radius: 10px) {
+    border-radius: $border_radius;
+  -moz-border-radius: $border_radius;
+  -webkit-border-radius: $border_radius;
+}
+
+@mixin riskFont(){
+  font-family: "Gunship";
+}
+
+//****************************************************************************************************************************************
+//** Game Player card
+//****************************************************************************************************************************************
+
 .player-card{
   // span.label{
   //   -webkit-text-stroke: 1px black;
   //   font-size: 1.1em;
   // }
-  background-image: url('player_card_backgrounds/background2.png');
   margin: 20px; 
   clear: left; 
   padding: 10px;
-  min-height: 150px;
-  display: inline-block;
-  width: 700px;
+  min-height: 350px;
+  width: 710px;
+  float: left;
+  @include rounded(10px);
 
-  border-radius: 10px;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-
-  .avatar{
-    width: 100px;
+  .left-col{
+    width: 110px;
     float: left;
+
+    .avatar{
+      border: 1px solid black;
+      background: #272B30;
+      width: 80px;
+      opacity: .9;
+      @include rounded(5px);
+      padding: 10px;
+    }
+
+    .turn-controls{
+      margin: 10px 0;
+    }
   }
-  .faction-logo{
-    float: right;
-  }
+
   .territories{
     float: left;
     width: 140px;
-    // margin: 5px;
+    margin: 5px 0 5px 5px;
     border: 1px solid black;
     background: #272B30;
+    opacity: .9;
+    @include rounded(5px);
     h3{
       padding-left: 25px;
       text-align: left;
-      font-family: "Gunship";
+      @include riskFont();
     }
     ul{
       list-style: none;
     }
   }
-  .unit-count{
-    font-family: "Gunship";
-    font-size: 40px;
-    color: #b51500;
-  }
-  .turn-controls{
-    clear: both;
-    margin: 10px 0;
+
+  .right-col{
+    float: left;
+    width: 155px;
+    .faction-logo{
+      float: right;
+    }
+
+
+    .counter-container{
+      float: right;
+      width: 145px;
+      height: 100%;
+      margin: 10px 0 0 10px;
+
+
+      h3.counter-label{
+        color: #fff;
+        font-size: 20px;
+        height: 100%;
+        clear: right;
+        @include riskFont();
+      }
+      h2.counter{
+        @include riskFont();
+        // -webkit-text-stroke: 1px #fff;
+        text-shadow: -3px -3px 0 #000;
+        font-size: 50px;
+        color: #b51500;
+        margin: 5px 0 15px;
+      }
+    }
   }
 }
 
@@ -100,3 +148,12 @@ $gold: #c69e49;
   @include glowingBorder($gold);
 }
 
+.background-1{
+  background-image: url('player_card_backgrounds/background1.png');
+}
+.background-2{
+  background-image: url('player_card_backgrounds/background2.png');
+}
+.background-3{
+  background-image: url('player_card_backgrounds/background3.png');
+}
