@@ -4,8 +4,11 @@
       <%= avatar(game_player.player, size: :medium) %>
     </div>
     <div class="turn-controls">
-      <input type="text" style="width: 75px;"/>
-      <%= link_to content_tag(:i, "", class: "icon-ok") + " Save Turn", "#", class: "btn btn-small btn-danger" %>
+      <h2>23</h2>
+      <div class='buttons'>
+        <%= link_to content_tag(:i, "", class: "icon-minus-sign icon-large"), "#", class: "btn btn-small btn-danger" %>
+        <%= link_to content_tag(:i, "", class: "icon-plus-sign icon-large"), "#", class: "btn btn-small btn-success" %>
+      </div>
     </div>
   </div>
   <div class='land territories'>

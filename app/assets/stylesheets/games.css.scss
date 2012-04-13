@@ -45,6 +45,13 @@ $gold: #c69e49;
   font-family: "Gunship";
 }
 
+@mixin container{
+  border: 1px solid #000000;
+  background: #272B30;
+  @include rounded(5px);
+  opacity: .9;
+}
+
 //****************************************************************************************************************************************
 //** Game Player card
 //****************************************************************************************************************************************
@@ -57,7 +64,7 @@ $gold: #c69e49;
   margin: 20px; 
   clear: left; 
   padding: 10px;
-  min-height: 350px;
+  min-height: 200px;
   width: 710px;
   float: left;
   @include rounded(10px);
@@ -67,16 +74,27 @@ $gold: #c69e49;
     float: left;
 
     .avatar{
-      border: 1px solid black;
-      background: #272B30;
       width: 80px;
-      opacity: .9;
-      @include rounded(5px);
       padding: 10px;
+      @include container();
     }
 
     .turn-controls{
       margin: 10px 0;
+      padding: 10px;
+      @include container();
+      width: 80px;
+      h2{
+        font-size: 38px;
+        color: #b51500;
+        text-shadow: -3px -3px 0 #000;
+        @include riskFont();
+        margin-bottom: 5px;
+      }
+      .buttons{
+        margin-left: 5px;
+      }
+
     }
   }
 
@@ -84,10 +102,7 @@ $gold: #c69e49;
     float: left;
     width: 140px;
     margin: 5px 0 5px 5px;
-    border: 1px solid black;
-    background: #272B30;
-    opacity: .9;
-    @include rounded(5px);
+    @include container();
     h3{
       padding-left: 25px;
       text-align: left;
