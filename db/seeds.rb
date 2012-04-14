@@ -30,7 +30,7 @@ Continent.create(map: mars, name: "Utopia", type: "Water", bonus: 2, color: "#e4
 Continent.create(map: mars, name: "Isidis", type: "Water", bonus: 1, color: "#e99127")
 
 mars_moons = Map.create(:name => "Phobos & Deimos", :moon => true)
-Continent.create(map: mars_moons, name: "Norseland", type: "Lunar", bonus: 3, color: "#f697671")
+Continent.create(map: mars_moons, name: "Norseland", type: "Lunar", bonus: 3, color: "#f27f43")
 Continent.create(map: mars_moons, name: "New America", type: "Lunar", bonus: 2, color: "#8ffd76")
 Continent.create(map: mars_moons, name: "Federation", type: "Lunar", bonus: 3, color: "#dd81ee")
 
