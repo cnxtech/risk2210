@@ -94,8 +94,11 @@ $gold: #c69e49;
       .buttons{
         margin-left: 5px;
       }
-
     }
+    .save-turn{
+      margin-left: 7px;
+    }
+
   }
 
   .territories{
@@ -177,4 +180,7 @@ $gold: #c69e49;
 }
 .background-5{
   background-image: url('player_card_backgrounds/background5.png');
+}
+.background-6{
+  background-image: url('player_card_backgrounds/background6.png');
 }

@@ -20,6 +20,15 @@
 
 <% end %>
 
+<% @game.maps.each do |map| %>
+  <h3><%= map.name %></h3>
+  <ul>
+    <% map.continents.each do |continent| %>
+      <li><span class="label" style="background-color: <%= continent.color %>"><%= continent.name %></span></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= render partial: "games/game_player", collection: @game.game_players %>
 
 
