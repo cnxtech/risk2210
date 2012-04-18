@@ -5,6 +5,7 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
   events:
     "click .increment-territory-count": "incrementTerritoryCount"
     "click .decrement-territory-count": "decrementTerritoryCount"
+    "click .save-turn": "saveTurn"
 
   initialize: ()->
     _.bindAll(@, 'render')
@@ -23,6 +24,10 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
     event.preventDefault()
     @model.decrementTerritoryCount()
     @_updateCounters()
+
+  saveTurn: (event)->
+    event.preventDefault()
+    alert("Saved!")
 
   _updateCounters: ()->
     @_spinCounter(".territory-counter", @model.territoryCount())

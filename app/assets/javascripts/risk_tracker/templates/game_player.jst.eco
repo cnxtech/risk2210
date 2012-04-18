@@ -10,8 +10,8 @@
         <a href='#' class='btn btn-small btn-success increment-territory-count'><i class='icon-plus-sign icon-large'></i></a>
       </div>
     </div>
-    <div class="save-turn">
-      <a href='#' class='btn btn-small btn-success'><i class='icon-ok icon-large'></i> Save Turn</a>
+    <div class="save-turn-container">
+      <a href='#' class='btn btn-small btn-success save-turn'><i class='icon-ok icon-large'></i> Save Turn</a>
     </div>
   </div>
   <div class='land territories'>
