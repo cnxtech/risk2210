@@ -3,7 +3,7 @@ class RiskTracker.Models.GamePlayer extends Backbone.Model
   initialize: ()->
     @player = new RiskTracker.Models.Player(@get("player"))
     @faction = new RiskTracker.Models.Faction(@get("faction"))
-    @set({territory_count: 0, energy: 3, units: 3})
+    @set({territory_count: 0, energy: @faction.startingEnergy(), units: @faction.startingUnits()})
     @bind("change:territory_count", @recalculateAssets)
 
   territoryCount: ()->
