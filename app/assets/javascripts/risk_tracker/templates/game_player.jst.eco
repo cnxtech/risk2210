@@ -1,4 +1,4 @@
-<div class="player-card <%= @game_player.get('color').toLowerCase() %> background-1" id='game-player-<%= @game_player.get('id') %>'>
+<div class="player-card <%= @game_player.get('color').toLowerCase() %> background-<%= @skin_number %>" id='game-player-<%= @game_player.get('id') %>'>
   <div class="left-col">
     <div class='avatar'>
       <img src='<%= @game_player.player.get('profile_image_path') %>' width='80px' />

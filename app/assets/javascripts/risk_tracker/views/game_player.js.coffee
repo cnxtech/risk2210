@@ -13,7 +13,7 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
     #@model.bind("change", @render)
 
   render: ()->
-    $(@el).html(@template(game_player: @model))
+    $(@el).html(@template({game_player: @model, skin_number: @attributes.skin_number}))
     @
 
   incrementTerritoryCount: (event)->
