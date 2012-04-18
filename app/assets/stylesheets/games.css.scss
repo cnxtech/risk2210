@@ -107,8 +107,7 @@ $gold: #c69e49;
     margin: 5px 0 5px 5px;
     @include container();
     h3{
-      padding-left: 25px;
-      text-align: left;
+      text-align: center;
       @include riskFont();
     }
     ul{

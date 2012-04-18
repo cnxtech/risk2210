@@ -27,7 +27,24 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
     @updateAssetCounts()
 
   updateAssetCounts: ()->
-    $(@el).find(".territory-counter").html(@model.territoryCount())
-    $(@el).find(".unit-counter").html(@model.units())
-    $(@el).find(".energy-counter").html(@model.energy())
+    @_updateCounter(".territory-counter", @model.territoryCount())
+    @_updateCounter(".unit-counter", @model.units())
+    @_updateCounter(".energy-counter", @model.energy())
 
+  _updateCounter: (selector, end)->
+    element = $(@el).find(selector)
+    start = parseInt(element.html())
+    return if start is end
+    
+    current = start
+    i = setInterval(->
+      if current is end
+        clearInterval i
+        element.animate {}
+      else
+        if start > end
+          current--
+        else
+          current++
+        element.html(current).animate {}, 100
+    , 100)
