@@ -1,5 +1,7 @@
 class TurnsController < ApplicationController
 
+  respond_to :html, :json
+
   before_filter :login_required
   before_filter :find_game
 
@@ -11,6 +13,11 @@ class TurnsController < ApplicationController
       ## TODO -- handle erros
       #flash.now.error = "Invalid turn!"
       #render template: "games/show"
+    end
+
+    respond_to do |format|
+      format.json {render nothing: true}
+      format.html {}
     end
   end
 

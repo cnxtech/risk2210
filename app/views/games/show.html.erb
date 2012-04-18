@@ -29,8 +29,10 @@
   </ul>
 <% end %>
 
-<%= render partial: "games/game_player", collection: @game.game_players %>
-
+<!-- <div id="game-players">
+  <%#= render partial: "games/game_player", collection: @game.game_players %>
+</div>
+ -->
 
 <% content_for :sidebar do %>
   <% if @game.location.present? %>
@@ -53,4 +55,13 @@
     <%= render partial: "games/turns", locals: {game: @game} %>
   </div>
 
+<% end %>
+
+<div id="game-players">Loading...</div>
+
+<%= content_for :tail do %>
+  <%= javascript_include_tag "risk_tracker" %>
+  <script type="text/javascript">
+    window.GamePlayers = new RiskTracker.Collections.GamePlayers(<%= raw(@game.game_players.to_json) %>);
+  </script>
 <% end %>

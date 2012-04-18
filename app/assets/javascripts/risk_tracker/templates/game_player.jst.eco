@@ -1,0 +1,40 @@
+<div class="player-card <%= @game_player.get('color').toLowerCase() %> background-1" id='game-player-<%= @game_player.get('id') %>'>
+  <div class="left-col">
+    <div class='avatar'>
+      <img src='<%= @game_player.player.get('profile_image_path') %>' width='80px' />
+    </div>
+    <div class="turn-controls">
+      <h2 class="territory-counter"><%= @game_player.territoryCount() %></h2>
+      <div class='buttons'>
+        <a href='#' class='btn btn-small btn-danger decrement-territory-count'><i class='icon-minus-sign icon-large'></i></a>
+        <a href='#' class='btn btn-small btn-success increment-territory-count'><i class='icon-plus-sign icon-large'></i></a>
+      </div>
+    </div>
+    <div class="save-turn">
+      <a href='#' class='btn btn-small btn-success'><i class='icon-ok icon-large'></i> Save Turn</a>
+    </div>
+  </div>
+  <div class='land territories'>
+    <h3>Land</h3>
+    <ul></ul>
+  </div>
+  <div class='water territories'>
+    <h3>Water</h3>
+    <ul></ul>
+  </div>
+  <div class='space territories'>
+    <h3>Space</h3>
+    <ul></ul>
+  </div>
+  <div class="right-col">
+    <div class='faction-logo'>
+      <img src='/assets/faction_icons/<%= @game_player.faction.get('name').toLowerCase().replace(' ', '_') %>.png' width='50'/>
+    </div>
+    <div class="counter-container">
+      <h3 class="counter-label">Energy:</h3>
+      <h2 class='counter energy-counter'><%= @game_player.energy() %></h2>
+      <h3 class="counter-label">Units:</h3>
+      <h2 class='counter unit-counter'><%= @game_player.units() %></h2>
+    </div>
+  </div>
+</div>

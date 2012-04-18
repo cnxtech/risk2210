@@ -1,0 +1,1 @@
+class RiskTracker.Models.Player extends Backbone.Model

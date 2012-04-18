@@ -4,7 +4,7 @@
       <%= avatar(game_player.player, size: :medium) %>
     </div>
     <div class="turn-controls">
-      <h2>23</h2>
+      <h2 class="territory-counter">23</h2>
       <div class='buttons'>
         <%= link_to content_tag(:i, "", class: "icon-minus-sign icon-large"), "#", class: "btn btn-small btn-danger" %>
         <%= link_to content_tag(:i, "", class: "icon-plus-sign icon-large"), "#", class: "btn btn-small btn-success" %>
@@ -16,39 +16,23 @@
   </div>
   <div class='land territories'>
     <h3>Land</h3>
-    <ul>
-      <li><span class="label" style="background-color: #12bcf0">Ghaul</span></li>
-      <li><span class="label" style="background-color: #e99127">Granada</span></li>
-      <li><span class="label" style="background-color: #f0e660">Hoenheim</span></li>
-      <li><span class="label" style="background-color: #7e83de">Narkom</span></li>
-      <li><span class="label" style="background-color: #8dd92f">Skandi</span></li>
-      <li><span class="label" style="background-color: #f0e660">Hoenheim</span></li>
-      <li><span class="label" style="background-color: #7e83de">Narkom</span></li>
-      <li><span class="label" style="background-color: #8dd92f">Skandi</span></li>
-    </ul>
+    <ul></ul>
   </div>
   <div class='water territories'>
     <h3>Water</h3>
-    <ul>
-      <li><span class="label" style="background-color: #f0e660">Hoenheim</span></li>
-      <li><span class="label" style="background-color: #7e83de">Narkom</span></li>
-      <li><span class="label" style="background-color: #8dd92f">Skandi</span></li>
-    </ul>
+    <ul></ul>
   </div>
   <div class='space territories'>
     <h3>Space</h3>
-    <ul>
-      <li><span class="label" style="background-color: #f0e660">Hoenheim</span></li>
-      <li><span class="label" style="background-color: #7e83de">Narkom</span></li>
-    </ul>
+    <ul></ul>
   </div>
   <div class="right-col">
     <div class='faction-logo'><%= faction_icon(game_player.faction) %></div>
     <div class="counter-container">
       <h3 class="counter-label">Energy:</h3>
-      <h2 class='counter'>19</h2>
+      <h2 class='counter energy'>19</h2>
       <h3 class="counter-label">Units:</h3>
-      <h2 class='counter'>23</h2>
+      <h2 class='counter units'>23</h2>
     </div>
   </div>
 </div>
