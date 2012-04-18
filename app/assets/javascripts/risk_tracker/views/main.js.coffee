@@ -3,7 +3,6 @@ class RiskTracker.Views.Main extends Backbone.View
   initialize: ()->
     _.bindAll(@, 'render')
     @collection.bind("reset", @render)
-    #@collection.on('reset', @render, this)
 
   render: ()->
     skins = _.shuffle([1..6])

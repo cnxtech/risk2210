@@ -6,10 +6,10 @@ class RiskTracker.Models.Faction extends Backbone.Model
   megaCorp: ()->
     @get("name") == "MegaCorp"
 
-  startingEnergy: ()->
+  minEnergy: ()->
     return 4 if @fusionConservancy()
     return 3
 
-  startingUnits: ()->
+  minUnits: ()->
     return 4 if @megaCorp()
     return 3

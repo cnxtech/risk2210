@@ -6,4 +6,3 @@
 //= require_tree ./risk_tracker/models
 //= require_tree ./risk_tracker/collections
 //= require_tree ./risk_tracker/views
-//= require_tree ./risk_tracker/routers

@@ -1,7 +1,6 @@
 class RiskTracker.Views.GamePlayer extends Backbone.View
   
   template: JST['risk_tracker/templates/game_player']
-  #id: "game-player-" + model.id
 
   events:
     "click .increment-territory-count": "incrementTerritoryCount"
@@ -10,7 +9,6 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
   initialize: ()->
     _.bindAll(@, 'render')
     @model.bind("reset", @render)
-    #@model.bind("change", @render)
 
   render: ()->
     $(@el).html(@template({game_player: @model, skin_number: @attributes.skin_number}))
@@ -19,23 +17,23 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
   incrementTerritoryCount: (event)->
     event.preventDefault()
     @model.incrementTerritoryCount()
-    @updateAssetCounts()
+    @_updateCounters()
   
   decrementTerritoryCount: (event)->
     event.preventDefault()
     @model.decrementTerritoryCount()
-    @updateAssetCounts()
+    @_updateCounters()
 
-  updateAssetCounts: ()->
-    @_updateCounter(".territory-counter", @model.territoryCount())
-    @_updateCounter(".unit-counter", @model.units())
-    @_updateCounter(".energy-counter", @model.energy())
+  _updateCounters: ()->
+    @_spinCounter(".territory-counter", @model.territoryCount())
+    @_spinCounter(".unit-counter", @model.units())
+    @_spinCounter(".energy-counter", @model.energy())
 
-  _updateCounter: (selector, end)->
+  _spinCounter: (selector, end)->
     element = $(@el).find(selector)
     start = parseInt(element.html())
     return if start is end
-    
+
     current = start
     i = setInterval(->
       if current is end
