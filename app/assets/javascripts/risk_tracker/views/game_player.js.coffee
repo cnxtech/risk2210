@@ -10,6 +10,8 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
   initialize: ()->
     _.bindAll(@, 'render')
     @model.bind("reset", @render)
+    @model.bind("change:energy", @_updateBorderGlow)
+    
 
   render: ()->
     $(@el).html(@template({game_player: @model, skin_number: @attributes.skin_number}))
@@ -51,3 +53,9 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
           current++
         element.html(current).animate {}, 100
     , 100)
+
+  _updateBorderGlow: ()=>
+    border = @model.energy() * 5
+    $(@el).find(".player-card").animate({boxShadow: "0 0 #{border}px"})
+
+
