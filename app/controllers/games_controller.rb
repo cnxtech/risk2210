@@ -2,7 +2,9 @@ class GamesController < ApplicationController
 
   #before_filter :login_required
   before_filter :setup_title
-
+  
+  layout "no_sidebar"
+  
   active_tab :tracker
 
   def index

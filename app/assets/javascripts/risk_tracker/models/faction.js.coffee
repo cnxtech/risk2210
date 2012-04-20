@@ -13,3 +13,6 @@ class RiskTracker.Models.Faction extends Backbone.Model
   minUnits: ()->
     return 4 if @megaCorp()
     return 3
+
+  iconFileName: ()->
+    @get('name').toLowerCase().split(" ").join("_")

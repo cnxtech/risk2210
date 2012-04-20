@@ -5,14 +5,11 @@ class RiskTracker.Models.GamePlayer extends Backbone.Model
     @faction = new RiskTracker.Models.Faction(@get("faction"))
     @continents = new RiskTracker.Collections.Continents()
     
-    @continents.on "add", (continent) =>
-      @_recalculateResources()
-
-    @continents.on "remove", (continent) =>
-      @_recalculateResources()
-
     @set({territory_count: 0, energy: @faction.minEnergy(), units: @faction.minUnits()})
+    
     @bind("change:territory_count", @_recalculateResources)
+    @continents.on "add", (continent) => @_recalculateResources()
+    @continents.on "remove", (continent) => @_recalculateResources()
 
   territoryCount: ()->
     @get("territory_count")

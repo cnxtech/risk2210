@@ -2,49 +2,10 @@
 <p>Game Progress:</p>
 <%= progress_bar(@game, id: "game-progress-bar") %>
 
-<%= simple_form_for @turn, url: game_turns_path(@game), remote: true, html: {class: 'form-vertical well'}  do |f| %>
-  <div class="row">
-    <div class="span3">
-      <%= f.input :game_player_id, collection: @game.game_players.map{|game_player| [game_player.player.handle, game_player.id]}, label: "Player" %>
-      <%= f.input :units_collected %>
-      <%= f.input :energy_collected %>
-      <%= f.input :territories_held %>
-      <%= f.submit "Save Turn", class: 'btn btn-primary' %>
-    </div>
-    <div class="span4" id="continental-bonuses">
-      <% @game.maps.each do |map| %>
-        <%= f.association :continents, as: :check_boxes, collection: map.continents.ordered.map{|continent| ["#{continent.name} (#{continent.type})", continent.id]}, label: "#{map.name} Continental Bonuses", label_html: {class: 'continental-bonus-header'} %>
-      <% end %>
-    </div>
-  </div>
-<% end %>
-
-
-<% content_for :sidebar do %>
-  <% if @game.location.present? %>
-    <h3>Location: <%= @game.location %></h3>
-  <% end %>
-  <h4><%= @game.number_of_years %> Year Game</h4>
-  <% if @game.notes.present? %>
-    <p>Notes: <%= @game.notes %></p>
-  <% end %>
-
-  <h2>Players</h2>
-  <ul>
-    <% @game.game_players.each do |game_player| %>
-      <li><%= game_player.player.handle %> &ndash; <%= game_player.faction.name %></li>
-    <% end %>
-  </ul>
-
-  <h2>Turns</h2>
-  <div id="turns-container">
-    <%= render partial: "games/turns", locals: {game: @game} %>
-  </div>
-<% end %>
-
-
-<div id="game-players"></div>
-<div id="maps"></div>
+<div class="row">
+  <div id="game-players" style="float: left;"></div>
+  <div id="maps" style="float: left;"></div>
+</div>
 
 <%= content_for :tail do %>
   <%= javascript_include_tag "risk_tracker" %>
