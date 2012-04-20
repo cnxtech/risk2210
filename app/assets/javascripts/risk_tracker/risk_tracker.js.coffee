@@ -3,7 +3,7 @@ window.RiskTracker =
   Collections: {}
   Views: {}
   init: ()->
-    view = new RiskTracker.Views.Main(collection: window.GamePlayers)
+    view = new RiskTracker.Views.Main()
     $('#game-players').html(view.render().el)
 
 $(document).ready ->

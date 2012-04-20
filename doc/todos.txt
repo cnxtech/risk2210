@@ -12,10 +12,8 @@ Group continents by type
 Start year / End year differences
 
 ## UI ##
-Make border glow more based on energy count
-+ / - controls for managing unit count
 Commander icons, active and inactive
-Space station count in corner
+Space station icons
 
 ## Game over page
 Game completion page

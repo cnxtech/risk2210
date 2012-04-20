@@ -13,5 +13,15 @@ class Map
   
   attr_accessible :name, :moon
 
+  def as_json(options={})
+    options = {
+      only: [:name],
+      methods: [:id],
+      include: {
+        continents: {only: [:name, :type, :bonus, :color], methods: [:id]}
+      }
+    }
+    super(options)
+  end
 
 end

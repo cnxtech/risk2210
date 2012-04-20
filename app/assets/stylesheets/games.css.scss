@@ -111,6 +111,8 @@ $gold: #c69e49;
       @include riskFont();
     }
     ul{
+      display: block;
+      min-height: 20px;
       list-style: none;
     }
   }

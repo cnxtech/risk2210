@@ -17,22 +17,8 @@
       <% end %>
     </div>
   </div>
-
 <% end %>
 
-<% @game.maps.each do |map| %>
-  <h3><%= map.name %></h3>
-  <ul>
-    <% map.continents.each do |continent| %>
-      <li><span class="label" style="background-color: <%= continent.color %>"><%= continent.name %></span></li>
-    <% end %>
-  </ul>
-<% end %>
-
-<!-- <div id="game-players">
-  <%#= render partial: "games/game_player", collection: @game.game_players %>
-</div>
- -->
 
 <% content_for :sidebar do %>
   <% if @game.location.present? %>
@@ -54,14 +40,16 @@
   <div id="turns-container">
     <%= render partial: "games/turns", locals: {game: @game} %>
   </div>
-
 <% end %>
 
-<div id="game-players">Loading...</div>
+
+<div id="game-players"></div>
+<div id="maps"></div>
 
 <%= content_for :tail do %>
   <%= javascript_include_tag "risk_tracker" %>
   <script type="text/javascript">
     window.GamePlayers = new RiskTracker.Collections.GamePlayers(<%= raw(@game.game_players.to_json) %>);
+    window.Maps = new RiskTracker.Collections.Maps(<%= raw(@game.maps.to_json) %>);
   </script>
 <% end %>

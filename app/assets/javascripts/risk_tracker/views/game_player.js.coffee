@@ -10,30 +10,35 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
   initialize: ()->
     _.bindAll(@, 'render')
     @model.bind("reset", @render)
+    @model.bind("change:energy", @_updateEnergyDisplay)
     @model.bind("change:energy", @_updateBorderGlow)
+    @model.bind("change:units", @_updateUnitsDisplay)
+    @model.bind("change:territory_count", @_updateTerritoryDisplay)
     
-
   render: ()->
     $(@el).html(@template({game_player: @model, skin_number: @attributes.skin_number}))
+    @_bindDropZones()
     @
 
   incrementTerritoryCount: (event)->
     event.preventDefault()
     @model.incrementTerritoryCount()
-    @_updateCounters()
   
   decrementTerritoryCount: (event)->
     event.preventDefault()
     @model.decrementTerritoryCount()
-    @_updateCounters()
 
   saveTurn: (event)->
     event.preventDefault()
     alert("Saved!")
 
-  _updateCounters: ()->
+  _updateTerritoryDisplay: ()=>
     @_spinCounter(".territory-counter", @model.territoryCount())
+    
+  _updateUnitsDisplay: ()=>
     @_spinCounter(".unit-counter", @model.units())
+
+  _updateEnergyDisplay: ()=>
     @_spinCounter(".energy-counter", @model.energy())
 
   _spinCounter: (selector, end)->
@@ -58,4 +63,14 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
     border = @model.energy() * 5
     $(@el).find(".player-card").animate({boxShadow: "0 0 #{border}px"})
 
+  _bindDropZones: ()->
+    $(@el).find(".continent-list").bind "sortreceive", (event, ui) =>
+      continent_id = ui.item.attr('data-id')
+      continent = window.Maps.findContinentById(continent_id)
+      @model.addContinent(continent)
 
+    $(@el).find(".continent-list").bind "sortremove", (event, ui) =>
+      continent_id = ui.item.attr('data-id')
+      continent = window.Maps.findContinentById(continent_id)
+      @model.removeContinent(continent)
+      

@@ -1,0 +1,6 @@
+<h3><%= @map.get('name') %></h3>
+<ul class="continent-list">
+  <% for continent in @map.continents.models: %>
+    <li data-id="<%= continent.get('id') %>"><span class="label" style="background-color: <%= continent.get('color') %>"><%= continent.get('name') %></span></li>
+  <% end %>
+</ul>

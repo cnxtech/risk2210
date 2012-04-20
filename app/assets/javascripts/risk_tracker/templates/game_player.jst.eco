@@ -16,15 +16,15 @@
   </div>
   <div class='land territories'>
     <h3>Land</h3>
-    <ul></ul>
+    <ul class="continent-list"></ul>
   </div>
   <div class='water territories'>
     <h3>Water</h3>
-    <ul></ul>
+    <ul class="continent-list"></ul>
   </div>
   <div class='space territories'>
     <h3>Space</h3>
-    <ul></ul>
+    <ul class="continent-list"></ul>
   </div>
   <div class="right-col">
     <div class='faction-logo'>

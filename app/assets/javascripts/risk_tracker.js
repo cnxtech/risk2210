@@ -1,3 +1,4 @@
+//= require jquery-ui
 //= require underscore-min
 //= require backbone-min
 //= require jquery.animate-shadow-min
