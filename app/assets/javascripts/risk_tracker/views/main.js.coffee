@@ -8,7 +8,7 @@ class RiskTracker.Views.Main extends Backbone.View
     @maps.bind("reset", @render)
 
   render: ()->
-    skins = _.shuffle([1..6])
+    skins = _.shuffle([1..8])
     @game_players.each (game_player) =>
       view = new RiskTracker.Views.GamePlayer({model: game_player, attributes: {skin_number: skins.pop()}})
       $(@el).append(view.render().el)
