@@ -30,7 +30,10 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
 
   saveTurn: (event)->
     event.preventDefault()
-    alert("Saved!")
+    @model.saveTurn()
+    console.log "Turn saved!"
+    ## Keep track of turns
+    ## Update Progress Bar
 
   _updateTerritoryDisplay: ()=>
     @_spinCounter(".territory-counter", @model.territoryCount())

@@ -4,6 +4,7 @@ class RiskTracker.Models.GamePlayer extends Backbone.Model
     @player = new RiskTracker.Models.Player(@get("player"))
     @faction = new RiskTracker.Models.Faction(@get("faction"))
     @continents = new RiskTracker.Collections.Continents()
+    @turns = new RiskTracker.Collections.Turns()
     
     @set({territory_count: 0, energy: @faction.minEnergy(), units: @faction.minUnits()})
     
@@ -33,18 +34,24 @@ class RiskTracker.Models.GamePlayer extends Backbone.Model
     if @territoryCount() > 0
       @set({territory_count: @territoryCount() - 1})
 
+  saveTurn: ()->
+    @turns.create({game_player_id: @get("id"), units_collected: @units(), energy_collected: @energy(), territories_held: @territoryCount(), continent_ids: @_continentIds(), game_id: window.GameId})
+
+  _continentIds: ()->
+    @continents.pluck("id")
+
   _recalculateResources: ()->
-    @recalculateEnergy()
-    @reacalculateUnits()
+    @_recalculateEnergy()
+    @_reacalculateUnits()
       
-  recalculateEnergy: ()->
+  _recalculateEnergy: ()->
     energy = @_baseResources()
     energy = energy + @_continentalBonuses()
     if @faction.fusionConservancy()
       energy = energy + Math.ceil(energy * 0.2)
     @set({energy: energy})
 
-  reacalculateUnits: ()->
+  _reacalculateUnits: ()->
     units = @_baseResources()
     units = units + @_continentalBonuses()
     if @faction.megaCorp()

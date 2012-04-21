@@ -54,6 +54,7 @@ Risk2210::Application.routes.draw do
     get "/factions/:id" => "expansions/factions#show"
     get "/players" => "players#index"
     get "/players/:id" => "players#show"
+    post "/turns" => "turns#create"
   end
 
   ## Mobile Application

@@ -12,5 +12,6 @@
   <script type="text/javascript">
     window.GamePlayers = new RiskTracker.Collections.GamePlayers(<%= raw(@game.game_players.to_json) %>);
     window.Maps = new RiskTracker.Collections.Maps(<%= raw(@game.maps.to_json) %>);
+    window.GameId = '<%= @game.id %>';
   </script>
 <% end %>
