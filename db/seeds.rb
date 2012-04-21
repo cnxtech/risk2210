@@ -66,6 +66,12 @@ Continent.create(map: europa, name: "Byfed", type: "Land", bonus: 2, color: "#a3
 Continent.create(map: europa, name: "Avalon", type: "Land", bonus: 3, color: "#ff777b")
 Continent.create(map: europa, name: "SungTzu", type: "Water", bonus: 2, color: "#ee0613")
 
+Faction.create(:name => "Default",
+               :classification => "Default",
+               :official => true,
+               :starting_resources => "3 Energy\nLand Commander\nDiplomat Commander\n1 Space Station",
+               :abilities => "None")
+
 Faction.create(:name => "Primus Oceanus", 
                :classification => "Oceanographers", 
                :official => true,

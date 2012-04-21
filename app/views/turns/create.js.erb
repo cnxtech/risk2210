@@ -1,7 +1,0 @@
-$("#turns-container").html('<%= escape_javascript(render(partial: "games/turns", locals: {game: @game})) %>');
-$("#game-progress-bar .bar").css("width", "<%= @game.percent_complete %>%");
-$("#turn_units_collected").val("3");
-$("#turn_energy_collected").val("3");
-$("#turn_territories_held").val("");
-$("#turn_game_player_id").val("");
-$("#continental-bonuses :checkbox").removeAttr("checked");

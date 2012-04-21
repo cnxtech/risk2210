@@ -6,7 +6,7 @@ module Expansions
     active_tab :expansions
     
     def index
-      @factions = Faction.all
+      @factions = Faction.non_default
       @page_title = "Factions Expansion"
 
       respond_with(@factions)

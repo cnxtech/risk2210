@@ -24,5 +24,9 @@ class Faction
   def self.random
     Faction.all.sample(1).first
   end
+
+  def self.non_default
+    all.reject{|faction| faction.name == "Default"}
+  end
     
 end
