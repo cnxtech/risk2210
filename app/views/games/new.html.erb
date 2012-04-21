@@ -10,7 +10,7 @@
         <%= f.association :maps, as: :check_boxes, collection: Map.all %>
       </div>
       <div class="span3">
-        <div id="game-players">
+        <div id="game-players-setup">
           <%= f.fields_for :game_players do |game_player_fields| %>
             <%= render partial: "games/game_player_fields", locals: {form: game_player_fields} %>
           <% end %>

@@ -34,6 +34,35 @@ class Game
     turns / game_players.count
   end
 
+  def turn_count
+    turns.count
+  end
+
+  def as_json(options={})
+    options = {
+      methods: [:id, :turn_count],
+      only: [:number_of_years],
+      include: {
+        game_players: {
+          only: [:color],
+          methods: [:id],
+          include: {
+            player: {only: [:handle, :first_name, :last_name, :email], methods: [:profile_image_path]},
+            faction: {only: [:name]}
+          }
+        },
+        maps:{
+          only: [:name],
+          methods: [:id],
+          include: {
+            continents: {only: [:name, :type, :bonus, :color], methods: [:id]}
+          }
+        }
+      }
+    }
+    super(options)
+  end
+
   private
   
   def number_of_players

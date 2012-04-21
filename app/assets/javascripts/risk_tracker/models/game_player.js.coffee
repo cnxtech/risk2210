@@ -35,7 +35,8 @@ class RiskTracker.Models.GamePlayer extends Backbone.Model
       @set({territory_count: @territoryCount() - 1})
 
   saveTurn: ()->
-    @turns.create({game_player_id: @get("id"), units_collected: @units(), energy_collected: @energy(), territories_held: @territoryCount(), continent_ids: @_continentIds(), game_id: window.GameId})
+    @turns.create({game_id: window.Game.get("id"), game_player_id: @get("id"), units_collected: @units(), energy_collected: @energy(), territories_held: @territoryCount(), continent_ids: @_continentIds()})
+    window.Game.incrementTurnCount()
 
   _continentIds: ()->
     @continents.pluck("id")

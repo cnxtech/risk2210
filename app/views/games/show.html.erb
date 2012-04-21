@@ -3,15 +3,13 @@
 <%= progress_bar(@game, id: "game-progress-bar") %>
 
 <div class="row">
-  <div id="game-players" style="float: left;"></div>
-  <div id="maps" style="float: left;"></div>
+  <div id="game-players"></div>
+  <div id="maps"></div>
 </div>
 
 <%= content_for :tail do %>
   <%= javascript_include_tag "risk_tracker" %>
   <script type="text/javascript">
-    window.GamePlayers = new RiskTracker.Collections.GamePlayers(<%= raw(@game.game_players.to_json) %>);
-    window.Maps = new RiskTracker.Collections.Maps(<%= raw(@game.maps.to_json) %>);
-    window.GameId = '<%= @game.id %>';
+    window.Game = new RiskTracker.Models.Game(<%= raw(@game.to_json) %>);
   </script>
 <% end %>

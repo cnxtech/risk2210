@@ -31,9 +31,6 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
   saveTurn: (event)->
     event.preventDefault()
     @model.saveTurn()
-    console.log "Turn saved!"
-    ## Keep track of turns
-    ## Update Progress Bar
 
   _updateTerritoryDisplay: ()=>
     @_spinCounter(".territory-counter", @model.territoryCount())
@@ -69,11 +66,10 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
   _bindDropZones: ()->
     $(@el).find(".continent-list").bind "sortreceive", (event, ui) =>
       continent_id = ui.item.attr('data-id')
-      continent = window.Maps.findContinentById(continent_id)
+      continent = window.Game.maps.findContinentById(continent_id)
       @model.addContinent(continent)
 
     $(@el).find(".continent-list").bind "sortremove", (event, ui) =>
       continent_id = ui.item.attr('data-id')
-      continent = window.Maps.findContinentById(continent_id)
+      continent = window.Game.maps.findContinentById(continent_id)
       @model.removeContinent(continent)
-      

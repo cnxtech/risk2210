@@ -14,17 +14,5 @@ class GamePlayer
   delegate :handle, to: :player
 
   validates_inclusion_of :color, in: COLORS
-
-  def as_json(options={})
-    options = {
-      only: [:color],
-      methods: [:id],
-      include: {
-        player: {only: [:handle, :first_name, :last_name, :email], methods: [:profile_image_path]},
-        faction: {only: [:name]}
-      }
-    }
-    super(options)
-  end
   
 end

@@ -2,10 +2,11 @@ class RiskTracker.Views.Main extends Backbone.View
 
   initialize: ()->
     _.bindAll(@, 'render')
-    @game_players = window.GamePlayers
-    @maps = window.Maps
+    @game_players = window.Game.game_players
+    @maps = window.Game.maps
     @game_players.bind("reset", @render)
     @maps.bind("reset", @render)
+    window.Game.bind("change:turn_count", @_updateProgressBar)
 
   render: ()->
     skins = _.shuffle([1..8])
@@ -26,7 +27,14 @@ class RiskTracker.Views.Main extends Backbone.View
         dropOnEmpty: true
         tolerance: 'pointer'
         connectWith: ".continent-list"
-        update: ()->
-          console.log "Dropped!"
 
-    @
+    return @
+
+  _updateProgressBar: () ->
+    bar = $("#game-progress-bar").find(".bar")
+    number_of_years = window.Game.get("number_of_years")
+    number_of_players = window.Game.game_players.length
+    turn_count = window.Game.get("turn_count")
+
+    percent_complete = ((turn_count / (number_of_years * number_of_players)) * 100)
+    bar.css({width: "#{percent_complete}%"})
