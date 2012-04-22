@@ -28,7 +28,9 @@
   </div>
   <div class="right-col">
     <div class='faction-logo'>
-      <img src='/assets/faction_icons/<%= @game_player.faction.iconFileName() %>.png' width='50'/>
+      <% unless @game_player.faction.default(): %>
+        <img src='/assets/faction_icons/<%= @game_player.faction.iconFileName() %>.png' width='50'/>
+      <% end %>
     </div>
     <div class="counter-container">
       <h3 class="counter-label">Energy:</h3>
