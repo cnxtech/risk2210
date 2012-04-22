@@ -37,7 +37,7 @@ Continent.create(map: mars_moons, name: "Federation", type: "Lunar", bonus: 3, c
 asteroids = Map.create(:name => "Asteroid Colonies", :moon => true)
 Continent.create(map: asteroids, name: "1 Ceres", type: "Lunar", bonus: 4, color: "#e87386")
 Continent.create(map: asteroids, name: "4 Vesta", type: "Lunar", bonus: 2, color: "#9aea89")
-Continent.create(map: asteroids, name: "Dactyl", type: "Lunar", bonus: 1, color: "#9aea89")
+Continent.create(map: asteroids, name: "Dactyl", type: "Lunar", bonus: 1, color: "#80ccf1")
 Continent.create(map: asteroids, name: "243 Ida", type: "Lunar", bonus: 2, color: "#f0f47b")
 
 io = Map.create(:name => "Io")

@@ -1,7 +1,11 @@
-<h2><%= @game.map_names %></h2>
-<p>Game Progress:</p>
-<%= progress_bar(@game, id: "game-progress-bar") %>
 
+<div class="row">
+  <div id="game-header">
+    <h2><%= @game.map_names %></h2>
+    <p>Game Progress:</p>
+    <%= progress_bar(@game, id: "game-progress-bar") %>
+  </div>
+</div>
 <div class="row">
   <div id="game-players"></div>
   <div id="maps"></div>
