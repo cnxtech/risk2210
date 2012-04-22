@@ -5,6 +5,7 @@ class GamePlayer
   COLORS = %w(Green Blue Red Black Gold)
 
   field :color, type: String
+  field :territory_count, type: Integer
 
   belongs_to :game
   belongs_to :player

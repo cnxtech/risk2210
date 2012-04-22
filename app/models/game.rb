@@ -44,7 +44,7 @@ class Game
       only: [:number_of_years],
       include: {
         game_players: {
-          only: [:color],
+          only: [:color, :territory_count],
           methods: [:id],
           include: {
             player: {only: [:handle, :first_name, :last_name, :email], methods: [:profile_image_path]},
