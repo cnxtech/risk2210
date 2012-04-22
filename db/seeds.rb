@@ -22,7 +22,7 @@ Continent.create(map: mars, name: "Amazonis", type: "Land", bonus: 6, color: "#7
 Continent.create(map: mars, name: "Tharsis", type: "Land", bonus: 3, color: "#f0e660")
 Continent.create(map: mars, name: "Vulcan", type: "Land", bonus: 5, color: "#e76263")
 Continent.create(map: mars, name: "Eden", type: "Land", bonus: 4, color: "#6df25b")
-Continent.create(map: mars, name: "Casius", type: "Land", bonus: 5, color: "#6df25b")
+Continent.create(map: mars, name: "Casius", type: "Land", bonus: 5, color: "#71d0e8")
 Continent.create(map: mars, name: "Propontis", type: "Water", bonus: 2, color: "#8dd92f")
 Continent.create(map: mars, name: "Acidalium", type: "Water", bonus: 3, color: "#f0fb71")
 Continent.create(map: mars, name: "Arabia", type: "Water", bonus: 2, color: "#12bcf0")
