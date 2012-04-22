@@ -48,7 +48,7 @@ class Game
           methods: [:id],
           include: {
             player: {only: [:handle, :first_name, :last_name, :email], methods: [:profile_image_path]},
-            faction: {only: [:name]}
+            faction: {only: [:name, :abilities, :classification, :starting_resources]}
           }
         },
         maps:{
