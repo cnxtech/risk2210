@@ -16,15 +16,27 @@
   </div>
   <div class='land territories'>
     <h3>Land</h3>
-    <ul class="continent-list"></ul>
+    <ul class="continent-list">
+      <% for continent in @game_player.landContinents(): %>
+        <li data-id="<%= continent.get('id') %>"><span class="continent" style="background-color: <%= continent.get('color') %>"><%= continent.get('name') %> (<%= continent.get('bonus') %>)</span></li>
+      <% end %>
+    </ul>
   </div>
   <div class='water territories'>
     <h3>Water</h3>
-    <ul class="continent-list"></ul>
+    <ul class="continent-list">
+      <% for continent in @game_player.waterContinents(): %>
+        <li data-id="<%= continent.get('id') %>"><span class="continent" style="background-color: <%= continent.get('color') %>"><%= continent.get('name') %> (<%= continent.get('bonus') %>)</span></li>
+      <% end %>
+    </ul>
   </div>
   <div class='space territories'>
-    <h3>Space</h3>
-    <ul class="continent-list"></ul>
+    <h3>Lunar</h3>
+    <ul class="continent-list">
+      <% for continent in @game_player.lunarContinents(): %>
+        <li data-id="<%= continent.get('id') %>"><span class="continent" style="background-color: <%= continent.get('color') %>"><%= continent.get('name') %> (<%= continent.get('bonus') %>)</span></li>
+      <% end %>
+    </ul>
   </div>
   <div class="right-col">
     <div class='faction-logo'>

@@ -6,8 +6,6 @@ class RiskTracker.Models.GamePlayer extends Backbone.Model
     @continents = new RiskTracker.Collections.Continents()
     @turns = new RiskTracker.Collections.Turns()
     
-    @set({energy: @faction.minEnergy(), units: @faction.minUnits()})
-    
     @bind("change:territory_count", @_calculateResources)
     @continents.on "add", (continent) => @_calculateResources()
     @continents.on "remove", (continent) => @_calculateResources()
@@ -38,6 +36,15 @@ class RiskTracker.Models.GamePlayer extends Backbone.Model
   saveTurn: ()->
     @turns.create({game_id: window.Game.get("id"), game_player_id: @get("id"), units_collected: @units(), energy_collected: @energy(), territories_held: @territoryCount(), continent_ids: @_continentIds()})
     window.Game.incrementTurnCount()
+
+  landContinents: ()->
+    @continents.where(type: "Land")
+
+  waterContinents: ()->
+    _([@continents.where(type: "Water"), @continents.where(type: "Lava")]).flatten()
+
+  lunarContinents: ()->
+    @continents.where(type: "Lunar")
 
   _continentIds: ()->
     @continents.pluck("id")
@@ -72,3 +79,8 @@ class RiskTracker.Models.GamePlayer extends Backbone.Model
       memo + continent.get("bonus")
     , 0)
     return sum
+
+  setStartingContinents: ()->
+    _(@get("continent_ids")).each (continent_id) => 
+      continent = window.Game.maps.findContinentById(continent_id)
+      @continents.add(continent)

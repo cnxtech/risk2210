@@ -13,4 +13,15 @@ class Turn
   belongs_to :game
   has_and_belongs_to_many :continents
 
+  after_create :update_game_player_stats
+
+  private
+
+  def update_game_player_stats
+    game_player.update_attributes(energy: energy_collected, 
+                                  units: units_collected, 
+                                  territory_count: territories_held,
+                                  continent_ids: continent_ids)
+  end
+
 end

@@ -44,8 +44,8 @@ class Game
       only: [:number_of_years],
       include: {
         game_players: {
-          only: [:color, :territory_count],
-          methods: [:id],
+          only: [:color, :territory_count, :energy, :units],
+          methods: [:id, :continent_ids],
           include: {
             player: {only: [:handle, :first_name, :last_name, :email], methods: [:profile_image_path]},
             faction: {only: [:name, :abilities, :classification, :starting_resources]}
