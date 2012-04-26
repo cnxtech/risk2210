@@ -16,7 +16,7 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
     @model.bind("change:territory_count", @_updateTerritoryDisplay)
     
   render: ()->
-    $(@el).html(@template({game_player: @model, skin_number: @attributes.skin_number}))
+    $(@el).html(@template({game_player: @model}))
     @_bindDropZones()
     @
 
@@ -60,9 +60,9 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
     , 100)
 
   _updateBorderGlow: ()=>
-    border = @model.energy() * 5
-    $(@el).find(".player-card").animate({boxShadow: "0 0 #{border}px"})
+    $(@el).animate({boxShadow: "0 0 #{@model.borderGlow()}px"})
 
+  ## FIXME - Don't remove points if dropping to current view
   _bindDropZones: ()->
     $(@el).find(".continent-list").bind "sortreceive", (event, ui) =>
       continent_id = ui.item.attr('data-id')

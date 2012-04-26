@@ -46,6 +46,9 @@ class RiskTracker.Models.GamePlayer extends Backbone.Model
   lunarContinents: ()->
     @continents.where(type: "Lunar")
 
+  borderGlow: ()->
+    @energy() * 5
+
   _continentIds: ()->
     @continents.pluck("id")
 

@@ -1,10 +1,8 @@
-<div class='map'>
-  <h3><%= @map.get('name') %></h3>
-  <ul class="continent-list">
-    <% for continent in @map.continents.models: %>
-      <% unless continent.hidden(): %>
-        <li data-id="<%= continent.get('id') %>"><span class="continent" style="background-color: <%= continent.get('color') %>"><%= continent.get('name') %> (<%= continent.get('bonus') %>)</span></li>
-      <% end %>
+<h3><%= @map.get('name') %></h3>
+<ul class="continent-list">
+  <% for continent in @map.continents.models: %>
+    <% unless continent.hidden(): %>
+      <li data-id="<%= continent.get('id') %>"><span class="continent" style="background-color: <%= continent.get('color') %>"><%= continent.get('name') %> (<%= continent.get('bonus') %>)</span></li>
     <% end %>
-  </ul>
-</div>
+  <% end %>
+</ul>

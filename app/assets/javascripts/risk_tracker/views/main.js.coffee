@@ -12,11 +12,12 @@ class RiskTracker.Views.Main extends Backbone.View
     @_setupContinents()
     skins = _.shuffle([1..8])
     @gamePlayers.each (gamePlayer) =>
-      view = new RiskTracker.Views.GamePlayer({model: gamePlayer, attributes: {skin_number: skins.pop()}})
+      style_class = "player-card #{gamePlayer.get('color').toLowerCase()} background-#{skins.pop()}"
+      view = new RiskTracker.Views.GamePlayer({model: gamePlayer, attributes: {class: style_class}})
       $(@el).append(view.render().el)
     
     @maps.each (map) =>
-      view = new RiskTracker.Views.Map({model: map})
+      view = new RiskTracker.Views.Map({model: map, attributes: {class: "map"}})
       $("#maps").append(view.render().el)
 
     $(document).ready ->
