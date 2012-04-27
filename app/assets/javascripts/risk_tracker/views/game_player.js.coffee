@@ -14,6 +14,7 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
     @model.bind("change:energy", @_updateBorderGlow)
     @model.bind("change:units", @_updateUnitsDisplay)
     @model.bind("change:territory_count", @_updateTerritoryDisplay)
+    _.defer(@_updateBorderGlow)
     
   render: ()->
     $(@el).html(@template({game_player: @model}))
