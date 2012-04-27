@@ -30,7 +30,7 @@ gem 'bcrypt-ruby'#, '~> 3.0.0'
 
 ## Operations
 gem 'passenger'
-# gem 'capistrano'
+gem 'capistrano'
 gem 'exception_notification'
 
 group :development, :test do
@@ -39,5 +39,5 @@ group :development, :test do
   gem "factory_girl_rails", ">= 1.4.0"
   gem "mocha"
   gem 'database_cleaner'
-  #gem 'ruby-debug19', require: 'ruby-debug'
+  gem 'debugger'
 end
