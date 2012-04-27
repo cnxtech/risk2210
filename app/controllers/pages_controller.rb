@@ -21,5 +21,9 @@ class PagesController < ApplicationController
   def api_docs
     @page_title = "API Documentation"
   end
+
+  def splash
+    render nothing: true
+  end
   
 end
