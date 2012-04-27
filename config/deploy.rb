@@ -6,6 +6,9 @@ set :repository,  "git@github.com:nick-desteffen/risk2210.git"
 set :branch, "master"
 set :user, "commander"
 set :deploy_to, "/opt/apps/risk2210"
+set :use_sudo, false
+
+default_run_options[:pty] = true
 
 role :web, "risk2210.net"
 role :app, "risk2210.net"
@@ -21,10 +24,3 @@ end
 
 before "deploy:assets:precompile", "bundle:install"
 after "deploy:restart", "deploy:cleanup"
-
-
-
-# set :use_sudo, false
-# set :rails_env, "production"
-# default_run_options[:pty] = true
-
