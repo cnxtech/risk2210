@@ -1,0 +1,11 @@
+class RiskTracker.Util
+
+  factionIconFileName: (factionName)->
+    icons = {
+      <% Faction.all.each do |faction| %>
+        '<%= faction.image_name_format %>': '<%= image_path("faction_icons/#{faction.image_name_format}.png") %>'
+      <% end %>
+    }
+
+    key = factionName.toLowerCase().split(" ").join("_")
+    icons[key]

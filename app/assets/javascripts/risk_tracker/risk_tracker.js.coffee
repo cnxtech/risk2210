@@ -6,5 +6,5 @@ window.RiskTracker =
     view = new RiskTracker.Views.Game()
     $('#game').html(view.render().el)
 
-$(document).ready ->
+$ ->
   RiskTracker.init()

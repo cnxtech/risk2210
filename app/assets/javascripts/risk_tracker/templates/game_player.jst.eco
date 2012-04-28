@@ -40,7 +40,7 @@
 <div class="right-col">
   <div class='faction-logo'>
     <% unless @game_player.faction.default(): %>
-      <img src='/assets/faction_icons/<%= @game_player.faction.iconFileName() %>.png' width='50'/>
+      <img src='<%= @game_player.faction.iconFileName() %>' width='50'/>
     <% end %>
   </div>
   <div class="counter-container">

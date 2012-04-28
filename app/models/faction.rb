@@ -46,5 +46,9 @@ class Faction
     return 4 if mega_corp?
     return 3
   end
+
+  def image_name_format
+    name.downcase.split(" ").join("_")
+  end
     
 end

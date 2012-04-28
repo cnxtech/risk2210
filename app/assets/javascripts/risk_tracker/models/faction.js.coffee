@@ -10,4 +10,5 @@ class RiskTracker.Models.Faction extends Backbone.Model
     @get("name") == "Default"
 
   iconFileName: ()->
-    @get('name').toLowerCase().split(" ").join("_")
+    util = new RiskTracker.Util()
+    util.factionIconFileName(@get('name'))
