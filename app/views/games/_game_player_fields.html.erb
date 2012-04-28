@@ -1,4 +1,4 @@
-<div class="fields">
+<div class="fields player">
   <%= form.input :player_id, collection: Player.all.map{|player| [player.handle, player.id]} %>
   <%= form.input :faction_id, collection: Faction.all %>
   <%= form.input :color, collection: GamePlayer::COLORS %>
