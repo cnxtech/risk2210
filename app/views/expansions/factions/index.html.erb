@@ -15,5 +15,9 @@
 <hr />
 
 <% @factions.each do |faction| %>
-  <p><%= link_to faction.name, expansions_faction_path(faction) %></p>
+  <p class="faction-item">
+    <%= link_to expansions_faction_path(faction) do %>
+      <%= image_tag("faction_icons/#{faction.image_name_format}.png", width: 35) %><%= faction.name %> 
+    <% end %>
+  </p>
 <% end %> 
