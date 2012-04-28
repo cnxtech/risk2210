@@ -1,4 +1,4 @@
-class RiskTracker.Views.Main extends Backbone.View
+class RiskTracker.Views.Game extends Backbone.View
 
   initialize: ()->
     _.bindAll(@, 'render')

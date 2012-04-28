@@ -74,7 +74,7 @@ class Player
         when :normal ; 100
         when :large ; 200
       end
-      return "http://www.gravatar.com/avatar/#{gravatar_hash}?size=#{gravatar_size}"
+      return "http://www.gravatar.com/avatar/#{gravatar_hash}?size=#{gravatar_size}&default=#{CGI::escape('http://risk2210.net/assets/default_avatar.png')}"
     else
       return nil
     end

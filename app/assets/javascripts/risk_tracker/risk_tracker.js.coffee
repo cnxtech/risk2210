@@ -3,8 +3,8 @@ window.RiskTracker =
   Collections: {}
   Views: {}
   init: ()->
-    view = new RiskTracker.Views.Main()
-    $('#game-players').html(view.render().el)
+    view = new RiskTracker.Views.Game()
+    $('#game').html(view.render().el)
 
 $(document).ready ->
   RiskTracker.init()
