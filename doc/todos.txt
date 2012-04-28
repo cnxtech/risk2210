@@ -17,11 +17,9 @@ Game completion page
 
 ## General site stuff
 
-Seed Forums
 Meta tags
 password reset
 remember me checkbox
-Generic avatar
 
 ## Future Enhancements
 

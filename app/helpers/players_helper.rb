@@ -22,8 +22,12 @@ module PlayersHelper
   def avatar(player, options={})
     size = options[:size] || :large
     image_path = player.profile_image_path(size)
-    return image_tag("default_avatar.png", width: "50px;") if image_path.blank?
-    return image_tag(image_path, width: "50px;")
+    if size == :large
+      size = 150
+    else
+      size = 50
+    end
+    return image_tag(image_path, width: "#{size}px;")
   end
   
 end
