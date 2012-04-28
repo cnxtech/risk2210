@@ -59,7 +59,7 @@ module ApplicationHelper
       render(form.object.class.name.pluralize.downcase + "/" + association.to_s.singularize + "_fields", form: builder)
     end
     icon = content_tag(:i, nil, class: "icon-plus icon-white").html_safe
-    link_to_function(icon + " " + name, "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")", class: "btn btn-success")
+    link_to_function(icon + " " + name, "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")", class: "btn btn-success btn-large")
   end
   
   def yes_or_no(boolean)

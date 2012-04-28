@@ -22,10 +22,12 @@ class GamePlayer
   delegate :handle, to: :player
 
   validates_inclusion_of :color, in: COLORS
+  validates_presence_of :faction_id, :player_id
   
   private
 
   def set_starting_resources
+    self.territory_count ||= 0
     self.energy = faction.min_energy
     self.units = faction.min_units
   end

@@ -19,13 +19,13 @@
             <%= render partial: "games/game_player_fields", locals: {form: game_player_fields} %>
           <% end %>
           <div class="add-player-button-container">
-            <%= link_to_add_fields "Add Player", f, :game_players %>
+            <%= link_to_add_fields "Add Another Player", f, :game_players %>
           </div>
         </div>
       </div>
     </div>
     <div class="form-actions">
-      <%= f.submit "Create Game", class: 'btn btn-primary' %>
+      <%= f.submit "Start Game", class: 'btn btn-primary' %>
       <%= link_to 'Cancel', :back, class: 'btn' %>
     </div>
   </fieldset>
