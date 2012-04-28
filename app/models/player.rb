@@ -66,6 +66,7 @@ class Player
   ## square=50x50, small=50xVariable, normal=100xVariable, large=200xVariable
 
   def profile_image_path(size=:normal)
+    default_avatar_path = "http://risk2210.net/assets/default_avatar.png"
     if image_source == "Facebook" && facebook_image_url
       return facebook_image_url + "?type=#{size}"
     elsif image_source == "Gravatar"
@@ -74,9 +75,9 @@ class Player
         when :normal ; 100
         when :large ; 200
       end
-      return "http://www.gravatar.com/avatar/#{gravatar_hash}?size=#{gravatar_size}&default=#{CGI::escape('http://risk2210.net/assets/default_avatar.png')}"
+      return "http://www.gravatar.com/avatar/#{gravatar_hash}?size=#{gravatar_size}&default=#{CGI::escape(default_avatar_path)}"
     else
-      return nil
+      return default_avatar_path
     end
   end
 
