@@ -18,7 +18,7 @@ Risk2210::Application.routes.draw do
   resources :players
   
   ## Game Tracker
-  resources :games, only: [:new, :create, :show, :index] do
+  resources :games, only: [:new, :create, :show] do
     resources :turns, only: [:create]
   end
   

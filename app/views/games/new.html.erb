@@ -1,4 +1,8 @@
 <h2>New Game</h2>
+<div class="alert alert-info">
+  RiskTracker will automatically keep track of resources collected in real time.  
+  Enter player info and number of territories each player posesses at setup.
+</div>
 <%= simple_form_for @game, html: {class: 'form-vertical well'} do |f| %>
   <%= error_messages_for @game %>
   <fieldset>
