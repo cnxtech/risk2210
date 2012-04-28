@@ -2,7 +2,6 @@ Quick Start
   - Game Templates
 
 ## Game Trakcer ##
-Group continents by type
 Start year / End year differences
 
 ## UI ##

@@ -4,6 +4,7 @@ class TurnsController < ApplicationController
 
   before_filter :login_required
   before_filter :find_game
+  before_filter :validate_owner
 
   def create
     @turn = @game.turns.build(game_player_id: params[:game_player_id],
@@ -20,6 +21,12 @@ class TurnsController < ApplicationController
 
   def find_game
     @game = Game.find(params[:game_id])
+  end
+
+  def validate_owner
+    if @game.creator != current_player
+      render nothing: true, status: 422
+    end
   end
 
 end

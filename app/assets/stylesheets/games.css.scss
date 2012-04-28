@@ -126,8 +126,15 @@ ul.continent-list{
 
     .avatar{
       width: 80px;
-      padding: 10px;
+      padding: 10px 10px 3px 10px;
+      text-align: center;
       @include container();
+      img{
+        display: block;
+      }
+      .handle{
+        margin-top: 4px;
+      }
     }
 
     .turn-controls{

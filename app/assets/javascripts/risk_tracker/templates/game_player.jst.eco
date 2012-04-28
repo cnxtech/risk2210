@@ -1,6 +1,7 @@
 <div class="left-col">
   <div class='avatar'>
     <img src='<%= @game_player.player.get('profile_image_path') %>' width='80px' />
+    <div class="handle"><%= @game_player.player.get('handle') %></div>
   </div>
   <div class="turn-controls">
     <h2 class="territory-counter"><%= @game_player.territoryCount() %></h2>

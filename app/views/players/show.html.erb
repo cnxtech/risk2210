@@ -21,3 +21,12 @@
     </div>
   </div>
 </div>
+
+<% content_for :sidebar do %>
+  <h2>Games</h2>
+  <ul>
+    <% @player.games.each do |game| %>
+      <li><%= link_to format_date(game.created_at), game_path(game) %></li>
+    <% end %>
+  </ul>
+<% end %>
