@@ -10,7 +10,7 @@
       <div class="nav-collapse">
         <ul class="nav">
           <%= navigation_item("Players", players_path, :players) %>
-          <%= navigation_item("Forums", forums_path, :forums) %>
+          <%#= navigation_item("Forums", forums_path, :forums) %>
           <%= navigation_item("Tracker", new_game_path, :tracker) %>
           <li class="dropdown <%= controller.active_tab == :expansions ? 'active' : '' %>">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Expansions <b class="caret"></b></a>

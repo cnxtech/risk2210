@@ -142,7 +142,7 @@ class Player
   end
 
   def deliver_welcome_email
-    PlayerMailer.welcome_email(self).deliver
+    #PlayerMailer.welcome_email(self).deliver
   end
 
 end

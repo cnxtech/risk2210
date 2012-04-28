@@ -74,9 +74,10 @@ module ApplicationHelper
     MARKDOWN_RENDERER.render(string).html_safe
   end
 
-  def facebook_button
+  def facebook_button(options={})
+    size = options.fetch(:size) { "" }
     button = content_tag(:i, "", class: "icon-facebook-sign icon-large") + " Login with Facebook"
-    link_to button, facebook_authentication_path, class: "btn btn-inverse"
+    link_to button, facebook_authentication_path, class: "btn btn-inverse #{size}"
   end
   
 end

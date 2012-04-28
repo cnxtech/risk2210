@@ -61,7 +61,7 @@ Risk2210::Application.routes.draw do
   get "/mobile", to: "mobile#index", as: :mobile
 
   ## Root
-  root to: "pages#splash"
+  root to: "pages#splash"  
   #root to: 'pages#home'
 
 end
