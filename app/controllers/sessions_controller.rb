@@ -3,7 +3,6 @@ class SessionsController < ApplicationController
   def authenticate_facebook
     auth = request.env["omniauth.auth"]
     player = Player.omniauthorize(auth)
-    puts player.inspect
     login(player)
   end
   

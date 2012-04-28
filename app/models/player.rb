@@ -99,10 +99,14 @@ class Player
   
   private
   
-  ## TODO Refactor to find existing Player by email first
   def self.create_with_omniauth(auth)
-    puts auth
-    create! do |player|
+    player = Player.where(email: auth['info']['email']).first
+    if player
+      player.facebook_image_url = sanitize_facebook_image(auth["info"]["image"])
+      player.provider = auth['provider']
+      player.uid = auth['uid']
+    else
+      player = Player.new
       player.provider = auth['provider']
       player.uid = auth['uid']
       if auth['info']
@@ -112,12 +116,13 @@ class Player
          player.handle = auth['info']['nickname'] || ""
          player.website = auth["info"]["urls"]["Facebook"]
          player.facebook_image_url = sanitize_facebook_image(auth["info"]["image"])
-         
          location = auth["extra"]["raw_info"]["location"]["name"].split(",")
          player.city = location[0].strip
          player.state = States.decode(location[1])
       end
     end
+    player.save
+    return player
   end
 
   def self.sanitize_facebook_image(facebook_image_url)
