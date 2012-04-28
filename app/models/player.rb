@@ -102,11 +102,7 @@ class Player
     if zip_code.present?
       address = address + " " + zip_code
     end
-    if address.present?
-      return address
-    else
-      return "Unknown"
-    end
+    return address
   end
 
   def as_json(options={})

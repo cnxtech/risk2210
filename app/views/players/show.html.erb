@@ -1,18 +1,17 @@
 <div id="player-profile">
-  <h2><%= @player.handle %></h2>
   <div class="well">
+    <h2><%= @player.handle %></h2>
     <div class="row">
       <div class="span2">
         <div class='photo-container'>
           <%= avatar(@player, size: :large) %>
         </div>
         <div class='location'>
-          <strong>From:</strong><br />
           <%= @player.location %>
         </div>
         <% if @player.website.present? %>
           <div class='site'>
-            <strong>Site:</strong> <%= link_to @player.website, @player.website, target: "_blank" %>
+            <%= link_to @player.website, @player.website, target: "_blank" %>
           </div>
         <% end %>
       </div>
