@@ -38,13 +38,13 @@ class RiskTracker.Models.GamePlayer extends Backbone.Model
     window.Game.incrementTurnCount()
 
   landContinents: ()->
-    @continents.where(type: "Land")
+    @continents.land()
 
   waterContinents: ()->
-    _([@continents.where(type: "Water"), @continents.where(type: "Lava")]).flatten()
+    @continents.water()
 
   lunarContinents: ()->
-    @continents.where(type: "Lunar")
+    @continents.lunar()
 
   borderGlow: ()->
     @energy() * 5
