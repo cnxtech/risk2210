@@ -12,7 +12,7 @@
       <% @players.each do |player| %>
         <tr>
           <td><%= link_to player.handle, player_path(player) %></td>
-          <td><%= location(player) %></td>
+          <td><%= player.location %></td>
           <td><%= player.game_players.size %></td>
         </tr>
       <% end %>

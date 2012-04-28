@@ -11,7 +11,7 @@ class GamesController < ApplicationController
   end
 
   def new
-    @game = Game.new
+    @game = Game.new(location: current_player.location)
     @game.game_players.build
   end
 

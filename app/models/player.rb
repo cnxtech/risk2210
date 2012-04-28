@@ -94,6 +94,21 @@ class Player
     Player.public_profiles
   end
 
+  def location
+    address = ""
+    if city.present? && state.present?
+      address = city + ", " + state
+    end
+    if zip_code.present?
+      address = address + " " + zip_code
+    end
+    if address.present?
+      return address
+    else
+      return "Unknown"
+    end
+  end
+
   def as_json(options={})
     super(only: [:id, :first_name, :last_name, :email, :bio, :handle, :city, :state, :zip_code, :slug, :website], methods: [:profile_image_path])
   end
@@ -117,9 +132,9 @@ class Player
          player.handle = auth['info']['nickname'] || ""
          player.website = auth["info"]["urls"]["Facebook"]
          player.facebook_image_url = sanitize_facebook_image(auth["info"]["image"])
-         location = auth["extra"]["raw_info"]["location"]["name"].split(",")
-         player.city = location[0].strip
-         player.state = States.decode(location[1])
+         location_parts = auth["extra"]["raw_info"]["location"]["name"].split(",")
+         player.city = location_parts[0].strip
+         player.state = States.decode(location_parts[1])
       end
     end
     player.save
