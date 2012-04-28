@@ -21,7 +21,6 @@ Seed Forums
 Meta tags
 password reset
 remember me checkbox
-Google Analytics
 Generic avatar
 
 ## Future Enhancements
