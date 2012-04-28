@@ -93,8 +93,10 @@ $gold: #c69e49;
 
 ul.continent-list{
   list-style: none;
-  margin: 15px 10px;
-  min-height: 20px;
+  margin: 0 0 15px 0;
+  padding: 5px;
+  min-height: 40px;
+  min-width: 100px;
   li{
     margin: 10px 0;
     span.continent{
@@ -105,6 +107,11 @@ ul.continent-list{
       opacity: 1.0;
     }
   }
+}
+
+.dashed{
+  border: 1px dashed;
+  @include rounded();
 }
 
 //****************************************************************************************************************************************
