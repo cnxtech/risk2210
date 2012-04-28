@@ -1,28 +1,24 @@
 Quick Start
-  - Templates
+  - Game Templates
 
-## Game Trakcer
+## Game Trakcer ##
 Group continents by type
 Start year / End year differences
 
 ## UI ##
-asset pipeline urls for image icons
 Commander icons, active and inactive
 Space station icons
 
-## Game over page
+## Game over page ##
 Game completion page
   - charts
   - collect final scores
 
-## General site stuff
-
-Meta tags
+## General site stuff ##
 password reset
 remember me checkbox
 
 ## Future Enhancements
-
 v1.1
 Additional Expansion pages
 Player Leaderboard

@@ -35,7 +35,7 @@ module Authentication
   end
 
   def login(player, options={})
-    path = options[:redirect_to] || :back
+    path = options[:redirect_to] || new_game_path
     notice = options[:notice] || "Welcome Back!"
     session[:player_id] = player.id
     redirect_back_or_default(path, notice: notice)
