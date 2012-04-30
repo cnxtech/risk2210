@@ -5,7 +5,7 @@
 
 function remove_fields(link) {
   if(confirm("Are you sure?")){
-    $(link).prev("input[type=hidden]").val("1");
+    $(link).prev("input[type=hidden]").val("true");
     $(link).closest(".fields").hide();    
   }
 }

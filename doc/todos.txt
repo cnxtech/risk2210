@@ -3,6 +3,7 @@ Quick Start
 
 ## Game Trakcer ##
 Start year / End year differences
+Add current year counter on each player
 
 ## UI ##
 Commander icons, active and inactive
@@ -27,7 +28,6 @@ Friends
 Player to player messaging
 Show nearby players based on location
 Organize meetups for games
-Calculate yearly bonus automatically - (include faction bonuses)
 
 v1.3
 Q&A with upvoting and comments

@@ -6,14 +6,14 @@ class Game
   field :number_of_years, type: Integer, default: 5
   field :notes, type: String
 
-  attr_accessible :location, :years, :notes, :map_ids, :game_players_attributes
+  attr_accessible :location, :years, :notes, :map_ids, :game_players_attributes, :number_of_years
   
   has_and_belongs_to_many :maps
-  has_many :game_players, autosave: true
+  has_many :game_players, autosave: true, dependent: :destroy
   has_many :turns, order: "order"
   belongs_to :creator, class_name: "Player"
     
-  accepts_nested_attributes_for :game_players
+  accepts_nested_attributes_for :game_players, allow_destroy: true
 
   validate :number_of_players
   validate :number_of_maps
