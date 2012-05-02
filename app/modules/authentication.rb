@@ -8,6 +8,7 @@ module Authentication
   def current_player
     begin
       @current_player ||= Player.find(session[:player_id]) if session[:player_id]
+      @current_player ||= Player.where(remember_me_token: cookies[:remember_me_token]).first if cookies[:remember_me_token]
     rescue Mongoid::Errors::DocumentNotFound
       nil
     end
@@ -31,12 +32,19 @@ module Authentication
   end
 
   def logout
+    cookies[:remember_me_token] = nil
     reset_session
   end
 
   def login(player, options={})
-    path = options[:redirect_to] || new_game_path
-    notice = options[:notice] || "Welcome Back!"
+    path = options.fetch(:redirect_to) { new_game_path }
+    notice = options.fetch(:notice) { "Welcome Back!" }
+    remember_me = (options.fetch(:remember_me) || "0").to_boolean
+
+    if remember_me
+      cookies[:remember_me_token] = { value: player.remember_me_token, expires: 1.month.from_now }
+    end
+
     session[:player_id] = player.id
     redirect_back_or_default(path, notice: notice)
   end

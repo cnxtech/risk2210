@@ -1,6 +1,6 @@
 class Player
   require 'bcrypt'
-  
+
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Slug
@@ -120,6 +120,7 @@ class Player
 
   def authenticate(unencrypted_password)
     if BCrypt::Password.new(password_digest) == unencrypted_password
+      set_remember_me_token
       return self
     else
       return false
@@ -166,8 +167,8 @@ class Player
     end
   end
 
-  def generate_remember_me_token
-    remember_me_token = SecureRandom.hex(8)
+  def set_remember_me_token
+    update_attribute(:remember_me_token, SecureRandom.hex(8))
   end
 
   def deliver_welcome_email

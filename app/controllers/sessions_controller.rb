@@ -19,8 +19,8 @@ class SessionsController < ApplicationController
   def create
     @page_title = "Login"
     @session = Session.new(params[:session])
-    if @session.valid? && @session.authenticated?
-      login(@session.player)
+    if @session.authenticated?
+      login(@session.player, remember_me: params[:session][:remember_me])
     else
       flash.now.alert = "We are sorry, but either your email or password is invalid."
       render :action => :new

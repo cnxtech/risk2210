@@ -4,7 +4,7 @@ class Session
   include ActiveModel::Conversion
   include ActiveModel::Validations
     
-  attr_accessor :email, :password
+  attr_accessor :email, :password, :remember_me
   
   validates_presence_of :email
   validates_presence_of :password
@@ -20,6 +20,7 @@ class Session
   end
   
   def authenticated?
+    return false unless valid?
     @player = Player.where(email: email).first
     if @player && @player.password_digest && @player.authenticate(password)
       return true

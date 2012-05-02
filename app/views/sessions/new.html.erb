@@ -3,7 +3,8 @@
   <%= error_messages_for(@session) %>
   <fieldset>
     <%= f.input :email %>
-    <%= f.input :password %>    
+    <%= f.input :password %>
+    <%= f.input :remember_me, as: :boolean, wrapper: :checkbox %>
     <%= f.submit "Login", class: 'btn btn-primary' %>
     &nbsp;&nbsp;
     <%= facebook_button %>

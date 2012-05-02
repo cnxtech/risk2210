@@ -16,7 +16,6 @@ Game completion page
 
 ## General site stuff ##
 password reset
-remember me checkbox
 
 ## Future Enhancements
 v1.1
