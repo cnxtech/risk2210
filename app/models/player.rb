@@ -1,10 +1,9 @@
-require 'better_secure_password'
-
 class Player
+  require 'bcrypt'
+  
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Slug
-  include ActiveModel::SecurePasswordBetter
 
   IMAGE_SOURCES = %w(Facebook Gravatar)
   
@@ -35,7 +34,8 @@ class Player
   
   ## Plugins
   slug :handle
-  has_secure_password
+  
+  attr_reader :password
 
   attr_accessible :email, :first_name, :last_name, :handle, :city, :state, :zip_code, :bio, :website, :image_source, :public_profile, :password, :password_confirmation, :old_password
 
@@ -48,6 +48,8 @@ class Player
   validates_uniqueness_of :email, :handle
   validates_inclusion_of :image_source, in: IMAGE_SOURCES, allow_blank: true
   validates_format_of :email, with: EmailAddressValidation::EMAIL_ADDRESS_EXACT_PATTERN, allow_blank: true
+  validates_confirmation_of :password
+  validates_presence_of :password_digest, allow_blank: true
 
   ## Scopes
   scope :public_profiles, where(public_profile: true)
@@ -107,6 +109,21 @@ class Player
 
   def as_json(options={})
     super(only: [:id, :first_name, :last_name, :email, :bio, :handle, :city, :state, :zip_code, :slug, :website], methods: [:profile_image_path])
+  end
+
+  def password=(unencrypted_password)
+    @password = unencrypted_password
+    unless unencrypted_password.blank?
+      self.password_digest = BCrypt::Password.create(unencrypted_password)
+    end
+  end
+
+  def authenticate(unencrypted_password)
+    if BCrypt::Password.new(password_digest) == unencrypted_password
+      return self
+    else
+      return false
+    end
   end
   
   private
