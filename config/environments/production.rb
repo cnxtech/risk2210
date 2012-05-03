@@ -9,7 +9,7 @@ Risk2210::Application.configure do
   config.assets.compile = false
   config.assets.precompile += %w( risk_tracker.js )
   #config.assets.precompile += %w( mobile.js mobile.css )
-
+  config.active_support.deprecation to :log
   config.action_mailer.default_url_options = { host: 'http://risk2210.net' }
   config.i18n.fallbacks = true
   config.active_support.deprecation = :notify
