@@ -14,7 +14,7 @@ class GamePlayer
   belongs_to :game
   belongs_to :player
   belongs_to :faction
-  has_many :turns
+  has_many :turns, dependent: :destroy
   has_and_belongs_to_many :continents
 
   before_create :set_starting_resources
