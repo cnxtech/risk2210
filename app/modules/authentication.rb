@@ -7,8 +7,12 @@ module Authentication
     
   def current_player
     begin
-      @current_player ||= Player.find(session[:player_id]) if session[:player_id]
-      #@current_player ||= Player.where(remember_me_token: cookies[:remember_me_token]).first if cookies[:remember_me_token]
+      if session[:player_id]
+        @current_player ||= Player.find(session[:player_id])
+      elsif cookies[:remember_me_token].present?
+        @current_player ||= Player.where(remember_me_token: cookies[:remember_me_token]).first
+        session[:player_id] = @current_player.id
+      end
     rescue Mongoid::Errors::DocumentNotFound
       nil
     end
@@ -32,7 +36,7 @@ module Authentication
   end
 
   def logout
-    cookies[:remember_me_token] = nil
+    cookies.delete(:remember_me_token)
     reset_session
   end
 
