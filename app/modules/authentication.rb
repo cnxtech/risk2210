@@ -9,8 +9,8 @@ module Authentication
     begin
       if session[:player_id]
         @current_player ||= Player.find(session[:player_id])
-      elsif cookies[:remember_me_token].present?
-        @current_player ||= Player.where(remember_me_token: cookies[:remember_me_token]).first
+      elsif cookies.signed[:remember_me_token].present?
+        @current_player ||= Player.where(remember_me_token: cookies.signed[:remember_me_token]).first
         session[:player_id] = @current_player.id
       end
     rescue Mongoid::Errors::DocumentNotFound
@@ -43,11 +43,9 @@ module Authentication
   def login(player, options={})
     path = options.fetch(:redirect_to) { new_game_path }
     notice = options.fetch(:notice) { "Welcome Back!" }
+    
     remember_me = options.fetch(:remember_me) { "0" }.to_boolean
-
-    if remember_me
-      cookies[:remember_me_token] = { value: player.remember_me_token, expires: 1.month.from_now }
-    end
+    cookies.signed[:remember_me_token] = {value: player.remember_me_token, expires: 1.month.from_now} if remember_me
 
     session[:player_id] = player.id
     redirect_back_or_default(path, notice: notice)
