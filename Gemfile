@@ -1,6 +1,6 @@
 source :rubygems
 
-gem 'rails', '3.2.3'
+gem 'rails', '3.2.6'
 
 group :assets do
   gem 'sass-rails'
@@ -14,6 +14,7 @@ end
 gem 'jquery-rails'
 gem 'redcarpet'
 gem 'simple_form'
+gem 'cocoon'
 
 ## Backbone
 gem "ejs"
@@ -38,7 +39,6 @@ group :development, :test do
   gem "rspec-rails", ">= 2.8.1"
   gem "mongoid-rspec", ">= 1.4.4"
   gem "factory_girl_rails", ">= 1.4.0"
-  gem "mocha"
   gem 'database_cleaner'
   gem 'debugger'
 end

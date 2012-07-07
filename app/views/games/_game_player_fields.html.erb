@@ -1,7 +1,7 @@
-<div class="fields player">
-  <%= form.input :player_id, collection: Player.all.map{|player| [player.handle, player.id]} %>
-  <%= form.input :faction_id, collection: Faction.all %>
-  <%= form.input :color, collection: GamePlayer::COLORS %>
-  <%= form.input :territory_count, label: "Starting Territory Count" %>
-  <%= link_to_remove_fields "Remove", form %>
+<div class="player nested-fields">
+  <%= f.input :player_id, collection: Player.all.map{|player| [player.handle, player.id]} %>
+  <%= f.input :faction_id, collection: Faction.all %>
+  <%= f.input :color, collection: GamePlayer::COLORS %>
+  <%= f.input :territory_count, label: "Starting Territory Count" %>
+  <%= link_to_remove_association(content_tag(:i, nil, class: "icon-minus icon-white").html_safe + " Remove", f, class: "btn btn-mini btn-danger") %>
 </div>

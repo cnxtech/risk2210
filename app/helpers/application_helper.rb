@@ -47,21 +47,7 @@ module ApplicationHelper
     return "#{@page_title} | Risk Tracker | Risk 2210 A.D." if defined?(@page_title)
     return "Risk Tracker | Risk 2210 A.D."
   end
-  
-  def link_to_remove_fields(name, form)
-    icon = content_tag(:i, nil, class: "icon-minus icon-white").html_safe
-    form.hidden_field(:_destroy) + link_to_function(icon + " " + name, "remove_fields(this)", class: "btn btn-mini btn-danger")
-  end
-  
-  def link_to_add_fields(name, form, association)
-    new_object = form.object.class.reflect_on_association(association).klass.new
-    fields = form.fields_for(association, new_object, child_index: "new_#{association}") do |builder|
-      render(form.object.class.name.pluralize.downcase + "/" + association.to_s.singularize + "_fields", form: builder)
-    end
-    icon = content_tag(:i, nil, class: "icon-plus icon-white").html_safe
-    link_to_function(icon + " " + name, "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")", class: "btn btn-success btn-large")
-  end
-  
+    
   def yes_or_no(boolean)
     boolean ? "Yes" : "No"
   end
