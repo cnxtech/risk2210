@@ -56,9 +56,6 @@ Risk2210::Application.routes.draw do
     post "/turns" => "turns#create"
   end
 
-  ## Mobile Application
-  get "/mobile", to: "mobile#index", as: :mobile
-
   ## Root
   root to: 'pages#home'
 
