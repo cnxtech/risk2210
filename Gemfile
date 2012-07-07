@@ -7,7 +7,6 @@ group :assets do
   gem 'coffee-rails'
   gem 'uglifier'
   gem 'twitter-bootstrap-rails'
-  gem 'therubyracer'
 end
 
 ## Frontend / Views
