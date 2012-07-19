@@ -1,7 +1,7 @@
 Quick Start
   - Game Templates
 
-## Game Trakcer ##
+## Game Tracker ##
 Start year / End year differences
 Add current year counter on each player
 

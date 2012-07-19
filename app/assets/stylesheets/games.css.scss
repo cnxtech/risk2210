@@ -1,14 +1,4 @@
 //****************************************************************************************************************************************
-//** Font
-//****************************************************************************************************************************************
-
-@font-face {
-  font-family: "Gunship";
-  src: url(font-path('gun4f.eot'));
-  src: url(font-path('gun4f.eot')) format('embedded-opentype'), url(font-path('gun4f.woff')) format('woff'), url(font-path('gun4f.ttf')) format('truetype'), url(font-path('gun4f.svg')) format('svg');
-}
-
-//****************************************************************************************************************************************
 //** Variables
 //****************************************************************************************************************************************
 
@@ -34,10 +24,6 @@ $gold: #c69e49;
     border-radius: $border_radius;
   -moz-border-radius: $border_radius;
   -webkit-border-radius: $border_radius;
-}
-
-@mixin riskFont(){
-  font-family: "Gunship";
 }
 
 @mixin container{
@@ -88,7 +74,7 @@ $gold: #c69e49;
 .map{
   width: 175px;
   h3{
-    @include riskFont();
+    font-family: "Gunship";
   }
 }
 
@@ -155,7 +141,7 @@ ul.continent-list{
         font-size: 38px;
         color: #b51500;
         text-shadow: -3px -3px 0 #000;
-        @include riskFont();
+        font-family: "Gunship";
         margin-bottom: 5px;
       }
       .buttons{
@@ -175,7 +161,7 @@ ul.continent-list{
     @include container();
     h3{
       text-align: center;
-      @include riskFont();
+      font-family: "Gunship";
     }
     ul{
       margin: 0 0 0 10px;
@@ -203,10 +189,10 @@ ul.continent-list{
         font-size: 20px;
         height: 100%;
         clear: right;
-        @include riskFont();
+        font-family: "Gunship";
       }
       h2.counter{
-        @include riskFont();
+        font-family: "Gunship";
         // -webkit-text-stroke: 1px #fff;
         text-shadow: -3px -3px 0 #000;
         font-size: 50px;

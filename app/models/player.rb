@@ -25,6 +25,7 @@ class Player
   field :public_profile, type: Boolean, default: true
   field :password_digest, type: String
   field :remember_me_token, type: String
+  field :raw_authorization, type: Hash
 
   ## Associations
   has_many :topics, dependent: :destroy, autosave: true
@@ -139,16 +140,23 @@ class Player
       player = Player.new
       player.provider = auth['provider']
       player.uid = auth['uid']
+      player.raw_authorization = auth
       if auth['info']
-         player.first_name = auth['info']['first_name'] || ""
-         player.last_name = auth['info']['last_name'] || ""
-         player.email = auth['info']['email'] || ""
-         player.handle = auth['info']['nickname'] || ""
-         player.website = auth["info"]["urls"]["Facebook"]
-         player.facebook_image_url = sanitize_facebook_image(auth["info"]["image"])
-         location_parts = auth["extra"]["raw_info"]["location"]["name"].split(",")
-         player.city = location_parts[0].strip
-         player.state = States.decode(location_parts[1])
+        player.first_name = auth['info']['first_name'] || ""
+        player.last_name = auth['info']['last_name'] || ""
+        player.email = auth['info']['email'] || ""
+        player.handle = auth['info']['nickname'] || ""
+        player.website = auth["info"]["urls"]["Facebook"]
+        player.facebook_image_url = sanitize_facebook_image(auth["info"]["image"])
+        
+        if auth["extra"]["raw_info"]["location"]
+          location_parts = auth["extra"]["raw_info"]["location"]["name"].split(",")
+        elsif auth["extra"]["raw_info"]["hometown"]
+          location_parts = auth["extra"]["raw_info"]["hometown"]["name"].split(",")
+        end
+
+        player.city = location_parts[0].strip
+        player.state = States.decode(location_parts[1]) if location_parts[1]
       end
     end
     player.save
