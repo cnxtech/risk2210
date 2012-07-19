@@ -1,11 +1,13 @@
-# Read about factories at http://github.com/thoughtbot/factory_girl
-
 FactoryGirl.define do
   factory :player do
-    provider "MyString"
-    uid "MyString"
-    first_name "MyString"
-    last_name "MyString"
-    email "MyString"
+    provider "facebook"
+    uid "123"
+    handle "Nick"
+    first_name "Nick"
+    last_name "DeSteffen"
+    email "nick.desteffen@gmail.com"
+    password "secret1"
+    password_confirmation "secret1"
+    login_count 1
   end
 end

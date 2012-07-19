@@ -26,6 +26,8 @@ class Player
   field :password_digest, type: String
   field :remember_me_token, type: String
   field :raw_authorization, type: Hash
+  field :login_count, type: Integer, default: 1
+  field :last_login_at, type: DateTime, default: -> { Time.now }
 
   ## Associations
   has_many :topics, dependent: :destroy, autosave: true
@@ -62,7 +64,10 @@ class Player
   end
   
   def self.omniauthorize(auth)
-    Player.where(provider: auth['provider'], uid: auth['uid']).first || self.create_with_omniauth(auth)
+    player = Player.where(provider: auth['provider'], uid: auth['uid']).first || self.create_with_omniauth(auth)
+    player.set_login_stats
+    player.save
+    return player
   end
 
   ## Facebook image size options
@@ -121,11 +126,18 @@ class Player
 
   def authenticate(unencrypted_password)
     if BCrypt::Password.new(password_digest) == unencrypted_password
+      set_login_stats
       set_remember_me_token
-      return self
+      save
+      return true
     else
       return false
     end
+  end
+
+  def set_login_stats
+    self.login_count = self.login_count + 1
+    self.last_login_at = Time.now
   end
   
   private
@@ -136,6 +148,7 @@ class Player
       player.facebook_image_url = sanitize_facebook_image(auth["info"]["image"])
       player.provider = auth['provider']
       player.uid = auth['uid']
+      player.raw_authorization = auth
     else
       player = Player.new
       player.provider = auth['provider']
@@ -176,7 +189,7 @@ class Player
   end
 
   def set_remember_me_token
-    update_attribute(:remember_me_token, SecureRandom.hex(8))
+    self.remember_me_token = SecureRandom.hex(8)
   end
 
   def deliver_welcome_email
