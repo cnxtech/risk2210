@@ -115,6 +115,56 @@ ul.continent-list{
   float: left;
   @include rounded(10px);
 
+  .row{
+    clear: both;
+    display: table-row;
+
+    .column{
+      width: 100px;
+      float: left;
+
+      .avatar{
+        width: 130px;
+        padding: 10px 10px 3px 10px;
+        text-align: center;
+        @include container();
+        img{
+          display: block;
+        }
+        .handle{
+          font-size: 14px;
+          margin-top: 4px;
+        }
+      }
+
+      .turn-controls{
+        margin: 10px 0;
+        padding: 10px;
+        @include container();
+        width: 130px;
+        h3{
+          font-family: "Gunship";
+          font-size: 12px;
+        }
+        h2{
+          text-align: center;
+          font-size: 38px;
+          color: #b51500;
+          text-shadow: -3px -3px 0 #000;
+          font-family: "Gunship";
+          margin-bottom: 5px;
+        }
+        .buttons{
+          text-align: center;
+        }
+      }
+    }
+  }
+
+
+
+  // OLD 
+
   .left-col{
     width: 110px;
     float: left;
