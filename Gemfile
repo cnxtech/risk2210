@@ -40,4 +40,5 @@ group :development, :test do
   gem "factory_girl_rails", ">= 1.4.0"
   gem 'database_cleaner'
   gem 'debugger'
+  gem "ffaker"
 end

@@ -24,8 +24,11 @@ describe Player do
         initial_record = FactoryGirl.create(:player, email: "nick.desteffen@gmail.com", login_count: 2)
 
         player = Player.create_with_omniauth(Fixtures::Facebook.me)
+        initial_record.reload
 
         initial_record.should == player
+        initial_record.provider.should_not be_nil
+        initial_record.uid.should_not be_nil
       end
     end
   end
@@ -50,12 +53,11 @@ describe Player do
   describe "omniauthorize" do
     it "should login the user through their facebook authorization" do
       fixture = Fixtures::Facebook.me
-      player = FactoryGirl.create(:player, email: "nick.desteffen@gmail.com", login_count: 4)
-      player.update_attribute(:uid, fixture["uid"])
+      player = FactoryGirl.create(:facebook_player, email: "nick.desteffen@gmail.com", login_count: 4, uid: fixture["uid"])
       
       authorized_player = Player.omniauthorize(fixture)
       player.reload
-      
+
       player.should == authorized_player
       player.login_count.should == 5
     end
