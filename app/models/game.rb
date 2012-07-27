@@ -48,7 +48,8 @@ class Game
           methods: [:id, :continent_ids],
           include: {
             player: {only: [:handle, :first_name, :last_name, :email], methods: [:profile_image_path]},
-            faction: {only: [:name, :abilities, :classification, :starting_resources]}
+            faction: {only: [:name, :abilities, :classification, :starting_resources]},
+            turns: {only: [:order, :units_collected, :energy_collected, :territories_held]}
           }
         },
         maps:{

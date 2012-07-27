@@ -13,6 +13,7 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
     @model.bind("change:energy", @_updateEnergyDisplay)
     @model.bind("change:energy", @_updateBorderGlow)
     @model.bind("change:units", @_updateUnitsDisplay)
+    @model.turns.bind("add", @_updateTurnsDisplay)
     @model.bind("change:territory_count", @_updateTerritoryDisplay)
     _.defer(@_updateBorderGlow)
     
@@ -41,6 +42,9 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
 
   _updateEnergyDisplay: ()=>
     @_spinCounter(".energy-counter", @model.energy())
+
+  _updateTurnsDisplay: ()=>
+    $(@el).find(".turn-counter").html(@model.turn())
 
   _spinCounter: (selector, end)->
     element = $(@el).find(selector)
