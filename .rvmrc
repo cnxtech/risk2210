@@ -1,1 +1,1 @@
-rvm use 1.9.3-p194@risk2210
+rvm use 1.9.3-p194@risk2210 --create

@@ -5,7 +5,7 @@ class TopicsController < ApplicationController
   before_filter :find_forum
   before_filter :find_topic, only: [:show]
   before_filter :login_required, only: [:create]
-  before_filter :setup_title
+  before_filter :setup_title, except: [:create]
   
   def show
     unless topics_viewed.include?(@topic.id)
@@ -21,6 +21,7 @@ class TopicsController < ApplicationController
     @topic.comments.first.player = current_player
 
     if @topic.save
+      topics_viewed << @topic.id
       redirect_to forum_topic_path(@forum, @topic), notice: "Thanks for posting!"
     else
       @topics = @forum.topics.all

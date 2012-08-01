@@ -1,6 +1,10 @@
-<div class="hero-unit">
-  <h1>Forums</h1>
+<h1>Discussion Forums</h1>
+<div id="forums">
   <% @forums.each do |forum| %>
-    <p><%= link_to forum.name, forum_path(forum) %> &ndash; (<%= forum.topics.count %>)</p>
+    <div class="forum">
+      <h2><%= link_to forum.name, forum_path(forum) %></h2>
+      <p><%= pluralize(forum.topics.count, "topic") %></p>
+      <p><%= forum.description %></p>
+    </div>
   <% end %>
 </div>

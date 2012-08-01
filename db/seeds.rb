@@ -138,8 +138,7 @@ Faction.create(:name => "Tranquility",
                :starting_resources => "3 Energy\nLand Commander\nDiplomat Commander\n1 Space Station\n1 Cease Fire Card (from deck)", 
                :abilities => "When purchasing Command Cards, Can gain 1 Diplomat Card per turn free (This additional card may exceed the 4 card per turn limit).")
 
-Forum.create(name: "Questions & Answers")
-Forum.create(name: "Command Cards")
-Forum.create(name: "General")
-Forum.create(name: "Strategies")
-Forum.create(name: "Expansions")
+Forum.create(name: "Questions & Answers", description: "If you have any questions regarding Risk 2210 A.D. this is the place to ask.")
+Forum.create(name: "General", description: "General discussions regarding Risk 2210 A.D.")
+Forum.create(name: "Risk Tracker", description: "Everything about this site.")
+Forum.create(name: "Expansions", description: "Anything and everything about Risk 2210 A.D. expansions. Suggest new ones or discuss ideas on improving existing ones.")
