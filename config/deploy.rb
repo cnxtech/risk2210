@@ -1,4 +1,5 @@
 require "bundler/capistrano"
+require "capistrano_colors"
 
 set :application, "risk2210"
 set :scm, :git

@@ -31,8 +31,12 @@ gem 'bcrypt-ruby'#, '~> 3.0.0'
 
 ## Operations
 gem 'passenger'
-gem 'capistrano'
 gem 'exception_notification'
+
+group :development do
+  gem 'capistrano', require: false
+  gem 'capistrano_colors', require: false
+end
 
 group :development, :test do
   gem "rspec-rails", ">= 2.8.1"
