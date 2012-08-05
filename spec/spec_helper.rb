@@ -22,3 +22,7 @@ RSpec.configure do |config|
   end
 
 end
+
+def login(player)
+  session[:player_id] = player.id
+end

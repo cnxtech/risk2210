@@ -6,6 +6,7 @@ FactoryGirl.define do
     email { Faker::Internet.free_email }
     login_count 2
     last_login_at { 1.week.ago }
+    public_profile true
   end
   
   factory :player, parent: :base_player do

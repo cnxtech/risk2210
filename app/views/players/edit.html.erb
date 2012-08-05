@@ -13,7 +13,7 @@
         <%= f.input :city %>
         <%= f.input :state, collection: us_states_options %>
         <%= f.input :zip_code %>
-        <%= f.input :image_source, collection: Player::IMAGE_SOURCES, as: :radio, label: "Profile Image Source" %>
+        <%= f.input :image_source, collection: Player::IMAGE_SOURCES, as: :radio_buttons, label: "Profile Image Source" %>
         <%= f.input :public_profile, as: :boolean, wrapper: :checkbox %>
       </div>
     </div>
@@ -42,7 +42,7 @@
   <h3>Remove Account</h3>
   <p>We hate to see you go. If you must, press the red button. All your data will be permanently removed and you will never hear from us again.</p>
   <br>
-  <%= link_to  player_path(@player), method: :delete, class: "btn btn-danger", confirm: "Are you sure you want to remove your account?" do %>
+  <%= link_to  player_path(@player), method: :delete, class: "btn btn-danger", data: {confirm: "Are you sure you want to remove your account?"} do %>
     <i class='icon-trash icon-white'></i> Remove Account
   <% end %>
 <% end %>
