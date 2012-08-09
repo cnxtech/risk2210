@@ -6,7 +6,7 @@ class Topic
   field :subject, type: String
   field :view_count, type: Integer, default: 1
   field :comment_count, type: Integer, default: 0
-  field :last_comment_date, type: DateTime
+  field :last_comment_at, type: DateTime
 
   slug :subject
   

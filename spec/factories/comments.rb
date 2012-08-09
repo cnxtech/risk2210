@@ -1,6 +1,17 @@
-# Read about factories at http://github.com/thoughtbot/factory_girl
-
 FactoryGirl.define do
-  factory :comment do
+  factory :base_comment, class: Comment do
+    player
+    body { Faker::Lorem.sentences }
+    created_at { Time.now }
+    updated_at { Time.now }
   end
+
+  factory :topic_comment, parent: :base_comment do
+    association :commentable, factory: :topic
+  end
+
+  factory :comment_comment, parent: :base_comment do
+    association :commentable, factory: :topic_comment
+  end
+
 end
