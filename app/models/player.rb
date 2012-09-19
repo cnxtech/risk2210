@@ -5,7 +5,10 @@ class Player
   include Mongoid::Timestamps
   include Mongoid::Slug
 
-  IMAGE_SOURCES = %w(Facebook Gravatar)
+  module ImageSource
+    Facebook = "Facebook"
+    Gravatar = "Gravatar"
+  end
   
   ## Field Definitions
   field :provider, type: String
@@ -49,7 +52,7 @@ class Player
   ## Validations
   validates_presence_of :email, :handle
   validates_uniqueness_of :email, :handle
-  validates_inclusion_of :image_source, in: IMAGE_SOURCES, allow_blank: true
+  validates_inclusion_of :image_source, in: %w(Facebook Gravatar), allow_blank: true
   validates_format_of :email, with: EmailAddressValidation::EMAIL_ADDRESS_EXACT_PATTERN, allow_blank: true
   validates_confirmation_of :password
   validates_presence_of :password_digest, allow_blank: true
@@ -75,9 +78,9 @@ class Player
 
   def profile_image_path(size=:normal)
     default_avatar_path = "http://risk2210.net/assets/default_avatar.png"
-    if image_source == "Facebook" && facebook_image_url
+    if image_source == ImageSource::Facebook && facebook_image_url
       return facebook_image_url + "?type=#{size}"
-    elsif image_source == "Gravatar"
+    elsif image_source == ImageSource::Gravatar
       gravatar_size = case size
         when :square, :small ; 50
         when :normal ; 100
@@ -165,6 +168,7 @@ class Player
         player.handle = auth['info']['nickname'] || ""
         player.website = auth["info"]["urls"]["Facebook"]
         player.facebook_image_url = sanitize_facebook_image(auth["info"]["image"])
+        player.image_source = ImageSource::Facebook
         
         if auth["extra"]["raw_info"]["location"]
           location_parts = auth["extra"]["raw_info"]["location"]["name"].split(",")

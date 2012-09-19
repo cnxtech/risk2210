@@ -18,10 +18,10 @@ class Turn
   private
 
   def update_game_player_stats
-    game_player.update_attributes(energy: energy_collected, 
-                                  units: units_collected, 
+    game_player.update_attributes energy:          energy_collected, 
+                                  units:           units_collected, 
                                   territory_count: territories_held,
-                                  continent_ids: continent_ids)
+                                  continent_ids:   continent_ids
   end
 
 end
