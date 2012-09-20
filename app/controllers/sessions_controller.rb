@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
       login(@session.player, remember_me: params[:session][:remember_me])
     else
       flash.now.alert = "We are sorry, but either your email or password is invalid."
-      render :action => :new
+      render action: :new
     end
   end
   

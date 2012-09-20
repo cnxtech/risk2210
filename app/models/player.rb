@@ -52,7 +52,7 @@ class Player
   ## Validations
   validates_presence_of :email, :handle
   validates_uniqueness_of :email, :handle
-  validates_inclusion_of :image_source, in: %w(Facebook Gravatar), allow_blank: true
+  validates_inclusion_of :image_source, in: [ImageSource::Facebook, ImageSource::Gravatar], allow_blank: true
   validates_format_of :email, with: EmailAddressValidation::EMAIL_ADDRESS_EXACT_PATTERN, allow_blank: true
   validates_confirmation_of :password
   validates_presence_of :password_digest, allow_blank: true
