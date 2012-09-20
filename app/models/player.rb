@@ -58,7 +58,7 @@ class Player
   validates_presence_of :password_digest, allow_blank: true
 
   ## Scopes
-  scope :public_profiles, where(public_profile: true)
+  scope :public_profiles, where(public_profile: true).asc(:created_at)
   
   def full_name
     return handle if handle.present?
