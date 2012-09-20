@@ -6,7 +6,7 @@ group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
   gem 'uglifier'
-  gem 'twitter-bootstrap-rails'
+  gem 'twitter-bootstrap-rails', git: "https://github.com/seyhunak/twitter-bootstrap-rails.git"
 end
 
 ## Frontend / Views
