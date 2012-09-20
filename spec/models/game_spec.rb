@@ -1,5 +1,10 @@
 require 'spec_helper'
 
 describe Game do
-  pending "add some examples to (or delete) #{__FILE__}"
+  
+  describe "has_map?" do
+    it "should return true if a game has a map" do
+      
+    end
+  end
 end

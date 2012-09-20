@@ -1,21 +1,16 @@
 require 'spec_helper'
 
 describe Continent do
+
+  before do
+    load("#{Rails.root}/db/maps.rb")
+  end
   
   describe "ordered" do
     it "should order continents by type first and then by name" do
-      aland = FactoryGirl.create(:land_continent, name: "a")
-      awater = FactoryGirl.create(:water_continent, name: "a")
-      alava = FactoryGirl.create(:lava_continent, name: "a")
-      alunar = FactoryGirl.create(:lunar_continent, name: "a")
-      tlunar = FactoryGirl.create(:lunar_continent, name: "t")
-      twater = FactoryGirl.create(:water_continent, name: "t")
-      tland = FactoryGirl.create(:land_continent, name: "t")
-      tlava = FactoryGirl.create(:lava_continent, name: "t")
+      continents = Continent.ordered.map(&:name)
 
-      continents = Continent.ordered
-
-      continents.should == [aland, tland, alava, tlava, alunar, tlunar, awater, twater]
+      continents.should == ["Africa", "Amazonis", "Angeln", "Arcadia", "Asia", "Australia", "Automin", "Avalon", "Balt", "Byfed", "Casius", "Cymru", "Ecclesia", "Eden", "Europe", "Galilei", "Ghaul", "Granada", "Hoenheim", "Narkom", "North America", "Seaxna", "Skandi", "South America", "Tharsis", "Ugricya", "Vulcan", "Caprica", "Khell", "Magreb", "Mashriq", "Nuraghe", "Soter", "1 Ceres", "243 Ida", "4 Vesta", "Cresinion", "Dactyl", "Delphot", "Federation", "New America", "Norseland", "Sajon", "Acidalium", "Arabia", "Asia Pacific", "Indian", "Isidis", "North Atlantic", "Propontis", "South Atlantic", "SungTzu", "US Pacific", "Utopia"]
     end
   end
 

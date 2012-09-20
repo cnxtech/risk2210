@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Expansions::FactionsController do
 
   before do
-    Rails.application.load_seed
+    load("#{Rails.root}/db/factions.rb")
   end
 
   describe "index" do
