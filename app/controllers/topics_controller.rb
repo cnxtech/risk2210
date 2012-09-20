@@ -33,11 +33,11 @@ class TopicsController < ApplicationController
   private
   
   def find_forum
-    @forum = Forum.find_by_slug(params[:forum_id])
+    @forum = Forum.find(params[:forum_id])
   end
   
   def find_topic
-    @topic = Topic.find_by_slug(params[:id])
+    @topic = Topic.find(params[:id])
   end
 
   def topics_viewed

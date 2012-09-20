@@ -10,7 +10,7 @@ class Game
   
   has_and_belongs_to_many :maps
   has_many :game_players, autosave: true, dependent: :destroy
-  has_many :turns, order: "order"
+  has_many :turns
   belongs_to :creator, class_name: "Player"
     
   accepts_nested_attributes_for :game_players, allow_destroy: true

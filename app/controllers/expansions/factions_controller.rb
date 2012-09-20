@@ -13,7 +13,7 @@ module Expansions
     end
     
     def show
-      @faction = Faction.where(slug: params[:id]).first
+      @faction = Faction.find(params[:id])
       @page_title = "#{@faction.name} Faction"
       
       respond_with(@faction)

@@ -67,7 +67,7 @@ class PlayersController < ApplicationController
   private
   
   def find_player
-    @player = Player.find_by_slug(params[:id])
+    @player = Player.find(params[:id])
   end
   
   def authorize_current_player

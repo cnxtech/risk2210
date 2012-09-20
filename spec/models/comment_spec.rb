@@ -9,7 +9,7 @@ describe Comment do
       comment = FactoryGirl.create(:topic_comment, commentable: topic)
 
       topic.comment_count.should eq(11)
-      topic.last_comment_at.should === DateTime.now
+      topic.last_comment_at.should === DateTime.now.utc
     end
   end
 

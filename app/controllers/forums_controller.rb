@@ -8,7 +8,7 @@ class ForumsController < ApplicationController
   end
   
   def show
-    @forum = Forum.find_by_slug(params[:id])
+    @forum = Forum.find(params[:id])
     @topics = @forum.topics.all
     @topic = Topic.new
     @topic.comments.build

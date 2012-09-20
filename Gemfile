@@ -20,9 +20,8 @@ gem "ejs"
 gem "eco"
 
 ## Mongo DB
-gem "mongoid", ">= 2.3.3"
-gem "bson_ext", ">= 1.3.1"
-gem "mongoid_slug"#, "0.8.3"
+gem "mongoid", ">= 3.0.0"
+gem "mongoid_slug", "1.0.0.rc2"
 
 ## Authentication
 gem "omniauth"#, ">= 1.0.0"
