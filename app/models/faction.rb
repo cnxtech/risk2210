@@ -16,6 +16,8 @@ class Faction
   attr_accessible :name, :classification, :starting_resources, :abilities, :official
   
   validates_presence_of :name, :classification, :starting_resources, :abilities
+
+  scope :non_default, ne(name: "Default")
   
   def starting_resources
     read_attribute(:starting_resources).split("\n")
@@ -23,10 +25,6 @@ class Faction
 
   def self.random
     Faction.all.sample(1).first
-  end
-
-  def self.non_default
-    all.reject{|faction| faction.name == "Default"}
   end
 
   def fusion_conservancy?
