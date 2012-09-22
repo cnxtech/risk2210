@@ -64,15 +64,13 @@ module Risk2210
     end
 
     ActionMailer::Base.prepend_view_path "#{Rails.root}/app/mailer_views"
-    config.action_mailer.delivery_method = :smtp
-    config.action_mailer.smtp_settings = {
-      :address              => "smtp.gmail.com",
-      :port                 => 587,
-      :domain               => 'risk2210.net',
-      :user_name            => 'risk2210.net',
-      :password             => 'risk2210ad.net',
-      :authentication       => 'plain',
-      :enable_starttls_auto => true 
+    ActionMailer::Base.smtp_settings = {
+      address:        "smtp.sendgrid.net",
+      port:           "25",
+      authentication: :plain,
+      user_name:      ENV['SENDGRID_USERNAME'],
+      password:       ENV['SENDGRID_PASSWORD'],
+      domain:         ENV['SENDGRID_DOMAIN']
     }
 
   end
