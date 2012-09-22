@@ -15,6 +15,8 @@ class Turn
 
   after_create :update_game_player_stats
 
+  validates_presence_of :game_player_id
+
   private
 
   def update_game_player_stats

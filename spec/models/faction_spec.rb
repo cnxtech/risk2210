@@ -3,8 +3,7 @@ require 'spec_helper'
 describe Faction do
 
   before do
-    load("#{Rails.root}/db/factions.rb")
-    load("#{Rails.root}/db/maps.rb")
+    load_factions
   end
 
   describe "starting_resources" do

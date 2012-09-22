@@ -3,7 +3,7 @@ require 'spec_helper'
 describe FactionsHelper do
 
   before do
-    load("#{Rails.root}/db/factions.rb")
+    load_factions
     @church_of_him = Faction.where(name: "Church of Him").first
   end
 

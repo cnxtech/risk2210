@@ -7,9 +7,6 @@ class GamesController < ApplicationController
   
   active_tab :tracker
 
-  def index
-  end
-
   def new
     @game = Game.new(location: current_player.location)
     @game.game_players.build(player_id: current_player.id)
@@ -29,7 +26,6 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
-    @turn = @game.turns.build
   end
 
   private

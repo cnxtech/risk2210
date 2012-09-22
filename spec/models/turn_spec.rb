@@ -3,8 +3,8 @@ require 'spec_helper'
 describe Turn do
 
   before do
-    load("#{Rails.root}/db/factions.rb")
-    load("#{Rails.root}/db/maps.rb")
+    load_factions
+    load_maps
   end
   
   describe "update_game_player_stats" do

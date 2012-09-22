@@ -19,10 +19,19 @@ RSpec.configure do |config|
 
   config.before(:each) do
     DatabaseCleaner.clean
+    Mongoid::IdentityMap.clear
   end
 
 end
 
 def login(player)
   session[:player_id] = player.id
+end
+
+def load_factions
+  load("#{Rails.root}/db/factions.rb")
+end
+
+def load_maps
+  load("#{Rails.root}/db/maps.rb")
 end

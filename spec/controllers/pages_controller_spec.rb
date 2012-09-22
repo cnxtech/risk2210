@@ -31,7 +31,7 @@ describe PagesController do
 
   describe "api_docs" do
     it "should render" do
-      load("#{Rails.root}/db/factions.rb")
+      load_factions
       FactoryGirl.create(:player)
       
       get :api_docs
