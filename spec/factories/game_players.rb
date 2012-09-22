@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :game_player do
     player
-    faction
+    faction_id 0
     color { GamePlayer::COLORS.sample } 
     territory_count 12
     energy 4
