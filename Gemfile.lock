@@ -117,10 +117,6 @@ GEM
       moped (~> 1.1)
       origin (~> 1.0)
       tzinfo (~> 0.3.22)
-    mongoid-rspec (1.5.4)
-      mongoid (>= 3.0.1)
-      rake
-      rspec (>= 2.9)
     mongoid_slug (1.0.0.rc2)
       mongoid (~> 3.0)
       stringex (~> 1.4)
@@ -238,7 +234,6 @@ DEPENDENCIES
   ffaker
   jquery-rails
   mongoid (>= 3.0.0)
-  mongoid-rspec (>= 1.4.4)
   mongoid_slug (= 1.0.0.rc2)
   omniauth
   omniauth-facebook
