@@ -5,7 +5,7 @@ set :application, "risk2210"
 set :scm, :git
 set :repository,  "git@github.com:nick-desteffen/risk2210.git"
 set :branch, "master"
-set :user, "ubuntu"
+set :user, "commander"
 set :deploy_to, "/opt/apps/risk2210"
 set :use_sudo, false
 
