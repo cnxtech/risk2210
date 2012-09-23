@@ -1,27 +1,36 @@
 # Risk 2210 Website
 
-## Installation Instructions
+## Server Installation Instructions
 
-### Install git
-[http://git-scm.com/](http://git-scm.com/)
+### Ruby
+curl -L https://raw.github.com/nick-desteffen/ruby-bootstrap/master/bootstrap_ruby_193.sh | sudo bash
 
-### Install MongoDB
-[http://www.mongodb.org](http://www.mongodb.org/)
+### MongoDB
+curl -L https://raw.github.com/nick-desteffen/mongodb-bootstrap/master/bootstrap_mongodb.sh | sudo bash
 
-### Install RVM
-[http://beginrescueend.com/](http://beginrescueend.com/)
+### Git
+sudo apt-get install -y git
 
-### Create Gemset
-```rvm gemset create risk2210```
+### Passenger & Nginx
+sudo gem install passenger  
+sudo passenger-install-nginx-module  
+cd /etc/init.d  
+sudo wget https://raw.github.com/nick-desteffen/nginx-init-ubuntu-passenger/master/nginx  
+sudo update-rc.d nginx defaults  
+sudo chmod +x nginx  
+sudo /etc/init.d/nginx start  
 
-### Install Bundler
-```gem install bundler```
+sudo mkdir -p /var/www/apps  
+sudo chmod 755 -R /var/www/apps  
 
-### Install project gems
-```bundle install```
+### Create User
+sudo useradd -m -s /bin/bash nickd  
+sudo passwd nickd  
+sudo vi /etc/sudoers  
+  -- Add entry  
 
-### Seed database
-```bundle exec rake db:seed```
+Login as nickd && copy id_rsa.pub to ~/.ssh/authorized_keys
 
-### Run passenger
-```bundle exec passenger start```
+### Disable SSH password authentication
+sudo vi /etc/sshd_config  
+  -- Disable password
