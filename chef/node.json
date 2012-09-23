@@ -1,7 +1,0 @@
-{
-  "user": { 
-    "name": "commander",
-    "password": "$1$/FUZ5LXI$ZnWhuPii.lApvE1GbQGh51"
-  },
-  "run_list": ["recipe[main]"]
-}
