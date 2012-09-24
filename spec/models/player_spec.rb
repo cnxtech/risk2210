@@ -18,6 +18,13 @@ describe Player do
         player.new_record?.should == false
         player.raw_authorization.should == Fixtures::Facebook.dude
       end
+      it "registers another chick with their facebook hash" do
+        player = Player.create_with_omniauth(Fixtures::Facebook.chick)
+
+        player.valid?.should == true
+        player.new_record?.should == false
+        player.raw_authorization.should == Fixtures::Facebook.chick        
+      end
     end
     context "fixture users do exist" do
       it "attaches my facebook info to my existing account" do

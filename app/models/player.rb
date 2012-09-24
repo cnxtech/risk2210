@@ -175,9 +175,10 @@ class Player
         elsif auth["extra"]["raw_info"]["hometown"]
           location_parts = auth["extra"]["raw_info"]["hometown"]["name"].split(",")
         end
-
-        player.city = location_parts[0].strip
-        player.state = States.decode(location_parts[1]) if location_parts[1]
+        if location_parts
+          player.city = location_parts[0].strip
+          player.state = States.decode(location_parts[1]) if location_parts[1]
+        end
       end
     end
     player.save
