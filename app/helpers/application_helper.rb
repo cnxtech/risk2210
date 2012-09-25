@@ -4,7 +4,9 @@ module ApplicationHelper
     return if object.errors.empty?
     header_message = pluralize(object.errors.size, "error") + (object.errors.size > 1 ? " require" : " requires") + " your attention"
     content_tag(:div, class: "alert alert-block alert-error") do
-      concat(content_tag(:a, "&times;".html_safe, class: "close", "data-dismiss" => "alert"))
+      close_link_options = {class: "close", href: "#"}
+      close_link_options["data-dismiss"] = "alert"
+      concat(content_tag(:a, "&times;".html_safe, close_link_options))
       concat(content_tag(:h4, header_message, class: "alert-heading"))
       concat(content_tag(:ul) do
         object.errors.full_messages.each do |message|
@@ -17,12 +19,15 @@ module ApplicationHelper
   def flash_messages
     return if flash.empty?
     html = ""
+    close_link_options = {class: "close", href: "#"}
+    close_link_options["data-dismiss"] = "alert"
+    
     flash.each do |key, value|
       style_class = case key
         when :notice ; "alert-success"
         when :alert ; "alert-error"
       end
-      html += content_tag(:div, (content_tag(:a, "&times;".html_safe, "data-dismiss" => "alert", :class => "close", :href => "#") + value), class: "alert fade in #{style_class}") 
+      html += content_tag(:div, (content_tag(:a, "&times;".html_safe, close_link_options) + value), class: "alert fade in #{style_class}") 
     end
     return html.html_safe
   end

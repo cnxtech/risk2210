@@ -4,19 +4,12 @@ module PlayersHelper
     States::STATES
   end
 
-  def location(player)
-    player.location
-  end
-
   def avatar(player, options={})
-    size = options[:size] || :large
+    size = options.fetch(:size, :large)
     image_path = player.profile_image_path(size)
-    if size == :large
-      size = 150
-    else
-      size = 50
-    end
-    return image_tag(image_path, width: "#{size}px;")
+
+    pixels = size == :large ? 150 : 50
+    return image_tag(image_path, width: "#{pixels}px;", alt: player.full_name)
   end
   
 end
