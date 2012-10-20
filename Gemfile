@@ -6,7 +6,7 @@ group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
   gem 'uglifier'
-  gem 'twitter-bootstrap-rails', git: "https://github.com/seyhunak/twitter-bootstrap-rails.git"
+  gem 'twitter-bootstrap-rails'
 end
 
 ## Frontend / Views
@@ -21,7 +21,7 @@ gem "eco"
 
 ## Mongo DB
 gem "mongoid", ">= 3.0.0"
-gem "mongoid_slug", "1.0.0.rc2"
+gem "mongoid_slug"
 
 ## Authentication
 gem "omniauth"#, ">= 1.0.0"
