@@ -70,5 +70,80 @@ describe Player do
     end
   end
 
+  describe "profile_image_path" do
+    it "should description" do
+      pending
+    end
+  end
+
+  describe "change_password" do
+    it "should description" do
+      pending
+    end
+  end
+
+  describe "nearby_players" do
+    it "should description" do
+      pending
+    end
+  end
+
+  describe "location" do
+    it "format the city, state, and zip code" do
+      player = FactoryGirl.create(:player, city: "Chicago", state: "IL", zip_code: "60640")
+
+      player.location.should == "Chicago, IL 60640"
+    end
+  end
+
+  describe "password=" do
+    it "should description" do
+      pending
+    end
+  end
+
+  describe "authenticate" do
+    it "should description" do
+      pending
+    end
+  end
+
+  describe "set_login_stats" do
+    it "should description" do
+      pending
+    end
+  end
+
+  describe "generate_gravatar_hash" do
+    it "should generate the hash if the email is present" do
+      player = FactoryGirl.build(:player, gravatar_hash: nil)
+
+      player.save
+
+      player.reload.gravatar_hash.should_not be_nil
+    end
+  end
+
+  describe "set_remember_me_token" do
+    it "should description" do
+      pending
+    end
+  end
+
+  describe "deliver_welcome_email" do
+    it "should description" do
+      pending
+    end
+  end
+
+  describe "valid_password?" do
+    it "should return true if the unencrypted_password matches the player's password" do
+      player = FactoryGirl.build(:player, password: "password", password_confirmation: "password")
+
+      player.send(:valid_password?, "password").should == true
+      player.send(:valid_password?, "password1").should == false
+    end
+  end
+
 end
 

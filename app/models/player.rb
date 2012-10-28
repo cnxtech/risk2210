@@ -46,7 +46,7 @@ class Player
   attr_accessible :email, :first_name, :last_name, :handle, :city, :state, :zip_code, :bio, :website, :image_source, :public_profile, :password, :password_confirmation, :old_password
 
   ## Callbacks
-  before_save :generate_gravatar_hash, if: :email_changed?
+  before_save :generate_gravatar_hash
   after_create :deliver_welcome_email
 
   ## Validations
@@ -60,13 +60,6 @@ class Player
   ## Scopes
   scope :public_profiles, where(public_profile: true).asc(:created_at)
     
-  def self.omniauthorize(auth)
-    player = Player.where(provider: auth['provider'], uid: auth['uid']).first || self.create_with_omniauth(auth)
-    player.set_login_stats
-    player.save
-    return player
-  end
-
   ## Facebook image size options
   ## square=50x50, small=50xVariable, normal=100xVariable, large=200xVariable
 
@@ -102,12 +95,9 @@ class Player
 
   def location
     address = ""
-    if city.present? && state.present?
-      address = city + ", " + state
-    end
-    if zip_code.present?
-      address = address + " " + zip_code
-    end
+    address = city if city.present?
+    address = "#{address}, #{state}" if state.present?
+    address = "#{address} #{zip_code}" if zip_code.present?
     return address
   end
 
@@ -141,8 +131,13 @@ class Player
     self.login_count = self.login_count + 1
     self.last_login_at = Time.now
   end
-  
-  private
+
+  def self.omniauthorize(auth)
+    player = Player.where(provider: auth['provider'], uid: auth['uid']).first || self.create_with_omniauth(auth)
+    player.set_login_stats
+    player.save
+    return player
+  end
   
   def self.create_with_omniauth(auth)
     player = Player.where(email: auth['info']['email']).first
@@ -185,10 +180,11 @@ class Player
     return facebook_image_url.gsub("?type=square", "")
   end
 
+private
+
   def generate_gravatar_hash
-    if email.present?
-      hash = Digest::MD5.hexdigest(email)
-      write_attribute(:gravatar_hash, hash)
+    if email.present? && email_changed?
+      self.gravatar_hash = Digest::MD5.hexdigest(email)
     end
   end
 
