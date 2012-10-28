@@ -97,8 +97,12 @@ describe Player do
   end
 
   describe "password=" do
-    it "should description" do
-      pending
+    it "should encrypt the password and set the password_digest field" do
+      player = FactoryGirl.build(:player, password: nil)
+
+      player.password = "secret1"
+
+      player.password_digest.should_not be_nil
     end
   end
 

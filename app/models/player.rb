@@ -1,6 +1,4 @@
 class Player
-  require 'bcrypt'
-
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Slug
@@ -112,7 +110,7 @@ class Player
   def password=(unencrypted_password)
     @password = unencrypted_password
     unless unencrypted_password.blank?
-      self.password_digest = BCrypt::Password.create(unencrypted_password)
+      self.password_digest = BCrypt::Password.create(unencrypted_password, cost: Rails.configuration.password_cost)
     end
   end
 
