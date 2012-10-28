@@ -22,7 +22,7 @@ class Session
   def authenticated?
     return false unless valid?
     @player = Player.where(email: email).first
-    if @player && @player.password_digest && @player.authenticate(password)
+    if @player && @player.authenticate(password)
       return true
     else
       return false

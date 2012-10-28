@@ -190,7 +190,7 @@ private
   end
 
   def valid_password?(unencrypted_password)
-    BCrypt::Password.new(password_digest) == unencrypted_password
+    password_digest.present? && BCrypt::Password.new(password_digest) == unencrypted_password
   end
 
 end

@@ -33,8 +33,7 @@ module ApplicationHelper
   end
 
   def navigation_item(title, path, key=nil)
-    style_class = ""
-    style_class = "active" if key == controller.active_tab
+    style_class = key == controller.active_tab ? "active" : ""
     content_tag(:li, link_to(title, path), class: style_class)
   end
   
@@ -66,7 +65,7 @@ module ApplicationHelper
   end
 
   def facebook_button(options={})
-    size = options.fetch(:size) { "" }
+    size = options.fetch(:size, "")
     button = content_tag(:i, "", class: "icon-facebook-sign icon-large") + " Login with Facebook"
     link_to button, facebook_authentication_path, class: "btn btn-inverse #{size}"
   end
