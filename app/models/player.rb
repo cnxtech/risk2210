@@ -93,7 +93,7 @@ class Player
   end
 
   def change_password(password_attributes={})
-    if password_digest.present? && !authenticate(password_attributes.delete(:old_password))
+    if password_digest.present? && !valid_password?(password_attributes.delete(:old_password))
       errors.add(:base, "Old password doesn't match") 
       return false
     else
@@ -102,6 +102,7 @@ class Player
   end
 
   def nearby_players
+    ## TODO
     Player.public_profiles
   end
 
@@ -132,7 +133,7 @@ class Player
   end
 
   def authenticate(unencrypted_password)
-    if BCrypt::Password.new(password_digest) == unencrypted_password
+    if valid_password?(unencrypted_password)
       set_login_stats
       set_remember_me_token
       save
@@ -203,6 +204,10 @@ class Player
 
   def deliver_welcome_email
     #PlayerMailer.welcome_email(self).deliver
+  end
+
+  def valid_password?(unencrypted_password)
+    BCrypt::Password.new(password_digest) == unencrypted_password
   end
 
 end

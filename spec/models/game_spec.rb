@@ -3,9 +3,6 @@ require 'spec_helper'
 describe Game do
   
   before do
-    load("#{Rails.root}/db/factions.rb")
-    load("#{Rails.root}/db/maps.rb")
-
     @game_player_attributes = {}
     2.times do |index|
       player = FactoryGirl.create(:player)
@@ -19,7 +16,6 @@ describe Game do
 
   describe "has_map?" do
     it "should return true if a game has a map" do
-
       game.has_map?(Map.find(map_ids[0])).should == true
       game.has_map?(Map.find(map_ids[1])).should == true
       game.has_map?(Map.find(map_ids[2])).should == false
