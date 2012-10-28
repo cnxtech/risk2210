@@ -1,15 +1,53 @@
 require 'spec_helper'
 
-# Specs in this file have access to a helper object that includes
-# the FactionsHelper. For example:
-#
-# describe ApplicationHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       helper.concat_strings("this","that").should == "this that"
-#     end
-#   end
-# end
 describe ApplicationHelper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  
+  describe "error_message_for" do
+    it "should description" do
+      pending
+    end
+  end
+
+  describe "flash_messages" do
+    it "should description" do
+      pending
+    end
+  end
+
+  describe "navigation_item" do
+    it "should description" do
+      pending
+    end
+  end
+
+  describe "format_timestamp" do
+    it "should description" do
+      pending
+    end
+  end
+
+  describe "format_date" do
+    it "should description" do
+      pending
+    end
+  end
+
+  describe "page_title" do
+    it "should description" do
+      pending
+    end
+  end
+
+  describe "format_markdown" do
+    it "should description" do
+      pending
+    end
+  end
+
+  describe "facebook_button" do
+    it "should description" do
+      pending
+    end
+  end
+
 end

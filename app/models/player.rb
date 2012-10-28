@@ -206,38 +206,3 @@ class Player
   end
 
 end
-
-
-# --- !ruby/hash:OmniAuth::AuthHash
-# provider: facebook
-# uid: '753509698'
-# info: !ruby/hash:OmniAuth::AuthHash::InfoHash
-#   nickname: nick.desteffen
-#   email: nick.desteffen@gmail.com
-#   name: Nick DeSteffen
-#   first_name: Nick
-#   last_name: DeSteffen
-#   image: http://graph.facebook.com/753509698/picture?type=square
-#   urls: !ruby/hash:Hashie::Mash
-#     Facebook: http://www.facebook.com/nick.desteffen
-#   location: Chicago, Illinois
-# credentials: !ruby/hash:Hashie::Mash
-#   token: AAADMjLRob70BAAUV32EicRHN3owCqrySC3w5K847rCgpkGZBQL1VHZA4ARJG9ECg9DQ3fFETgnz0pGyi8LKZCbWgZAts1lQZD
-#   expires: false
-# extra: !ruby/hash:Hashie::Mash
-#   raw_info: !ruby/hash:Hashie::Mash
-#     id: '753509698'
-#     name: Nick DeSteffen
-#     first_name: Nick
-#     last_name: DeSteffen
-#     link: http://www.facebook.com/nick.desteffen
-#     username: nick.desteffen
-#     location: !ruby/hash:Hashie::Mash
-#       id: '108659242498155'
-#       name: Chicago, Illinois
-#     gender: male
-#     email: nick.desteffen@gmail.com
-#     timezone: -6
-#     locale: en_US
-#     verified: true
-#     updated_time: '2011-10-23T20:08:53+0000'

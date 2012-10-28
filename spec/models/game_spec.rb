@@ -32,4 +32,25 @@ describe Game do
     end
   end
 
+  describe "percent_complete" do
+    it "should description" do
+      pending
+    end
+  end
+
+  describe "turn_count" do
+    it "should description" do
+      pending
+    end
+  end
+
+  describe "validations" do
+    it "should be invalid with less than 2 players" do
+      pending
+    end
+    it "should be invalid without any maps" do
+      pending
+    end
+  end
+
 end

@@ -11,7 +11,8 @@ RSpec.configure do |config|
   config.infer_base_class_for_anonymous_controllers = false
   config.render_views
   config.order = :random
-
+  config.include Mongoid::Matchers
+  
   config.before(:suite) do
     DatabaseCleaner.strategy = :truncation
     DatabaseCleaner.orm = "mongoid"

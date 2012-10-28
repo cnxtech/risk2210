@@ -17,25 +17,25 @@ describe CommentsController do
       login player
     end
     it "should reload the topics/show page if there were any errors" do
-      
+      pending
     end
   end
 
   describe "edit" do
     it "should have the comment to edit" do
-      
+      pending
     end
     it "should not allow a comment to be edited by player other than the player that created it" do
-      
+      pending
     end
   end
 
   describe "update" do
     it "should update the comment if everything is valid" do
-      
+      pending
     end
     it "should reload the topics/show page if the player tries to change the comment's body to be blank" do
-      
+      pending
     end
   end
 
