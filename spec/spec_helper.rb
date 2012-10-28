@@ -14,7 +14,9 @@ RSpec.configure do |config|
   config.include Mongoid::Matchers
   
   config.before(:suite) do
-    DatabaseCleaner.strategy = :truncation
+    load_factions
+    load_maps
+    DatabaseCleaner.strategy = :truncation, {except: ["factions", "maps"]}
     DatabaseCleaner.orm = "mongoid"
   end
 

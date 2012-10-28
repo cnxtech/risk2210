@@ -2,10 +2,6 @@ require 'spec_helper'
 
 describe Expansions::FactionsController do
 
-  before do
-    load_factions
-  end
-
   describe "index" do
     context "html" do
       it "should have a listing of all non-default factions" do

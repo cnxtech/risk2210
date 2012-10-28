@@ -2,11 +2,6 @@ require 'spec_helper'
 
 describe Turn do
 
-  before do
-    load_factions
-    load_maps
-  end
-  
   describe "update_game_player_stats" do
     it "should update the current statistics on the game player model" do
       ## Setup boards

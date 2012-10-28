@@ -31,7 +31,6 @@ describe PagesController do
 
   describe "api_docs" do
     it "should render" do
-      load_factions
       FactoryGirl.create(:player)
       
       get :api_docs

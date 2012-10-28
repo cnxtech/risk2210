@@ -2,10 +2,6 @@ require 'spec_helper'
 
 describe Faction do
 
-  before do
-    load_factions
-  end
-
   describe "starting_resources" do
     it "should return an array of starting resources" do
       Faction.random.starting_resources.is_a?(Array).should == true

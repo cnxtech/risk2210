@@ -8,11 +8,6 @@ describe GamesController do
   let(:faction_ids) { Faction.all.map(&:id).sample(2) }
   let(:map_ids) { Map.all.map(&:id).sample(2) }
 
-  before do
-    load_factions
-    load_maps
-  end
-
   describe "new" do
     it "should render a form and have 2 game players" do
       login player1

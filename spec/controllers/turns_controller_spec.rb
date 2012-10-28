@@ -9,10 +9,6 @@ describe TurnsController do
   let(:map_ids) { Map.all.map(&:id).sample(2) }
 
   before do
-    load_factions
-    load_maps
-    
-    ## Setup game
     game_players = {}
     game_players["0"] = {color: "Blue", player_id: player1.id, faction_id: faction_ids[0]}
     game_players["1"] = {color: "Green", player_id: player2.id, faction_id: faction_ids[1]}
