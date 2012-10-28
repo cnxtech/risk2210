@@ -77,8 +77,25 @@ describe Player do
   end
 
   describe "change_password" do
-    it "should description" do
-      pending
+
+    let(:player) { FactoryGirl.create(:player, password: "secret1", password_confirmation: "secret1")}
+
+    it "should add an error if the old password doesn't match" do
+      success = player.change_password(old_password: "abc123", password: "abc123", password_confirmation: "abc123")
+
+      success.should == false
+      player.errors[:base].include?("Old password doesn't match").should == true
+    end
+    it "should update the password if the old password matches and the new password matches the confirmation" do
+      success = player.change_password(old_password: "secret1", password: "abc123", password_confirmation: "abc123")
+
+      success.should == true
+    end
+    it "should add a confirmation error if the new password doesn't match the confirmation" do
+      success = player.change_password(old_password: "secret1", password: "abc123", password_confirmation: "abc321")
+
+      success.should == false
+      player.errors[:password].should_not be_nil
     end
   end
 
@@ -107,14 +124,30 @@ describe Player do
   end
 
   describe "authenticate" do
-    it "should description" do
-      pending
+
+    let(:player) { FactoryGirl.create(:player, password: "secret1")}
+
+    context "correct password" do
+      it "should return true, set login stats, set remember_me token and save" do
+        pending
+      end
+    end
+    context "wrong password" do
+      it "should return false" do
+        player.authenticate("abc12").should == false
+      end
     end
   end
 
   describe "set_login_stats" do
-    it "should description" do
-      pending
+    it "should increment the login_count and set the last_login_at to now" do
+      player = FactoryGirl.create(:player, login_count: 10, last_login_at: 10.days.ago)
+      Time.stub(:now).and_return(Time.mktime(2012, 10, 22, 14, 30))
+      
+      player.set_login_stats
+
+      player.login_count.should == 11
+      player.last_login_at.to_s.should == "2012-10-22T19:30:00+00:00"
     end
   end
 
@@ -129,14 +162,24 @@ describe Player do
   end
 
   describe "set_remember_me_token" do
-    it "should description" do
-      pending
+    it "should set the remember me token on the player" do
+      player = FactoryGirl.build(:player, remember_me_token: nil)
+
+      SecureRandom.should_receive(:hex).with(8).and_return("28eae6141a407dfd")
+      player.send(:set_remember_me_token)
+
+      player.remember_me_token.should_not be_nil
     end
   end
 
   describe "deliver_welcome_email" do
-    it "should description" do
-      pending
+    xit "should send an email upon account creation" do
+      ActionMailer::Base.deliveries.clear
+      player = FactoryGirl.build(:player)
+
+      player.save
+
+      ActionMailer::Base.deliveries.size.should == 1
     end
   end
 

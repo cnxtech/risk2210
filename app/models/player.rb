@@ -79,7 +79,7 @@ class Player
 
   def change_password(password_attributes={})
     if password_digest.present? && !valid_password?(password_attributes.delete(:old_password))
-      errors.add(:base, "Old password doesn't match") 
+      errors.add(:base, "Old password doesn't match")
       return false
     else
       return update_attributes(password_attributes)
