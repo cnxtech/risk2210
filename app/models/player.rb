@@ -86,11 +86,6 @@ class Player
     end
   end
 
-  def nearby_players
-    ## TODO
-    Player.public_profiles
-  end
-
   def location
     address = ""
     address = city if city.present?
