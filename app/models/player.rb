@@ -59,13 +59,7 @@ class Player
 
   ## Scopes
   scope :public_profiles, where(public_profile: true).asc(:created_at)
-  
-  def full_name
-    return handle if handle.present?
-    return first_name if first_name.present?
-    return email
-  end
-  
+    
   def self.omniauthorize(auth)
     player = Player.where(provider: auth['provider'], uid: auth['uid']).first || self.create_with_omniauth(auth)
     player.set_login_stats
