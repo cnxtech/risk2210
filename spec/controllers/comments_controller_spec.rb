@@ -13,29 +13,89 @@ describe CommentsController do
       response.should redirect_to login_path
       flash.now[:alert].should_not be_nil
     end
-    it "should create the comment if everything is valid" do
-      login player
+    context "parent is a topic" do
+      it "should create the comment if everything is valid" do
+        login player
+
+        expect{
+          post :create, forum_id: forum.slug, topic_id: topic.slug, comment: {body: "This is a great game!"}
+        }.to change(topic.comments, :count).by(1)
+
+        response.should redirect_to(forum_topic_path(forum, topic))
+        flash.notice.should_not be_nil
+        assigns(:comment).player.should == player
+      end
+      it "should reload the topics/show page if there were any errors" do
+        login player
+        
+        expect{
+          post :create, forum_id: forum.slug, topic_id: topic.slug, comment: {body: ""}
+        }.to change(topic.comments, :count).by(0)
+
+        response.should render_template("topics/show")
+        flash.now[:alert].should_not be_nil
+      end
     end
-    it "should reload the topics/show page if there were any errors" do
-      pending
+    context "parent is another comment" do
+      before do
+        login player
+        @original_comment = FactoryGirl.create(:topic_comment, commentable: topic)
+      end
+      it "should create the comment if everything is valid" do
+        expect{
+          post :create, forum_id: forum.slug, topic_id: topic.slug, comment_parent_id: @original_comment.id, comment: {body: "This is a great game!"}      
+        }.to change(@original_comment.comments, :count).by(1)
+
+        response.should redirect_to(forum_topic_path(forum, topic))
+        flash.notice.should_not be_nil
+        assigns(:comment).player.should == player
+      end
+      it "should reload the topics/show page if there were any errors" do
+        expect{
+          post :create, forum_id: forum.slug, topic_id: topic.slug, comment: {body: ""}
+        }.to change(@original_comment.comments, :count).by(0)
+
+        response.should render_template("topics/show")
+        flash.now[:alert].should_not be_nil
+      end
     end
   end
 
   describe "edit" do
     it "should have the comment to edit" do
-      pending
+      comment = FactoryGirl.create(:topic_comment, commentable: topic, player: player)      
+      login player
+
+      get :edit, forum_id: forum.id, topic_id: topic.id, id: comment.id
+
+      assigns(:comment).should == comment
     end
     it "should not allow a comment to be edited by player other than the player that created it" do
-      pending
+      comment = FactoryGirl.create(:topic_comment, commentable: topic)
+      login player
+
+      expect{
+        get :edit, forum_id: forum.id, topic_id: topic.id, id: comment.id
+      }.to raise_error(Mongoid::Errors::DocumentNotFound)
     end
   end
 
   describe "update" do
+    before do
+      @comment = FactoryGirl.create(:topic_comment, commentable: topic, player: player)      
+      login player
+    end
     it "should update the comment if everything is valid" do
-      pending
+      put :update, forum_id: forum.id, topic_id: topic.id, id: @comment.id, comment: {body: "This is the new body"}
+
+      response.should redirect_to forum_topic_path(forum, topic)
+      flash.notice.should_not be_nil
     end
     it "should reload the topics/show page if the player tries to change the comment's body to be blank" do
-      pending
+      put :update, forum_id: forum.id, topic_id: topic.id, id: @comment.id, comment: {body: ""}
+
+      response.should render_template(:edit)
+      flash.now[:alert].should_not be_nil
     end
   end
 

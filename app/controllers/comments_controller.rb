@@ -9,12 +9,12 @@ class CommentsController < ApplicationController
 
   def create
     if params[:comment_parent_id].present?
-      parent_comment = Comment.find(params[:comment_parent_id])
-      @comment = parent_comment.comments.build(params[:comment])
+      parent = Comment.find(params[:comment_parent_id])
     else
-      @comment = @topic.comments.build(params[:comment])
+      parent = @topic
     end
     
+    @comment = parent.comments.build(params[:comment])
     @comment.player = current_player
     if @comment.save
       redirect_to forum_topic_path(@forum, @topic), notice: "Thanks for posting!"
