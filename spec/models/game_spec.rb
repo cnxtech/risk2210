@@ -29,23 +29,40 @@ describe Game do
   end
 
   describe "percent_complete" do
-    it "should description" do
-      pending
+    it "should return the percentage of the game that has been completed" do
+      3.times do
+        FactoryGirl.create(:turn, game: game, game_player: game.game_players.first)
+        FactoryGirl.create(:turn, game: game, game_player: game.game_players.second)
+      end
+
+      game.percent_complete.should == 60.0
     end
   end
 
   describe "turn_count" do
-    it "should description" do
-      pending
+    it "should return the total number of turns the game has" do
+      3.times do
+        FactoryGirl.create(:turn, game: game, game_player: game.game_players.first)
+        FactoryGirl.create(:turn, game: game, game_player: game.game_players.second)
+      end
+
+      game.turn_count.should == 6
     end
   end
 
   describe "validations" do
     it "should be invalid with less than 2 players" do
-      pending
+      @game_player_attributes.delete("0")
+      game = FactoryGirl.build(:game, map_ids: map_ids[0..1], game_players_attributes: @game_player_attributes)
+
+      game.valid?.should == false
+      game.errors[:base].include?("You must have at least two players.").should == true
     end
     it "should be invalid without any maps" do
-      pending
+      game = FactoryGirl.build(:game, map_ids: [], game_players_attributes: @game_player_attributes)
+
+      game.valid?.should == false
+      game.errors[:base].include?("You must choose one or more maps to play.").should == true
     end
   end
 

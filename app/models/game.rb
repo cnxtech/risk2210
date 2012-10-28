@@ -6,7 +6,7 @@ class Game
   field :number_of_years, type: Integer, default: 5
   field :notes, type: String
 
-  attr_accessible :location, :years, :notes, :map_ids, :game_players_attributes, :number_of_years
+  attr_accessible :location , :notes, :map_ids, :game_players_attributes, :number_of_years
   
   has_and_belongs_to_many :maps
   has_many :game_players, autosave: true, dependent: :destroy
@@ -27,11 +27,7 @@ class Game
   end
 
   def percent_complete
-    (turns.count.to_f / (number_of_years * game_players.count).to_f) * 100
-  end
-
-  def years
-    turns / game_players.count
+    (turn_count.to_f / (number_of_years * game_players.count).to_f) * 100
   end
 
   def turn_count
