@@ -71,8 +71,20 @@ describe Player do
   end
 
   describe "profile_image_path" do
-    it "should description" do
-      pending
+    it "should return the image from facebook if the image source is facebook" do
+      player = FactoryGirl.create(:player, image_source: Player::ImageSource::Facebook, facebook_image_url: "http://graph.facebook.com/753509648/picture?type=square")
+
+      player.profile_image_path.should == "http://graph.facebook.com/753509648/picture?type=square?type=normal"
+    end
+    it "should return the image from gravatar if the image source is gravatar" do
+      player = FactoryGirl.create(:player, image_source: Player::ImageSource::Gravatar)
+
+      player.profile_image_path.should == "http://www.gravatar.com/avatar/#{player.gravatar_hash}?size=100&default=http%3A%2F%2Frisk2210.net%2Fassets%2Fdefault_avatar.png"
+    end
+    it "should return the default image if no image source is specified" do
+      player = FactoryGirl.create(:player, image_source: nil)
+
+      player.profile_image_path.should == "http://risk2210.net/assets/default_avatar.png"
     end
   end
 
