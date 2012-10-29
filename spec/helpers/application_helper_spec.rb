@@ -2,15 +2,37 @@ require 'spec_helper'
 
 describe ApplicationHelper do
   
-  describe "error_message_for" do
-    it "should description" do
-      pending
+  describe "error_messages_for" do
+    it "builds out error messages with the object" do
+      player = FactoryGirl.build(:player, email: nil)
+      player.valid?
+
+      error_messages = helper.error_messages_for(player)
+      
+      error_messages.should =~ /Email can&#x27;t be blank/
+      error_messages.should =~ /alert-heading/
     end
   end
 
   describe "flash_messages" do
-    it "should description" do
-      pending
+    it "returns nothing if there is no flash" do
+      helper.stub(:flash).and_return({})
+
+      helper.flash_messages.should == nil
+    end
+    it "builds out error flash messages with a close button and error class" do
+      flash_messages = {alert: "Something went wrong"}
+      helper.stub(:flash).and_return(flash_messages)
+
+      helper.flash_messages.should =~ /alert-error/
+      helper.flash_messages.should =~ /Something went wrong/
+    end
+    it "builds out error flash messages with a close button and error class" do
+      flash_messages = {notice: "Something went right"}
+      helper.stub(:flash).and_return(flash_messages)
+
+      helper.flash_messages.should =~ /alert-success/
+      helper.flash_messages.should =~ /Something went right/
     end
   end
 

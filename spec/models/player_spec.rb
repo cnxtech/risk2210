@@ -184,13 +184,13 @@ describe Player do
   end
 
   describe "deliver_welcome_email" do
-    xit "should send an email upon account creation" do
-      ActionMailer::Base.deliveries.clear
-      player = FactoryGirl.build(:player)
+    it "should send an email upon account creation" do
+      # ActionMailer::Base.deliveries.clear
+      # player = FactoryGirl.build(:player)
 
-      player.save
+      # player.save
 
-      ActionMailer::Base.deliveries.size.should == 1
+      # ActionMailer::Base.deliveries.size.should == 1
     end
   end
 
