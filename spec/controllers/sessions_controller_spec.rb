@@ -48,8 +48,45 @@ describe SessionsController do
   end
 
   describe "authenticate_facebook" do
-    it "should authenticate a user via Facebook Connect" do
-      pending
+    
+    before do
+      request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:facebook]
+    end
+
+    context "registration" do
+      it "should authenticate a user via Facebook Connect" do
+        expect{
+          get :authenticate_facebook
+        }.to change(Player, :count).by(1)
+
+        response.should redirect_to new_game_path
+        flash[:notice].should_not be_nil
+      end
+    end
+    context "logging in" do
+      it "should login a user" do
+        player = Player.omniauthorize(OmniAuth.config.mock_auth[:facebook])
+
+        expect{
+          get :authenticate_facebook
+        }.to change(Player, :count).by(0)
+
+        response.should redirect_to new_game_path
+        flash[:notice].should_not be_nil
+      end
+    end
+    context "attaching facebook authencation info to an existing user" do
+      it "should update the existing user with Facebook's info" do
+        player = FactoryGirl.create(:player, email: "payton@dog.com")
+
+        expect{
+          get :authenticate_facebook
+        }.to change(Player, :count).by(0)
+
+        player.reload.uid.should_not be_nil
+        response.should redirect_to new_game_path
+        flash[:notice].should_not be_nil
+      end
     end
   end
 
