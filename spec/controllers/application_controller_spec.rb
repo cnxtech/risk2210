@@ -87,4 +87,21 @@ describe ApplicationController do
     end
   end
 
+  describe "active_tab" do
+    controller do
+
+      active_tab :games
+
+      def index
+        render text: "foo bar"
+      end
+    end
+
+    it "should have the active tab set" do
+      get :index
+
+      controller.active_tab.should == :games
+    end
+  end
+
 end
