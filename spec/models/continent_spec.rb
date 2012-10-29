@@ -2,10 +2,6 @@ require 'spec_helper'
 
 describe Continent do
 
-  before do
-    load("#{Rails.root}/db/maps.rb")
-  end
-  
   describe "ordered" do
     it "should order continents by type first and then by name" do
       continents = Continent.ordered.map(&:name)
