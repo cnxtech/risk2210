@@ -16,7 +16,7 @@ RSpec.configure do |config|
   config.before(:suite) do
     load_factions
     load_maps
-    DatabaseCleaner.strategy = :truncation, {except: ["factions", "maps"]}
+    DatabaseCleaner.strategy = :truncation, {except: ["factions", "maps", "continents"]}
     DatabaseCleaner.orm = "mongoid"
   end
 
