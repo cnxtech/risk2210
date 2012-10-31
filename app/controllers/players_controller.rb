@@ -17,7 +17,7 @@ class PlayersController < ApplicationController
   
   def show
     @page_title = "#{@player.handle} | Players"
-    respond_with(@player)
+    respond_with(@player, root: false)
   end
   
   def new

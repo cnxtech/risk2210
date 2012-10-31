@@ -94,14 +94,6 @@ class Player
     return address
   end
 
-  def as_json(options={})
-    options.merge!({
-      only: [:id, :first_name, :last_name, :email, :bio, :handle, :city, :state, :zip_code, :slug, :website], 
-      methods: [:profile_image_path]
-    })
-    super(options)
-  end
-
   def password=(unencrypted_password)
     @password = unencrypted_password
     unless unencrypted_password.blank?

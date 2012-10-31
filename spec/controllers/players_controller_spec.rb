@@ -32,11 +32,22 @@ describe PlayersController do
   end
 
   describe "show" do
-    it "should have the requested player" do
-      get :show, id: player.slug
+    context "html" do
+      it "should have the requested player" do
+        get :show, id: player.slug
 
-      assigns(:player).should == player
-      assigns(:page_title).should_not be_nil
+        assigns(:player).should == player
+        assigns(:page_title).should_not be_nil
+      end      
+    end
+    context "json" do
+      it "should render the player json" do
+        get :show, id: player.slug, format: :json
+
+        json = JSON.parse(response.body, symbolize_names: true)
+
+        json[:id].should_not be_nil
+      end
     end
   end
 
