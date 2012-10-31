@@ -3,5 +3,5 @@
   <%= f.input :faction_id, collection: Faction.all %>
   <%= f.input :color, collection: GamePlayer::COLORS %>
   <%= f.input :territory_count, label: "Starting Territory Count" %>
-  <%= link_to_remove_association(content_tag(:i, nil, class: "icon-minus icon-white").html_safe + " Remove", f, class: "btn btn-mini btn-danger") %>
+  <%= link_to_remove_association(content_tag(:i, nil, class: "icon-minus-sign icon-large").html_safe + " Remove", f, class: "btn btn-mini btn-danger") %>
 </div>

@@ -19,7 +19,7 @@
             <%= render partial: "games/game_player_fields", locals: {f: game_player} %>
           <% end %>
           <div class="add-player-button-container">
-            <%= link_to_add_association content_tag(:i, nil, class: "icon-plus icon-white").html_safe + " Add Another Player", f, :game_players, class: "btn btn-success btn-large" %>
+            <%= link_to_add_association content_tag(:i, nil, class: "icon-plus-sign").html_safe + " Add Another Player", f, :game_players, class: "btn btn-success btn-large" %>
           </div>
         </div>
       </div>
