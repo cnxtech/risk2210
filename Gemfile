@@ -14,6 +14,7 @@ gem 'jquery-rails'
 gem 'redcarpet'
 gem 'simple_form'
 gem 'cocoon'
+gem 'active_model_serializers'
 
 ## Backbone
 gem "ejs"
