@@ -89,7 +89,8 @@ class Player
   def location
     address = ""
     address = city if city.present?
-    address = "#{address}, #{state}" if state.present?
+    address = "#{address}, " if city.present? && state.present?
+    address = "#{address}#{state}" if state.present?
     address = "#{address} #{zip_code}" if zip_code.present?
     return address
   end
