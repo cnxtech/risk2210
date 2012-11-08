@@ -8,13 +8,13 @@ class TurnsController < ApplicationController
 
   def create
     turn = @game.turns.build game_player_id:   params[:game_player_id],
-                             energy_collected: params[:energy_collected], 
-                             units_collected:  params[:units_collected], 
-                             territories_held: params[:territories_held], 
+                             energy_collected: params[:energy_collected],
+                             units_collected:  params[:units_collected],
+                             territories_held: params[:territories_held],
                              continent_ids:    params[:continent_ids]
 
     if turn.save
-      render json: turn, status: :created
+      render json: turn, root: false, status: :created
     else
       render json: turn.errors, status: :not_acceptable
     end

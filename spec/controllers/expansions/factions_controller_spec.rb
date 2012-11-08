@@ -41,7 +41,7 @@ describe Expansions::FactionsController do
 
         response.should be_success
         json = JSON.parse(response.body, symbolize_names: true)
-        json[:_slugs].should == [random_faction.slug]
+        json[:slug].should == random_faction.slug
       end
     end
   end
