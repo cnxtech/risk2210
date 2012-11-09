@@ -1,7 +1,7 @@
 <h3><%= @map.get('name') %></h3>
 <% if(@map.continents.land().length > 0): %>
   <h4>Land</h4>
-  <ul class="continent-list dashed">
+  <ul class="continent-list land dashed">
     <% for continent in @map.continents.land(): %>
       <% unless continent.hidden(): %>
         <li data-id="<%= continent.get('id') %>"><span class="continent" style="background-color: <%= continent.get('color') %>"><%= continent.get('name') %> (<%= continent.get('bonus') %>)</span></li>
@@ -12,7 +12,7 @@
 
 <% if(@map.continents.water().length > 0): %>
   <h4>Water</h4>
-  <ul class="continent-list dashed">
+  <ul class="continent-list water dashed">
     <% for continent in @map.continents.water(): %>
       <% unless continent.hidden(): %>
         <li data-id="<%= continent.get('id') %>"><span class="continent" style="background-color: <%= continent.get('color') %>"><%= continent.get('name') %> (<%= continent.get('bonus') %>)</span></li>
@@ -22,7 +22,7 @@
 <% end %>
 
 <% if(@map.continents.lunar().length > 0): %>
-  <ul class="continent-list dashed">
+  <ul class="continent-list lunar dashed">
     <% for continent in @map.continents.lunar(): %>
       <% unless continent.hidden(): %>
         <li data-id="<%= continent.get('id') %>"><span class="continent" style="background-color: <%= continent.get('color') %>"><%= continent.get('name') %> (<%= continent.get('bonus') %>)</span></li>

@@ -1,5 +1,5 @@
 class RiskTracker.Views.GamePlayer extends Backbone.View
-  
+
   template: JST['risk_tracker/templates/game_player']
 
   events:
@@ -16,7 +16,7 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
     @model.turns.bind("add", @_updateTurnsDisplay)
     @model.bind("change:territory_count", @_updateTerritoryDisplay)
     _.defer(@_updateBorderGlow)
-    
+
   render: ()->
     $(@el).html(@template({game_player: @model}))
     @_bindDropZones()
@@ -25,7 +25,7 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
   incrementTerritoryCount: (event)->
     event.preventDefault()
     @model.incrementTerritoryCount()
-  
+
   decrementTerritoryCount: (event)->
     event.preventDefault()
     @model.decrementTerritoryCount()
@@ -36,7 +36,7 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
 
   _updateTerritoryDisplay: ()=>
     @_spinCounter(".territory-counter", @model.territoryCount())
-    
+
   _updateUnitsDisplay: ()=>
     @_spinCounter(".unit-counter", @model.units())
 
@@ -67,14 +67,13 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
   _updateBorderGlow: ()=>
     $(@el).animate({boxShadow: "0 0 #{@model.borderGlow()}px"})
 
-  ## FIXME - Don't remove points if dropping to current view
   _bindDropZones: ()->
     $(@el).find(".continent-list").bind "sortreceive", (event, ui) =>
-      continent_id = ui.item.attr('data-id')
+      continent_id = ui.item.data('id')
       continent = window.Game.maps.findContinentById(continent_id)
       @model.addContinent(continent)
 
     $(@el).find(".continent-list").bind "sortremove", (event, ui) =>
-      continent_id = ui.item.attr('data-id')
+      continent_id = ui.item.data('id')
       continent = window.Game.maps.findContinentById(continent_id)
       @model.removeContinent(continent)
