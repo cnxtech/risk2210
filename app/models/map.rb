@@ -10,7 +10,5 @@ class Map
   has_many :continents, dependent: :destroy
 
   slug :name
-  
-  attr_accessible :name, :moon
 
 end

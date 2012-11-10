@@ -16,7 +16,7 @@ class TopicsController < ApplicationController
   end
 
   def create
-    @topic = @forum.topics.build(params[:topic])
+    @topic = @forum.topics.build(topic_params)
     @topic.player = current_player
     @topic.comments.first.player = current_player
 
@@ -30,7 +30,7 @@ class TopicsController < ApplicationController
     end
   end
 
-  private
+private
 
   def find_forum
     @forum = Forum.find(params[:forum_id])
@@ -46,6 +46,10 @@ class TopicsController < ApplicationController
 
   def setup_title
     @page_title = "#{@topic.subject} | #{@forum.name}"
+  end
+
+  def topic_params
+    params.require(:topic).permit(:subject, comments_attributes: [:body])
   end
 
 end

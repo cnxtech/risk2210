@@ -1,5 +1,4 @@
 class Player
-  include ActiveModel::ForbiddenAttributesProtection
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Slug

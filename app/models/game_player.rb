@@ -9,8 +9,6 @@ class GamePlayer
   field :energy, type: Integer
   field :units, type: Integer
 
-  attr_accessible :color, :territory_count, :energy, :units, :faction_id, :player_id, :continent_ids
-
   belongs_to :game
   belongs_to :player
   belongs_to :faction
@@ -23,7 +21,7 @@ class GamePlayer
 
   validates_inclusion_of :color, in: COLORS
   validates_presence_of :faction_id, :player_id
-  
+
   private
 
   def set_starting_resources

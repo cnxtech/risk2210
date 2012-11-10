@@ -2,7 +2,7 @@ class Faction
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Slug
-  
+
   field :name, type: String
   field :classification, type: String
   field :abilities, type: String
@@ -12,13 +12,11 @@ class Faction
   has_many :game_players
 
   slug :name
-  
-  attr_accessible :name, :classification, :starting_resources, :abilities, :official
-  
+
   validates_presence_of :name, :classification, :starting_resources, :abilities
 
   scope :non_default, ne(name: "Default")
-  
+
   def starting_resources
     read_attribute(:starting_resources).split("\n")
   end
@@ -48,5 +46,5 @@ class Faction
   def image_name_format
     name.downcase.split(" ").join("_")
   end
-    
+
 end

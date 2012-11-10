@@ -8,7 +8,7 @@ class PasswordsController < ApplicationController
   end
 
   def update
-    if @player.change_password(params[:player])
+    if @player.change_password(player_params)
       redirect_to player_path(current_player), notice: "Successfully changed your password."
     else
       flash.now.alert = "There was an error changing your password."
@@ -16,7 +16,7 @@ class PasswordsController < ApplicationController
     end
   end
 
-  private
+private
 
   def find_player
     @player = current_player
@@ -24,6 +24,10 @@ class PasswordsController < ApplicationController
 
   def setup_title
     @page_title = "Change Password"
+  end
+
+  def player_params
+    params.require(:player).permit(:password, :password_confirmation, :old_password)
   end
 
 end

@@ -6,8 +6,6 @@ class Game
   field :number_of_years, type: Integer, default: 5
   field :notes, type: String
 
-  attr_accessible :location , :notes, :map_ids, :game_players_attributes, :number_of_years
-
   has_and_belongs_to_many :maps
   has_many :game_players, autosave: true, dependent: :destroy
   has_many :turns

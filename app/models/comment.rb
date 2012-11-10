@@ -1,10 +1,8 @@
 class Comment
   include Mongoid::Document
   include Mongoid::Timestamps
-  
-  field :body, type: String
 
-  attr_accessible :body, :topic_id
+  field :body, type: String
 
   attr_accessor :topic_id
 
@@ -14,7 +12,7 @@ class Comment
 
   after_create :update_topic_stats
   after_destroy :decrement_comment_counter
-  
+
   validates_presence_of :body
 
   def topic

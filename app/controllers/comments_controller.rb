@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
 
   active_tab :forums
-  
+
   before_filter :find_forum
   before_filter :find_topic
   before_filter :add_topic_id_to_params
@@ -13,8 +13,8 @@ class CommentsController < ApplicationController
     else
       parent = @topic
     end
-    
-    @comment = parent.comments.build(params[:comment])
+
+    @comment = parent.comments.build(comment_params)
     @comment.player = current_player
     if @comment.save
       redirect_to forum_topic_path(@forum, @topic), notice: "Thanks for posting!"
@@ -31,7 +31,7 @@ class CommentsController < ApplicationController
 
   def update
     @comment = current_player.comments.find(params[:id])
-    if @comment.update_attributes(params[:comment])
+    if @comment.update_attributes(comment_params)
       redirect_to forum_topic_path(@forum, @topic), notice: "Successfully updated your comment."
     else
       flash.now.alert = "You can't post blank comments!"
@@ -39,18 +39,22 @@ class CommentsController < ApplicationController
     end
   end
 
-  private
-  
+private
+
   def find_forum
     @forum = Forum.find(params[:forum_id])
   end
-  
+
   def find_topic
     @topic = Topic.find(params[:topic_id])
   end
 
   def add_topic_id_to_params
     params[:comment].merge!(topic_id: @topic.id) if params[:comment]
+  end
+
+  def comment_params
+    params.require(:comment).permit(:body, :topic_id)
   end
 
 end
