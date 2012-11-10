@@ -38,7 +38,7 @@ describe PlayersController do
 
         assigns(:player).should == player
         assigns(:page_title).should_not be_nil
-      end      
+      end
     end
     context "json" do
       it "should render the player json" do
@@ -57,9 +57,9 @@ describe PlayersController do
 
       controller.should_receive(:logout).once
       expect{
-        delete :destroy, id: player.slug  
+        delete :destroy, id: player.slug
       }.to change(Player, :count).by(-1)
-      
+
       response.should redirect_to root_path
       flash.notice.should_not be_nil
     end
@@ -101,10 +101,10 @@ describe PlayersController do
       end
       it "should reload the page if errors were present" do
         Player.any_instance.stub(:update_attributes).and_return(false)
-        
+
         put :update, id: player.slug, player: {}
 
-        response.should render_template(:edit) 
+        response.should render_template(:edit)
         flash.now[:alert].should_not be_nil
       end
     end
@@ -129,8 +129,7 @@ describe PlayersController do
 
   describe "create" do
     it "should create a player" do
-      Player.any_instance.stub(:save).and_return(true)
-      post :create, player: {}
+      post :create, player: FactoryGirl.attributes_for(:player)
 
       response.should redirect_to edit_player_path(assigns(:player))
       flash.notice.should_not be_nil

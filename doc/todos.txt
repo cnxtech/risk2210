@@ -1,9 +1,11 @@
+non players requirement
+
 Quick Start
   - Game Templates
+  - favorite color
 
 ## Game Tracker ##
 Start year / End year differences
-Add current year counter on each player
 
 ## UI ##
 Commander icons, active and inactive
