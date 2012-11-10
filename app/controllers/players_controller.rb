@@ -26,7 +26,7 @@ class PlayersController < ApplicationController
   end
 
   def create
-    @player = Player.new(params[:player])
+    @player = Player.new(player_params)
     if @player.save
       login(@player, redirect_to: edit_player_path(@player), notice: "Thanks for registering! Please fill out your profile.")
     else
@@ -41,7 +41,7 @@ class PlayersController < ApplicationController
   end
 
   def update
-    if @player.update_attributes(params[:player])
+    if @player.update_attributes(player_params)
       respond_to do |format|
         format.html { redirect_to player_path(@player), notice: "Thanks for updating your profile!" }
         format.json { render nothing: true }
@@ -64,7 +64,7 @@ class PlayersController < ApplicationController
     redirect_to root_path, notice: "Your account has been removed. Sorry to see you go."
   end
 
-  private
+private
 
   def find_player
     @player = Player.find(params[:id])
@@ -74,6 +74,10 @@ class PlayersController < ApplicationController
     if current_player != @player
       redirect_to root_path, alert: "You aren't authorized to edit that player!"
     end
+  end
+
+  def player_params
+    params.require(:player).permit(:email, :first_name, :last_name, :handle, :city, :state, :zip_code, :bio, :website, :image_source, :public_profile, :password, :password_confirmation, :old_password)
   end
 
 end

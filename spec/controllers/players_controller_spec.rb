@@ -92,17 +92,13 @@ describe PlayersController do
     end
     context "html requests" do
       it "should update the player and redirect if all fields are valid" do
-        Player.any_instance.stub(:update_attributes).and_return(true)
-
-        put :update, id: player.slug, player: {}
+        put :update, id: player.slug, player: {bio: "My updated bio"}
 
         response.should redirect_to player_path(player)
         flash.notice.should_not be_nil
       end
       it "should reload the page if errors were present" do
-        Player.any_instance.stub(:update_attributes).and_return(false)
-
-        put :update, id: player.slug, player: {}
+        put :update, id: player.slug, player: {handle: ""}
 
         response.should render_template(:edit)
         flash.now[:alert].should_not be_nil
@@ -110,16 +106,12 @@ describe PlayersController do
     end
     context "json requests" do
       it "should update the player and return success if all fields are valid" do
-        Player.any_instance.stub(:update_attributes).and_return(true)
-
-        put :update, id: player.slug, player: {}, format: :json
+        put :update, id: player.slug, player: {bio: "My updated bio"}, format: :json
 
         response.should be_success
       end
       it "should return a 400 and an array of errors if the update fails" do
-        Player.any_instance.stub(:update_attributes).and_return(false)
-
-        put :update, id: player.slug, player: {}, format: :json
+        put :update, id: player.slug, player: {handle: ""}, format: :json
 
         response.should_not be_success
         JSON.parse(response.body).instance_of?(Array).should == true
@@ -135,9 +127,7 @@ describe PlayersController do
       flash.notice.should_not be_nil
     end
     it "should reload the page if errors are present" do
-      Player.any_instance.stub(:save).and_return(false)
-
-      post :create, player: {}
+      post :create, player: {handle: ""}
 
       response.should render_template(:new)
       flash.now[:alert].should_not be_nil

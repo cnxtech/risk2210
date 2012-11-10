@@ -1,4 +1,5 @@
 class Player
+  include ActiveModel::ForbiddenAttributesProtection
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Slug
@@ -7,7 +8,7 @@ class Player
     Facebook = "Facebook"
     Gravatar = "Gravatar"
   end
-  
+
   ## Field Definitions
   field :provider, type: String
   field :uid, type: String
@@ -35,13 +36,11 @@ class Player
   has_many :comments, dependent: :destroy, autosave: true
   has_many :game_players
   has_many :games, as: :creator
-  
+
   ## Plugins
   slug :handle
-  
-  attr_reader :password
 
-  attr_accessible :email, :first_name, :last_name, :handle, :city, :state, :zip_code, :bio, :website, :image_source, :public_profile, :password, :password_confirmation, :old_password
+  attr_reader :password
 
   ## Callbacks
   before_save :generate_gravatar_hash
@@ -57,7 +56,7 @@ class Player
 
   ## Scopes
   scope :public_profiles, where(public_profile: true).asc(:created_at)
-    
+
   ## Facebook image size options
   ## square=50x50, small=50xVariable, normal=100xVariable, large=200xVariable
 
@@ -124,7 +123,7 @@ class Player
     player.save
     return player
   end
-  
+
   def self.create_with_omniauth(auth)
     player = Player.where(email: auth['info']['email']).first
     if player
@@ -145,7 +144,7 @@ class Player
         player.website = auth["info"]["urls"]["Facebook"]
         player.facebook_image_url = sanitize_facebook_image(auth["info"]["image"])
         player.image_source = ImageSource::Facebook
-        
+
         if auth["extra"]["raw_info"]["location"]
           location_parts = auth["extra"]["raw_info"]["location"]["name"].split(",")
         elsif auth["extra"]["raw_info"]["hometown"]

@@ -1,12 +1,12 @@
 class TopicsController < ApplicationController
 
   active_tab :forums
-  
+
   before_filter :find_forum
   before_filter :find_topic, only: [:show]
   before_filter :login_required, only: [:create]
   before_filter :setup_title, except: [:create]
-  
+
   def show
     unless topics_viewed.include?(@topic.id)
       @topic.increment_view_counter
@@ -14,7 +14,7 @@ class TopicsController < ApplicationController
     end
     @comments = @topic.comments
   end
-  
+
   def create
     @topic = @forum.topics.build(params[:topic])
     @topic.player = current_player
@@ -29,13 +29,13 @@ class TopicsController < ApplicationController
       render template: "forums/show"
     end
   end
-    
+
   private
-  
+
   def find_forum
     @forum = Forum.find(params[:forum_id])
   end
-  
+
   def find_topic
     @topic = Topic.find(params[:id])
   end
@@ -47,5 +47,5 @@ class TopicsController < ApplicationController
   def setup_title
     @page_title = "#{@topic.subject} | #{@forum.name}"
   end
-  
+
 end
