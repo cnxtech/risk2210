@@ -1,6 +1,6 @@
 source :rubygems
 
-gem 'rails', '3.2.9.rc3'
+gem 'rails', '3.2.9'
 gem 'strong_parameters'
 
 group :assets do
