@@ -9,7 +9,7 @@ class GamesController < ApplicationController
 
   def new
     @game = Game.new(location: current_player.location)
-    @game.game_players.build(player_id: current_player.id)
+    @game.game_players.build(player_id: current_player.id, color: current_player.favorite_color)
     @game.game_players.build
   end
 

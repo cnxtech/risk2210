@@ -77,7 +77,7 @@ private
   end
 
   def player_params
-    params.require(:player).permit(:email, :first_name, :last_name, :handle, :city, :state, :zip_code, :bio, :website, :image_source, :public_profile, :password, :password_confirmation, :old_password)
+    params.require(:player).permit(:email, :first_name, :last_name, :handle, :city, :state, :zip_code, :bio, :website, :image_source, :public_profile, :password, :password_confirmation, :old_password, :favorite_color)
   end
 
 end

@@ -29,6 +29,7 @@ class Player
   field :raw_authorization, type: Hash
   field :login_count, type: Integer, default: 1
   field :last_login_at, type: DateTime, default: -> { Time.now }
+  field :favorite_color, type: String
 
   ## Associations
   has_many :topics, dependent: :destroy, autosave: true
@@ -52,6 +53,7 @@ class Player
   validates_format_of :email, with: EmailAddressValidation::EMAIL_ADDRESS_EXACT_PATTERN, allow_blank: true
   validates_confirmation_of :password
   validates_presence_of :password_digest, allow_blank: true
+  validates_inclusion_of :favorite_color, in: GamePlayer::COLORS, allow_blank: true
 
   ## Scopes
   scope :public_profiles, where(public_profile: true).asc(:created_at)

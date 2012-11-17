@@ -12,7 +12,7 @@ class RiskTracker.Views.Game extends Backbone.View
     @_setupContinents()
     skins = _.shuffle([1..8])
     @gamePlayers.each (gamePlayer) =>
-      style_class = "player-card #{gamePlayer.get('color').toLowerCase()} background-#{skins.pop()}"
+      style_class = "player-card #{gamePlayer.get('color').toLowerCase()}-glow background-#{skins.pop()}"
       view = new RiskTracker.Views.GamePlayer({model: gamePlayer, attributes: {class: style_class}})
       $(@el).append(view.render().el)
 

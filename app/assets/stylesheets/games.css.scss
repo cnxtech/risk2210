@@ -1,13 +1,4 @@
-//****************************************************************************************************************************************
-//** Variables
-//****************************************************************************************************************************************
-
-// Player Colors
-$red: #c65148;
-$green: #4bc649;
-$blue: #488dc6;
-$black: #9b9b9b;
-$gold: #c69e49;
+@import "variables";
 
 //****************************************************************************************************************************************
 //** Mixins
@@ -107,8 +98,8 @@ ul.continent-list{
 //****************************************************************************************************************************************
 
 .player-card{
-  margin: 20px; 
-  clear: left; 
+  margin: 20px;
+  clear: left;
   padding: 10px;
   min-height: 200px;
   width: 710px;
@@ -203,19 +194,19 @@ ul.continent-list{
 
 }
 
-.red{
+.red-glow{
   @include glowingBorder($red);
 }
-.green{
+.green-glow{
   @include glowingBorder($green);
 }
-.blue{
+.blue-glow{
   @include glowingBorder($blue);
 }
-.black{
+.black-glow{
   @include glowingBorder($black);
 }
-.gold{
+.gold-glow{
   @include glowingBorder($gold);
 }
 
