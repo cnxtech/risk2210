@@ -61,7 +61,7 @@ class PlayersController < ApplicationController
   def destroy
     @player.destroy
     logout
-    redirect_to root_path, notice: "Your account has been removed. Sorry to see you go."
+    redirect_to root_path, notice: "Your account has been removed. Sorry to see you go. :("
   end
 
 private
@@ -72,7 +72,7 @@ private
 
   def authorize_current_player
     if current_player != @player
-      redirect_to root_path, alert: "You aren't authorized to edit that player!"
+      redirect_to root_path, alert: "Unauthorized!"
     end
   end
 

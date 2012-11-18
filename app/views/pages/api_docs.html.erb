@@ -29,7 +29,7 @@
 
 <h2>Factions</h2>
 <div class="api-doc">
-    <table>
+  <table>
     <tr>
       <th>HTTP Method</th>
       <th>Endpoint</th>
@@ -45,5 +45,30 @@
       <td><%= link_to "/api/v1/factions/:slug", "/api/v1/factions/#{Faction.random.slug}.json", target: "_blank" %> </td>
       <td>The faction data for the requested slug</td>
     </td>
+  </table>
+</div>
+
+<h2>Turns</h2>
+<div class="api-doc">
+  <table>
+    <tr>
+      <th>HTTP Method</th>
+      <th>Endpoint</th>
+      <th>Parameters</th>
+      <th>Action</th>
+    </tr>
+    <tr>
+      <td>POST</td>
+      <td>/api/v1/turns</td>
+      <td>
+        game_id (document id)<br>
+        game_player_id (document id)<br>
+        energy_collected (integer)<br>
+        units_collected (integer)<br>
+        territories_held (integer)<br>
+        continent_ids (array)<br>
+      </td>
+      <td>Creates a new turn</td>
+    </tr>
   </table>
 </div>
