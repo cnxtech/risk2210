@@ -9,8 +9,10 @@ class GamesController < ApplicationController
 
   def new
     @game = Game.new(location: current_player.location)
-    @game.game_players.build(player_id: current_player.id, color: current_player.favorite_color)
+    @game.game_players.build(handle: current_player.handle, color: current_player.favorite_color)
     @game.game_players.build
+
+    @player_handles = Player.all.map(&:handle).map{ |handle| "\"#{handle}\"" }.join(", ")
   end
 
   def create
@@ -35,7 +37,7 @@ private
   end
 
   def game_params
-    params.require(:game).permit(:location , :notes, :map_ids, :game_players_attributes, :number_of_years, game_players_attributes: [:color, :territory_count, :energy, :units, :faction_id, :player_id, :continent_ids, :map_ids])
+    params.require(:game).permit(:location , :notes, :map_ids, :game_players_attributes, :number_of_years, game_players_attributes: [:color, :territory_count, :energy, :units, :faction_id, :handle, :continent_ids, :map_ids])
   end
 
 end

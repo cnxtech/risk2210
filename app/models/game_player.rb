@@ -8,6 +8,7 @@ class GamePlayer
   field :territory_count, type: Integer
   field :energy, type: Integer
   field :units, type: Integer
+  field :handle, type: String
 
   belongs_to :game
   belongs_to :player
@@ -17,10 +18,20 @@ class GamePlayer
 
   before_create :set_starting_resources
 
-  delegate :handle, to: :player
-
   validates_inclusion_of :color, in: COLORS
-  validates_presence_of :faction_id, :player_id
+  validates_presence_of :faction_id, :handle
+
+  def handle=(value)
+    write_attribute(:handle, value)
+    if player = Player.find(value.to_url)
+      self.player = player
+    end
+  end
+
+  def profile_image_path
+    return player.profile_image_path if player
+    return "http://risk2210.net/assets/default_avatar.png"
+  end
 
   private
 

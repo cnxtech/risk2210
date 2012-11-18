@@ -1,12 +1,12 @@
 require 'spec_helper'
 
 describe Game do
-  
+
   before do
     @game_player_attributes = {}
     2.times do |index|
       player = FactoryGirl.create(:player)
-      @game_player_attributes[index.to_s] = {player_id: player.id, faction_id: faction_ids[index], color: GamePlayer::COLORS.sample}
+      @game_player_attributes[index.to_s] = {handle: player.handle, faction_id: faction_ids[index], color: GamePlayer::COLORS.sample}
     end
   end
 

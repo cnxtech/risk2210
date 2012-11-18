@@ -12,11 +12,11 @@ describe Turn do
       ## Setup players
       player1 = FactoryGirl.create(:player)
       player2 = FactoryGirl.create(:player)
-      
+
       ## Setup game
       game_players = {}
-      game_players["0"] = {color: "Blue", player_id: player1.id, faction_id: faction_ids[0]}
-      game_players["1"] = {color: "Green", player_id: player2.id, faction_id: faction_ids[1]}
+      game_players["0"] = {color: "Blue", handle: player1.handle, faction_id: faction_ids[0]}
+      game_players["1"] = {color: "Green", handle: player2.handle, faction_id: faction_ids[1]}
       game = FactoryGirl.create(:game, map_ids: map_ids, game_players_attributes: game_players)
       game_player = game.game_players.first
 

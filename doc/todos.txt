@@ -1,8 +1,5 @@
-non players requirement
-
 Quick Start
   - Game Templates
-  - favorite color
 
 ## Game Tracker ##
 Start year / End year differences

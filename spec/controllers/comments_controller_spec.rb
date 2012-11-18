@@ -27,7 +27,7 @@ describe CommentsController do
       end
       it "should reload the topics/show page if there were any errors" do
         login player
-        
+
         expect{
           post :create, forum_id: forum.slug, topic_id: topic.slug, comment: {body: ""}
         }.to change(topic.comments, :count).by(0)
@@ -43,7 +43,7 @@ describe CommentsController do
       end
       it "should create the comment if everything is valid" do
         expect{
-          post :create, forum_id: forum.slug, topic_id: topic.slug, comment_parent_id: @original_comment.id, comment: {body: "This is a great game!"}      
+          post :create, forum_id: forum.slug, topic_id: topic.slug, comment_parent_id: @original_comment.id, comment: {body: "This is a great game!"}
         }.to change(@original_comment.comments, :count).by(1)
 
         response.should redirect_to(forum_topic_path(forum, topic))
@@ -63,7 +63,7 @@ describe CommentsController do
 
   describe "edit" do
     it "should have the comment to edit" do
-      comment = FactoryGirl.create(:topic_comment, commentable: topic, player: player)      
+      comment = FactoryGirl.create(:topic_comment, commentable: topic, player: player)
       login player
 
       get :edit, forum_id: forum.id, topic_id: topic.id, id: comment.id
@@ -82,7 +82,7 @@ describe CommentsController do
 
   describe "update" do
     before do
-      @comment = FactoryGirl.create(:topic_comment, commentable: topic, player: player)      
+      @comment = FactoryGirl.create(:topic_comment, commentable: topic, player: player)
       login player
     end
     it "should update the comment if everything is valid" do

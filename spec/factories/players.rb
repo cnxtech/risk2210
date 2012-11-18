@@ -7,10 +7,11 @@ FactoryGirl.define do
     login_count 2
     last_login_at { 1.week.ago }
     public_profile true
+    favorite_color { GamePlayer::COLORS.sample }
     created_at { Time.now }
     updated_at { Time.now }
   end
-  
+
   factory :player, parent: :base_player do
     password "secret1"
     password_confirmation "secret1"

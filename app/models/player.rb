@@ -45,6 +45,7 @@ class Player
   ## Callbacks
   before_save :generate_gravatar_hash
   after_create :deliver_welcome_email
+  after_create :link_game_players
 
   ## Validations
   validates_presence_of :email, :handle
@@ -184,6 +185,12 @@ private
 
   def valid_password?(unencrypted_password)
     password_digest.present? && BCrypt::Password.new(password_digest) == unencrypted_password
+  end
+
+  def link_game_players
+    GamePlayer.where(handle: handle).each do |game_player|
+      game_player.update_attribute(:player_id, self.id)
+    end
   end
 
 end

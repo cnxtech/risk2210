@@ -1,8 +1,8 @@
 <div class="row">
   <div class="column">
     <div class='avatar'>
-      <img src='<%= @game_player.player.get('profile_image_path') %>' width='130px' />
-      <div class="handle"><%= @game_player.player.get('handle') %></div>
+      <img src='<%= @game_player.get('profile_image_path') %>' width='130px' />
+      <div class="handle"><%= @game_player.get('handle') %></div>
     </div>
   </div>
   <div class="column">

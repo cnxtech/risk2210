@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Player do
-  
+
   describe "create_with_omniauth" do
     context "fixture users don't exist" do
       it "registers me with my Facebook omniath hash" do
@@ -23,7 +23,7 @@ describe Player do
 
         player.valid?.should == true
         player.new_record?.should == false
-        player.raw_authorization.should == Fixtures::Facebook.chick        
+        player.raw_authorization.should == Fixtures::Facebook.chick
       end
     end
     context "fixture users do exist" do
@@ -53,7 +53,7 @@ describe Player do
     it "returns false if the authentication fails" do
       @player.authenticate("secret2").should == false
       @player.login_count.should == 4
-      @player.last_login_at.should == 1.week.ago      
+      @player.last_login_at.should == 1.week.ago
     end
   end
 
@@ -61,7 +61,7 @@ describe Player do
     it "should login the user through their facebook authorization" do
       fixture = Fixtures::Facebook.me
       player = FactoryGirl.create(:facebook_player, email: "nick.desteffen@gmail.com", login_count: 4, uid: fixture["uid"])
-      
+
       authorized_player = Player.omniauthorize(fixture)
       player.reload
 
@@ -134,9 +134,9 @@ describe Player do
       it "should return true, set login stats, set remember_me token and save" do
         Time.stub(:now).and_return(Time.mktime(2012, 10, 22, 14, 30))
         player = FactoryGirl.create(:player, password: "secret1", login_count: 10, last_login_at: 10.days.ago)
-        
+
         player.authenticate("secret1").should == true
-        
+
         player.login_count.should == 11
         player.last_login_at.to_s.should == "2012-10-22T19:30:00+00:00"
       end
@@ -144,7 +144,7 @@ describe Player do
     context "wrong password" do
       it "should return false" do
         player = FactoryGirl.create(:player, password: "secret1")
-        
+
         player.authenticate("abc12").should == false
       end
     end
@@ -154,7 +154,7 @@ describe Player do
     it "should increment the login_count and set the last_login_at to now" do
       Time.stub(:now).and_return(Time.mktime(2012, 10, 22, 14, 30))
       player = FactoryGirl.create(:player, login_count: 10, last_login_at: 10.days.ago)
-      
+
       player.set_login_stats
 
       player.login_count.should == 11
@@ -200,6 +200,16 @@ describe Player do
 
       player.send(:valid_password?, "password").should == true
       player.send(:valid_password?, "password1").should == false
+    end
+  end
+
+  describe "link_game_players" do
+    it "should link to any game_player records that have the same handle on create" do
+      game_player = FactoryGirl.create(:game_player, handle: "Jack", player: nil)
+
+      player = FactoryGirl.create(:player, handle: "Jack")
+
+      game_player.reload.player.should == player
     end
   end
 

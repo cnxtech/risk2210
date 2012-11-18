@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe GamePlayer do
-  
+
   describe "set_starting_units" do
     it "should set the default starting units and energy for the faction" do
       random_faction = Faction.random
@@ -12,6 +12,25 @@ describe GamePlayer do
       game_player.territory_count.should == 0
       game_player.energy = random_faction.min_energy
       game_player.units = random_faction.min_units
+    end
+  end
+
+  describe "handle=" do
+    it "should find the player and set the id based on the handle" do
+      player = FactoryGirl.create(:player, handle: "Payton")
+
+      game_player = FactoryGirl.create(:game_player, handle: "Payton", player: nil)
+
+      game_player.player.should == player
+    end
+  end
+
+  describe "profile_image_path" do
+    it "should return the player's profile image if the player is present" do
+      pending
+    end
+    it "should return the default profile image if there is no player" do
+      pending
     end
   end
 

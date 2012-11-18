@@ -27,10 +27,12 @@ class CommentsController < ApplicationController
 
   def edit
     @comment = current_player.comments.find(params[:id])
+    raise Mongoid::Errors::DocumentNotFound.new(Comment, params[:id], params[:id]) if @comment.nil?
   end
 
   def update
     @comment = current_player.comments.find(params[:id])
+    raise Mongoid::Errors::DocumentNotFound.new(Comment, params[:id], params[:id]) if @comment.nil?
     if @comment.update_attributes(comment_params)
       redirect_to forum_topic_path(@forum, @topic), notice: "Successfully updated your comment."
     else

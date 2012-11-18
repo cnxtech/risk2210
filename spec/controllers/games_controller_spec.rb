@@ -15,8 +15,15 @@ describe GamesController do
       get :new
 
       assigns(:game).should_not be_nil
-      assigns(:game).game_players.first.player.should == player1
+      assigns(:game).game_players.first.handle.should == player1.handle
       assigns(:game).game_players.second.should_not be_nil
+    end
+    it "shouldh have player handles assigned for typeahead" do
+      login player1
+
+      get :new
+
+      assigns(:player_handles).should_not be_nil
     end
   end
 
@@ -26,8 +33,8 @@ describe GamesController do
 
       ## Setup game
       game_players = {}
-      game_players["0"] = {color: "Blue", player_id: player1.id, faction_id: faction_ids[0]}
-      game_players["1"] = {color: "Green", player_id: player2.id, faction_id: faction_ids[1]}
+      game_players["0"] = {color: "Blue", handle: player1.handle, faction_id: faction_ids[0]}
+      game_players["1"] = {color: "Green", handle: player2.handle, faction_id: faction_ids[1]}
 
       post :create, game: {game_players_attributes: game_players, map_ids: map_ids, location: "Chicago"}
 
@@ -48,8 +55,8 @@ describe GamesController do
   describe "show" do
     it "should description" do
       game_players = {}
-      game_players["0"] = {color: "Blue", player_id: player1.id, faction_id: faction_ids[0]}
-      game_players["1"] = {color: "Green", player_id: player2.id, faction_id: faction_ids[1]}
+      game_players["0"] = {color: "Blue", handle: player1.handle, faction_id: faction_ids[0]}
+      game_players["1"] = {color: "Green", handle: player2.handle, faction_id: faction_ids[1]}
       game = FactoryGirl.create(:game, map_ids: map_ids, game_players_attributes: game_players)
 
       get :show, id: game
