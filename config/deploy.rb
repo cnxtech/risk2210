@@ -3,7 +3,7 @@ require "capistrano_colors"
 
 set :application, "risk2210"
 set :scm, :git
-set :repository,  "git@github.com:nick-desteffen/risk2210.git"
+set :repository, "git@github.com:nick-desteffen/risk2210.git"
 set :branch, "master"
 set :user, "nickd"
 set :deploy_to, "/var/www/apps/risk2210"

@@ -1,6 +1,3 @@
-Quick Start
-  - Game Templates
-
 ## Game Tracker ##
 Start year / End year differences
 
@@ -12,29 +9,24 @@ Space station icons
 Game completion page
   - charts
   - collect final scores
-
-## General site stuff ##
-password reset
-
-## Future Enhancements
-v1.1
-Additional Expansion pages
 Player Leaderboard
 
-V1.2
-Friends
+password reset
+
+Additional Expansion pages
+
+## Friends
 Player to player messaging
 Show nearby players based on location
 Organize meetups for games
+Quick Start Game Templates
 
-v1.3
 Q&A with upvoting and comments
 Command card database
 Enhanced Forums
   - Textareas can have hover links to command card database with info bubble CC:Combat Enhancers
   - Hover for faction info FA: Havoc
 
-v1.4
 File uploads - Photos
 Advanced Stats
   - cards bought, played, #colonial influences

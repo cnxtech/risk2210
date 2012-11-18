@@ -8,6 +8,17 @@ FactoryGirl.define do
     last_login_at { 1.week.ago }
     public_profile true
     favorite_color { GamePlayer::COLORS.sample }
+    image_source nil
+    facebook_image_url nil
+    provider nil
+    uid nil
+    city "Chicago"
+    state "IL"
+    zip_code "60640"
+    bio { Faker::Lorem::sentence }
+    website nil
+    gravatar_hash nil
+    raw_authorization nil
     created_at { Time.now }
     updated_at { Time.now }
   end
