@@ -5,7 +5,7 @@ class RiskTracker.Models.GamePlayer extends Backbone.Model
     @faction = new RiskTracker.Models.Faction(@get("faction"))
     @continents = new RiskTracker.Collections.Continents()
     @turns = new RiskTracker.Collections.Turns(@get("turns"))
-    
+
     @bind("change:territory_count", @_calculateResources)
     @continents.on "add", (continent) => @_calculateResources()
     @continents.on "remove", (continent) => @_calculateResources()
@@ -27,15 +27,15 @@ class RiskTracker.Models.GamePlayer extends Backbone.Model
     @continents.remove(continent)
 
   incrementTerritoryCount: ()->
-    @set({territory_count: @territoryCount() + 1})  
+    @set({territory_count: @territoryCount() + 1})
 
   decrementTerritoryCount: ()->
     if @territoryCount() > 0
       @set({territory_count: @territoryCount() - 1})
 
   saveTurn: ()->
-    @turns.create({game_id: window.Game.get("id"), game_player_id: @get("id"), units_collected: @units(), energy_collected: @energy(), territories_held: @territoryCount(), continent_ids: @_continentIds()})
-    window.Game.incrementTurnCount()
+    @turns.create({game_id: @game.get("id"), game_player_id: @get("id"), units_collected: @units(), energy_collected: @energy(), territories_held: @territoryCount(), continent_ids: @_continentIds()})
+    @game.incrementTurnCount()
 
   landContinents: ()->
     @continents.land()
@@ -58,7 +58,7 @@ class RiskTracker.Models.GamePlayer extends Backbone.Model
   _calculateResources: ()->
     @_calculateEnergy()
     @_calculateUnits()
-      
+
   _calculateEnergy: ()->
     energy = @_baseResources()
     energy = energy + @_continentalBonuses()
@@ -87,6 +87,6 @@ class RiskTracker.Models.GamePlayer extends Backbone.Model
     return sum
 
   setStartingContinents: ()->
-    _(@get("continent_ids")).each (continent_id) => 
-      continent = window.Game.maps.findContinentById(continent_id)
+    _(@get("continent_ids")).each (continent_id) =>
+      continent = @game.maps.findContinentById(continent_id)
       @continents.add(continent)

@@ -7,9 +7,9 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
     "click .decrement-territory-count": "decrementTerritoryCount"
     "click .save-turn": "saveTurn"
 
-  initialize: ()->
-    _.bindAll(@, 'render')
-    @model.bind("reset", @render)
+  initialize: (options={})->
+    @game = options.attributes.game
+
     @model.bind("change:energy", @_updateEnergyDisplay)
     @model.bind("change:energy", @_updateBorderGlow)
     @model.bind("change:units", @_updateUnitsDisplay)
@@ -18,9 +18,9 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
     _.defer(@_updateBorderGlow)
 
   render: ()->
-    $(@el).html(@template({game_player: @model}))
+    @$el.html(@template({game_player: @model}))
     @_bindDropZones()
-    @
+    return @
 
   incrementTerritoryCount: (event)->
     event.preventDefault()
@@ -44,10 +44,10 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
     @_spinCounter(".energy-counter", @model.energy())
 
   _updateTurnsDisplay: ()=>
-    $(@el).find(".turn-counter").html(@model.turn())
+    @$el.find(".turn-counter").html(@model.turn())
 
   _spinCounter: (selector, end)->
-    element = $(@el).find(selector)
+    element = @$el.find(selector)
     start = parseInt(element.html())
     return if start is end
 
@@ -65,15 +65,15 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
     , 100)
 
   _updateBorderGlow: ()=>
-    $(@el).animate({boxShadow: "0 0 #{@model.borderGlow()}px"})
+    @$el.animate({boxShadow: "0 0 #{@model.borderGlow()}px"})
 
   _bindDropZones: ()->
-    $(@el).find(".continent-list").bind "sortreceive", (event, ui) =>
+    @$el.find(".continent-list").bind "sortreceive", (event, ui) =>
       continent_id = ui.item.data('id')
-      continent = window.Game.maps.findContinentById(continent_id)
+      continent = @game.maps.findContinentById(continent_id)
       @model.addContinent(continent)
 
-    $(@el).find(".continent-list").bind "sortremove", (event, ui) =>
+    @$el.find(".continent-list").bind "sortremove", (event, ui) =>
       continent_id = ui.item.data('id')
-      continent = window.Game.maps.findContinentById(continent_id)
+      continent = @game.maps.findContinentById(continent_id)
       @model.removeContinent(continent)

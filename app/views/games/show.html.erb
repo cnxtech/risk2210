@@ -13,6 +13,6 @@
 <%= content_for :tail do %>
   <%= javascript_include_tag "risk_tracker" %>
   <script type="text/javascript">
-    window.Game = new RiskTracker.Models.Game(<%= raw(GameSerializer.new(@game, root: false).to_json) %>);
+    var gameData = <%= raw(GameSerializer.new(@game, root: false).to_json) %>;
   </script>
 <% end %>

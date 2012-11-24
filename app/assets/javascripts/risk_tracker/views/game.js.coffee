@@ -1,20 +1,20 @@
 class RiskTracker.Views.Game extends Backbone.View
 
+  el: "#game"
+
   initialize: ()->
-    _.bindAll(@, 'render')
-    @gamePlayers = window.Game.gamePlayers
-    @maps = window.Game.maps
-    @gamePlayers.bind("reset", @render)
-    @maps.bind("reset", @render)
-    window.Game.bind("change:turn_count", @_updateProgressBar)
+    @model = new RiskTracker.Models.Game(window.gameData)
+    @maps = @model.maps
+
+    @model.bind("change:turn_count", @_updateProgressBar)
 
   render: ()->
     @_setupContinents()
     skins = _.shuffle([1..8])
-    @gamePlayers.each (gamePlayer) =>
+    @model.gamePlayers.each (gamePlayer) =>
       style_class = "player-card #{gamePlayer.get('color').toLowerCase()}-glow background-#{skins.pop()}"
-      view = new RiskTracker.Views.GamePlayer({model: gamePlayer, attributes: {class: style_class}})
-      $(@el).append(view.render().el)
+      view = new RiskTracker.Views.GamePlayer({model: gamePlayer, attributes: {class: style_class, game: @model}})
+      @$el.append(view.render().el)
 
     @maps.each (map) =>
       view = new RiskTracker.Views.Map({model: map, attributes: {class: "map"}})
@@ -33,18 +33,18 @@ class RiskTracker.Views.Game extends Backbone.View
 
     return @
 
-  _updateProgressBar: () ->
+  _updateProgressBar: () =>
     bar = $("#game-progress-bar").find(".bar")
-    number_of_years = window.Game.get("number_of_years")
-    number_of_players = window.Game.gamePlayers.length
-    turn_count = window.Game.get("turn_count")
+    number_of_years = @model.get("number_of_years")
+    number_of_players = @model.gamePlayers.length
+    turn_count = @model.get("turn_count")
 
     percent_complete = ((turn_count / (number_of_years * number_of_players)) * 100)
     bar.css({width: "#{percent_complete}%"})
 
   _setupContinents: () ->
     claimed_continents = []
-    @gamePlayers.each (gamePlayer) ->
+    @model.gamePlayers.each (gamePlayer) ->
       gamePlayer.setStartingContinents()
       claimed_continents.push(gamePlayer.continents.models)
 

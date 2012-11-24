@@ -3,9 +3,9 @@ window.RiskTracker =
   Collections: {}
   Views: {}
 
-  init: ()->
+  boot: ()->
     view = new RiskTracker.Views.Game()
-    $('#game').html(view.render().el)
+    view.render()
 
 $ ->
-  RiskTracker.init()
+  RiskTracker.boot()
