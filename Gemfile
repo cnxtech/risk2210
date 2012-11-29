@@ -47,4 +47,5 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'debugger'
   gem "ffaker"
+  gem "jasminerice"
 end
