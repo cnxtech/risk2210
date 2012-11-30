@@ -30,6 +30,16 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
   end
 
+  def destroy
+    @game = Game.find(params[:id])
+    if current_player != @game.creator
+      redirect_to root_path, alert: "Sorry, you can't delete a game you didn't create!"
+    else
+      @game.destroy
+      redirect_to root_path, notice: "Successfully removed game."
+    end
+  end
+
 private
 
   def setup_title

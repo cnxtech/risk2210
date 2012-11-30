@@ -65,4 +65,33 @@ describe GamesController do
     end
   end
 
+  describe "destroy" do
+    before do
+      game_players = {}
+      game_players["0"] = {color: "Blue", handle: player1.handle, faction_id: faction_ids[0]}
+      game_players["1"] = {color: "Green", handle: player2.handle, faction_id: faction_ids[1]}
+      @game = FactoryGirl.create(:game, map_ids: map_ids, game_players_attributes: game_players, creator_id: player1.id)
+    end
+    it "should remove the game if the current player is the creator" do
+      login player1
+
+      expect{
+        delete :destroy, id: @game.id
+      }.to change(Game, :count).by(-1)
+
+      response.should redirect_to root_path
+      flash.notice.should_not be_nil
+    end
+    it "should display an alert if the current player is not the creator" do
+      login player2
+
+      expect{
+        delete :destroy, id: @game.id
+      }.to change(Game, :count).by(0)
+
+      response.should redirect_to root_path
+      flash.alert.should_not be_nil
+    end
+  end
+
 end

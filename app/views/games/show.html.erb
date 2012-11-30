@@ -10,6 +10,14 @@
   <div id="maps"></div>
 </div>
 
+<div class="delete-game-container">
+  <% if @game.creator == current_player %>
+    <%= link_to game_path(@game), data: {method: :delete, confirm: "Are you sure?"}, class: "btn btn-danger" do %>
+      <i class='icon-trash icon-white'></i> Delete Game
+    <% end %>
+  <% end %>
+</div>
+
 <%= content_for :tail do %>
   <%= javascript_include_tag "risk_tracker" %>
   <script type="text/javascript">

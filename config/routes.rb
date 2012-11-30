@@ -18,7 +18,7 @@ Risk2210::Application.routes.draw do
   resources :players
 
   ## Game Tracker
-  resources :games, only: [:new, :create, :show]
+  resources :games, only: [:new, :create, :show, :destroy]
 
   ## Forums
   resources :forums, only: [:index, :show] do
