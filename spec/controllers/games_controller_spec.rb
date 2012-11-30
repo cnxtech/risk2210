@@ -18,13 +18,6 @@ describe GamesController do
       assigns(:game).game_players.first.handle.should == player1.handle
       assigns(:game).game_players.second.should_not be_nil
     end
-    it "should have player handles assigned for typeahead" do
-      login player1
-
-      get :new
-
-      assigns(:player_handles).should_not be_nil
-    end
   end
 
   describe "create" do

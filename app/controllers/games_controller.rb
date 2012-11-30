@@ -11,8 +11,6 @@ class GamesController < ApplicationController
     @game = Game.new(location: current_player.location)
     @game.game_players.build(handle: current_player.handle, color: current_player.favorite_color)
     @game.game_players.build
-
-    @player_handles = Player.all.map(&:handle).map{ |handle| "\"#{handle}\"" }.join(", ")
   end
 
   def create

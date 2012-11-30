@@ -6,4 +6,9 @@ module GamesHelper
     end
   end
 
+  def player_handles
+    player_handles = Player.all.map(&:handle).map{ |handle| "\"#{handle}\"" }.join(", ")
+    return "[#{player_handles}]"
+  end
+
 end
