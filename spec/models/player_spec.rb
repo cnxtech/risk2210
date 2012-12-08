@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Player do
 
   describe "create_with_omniauth" do
-    context "fixture users don't exist" do
+    context "player doesn't already have an account" do
       it "registers me with my Facebook omniath hash" do
         player = Player.create_with_omniauth(Fixtures::Facebook.me)
 
@@ -11,23 +11,23 @@ describe Player do
         player.new_record?.should == false
         player.raw_authorization.should == Fixtures::Facebook.me
       end
-      it "registers another guy with their facebook hash" do
-        player = Player.create_with_omniauth(Fixtures::Facebook.dude)
+      it "registers player1 with their facebook data" do
+        player = Player.create_with_omniauth(Fixtures::Facebook.player1)
 
         player.valid?.should == true
         player.new_record?.should == false
-        player.raw_authorization.should == Fixtures::Facebook.dude
+        player.raw_authorization.should == Fixtures::Facebook.player1
       end
-      it "registers another chick with their facebook hash" do
-        player = Player.create_with_omniauth(Fixtures::Facebook.chick)
+      it "registers player2 with their facebook data" do
+        player = Player.create_with_omniauth(Fixtures::Facebook.player2)
 
         player.valid?.should == true
         player.new_record?.should == false
-        player.raw_authorization.should == Fixtures::Facebook.chick
+        player.raw_authorization.should == Fixtures::Facebook.player2
       end
     end
-    context "fixture users do exist" do
-      it "attaches my facebook info to my existing account" do
+    context "player has an existing account" do
+      it "attaches the information from facebook to the existing account" do
         initial_record = FactoryGirl.create(:player, email: "nick.desteffen@gmail.com", login_count: 2)
 
         player = Player.create_with_omniauth(Fixtures::Facebook.me)
