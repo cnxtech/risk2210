@@ -5,7 +5,7 @@ class RiskTracker.Collections.Continents extends Backbone.Collection
     @where(type: "Land")
 
   water: ()->
-    _([@where(type: "Water"), @where(type: "Lava")]).flatten()
+    @where(type: "Water")
 
   lunar: ()->
     @where(type: "Lunar")

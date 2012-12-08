@@ -1,3 +1,6 @@
+Nexus 7 format of tracker
+Change facebook fixture data
+
 ## Game Tracker ##
 Start year / End year differences
 

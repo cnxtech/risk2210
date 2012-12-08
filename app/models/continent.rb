@@ -3,7 +3,7 @@ class Continent
   include Mongoid::Timestamps
   include Mongoid::Slug
 
-  TYPES = ["Land", "Water", "Lunar", "Lava"]
+  TYPES = ["Land", "Water", "Lunar"]
 
   field :name, type: String
   field :type, type: String

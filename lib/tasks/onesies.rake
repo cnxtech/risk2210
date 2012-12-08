@@ -11,4 +11,9 @@ namespace :onesies do
     end
   end
 
+  desc "Update continent Lava continents to Water continents"
+  task :update_lava => :environment do
+    Continent.where(type: "Lava").update_all(type: "Water")
+  end
+
 end
