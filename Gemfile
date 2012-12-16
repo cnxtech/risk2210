@@ -9,7 +9,7 @@ group :assets do
   gem 'uglifier'
   gem 'twitter-bootstrap-rails'#, git: "git@github.com:seyhunak/twitter-bootstrap-rails.git"
   gem 'less-rails'
-  gem 'therubyracer'
+  gem 'therubyracer', "0.10.2"
 end
 
 ## Frontend / Views
@@ -47,5 +47,5 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'debugger'
   gem "ffaker"
-  gem "jasminerice"
+  gem "jasminerice", git: "git@github.com:nick-desteffen/jasminerice.git"
 end
