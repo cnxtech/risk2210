@@ -18,8 +18,7 @@ describe "RiskTracker.Models.GamePlayer", ()->
 
     describe "The Fusion Conservancy", ()->
       it "should return the amount of energy the game player is collecting, rounded up 20%", ()->
-        faction = new RiskTracker.Models.Faction(name: "The Fusion Conservancy")
-        game_player = new RiskTracker.Models.GamePlayer(territory_count: 12, faction: faction)
+        game_player = new RiskTracker.Models.GamePlayer(territory_count: 12, faction: {name: "The Fusion Conservancy"})
 
         expect(game_player.energy()).toEqual(5)
 
@@ -40,8 +39,7 @@ describe "RiskTracker.Models.GamePlayer", ()->
 
     describe "MegaCorp", ()->
       it "should return the amount of units the game player is collecting, rounded up 20%", ()->
-        faction = new RiskTracker.Models.Faction(name: "MegaCorp")
-        game_player = new RiskTracker.Models.GamePlayer(territory_count: 12, faction: faction)
+        game_player = new RiskTracker.Models.GamePlayer(territory_count: 12, faction: {name: "MegaCorp"})
 
         expect(game_player.units()).toEqual(5)
 

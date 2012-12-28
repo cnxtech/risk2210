@@ -5,9 +5,8 @@ describe "RiskTracker.Views.GamePlayer", ()->
 
   beforeEach ()->
     @player = new RiskTracker.Models.Player()
-    @faction = new RiskTracker.Models.Faction(name: "Havoc")
     @game = new RiskTracker.Models.Game()
-    @gamePlayer = new RiskTracker.Models.GamePlayer(faction: @faction, player: @player)
+    @gamePlayer = new RiskTracker.Models.GamePlayer(faction: {name: "Havoc"}, player: @player)
     @view = new RiskTracker.Views.GamePlayer({model: @gamePlayer, attributes: {class: "player-card", game: @game}})
 
   describe "rendering", ()->
