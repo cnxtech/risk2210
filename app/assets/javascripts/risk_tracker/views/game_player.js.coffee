@@ -9,6 +9,7 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
 
   initialize: (options={})->
     @game = options.attributes.game
+    @util = new RiskTracker.Util()
 
     @model.bind("change:energy", @_updateEnergyDisplay)
     @model.bind("change:energy", @_updateBorderGlow)
@@ -24,10 +25,12 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
 
   incrementTerritoryCount: (event)->
     event.preventDefault()
+    @_beep()
     @model.incrementTerritoryCount()
 
   decrementTerritoryCount: (event)->
     event.preventDefault()
+    @_beep()
     @model.decrementTerritoryCount()
 
   saveTurn: (event)->
@@ -77,3 +80,8 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
       continent_id = ui.item.data('id')
       continent = @game.maps.findContinentById(continent_id)
       @model.removeContinent(continent)
+
+  _beep: ()->
+    sound = new Audio()
+    sound.src = @util.beepPath()
+    sound.play()

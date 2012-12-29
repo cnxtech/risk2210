@@ -9,3 +9,7 @@ class RiskTracker.Util
 
     key = factionName.toLowerCase().split(" ").join("_")
     icons[key]
+
+   beepPath: ()->
+     path = '<%= asset_path("button_sounds/button-42.mp3") %>'
+     return path
