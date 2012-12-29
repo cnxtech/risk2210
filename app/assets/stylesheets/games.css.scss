@@ -102,7 +102,6 @@ ul.continent-list{
 //****************************************************************************************************************************************
 
 .player-card{
-  font-family: "Gunship";
   margin: 20px 10px;
   clear: left;
   padding: 10px;
@@ -117,6 +116,7 @@ ul.continent-list{
 
     .player-label {
       @include container();
+      font-family: "Gunship";
       height: 60px;
       line-height: 60px;
       margin: 5px;
@@ -153,10 +153,12 @@ ul.continent-list{
         @include container();
         height: 105px;
         h3{
+          font-family: "Gunship";
           text-align: center;
           margin-bottom: 5px;
         }
         .territory-counter{
+          font-family: "Gunship";
           margin: 10px 10px 0 0;
           float: right;
           // text-align: center;
@@ -186,7 +188,7 @@ ul.continent-list{
       .counter-container{
         height: 100%;
         margin: 15px 0 0 15px;
-
+        font-family: "Gunship";
         h3.counter-label{
           color: #fff;
           font-size: 20px;
