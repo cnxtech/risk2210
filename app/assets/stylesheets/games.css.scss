@@ -102,11 +102,12 @@ ul.continent-list{
 //****************************************************************************************************************************************
 
 .player-card{
-  margin: 20px;
+  font-family: "Gunship";
+  margin: 20px 10px;
   clear: left;
   padding: 10px;
   min-height: 200px;
-  width: 710px;
+  width: 500px;
   float: left;
   @include rounded(10px);
 
@@ -114,46 +115,60 @@ ul.continent-list{
     clear: both;
     display: table-row;
 
-    .column-last{
-      width: 60px !important;
+    .player-label {
+      @include container();
+      height: 60px;
+      line-height: 60px;
+      margin: 5px;
+      width: 490px;
+      span{
+        font-size: 20px;
+        padding: 5px 15px;
+      }
+      img{
+        padding: 5px;
+        float: left;
+      }
+    }
+
+    .cellspan-two{
+      width: 326px !important;
     }
 
     .column{
       width: 155px;
       float: left;
-      margin-right: 5px;
+      margin: 5px;
 
       .avatar{
-        padding: 10px 10px 3px 10px;
+        padding: 10px;
         @include container();
         img{
           display: block;
         }
-        .handle{
-          font-family: "Gunship";
-          font-size: 12px;
-          margin-top: 4px;
-        }
       }
 
       .turn-controls{
-        margin: 10px 0 0 0;
         padding: 10px;
         @include container();
+        height: 105px;
         h3{
-          font-family: "Gunship";
-          font-size: 12px;
-        }
-        h2{
           text-align: center;
-          font-size: 38px;
+          margin-bottom: 5px;
+        }
+        .territory-counter{
+          margin: 10px 10px 0 0;
+          float: right;
+          // text-align: center;
+          font-size: 50px;
           color: #b51500;
           text-shadow: -3px -3px 0 #000;
-          font-family: "Gunship";
           margin-bottom: 5px;
         }
         .buttons{
-          text-align: center;
+          float: left;
+          margin-left: 10px;
+          text-align: left;
         }
       }
 
@@ -168,11 +183,6 @@ ul.continent-list{
         }
       }
 
-      .faction-logo{
-        height: 50px;
-        float: right;
-      }
-
       .counter-container{
         height: 100%;
         margin: 15px 0 0 15px;
@@ -182,17 +192,19 @@ ul.continent-list{
           font-size: 20px;
           height: 100%;
           clear: right;
-          font-family: "Gunship";
         }
         h2.counter{
-          font-family: "Gunship";
-          // -webkit-text-stroke: 1px #fff;
           text-shadow: -3px -3px 0 #000;
           font-size: 50px;
           color: #b51500;
           margin: 5px 0 15px;
         }
       }
+
+      .save-turn-container a{
+        width: 200px;
+      }
+
     }
   }
 

@@ -1,10 +1,31 @@
 <div class="row">
+  <div class="player-label">
+    <% unless @game_player.faction.default(): %>
+      <img src='<%= @game_player.faction.iconFileName() %>' width='50' />
+    <% end %>
+    <span><%= @game_player.get('handle') %></span>
+  </div>
+</div>
+
+<div class="row">
   <div class="column">
     <div class='avatar'>
       <img src='<%= @game_player.get('profile_image_path') %>' width='130px' />
-      <div class="handle"><%= @game_player.get('handle') %></div>
     </div>
   </div>
+  <div class="column cellspan-two">
+    <div class="turn-controls">
+      <h3>Territories</h3>
+      <div class='buttons'>
+        <button class='btn btn-danger btn-large decrement-territory-count'><i class='icon-minus-sign icon-large'></i></button>
+        <button class='btn btn-success btn-large increment-territory-count'><i class='icon-plus-sign icon-large'></i></button>
+      </div>
+      <div class="territory-counter"><%= @game_player.territoryCount() %></div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
   <div class="column">
     <div class='land territories'>
       <h3>Land</h3>
@@ -35,32 +56,15 @@
       </ul>
     </div>
   </div>
-  <div class="column column-last">
-    <div class='faction-logo'>
-      <% unless @game_player.faction.default(): %>
-        <img src='<%= @game_player.faction.iconFileName() %>' width='50'/>
-      <% end %>
-    </div>
-  </div>
 </div>
 
 <div class="row">
-  <div class="column">
-    <div class="turn-controls">
-      <h3 class="title">Territories</h3>
-      <h2 class="territory-counter"><%= @game_player.territoryCount() %></h2>
-      <div class='buttons'>
-        <a href='#' class='btn btn-danger decrement-territory-count'><i class='icon-minus-sign icon-large'></i></a>
-        <a href='#' class='btn btn-success increment-territory-count'><i class='icon-plus-sign icon-large'></i></a>
-      </div>
-    </div>
-  </div>
   <div class="column">
     <div class="counter-container">
       <h3 class="counter-label">Turns:</h3>
       <h2 class="counter turn-counter"><%= @game_player.turn() %></h2>
       <div class="save-turn-container">
-        <a href='#' class='btn btn-small btn-success save-turn'><i class='icon-ok icon-large'></i> Save Turn</a>
+        <a href='#' class='btn btn-large btn-success save-turn'><i class='icon-ok icon-large'></i> Save Turn</a>
       </div>
     </div>
   </div>
