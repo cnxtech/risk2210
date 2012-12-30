@@ -5,10 +5,11 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
   events:
     "click .increment-territory-count": "incrementTerritoryCount"
     "click .decrement-territory-count": "decrementTerritoryCount"
-    "click .save-turn": "saveTurn"
+    "click .save-turn":                 "saveTurn"
+    "click .territories":               "showContinentModal"
 
-  initialize: (options={})->
-    @game = options.attributes.game
+  initialize: ()->
+    @game = @options.game
     @util = new RiskTracker.Util()
 
     @model.bind("change:energy", @_updateEnergyDisplay)
@@ -16,11 +17,12 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
     @model.bind("change:units", @_updateUnitsDisplay)
     @model.turns.bind("add", @_updateTurnsDisplay)
     @model.bind("change:territory_count", @_updateTerritoryDisplay)
+    @model.continents.bind("add", @render)
+    @model.continents.bind("remove", @render)
     _.defer(@_updateBorderGlow)
 
-  render: ()->
+  render: ()=>
     @$el.html(@template({game_player: @model}))
-    @_bindDropZones()
     return @
 
   incrementTerritoryCount: (event)->
@@ -70,18 +72,34 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
   _updateBorderGlow: ()=>
     @$el.animate({boxShadow: "0 0 #{@model.borderGlow()}px"})
 
-  _bindDropZones: ()->
-    @$el.find(".continent-list").bind "sortreceive", (event, ui) =>
-      continent_id = ui.item.data('id')
-      continent = @game.maps.findContinentById(continent_id)
-      @model.addContinent(continent)
-
-    @$el.find(".continent-list").bind "sortremove", (event, ui) =>
-      continent_id = ui.item.data('id')
-      continent = @game.maps.findContinentById(continent_id)
-      @model.removeContinent(continent)
-
   _beep: ()->
     sound = new Audio()
     sound.src = @util.beepPath()
     sound.play()
+
+  showContinentModal: (event)->
+    @game.currentPlayer = @model
+    continentType = $(event.target).data("continentType")
+    if continentType is undefined
+      continentType = $(event.target).parents(".territories").data("continentType")
+
+    container = $("##{continentType}-continents")
+    container.find(".player-name").text(@model.get("handle"))
+
+    container.find(".claimed span.continent").each (index, span)=>
+      label = $(span)
+      continentId = label.data("id")
+      if !@model.hasContinent(continentId)
+        label.hide()
+      else
+        label.show() if label.is(":hidden")
+
+    container.find(".unclaimed span.continent").each (index, span)=>
+      label = $(span)
+      continentId = label.data("id")
+      if @model.hasContinent(continentId) or !@game.availableContinents.hasContinent(continentId)
+        label.hide()
+      else
+        label.show() if label.is(":hidden")
+
+    container.modal()

@@ -27,9 +27,9 @@
 
 <div class="row">
   <div class="column">
-    <div class='land territories'>
+    <div class='territories' data-continent-type='land'>
       <h3>Land</h3>
-      <ul class="continent-list land">
+      <ul class="continent-list">
         <% for continent in @game_player.landContinents(): %>
           <li data-id="<%= continent.get('id') %>"><span class="continent" style="background-color: <%= continent.get('color') %>"><%= continent.get('name') %> (<%= continent.get('bonus') %>)</span></li>
         <% end %>
@@ -37,9 +37,9 @@
     </div>
   </div>
   <div class="column">
-    <div class='water territories'>
+    <div class='territories' data-continent-type='water'>
       <h3>Water</h3>
-      <ul class="continent-list water">
+      <ul class="continent-list">
         <% for continent in @game_player.waterContinents(): %>
           <li data-id="<%= continent.get('id') %>"><span class="continent" style="background-color: <%= continent.get('color') %>"><%= continent.get('name') %> (<%= continent.get('bonus') %>)</span></li>
         <% end %>
@@ -47,9 +47,9 @@
     </div>
   </div>
   <div class="column">
-    <div class='space territories'>
+    <div class='territories' data-continent-type='lunar'>
       <h3>Lunar</h3>
-      <ul class="continent-list lunar">
+      <ul class="continent-list">
         <% for continent in @game_player.lunarContinents(): %>
           <li data-id="<%= continent.get('id') %>"><span class="continent" style="background-color: <%= continent.get('color') %>"><%= continent.get('name') %> (<%= continent.get('bonus') %>)</span></li>
         <% end %>

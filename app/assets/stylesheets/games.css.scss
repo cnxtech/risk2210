@@ -23,6 +23,13 @@
   background: rgba(39, 43, 48, 0.9);
 }
 
+@mixin counter{
+  font-family: "Gunship";
+  text-shadow: -3px -3px 0 #000;
+  font-size: 50px;
+  color: #b51500;
+}
+
 //****************************************************************************************************************************************
 //** Game Setup
 //****************************************************************************************************************************************
@@ -55,7 +62,10 @@
 }
 
 #maps{
-  float: left;
+  h3{
+    margin: 0px 25px;
+    font-family: "Gunship";
+  }
 }
 
 .delete-game-container {
@@ -68,9 +78,12 @@
 
 .map{
   width: 175px;
-  h3{
-    font-family: "Gunship";
-  }
+  margin: 10px 20px;
+  float: left;
+}
+
+.clear{
+  clear: both;
 }
 
 ul.continent-list{
@@ -81,8 +94,8 @@ ul.continent-list{
   min-width: 100px;
   li{
     margin: 10px 0;
-    cursor: move;
     span.continent{
+      cursor: pointer;
       padding: 5px;
       color: #fff;
       @include rounded(5px);
@@ -90,11 +103,6 @@ ul.continent-list{
       opacity: 1.0;
     }
   }
-}
-
-.dashed{
-  border: 1px dashed;
-  @include rounded();
 }
 
 //****************************************************************************************************************************************
@@ -158,13 +166,10 @@ ul.continent-list{
           margin-bottom: 5px;
         }
         .territory-counter{
-          font-family: "Gunship";
           margin: 10px 10px 0 0;
           float: right;
           // text-align: center;
-          font-size: 50px;
-          color: #b51500;
-          text-shadow: -3px -3px 0 #000;
+          @include counter();
           margin-bottom: 5px;
         }
         .buttons{
@@ -176,6 +181,7 @@ ul.continent-list{
 
       .territories{
         @include container();
+        cursor: pointer;
         h3{
           text-align: center;
           font-family: "Gunship";
@@ -196,9 +202,7 @@ ul.continent-list{
           clear: right;
         }
         h2.counter{
-          text-shadow: -3px -3px 0 #000;
-          font-size: 50px;
-          color: #b51500;
+          @include counter();
           margin: 5px 0 15px;
         }
       }

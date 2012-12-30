@@ -22,9 +22,11 @@ class RiskTracker.Models.GamePlayer extends Backbone.Model
 
   addContinent: (continent)->
     @continents.add(continent)
+    @game.availableContinents.remove(continent)
 
   removeContinent: (continent)->
     @continents.remove(continent)
+    @game.availableContinents.add(continent)
 
   incrementTerritoryCount: ()->
     @set({territory_count: @territoryCount() + 1})
@@ -51,6 +53,9 @@ class RiskTracker.Models.GamePlayer extends Backbone.Model
 
   turn: ()->
     @turns.length + 1
+
+  hasContinent: (continentId)->
+    _.contains(@_continentIds(), continentId)
 
   _continentIds: ()->
     @continents.pluck("id")
@@ -90,3 +95,4 @@ class RiskTracker.Models.GamePlayer extends Backbone.Model
     _(@get("continent_ids")).each (continent_id) =>
       continent = @game.maps.findContinentById(continent_id)
       @continents.add(continent)
+      @game.availableContinents.remove(continent)

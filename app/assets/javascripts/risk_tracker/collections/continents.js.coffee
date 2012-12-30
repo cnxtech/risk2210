@@ -9,3 +9,6 @@ class RiskTracker.Collections.Continents extends Backbone.Collection
 
   lunar: ()->
     @where(type: "Lunar")
+
+  hasContinent: (continentId)->
+    _.contains(_(@models).pluck("id"), continentId)

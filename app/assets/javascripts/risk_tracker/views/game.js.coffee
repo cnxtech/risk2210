@@ -5,31 +5,20 @@ class RiskTracker.Views.Game extends Backbone.View
   initialize: ()->
     @model = new RiskTracker.Models.Game(window.gameData)
     @maps = @model.maps
-
+    @_setupContinents()
     @model.bind("change:turn_count", @_updateProgressBar)
 
   render: ()->
-    @_setupContinents()
     skins = _.shuffle([1..8])
+
     @model.gamePlayers.each (gamePlayer) =>
       style_class = "player-card #{gamePlayer.get('color').toLowerCase()}-glow background-#{skins.pop()}"
-      view = new RiskTracker.Views.GamePlayer({model: gamePlayer, attributes: {class: style_class, game: @model}})
+      view = new RiskTracker.Views.GamePlayer({model: gamePlayer, game: @model, attributes: {class: style_class}})
       @$el.append(view.render().el)
 
-    @maps.each (map) =>
-      view = new RiskTracker.Views.Map({model: map, attributes: {class: "map"}})
+    _(['land', 'water', 'lunar']).each (type) =>
+      view = new RiskTracker.Views.Continents({collection: @maps, type: type, game: @model, attributes: {class: "modal hide fade", id: "#{type}-continents"}})
       $("#maps").append(view.render().el)
-
-    $(document).ready ->
-      _(["land", "water", "lunar"]).each (type) ->
-        $("body").find(".continent-list.#{type}").sortable
-          cursor: 'move'
-          items: 'li'
-          scroll: true
-          opacity: 0.5
-          dropOnEmpty: true
-          tolerance: 'pointer'
-          connectWith: ".continent-list.#{type}"
 
     return @
 
@@ -43,14 +32,7 @@ class RiskTracker.Views.Game extends Backbone.View
     bar.css({width: "#{percent_complete}%"})
 
   _setupContinents: () ->
-    claimed_continents = []
+    @model.availableContinents = new RiskTracker.Collections.Continents(@maps.continents())
+
     @model.gamePlayers.each (gamePlayer) ->
       gamePlayer.setStartingContinents()
-      claimed_continents.push(gamePlayer.continents.models)
-
-    claimed_continents = _(claimed_continents).flatten()
-
-    @maps.each (map) ->
-      map.continents.each (continent)->
-        if _.include(claimed_continents, continent)
-          continent.set({hidden: true})

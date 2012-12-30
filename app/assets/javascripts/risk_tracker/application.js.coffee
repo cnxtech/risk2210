@@ -4,8 +4,8 @@ window.RiskTracker =
   Views: {}
 
   boot: ()->
-    view = new RiskTracker.Views.Game()
-    view.render()
+    @game = new RiskTracker.Views.Game()
+    @game.render()
 
 $ ->
   RiskTracker.boot()

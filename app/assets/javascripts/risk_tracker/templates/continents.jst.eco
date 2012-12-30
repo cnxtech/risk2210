@@ -1,0 +1,22 @@
+<% for map in @maps: %>
+  <% if(map.continents[@type]().length > 0): %>
+    <h3><%= map.get('name') %></h3>
+    <div class="map claimed">
+      <h4 class='player-name'></h4>
+      <ul class="continent-list">
+        <% for continent in map.continents[@type](): %>
+          <li><span class="continent" style="background-color: <%= continent.get('color') %>" data-id="<%= continent.get('id') %>"><%= continent.get('name') %> (<%= continent.get('bonus') %>)</span></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="map unclaimed">
+      <h4>Unclaimed</h4>
+      <ul class="continent-list">
+        <% for continent in map.continents[@type](): %>
+          <li><span class="continent" style="background-color: <%= continent.get('color') %>" data-id="<%= continent.get('id') %>"><%= continent.get('name') %> (<%= continent.get('bonus') %>)</span></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="clear"></div>
+  <% end %>
+<% end %>
