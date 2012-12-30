@@ -232,27 +232,8 @@ ul.continent-list{
   @include glowingBorder($gold);
 }
 
-.background-1{
-  background-image: image-url('player_card_backgrounds/background1.jpg');
+<% (1..8).each do |num| %>
+.background-<%= num %>{
+  background-image: image-url('player_card_backgrounds/background<%= num %>.jpg');
 }
-.background-2{
-  background-image: image-url('player_card_backgrounds/background2.jpg');
-}
-.background-3{
-  background-image: image-url('player_card_backgrounds/background3.jpg');
-}
-.background-4{
-  background-image: image-url('player_card_backgrounds/background4.jpg');
-}
-.background-5{
-  background-image: image-url('player_card_backgrounds/background5.jpg');
-}
-.background-6{
-  background-image: image-url('player_card_backgrounds/background6.jpg');
-}
-.background-7{
-  background-image: image-url('player_card_backgrounds/background7.jpg');
-}
-.background-8{
-  background-image: image-url('player_card_backgrounds/background8.jpg');
-}
+<% end %>
