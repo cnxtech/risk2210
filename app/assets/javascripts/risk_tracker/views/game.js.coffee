@@ -18,7 +18,7 @@ class RiskTracker.Views.Game extends Backbone.View
 
     _(['land', 'water', 'lunar']).each (type) =>
       view = new RiskTracker.Views.Continents({collection: @maps, type: type, game: @model, attributes: {class: "modal hide fade", id: "#{type}-continents"}})
-      $("#maps").append(view.render().el)
+      @$el.append(view.render().el)
 
     return @
 
