@@ -68,6 +68,7 @@ private
 
   def find_player
     @player = Player.find(params[:id])
+    raise Mongoid::Errors::DocumentNotFound.new(Player, params[:id], params[:id]) if @player.nil?
   end
 
   def authorize_current_player

@@ -74,9 +74,9 @@ describe CommentsController do
       comment = FactoryGirl.create(:topic_comment, commentable: topic)
       login player
 
-      expect{
-        get :edit, forum_id: forum.id, topic_id: topic.id, id: comment.id
-      }.to raise_error(Mongoid::Errors::DocumentNotFound)
+      get :edit, forum_id: forum.id, topic_id: topic.id, id: comment.id
+
+      response.status.should == 404
     end
   end
 

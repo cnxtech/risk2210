@@ -49,6 +49,13 @@ describe PlayersController do
         json[:id].should_not be_nil
       end
     end
+    context "player not found" do
+      it "should render the 404 page" do
+        get :show, id: "foo"
+
+        response.status.should == 404
+      end
+    end
   end
 
   describe "destroy" do
