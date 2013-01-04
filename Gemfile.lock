@@ -5,6 +5,15 @@ GIT
     jasminerice (0.0.10)
       coffee-rails
 
+GIT
+  remote: git@github.com:nick-desteffen/twitter-bootstrap-rails.git
+  revision: ee48d38dc475d81e5571b1009b1e08e74afb5dd1
+  specs:
+    twitter-bootstrap-rails (2.1.9)
+      actionpack (>= 3.1)
+      execjs
+      railties (>= 3.1)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -228,10 +237,6 @@ GEM
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
-    twitter-bootstrap-rails (2.1.9)
-      actionpack (>= 3.1)
-      execjs
-      railties (>= 3.1)
     twitter-stream (0.1.16)
       eventmachine (>= 0.12.8)
       http_parser.rb (~> 0.5.1)
@@ -274,5 +279,5 @@ DEPENDENCIES
   simple_form
   strong_parameters
   therubyracer
-  twitter-bootstrap-rails
+  twitter-bootstrap-rails!
   uglifier

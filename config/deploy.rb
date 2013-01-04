@@ -33,5 +33,5 @@ namespace :db do
   end
 end
 
-before "deploy:assets:precompile", "bundle:install"
+#before "deploy:assets:precompile", "bundle:install"
 after "deploy:restart", "deploy:cleanup"

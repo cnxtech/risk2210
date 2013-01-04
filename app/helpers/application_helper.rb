@@ -27,7 +27,7 @@ module ApplicationHelper
         when :notice ; "alert-success"
         when :alert ; "alert-error"
       end
-      html += content_tag(:div, (content_tag(:a, "&times;".html_safe, close_link_options) + value), class: "alert fade in #{style_class}")
+      html += content_tag(:div, (content_tag(:a, "&times;".html_safe, close_link_options) + content_tag(:i, "", class: "icon-info-sign") + content_tag(:span, value, class: "flash-text")), class: "alert fade in #{style_class}")
     end
     return html.html_safe
   end
