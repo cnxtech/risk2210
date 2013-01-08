@@ -46,6 +46,10 @@ GEM
       net-sftp (>= 2.0.0)
       net-ssh (>= 2.0.14)
       net-ssh-gateway (>= 1.1.0)
+    capistrano-helpers (0.7.1)
+      capistrano
+      git
+      tinder
     capistrano_colors (0.5.5)
     cocoon (1.1.1)
     coffee-rails (3.2.2)
@@ -91,6 +95,7 @@ GEM
       faraday (>= 0.7.4, < 0.9)
     fastthread (1.0.7)
     ffaker (1.15.0)
+    git (1.2.5)
     hashie (1.2.0)
     highline (1.6.15)
     hike (1.2.1)
@@ -248,6 +253,7 @@ DEPENDENCIES
   active_model_serializers
   bcrypt-ruby
   capistrano
+  capistrano-helpers
   capistrano_colors
   cocoon
   coffee-rails
@@ -258,6 +264,7 @@ DEPENDENCIES
   exception_notification
   factory_girl_rails (>= 1.4.0)
   ffaker
+  hashie
   jasminerice!
   jquery-rails
   less-rails

@@ -1,5 +1,6 @@
 require "bundler/capistrano"
 require "capistrano_colors"
+require 'capistrano-helpers/privates'
 
 set :application, "risk2210"
 set :scm, :git
@@ -8,6 +9,7 @@ set :branch, "master"
 set :user, "nickd"
 set :deploy_to, "/var/www/apps/risk2210"
 set :use_sudo, false
+set :privates, %W(config/settings.yml)
 
 default_run_options[:pty] = true
 

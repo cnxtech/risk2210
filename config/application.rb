@@ -34,14 +34,16 @@ module Risk2210
       generator.helper      false
     end
 
+    config.settings = Hashie::Mash.new(YAML.load_file("#{Rails.root}/config/settings.yml"))[Rails.env]
+
     ActionMailer::Base.prepend_view_path "#{Rails.root}/app/mailer_views"
     ActionMailer::Base.smtp_settings = {
       address:        "smtp.sendgrid.net",
       port:           "25",
       authentication: :plain,
-      user_name:      ENV['SENDGRID_USERNAME'],
-      password:       ENV['SENDGRID_PASSWORD'],
-      domain:         ENV['SENDGRID_DOMAIN']
+      user_name:      config.settings.sendgrid.username,
+      password:       config.settings.sendgrid.password,
+      domain:         config.settings.sendgrid.domain
     }
 
     config.password_cost = BCrypt::Engine::DEFAULT_COST

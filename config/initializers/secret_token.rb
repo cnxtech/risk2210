@@ -1,1 +1,1 @@
-Risk2210::Application.config.secret_token = ENV['RISK2210_NET_SECRET_TOKEN']
+Risk2210::Application.config.secret_token = Rails.configuration.settings.secret_token

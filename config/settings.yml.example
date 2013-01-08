@@ -1,0 +1,12 @@
+development: &defaults
+  secret_token: ''
+  facebook:
+    application_key: ''
+    application_secret: ''
+  sendgrid:
+    username: ''
+    password: ''
+    domain: ''
+
+test:
+  <<: *defaults

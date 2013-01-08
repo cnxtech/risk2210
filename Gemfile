@@ -35,10 +35,12 @@ gem 'bcrypt-ruby'#, '~> 3.0.0'
 ## Operations
 gem 'passenger'
 gem 'exception_notification'
+gem 'hashie'
 
 group :development do
   gem 'capistrano', require: false
   gem 'capistrano_colors', require: false
+  gem 'capistrano-helpers', require: false
 end
 
 group :development, :test do
