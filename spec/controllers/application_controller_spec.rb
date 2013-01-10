@@ -20,15 +20,18 @@ describe ApplicationController do
     controller do
       def index
         player = Player.where(id: params[:player_id]).first
-        login(player, redirect_to: root_path, remember_me: "1", notice: "Welcome!")
+        login(player, redirect_to: "/", remember_me: "1", notice: "Welcome!")
       end
     end
 
     it "sets the players's id in the session, remember me token in cookies, and redirects" do
+      routes.draw { get "index" => "anonymous#index" }
+      controller.stub(:new_game_path).and_return("/")
+
       get :index, player_id: player.id
 
       session[:player_id].should == player.id
-      response.should redirect_to root_path
+      response.should redirect_to "/"
       cookies.signed[:remember_me_token].should == player.remember_me_token
       flash.notice.should == "Welcome!"
     end
@@ -55,20 +58,28 @@ describe ApplicationController do
     end
 
     it "redirects to the homepage, stores the original destination and has an alert message if there is no player" do
+      routes.draw { get "index" => "anonymous#index" }
+      login_path = "/login"
+      controller.stub(:login_path).and_return(login_path)
+
       get :index
 
       response.should redirect_to login_path
       session[:return_to_path].should_not be_nil
-      flash[:alert].should_not == nil      
+      flash[:alert].should_not == nil
     end
   end
 
   describe "redirect_back_or_default" do
-    
+
     controller do
       def index
-        redirect_back_or_default(root_path)
+        redirect_back_or_default("/")
       end
+    end
+
+    before do
+      routes.draw { get "index" => "anonymous#index" }
     end
 
     it "redirects back to where the player was coming from" do
@@ -83,7 +94,7 @@ describe ApplicationController do
 
       get :index
 
-      response.should redirect_to root_path
+      response.should redirect_to "/"
     end
   end
 

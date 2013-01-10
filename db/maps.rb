@@ -1,4 +1,4 @@
-earth = Map.find_or_create_by(:name => "Earth")
+earth = Map.find_or_create_by(name: "Earth")
 Continent.find_or_create_by(map_id: earth.id, name: "North America", type: "Land", bonus: 5, color: "#eae74a")
 Continent.find_or_create_by(map_id: earth.id, name: "South America", type: "Land", bonus: 2, color: "#d2a32d")
 Continent.find_or_create_by(map_id: earth.id, name: "Africa", type: "Land", bonus: 3, color: "#64b2d6")
@@ -11,12 +11,12 @@ Continent.find_or_create_by(map_id: earth.id, name: "North Atlantic", type: "Wat
 Continent.find_or_create_by(map_id: earth.id, name: "South Atlantic", type: "Water", bonus: 1, color: "#79c139")
 Continent.find_or_create_by(map_id: earth.id, name: "Indian", type: "Water", bonus: 2, color: "#f27115")
 
-moon = Map.find_or_create_by(:name => "Moon", :moon => true)
+moon = Map.find_or_create_by(name: "Moon", moon: true)
 Continent.find_or_create_by(map_id: moon.id, name: "Sajon", type: "Lunar", bonus: 4, color: "#96ca8c")
 Continent.find_or_create_by(map_id: moon.id, name: "Cresinion", type: "Lunar", bonus: 2, color: "#f79063")
 Continent.find_or_create_by(map_id: moon.id, name: "Delphot", type: "Lunar", bonus: 2, color: "#7073c0")
 
-mars = Map.find_or_create_by(:name => "Mars")
+mars = Map.find_or_create_by(name: "Mars")
 Continent.find_or_create_by(map_id: mars.id, name: "Arcadia", type: "Land", bonus: 3, color: "#df9ce9")
 Continent.find_or_create_by(map_id: mars.id, name: "Amazonis", type: "Land", bonus: 6, color: "#7e83de")
 Continent.find_or_create_by(map_id: mars.id, name: "Tharsis", type: "Land", bonus: 3, color: "#f0e660")
@@ -29,18 +29,18 @@ Continent.find_or_create_by(map_id: mars.id, name: "Arabia", type: "Water", bonu
 Continent.find_or_create_by(map_id: mars.id, name: "Utopia", type: "Water", bonus: 2, color: "#e417ff")
 Continent.find_or_create_by(map_id: mars.id, name: "Isidis", type: "Water", bonus: 1, color: "#e99127")
 
-mars_moons = Map.find_or_create_by(:name => "Phobos & Deimos", :moon => true)
+mars_moons = Map.find_or_create_by(name: "Phobos & Deimos", moon: true)
 Continent.find_or_create_by(map_id: mars_moons.id, name: "Norseland", type: "Lunar", bonus: 3, color: "#f27f43")
 Continent.find_or_create_by(map_id: mars_moons.id, name: "New America", type: "Lunar", bonus: 2, color: "#8ffd76")
 Continent.find_or_create_by(map_id: mars_moons.id, name: "Federation", type: "Lunar", bonus: 3, color: "#dd81ee")
 
-asteroids = Map.find_or_create_by(:name => "Asteroid Colonies", :moon => true)
+asteroids = Map.find_or_create_by(name: "Asteroid Colonies", moon: true)
 Continent.find_or_create_by(map_id: asteroids.id, name: "1 Ceres", type: "Lunar", bonus: 4, color: "#e87386")
 Continent.find_or_create_by(map_id: asteroids.id, name: "4 Vesta", type: "Lunar", bonus: 2, color: "#9aea89")
 Continent.find_or_create_by(map_id: asteroids.id, name: "Dactyl", type: "Lunar", bonus: 1, color: "#80ccf1")
 Continent.find_or_create_by(map_id: asteroids.id, name: "243 Ida", type: "Lunar", bonus: 2, color: "#f0f47b")
 
-io = Map.find_or_create_by(:name => "Io")
+io = Map.find_or_create_by(name: "Io")
 Continent.find_or_create_by(map_id: io.id, name: "Narkom", type: "Land", bonus: 4, color: "#718cc1")
 Continent.find_or_create_by(map_id: io.id, name: "Automin", type: "Land", bonus: 5, color: "#e35b5b")
 Continent.find_or_create_by(map_id: io.id, name: "Skandi", type: "Land", bonus: 2, color: "#0e0e0e")
@@ -57,7 +57,7 @@ Continent.find_or_create_by(map_id: io.id, name: "Khell", type: "Water", bonus: 
 Continent.find_or_create_by(map_id: io.id, name: "Nuraghe", type: "Water", bonus: 1, color: "#e10005")
 Continent.find_or_create_by(map_id: io.id, name: "Magreb", type: "Water", bonus: 3, color: "#4c0fb5")
 
-europa = Map.find_or_create_by(:name => "Europa")
+europa = Map.find_or_create_by(name: "Europa")
 Continent.find_or_create_by(map_id: europa.id, name: "Angeln", type: "Land", bonus: 3, color: "#d896dd")
 Continent.find_or_create_by(map_id: europa.id, name: "Galilei", type: "Land", bonus: 6, color: "#141414")
 Continent.find_or_create_by(map_id: europa.id, name: "Seaxna", type: "Land", bonus: 3, color: "#e8df78")
@@ -65,3 +65,5 @@ Continent.find_or_create_by(map_id: europa.id, name: "Cymru", type: "Land", bonu
 Continent.find_or_create_by(map_id: europa.id, name: "Byfed", type: "Land", bonus: 2, color: "#a3f674")
 Continent.find_or_create_by(map_id: europa.id, name: "Avalon", type: "Land", bonus: 3, color: "#ff777b")
 Continent.find_or_create_by(map_id: europa.id, name: "SungTzu", type: "Water", bonus: 2, color: "#ee0613")
+
+pluto = Map.find_or_create_by(name: "Pluto & Charon")

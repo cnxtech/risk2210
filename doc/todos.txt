@@ -1,7 +1,7 @@
-Nexus 7 format of tracker
-
-## Game Tracker ##
-Start year / End year differences
+## Game Tracker##
+Add initial turn order on startup page
+Battle mode
+Persist all player scores on each turn
 
 ## UI ##
 Commander icons, active and inactive
@@ -10,12 +10,13 @@ Space station icons
 ## Game over page ##
 Game completion page
   - charts
-  - collect final scores
 Player Leaderboard
 
 password reset
 
 Additional Expansion pages
+  - Pluto
+  - Galactic Risk
 
 ## Friends
 Player to player messaging

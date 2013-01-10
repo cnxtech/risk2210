@@ -1,5 +1,4 @@
 require "bundler/capistrano"
-require "capistrano_colors"
 require 'capistrano-helpers/privates'
 
 set :application, "risk2210"

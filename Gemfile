@@ -1,6 +1,6 @@
 source :rubygems
 
-gem 'rails', '3.2.10'
+gem 'rails', '3.2.11'
 gem 'strong_parameters'
 
 group :assets do
@@ -39,7 +39,6 @@ gem 'hashie'
 
 group :development do
   gem 'capistrano', require: false
-  gem 'capistrano_colors', require: false
   gem 'capistrano-helpers', require: false
 end
 

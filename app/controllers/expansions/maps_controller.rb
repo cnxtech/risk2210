@@ -21,5 +21,9 @@ module Expansions
       @page_title = "Asteroid Colonies Expansion"
     end
 
+    def pluto
+      @page_title = "Pluto Expansion"
+    end
+
   end
 end
