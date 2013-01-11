@@ -1,5 +1,5 @@
 <h1>Discussion Forums</h1>
-<div id="forums">
+<div id="forums" class="well">
   <% @forums.each do |forum| %>
     <div class="forum">
       <h2><%= link_to forum.name, forum_path(forum) %></h2>
