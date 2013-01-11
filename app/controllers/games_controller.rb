@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
 
-  before_filter :login_required, only: [:new, :create]
+  before_filter :login_required, only: [:new, :create, :destroy]
   before_filter :setup_title
 
   layout "no_sidebar"
