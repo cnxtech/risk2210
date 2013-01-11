@@ -6,7 +6,7 @@ describe Game do
     @game_player_attributes = {}
     2.times do |index|
       player = FactoryGirl.create(:player)
-      @game_player_attributes[index.to_s] = {handle: player.handle, faction_id: faction_ids[index], color: GamePlayer::COLORS.sample}
+      @game_player_attributes[index.to_s] = {handle: player.handle, faction_id: faction_ids[index], color: GamePlayer::COLORS.sample, starting_turn_position: index + 1}
     end
   end
 

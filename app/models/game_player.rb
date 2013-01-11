@@ -4,11 +4,12 @@ class GamePlayer
 
   COLORS = %w(Green Blue Red Black Gold)
 
-  field :color, type: String
-  field :territory_count, type: Integer
-  field :energy, type: Integer
-  field :units, type: Integer
-  field :handle, type: String
+  field :color,                  type: String
+  field :territory_count,        type: Integer
+  field :energy,                 type: Integer
+  field :units,                  type: Integer
+  field :handle,                 type: String
+  field :starting_turn_position, type: Integer
 
   belongs_to :game
   belongs_to :player
@@ -20,6 +21,7 @@ class GamePlayer
 
   validates_inclusion_of :color, in: COLORS
   validates_presence_of :faction_id, :handle
+  validates_numericality_of :starting_turn_position, greater_than_or_equal_to: 1, less_than_or_equal_to: 5
 
   def handle=(value)
     write_attribute(:handle, value)
