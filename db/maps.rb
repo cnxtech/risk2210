@@ -67,3 +67,8 @@ Continent.find_or_create_by(map_id: europa.id, name: "Avalon", type: "Land", bon
 Continent.find_or_create_by(map_id: europa.id, name: "SungTzu", type: "Water", bonus: 2, color: "#ee0613")
 
 pluto = Map.find_or_create_by(name: "Pluto & Charon")
+Continent.find_or_create_by(map_id: pluto.id, name: "Elysia", type: "Land", bonus: 3, color: "#67c360")
+Continent.find_or_create_by(map_id: pluto.id, name: "Titaniya", type: "Land", bonus: 4, color: "#989f40")
+Continent.find_or_create_by(map_id: pluto.id, name: "Tartarus", type: "Land", bonus: 3, color: "#ae3eac")
+Continent.find_or_create_by(map_id: pluto.id, name: "Jotunheim", type: "Lunar", bonus: 1, color: "#57b7b6")
+Continent.find_or_create_by(map_id: pluto.id, name: "Styx", type: "Lunar", bonus: 2, color: "#ba8654")
