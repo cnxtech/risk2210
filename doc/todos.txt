@@ -1,4 +1,4 @@
-## Game Tracker##
+## Game Tracker ##
 Add initial turn order on startup page
 Battle mode
 Persist all player scores on each turn
@@ -15,7 +15,6 @@ Player Leaderboard
 password reset
 
 Additional Expansion pages
-  - Pluto
   - Galactic Risk
 
 ## Friends

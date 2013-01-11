@@ -58,6 +58,17 @@ describe Game do
       game.valid?.should == false
       game.errors[:base].include?("You must have at least two players.").should == true
     end
+    it "should be invalid with more than 5 players" do
+      4.times do |index|
+        player = FactoryGirl.create(:player)
+        @game_player_attributes[(index + 2).to_s] = {handle: player.handle, faction_id: faction_ids[index], color: GamePlayer::COLORS.sample}
+      end
+
+      game = FactoryGirl.build(:game, map_ids: map_ids[0..1], game_players_attributes: @game_player_attributes)
+
+      game.valid?.should == false
+      game.errors[:base].include?("You can't have more than five players.").should == true
+    end
     it "should be invalid without any maps" do
       game = FactoryGirl.build(:game, map_ids: [], game_players_attributes: @game_player_attributes)
 

@@ -36,6 +36,7 @@ class Game
 
   def number_of_players
     errors.add(:base, "You must have at least two players.") if game_players.size < 2
+    errors.add(:base, "You can't have more than five players.") if game_players.size > 5
   end
 
   def number_of_maps
