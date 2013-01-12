@@ -40,6 +40,15 @@ describe Player do
     end
   end
 
+  describe "registration" do
+    it "should require a password if the player is not registering through Facebook" do
+      player = Player.new(email: Faker::Internet.free_email, handle: Faker::Name.first_name)
+
+      player.valid?.should == false
+      player.errors[:password_digest].should_not be_nil
+    end
+  end
+
   describe "authenticate" do
     before do
       Time.stub(:now).and_return(Time.mktime(2012, 7, 18, 14, 05))
