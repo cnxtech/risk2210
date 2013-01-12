@@ -15,6 +15,7 @@ class Game
 
   validate :number_of_players
   validate :number_of_maps
+  validate :starting_turn_positions
 
   def has_map?(map)
     map_ids.include?(map.id)
@@ -41,6 +42,11 @@ class Game
 
   def number_of_maps
     errors.add(:base, "You must choose one or more maps to play.") if maps.size < 1
+  end
+
+  def starting_turn_positions
+    starting_turn_positions = game_players.map(&:starting_turn_position).uniq
+    errors.add(:base, "Every player must have a unique starting turn position.") if starting_turn_positions.size != game_players.size
   end
 
 end

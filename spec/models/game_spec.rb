@@ -75,6 +75,13 @@ describe Game do
       game.valid?.should == false
       game.errors[:base].include?("You must choose one or more maps to play.").should == true
     end
+    it "should be invalid if all players don't have a unique starting turn position" do
+      @game_player_attributes["1"][:starting_turn_position] = 1
+      game = FactoryGirl.build(:game, map_ids: map_ids[0..1], game_players_attributes: @game_player_attributes)
+
+      game.valid?.should == false
+      game.errors[:base].include?("Every player must have a unique starting turn position.").should == true
+    end
   end
 
 end

@@ -64,7 +64,8 @@
       <h3 class="counter-label">Turns:</h3>
       <h2 class="counter turn-counter"><%= @game_player.turn() %></h2>
       <div class="save-turn-container">
-        <a href='#' class='btn btn-large btn-success save-turn'><i class='icon-ok icon-large'></i> Save Turn</a>
+        <a href='#' class='btn btn-large btn-danger invade'><i class='icon-screenshot icon-large'></i> Invade</a>
+        <a href='#' class='btn btn-large btn-success save-turn'><i class='icon-ok icon-large'></i> End Turn</a>
       </div>
     </div>
   </div>
