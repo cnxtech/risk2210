@@ -2,15 +2,19 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
 
   template: JST['risk_tracker/templates/game_player']
 
+  invadeView: null
+
   events:
     "click .increment-territory-count": "incrementTerritoryCount"
     "click .decrement-territory-count": "decrementTerritoryCount"
-    "click .save-turn":                 "saveTurn"
+    "click .save-turn":                 "endTurn"
+    "click .invade":                    "invadeTerritories"
     "click .territories":               "showContinentModal"
 
   initialize: ()->
     @game = @options.game
     @util = new RiskTracker.Util()
+    @invadeView = new RiskTracker.Views.Invade(model: @model)
 
     @model.bind("change:energy", @_updateEnergyDisplay)
     @model.bind("change:energy", @_updateBorderGlow)
@@ -23,6 +27,7 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
 
   render: ()=>
     @$el.html(@template({game_player: @model}))
+    @$el.find(".invade-card").append(@invadeView.render().el)
     return @
 
   incrementTerritoryCount: (event)->
@@ -35,9 +40,14 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
     @_beep()
     @model.decrementTerritoryCount()
 
-  saveTurn: (event)->
+  endTurn: (event)->
     event.preventDefault()
-    @model.saveTurn()
+    @model.endTurn()
+
+  invadeTerritories: (event)->
+    event.preventDefault()
+    @$el.find(".info-card").hide()
+    @$el.find(".invade-card").show()
 
   _updateTerritoryDisplay: ()=>
     @_spinCounter(".territory-counter", @model.territoryCount())

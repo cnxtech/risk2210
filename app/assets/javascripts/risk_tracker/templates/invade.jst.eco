@@ -1,0 +1,10 @@
+<h1>Invade!</h1>
+<button class='btn invade-empty'>Invade Empty</button>
+<% for game_player in @model.game.gamePlayers.models: %>
+  <% unless @model is game_player: %>
+    <div class='invade-player'>
+      <img src='<%= game_player.get('profile_image_path') %>' width='40px' />
+      <button class='btn invade' data-game-player-id='<%= game_player.get("id") %>'>Invade <%= game_player.get("handle") %></button>
+    </div>
+  <% end %>
+<% end %>

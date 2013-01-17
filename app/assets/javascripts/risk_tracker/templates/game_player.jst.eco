@@ -1,85 +1,89 @@
-<div class="row">
-  <div class="player-label">
-    <% unless @game_player.faction.default(): %>
-      <img src='<%= @game_player.faction.iconFileName() %>' width='50' />
-    <% end %>
-    <span><%= @game_player.get('handle') %></span>
-  </div>
-</div>
-
-<div class="row">
-  <div class="column">
-    <div class='avatar'>
-      <img src='<%= @game_player.get('profile_image_path') %>' width='130px' />
+<div class="info-card">
+  <div class="row">
+    <div class="player-label">
+      <% unless @game_player.faction.default(): %>
+        <img src='<%= @game_player.faction.iconFileName() %>' width='50' />
+      <% end %>
+      <span><%= @game_player.get('handle') %></span>
     </div>
   </div>
-  <div class="column cellspan-two">
-    <div class="turn-controls">
-      <h3>Territories</h3>
-      <div class='buttons'>
-        <button class='btn btn-danger btn-large decrement-territory-count'><i class='icon-minus-sign icon-large'></i></button>
-        <button class='btn btn-success btn-large increment-territory-count'><i class='icon-plus-sign icon-large'></i></button>
+
+  <div class="row">
+    <div class="column">
+      <div class='avatar'>
+        <img src='<%= @game_player.get('profile_image_path') %>' width='130px' />
       </div>
-      <div class="territory-counter"><%= @game_player.territoryCount() %></div>
     </div>
-  </div>
-</div>
-
-<div class="row">
-  <div class="column">
-    <div class='territories' data-continent-type='land'>
-      <h3>Land</h3>
-      <ul class="continent-list">
-        <% for continent in @game_player.landContinents(): %>
-          <li data-id="<%= continent.get('id') %>"><span class="continent" style="background-color: <%= continent.get('color') %>"><%= continent.get('name') %> (<%= continent.get('bonus') %>)</span></li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
-  <div class="column">
-    <div class='territories' data-continent-type='water'>
-      <h3>Water</h3>
-      <ul class="continent-list">
-        <% for continent in @game_player.waterContinents(): %>
-          <li data-id="<%= continent.get('id') %>"><span class="continent" style="background-color: <%= continent.get('color') %>"><%= continent.get('name') %> (<%= continent.get('bonus') %>)</span></li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
-  <div class="column">
-    <div class='territories' data-continent-type='lunar'>
-      <h3>Lunar</h3>
-      <ul class="continent-list">
-        <% for continent in @game_player.lunarContinents(): %>
-          <li data-id="<%= continent.get('id') %>"><span class="continent" style="background-color: <%= continent.get('color') %>"><%= continent.get('name') %> (<%= continent.get('bonus') %>)</span></li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<div class="row">
-  <div class="column">
-    <div class="counter-container">
-      <h3 class="counter-label">Turns:</h3>
-      <h2 class="counter turn-counter"><%= @game_player.turn() %></h2>
-      <div class="save-turn-container">
-        <a href='#' class='btn btn-large btn-danger invade'><i class='icon-screenshot icon-large'></i> Invade</a>
-        <a href='#' class='btn btn-large btn-success save-turn'><i class='icon-ok icon-large'></i> End Turn</a>
+    <div class="column cellspan-two">
+      <div class="turn-controls">
+        <h3>Territories</h3>
+        <div class='buttons'>
+          <button class='btn btn-danger btn-large decrement-territory-count'><i class='icon-minus-sign icon-large'></i></button>
+          <button class='btn btn-success btn-large increment-territory-count'><i class='icon-plus-sign icon-large'></i></button>
+        </div>
+        <div class="territory-counter"><%= @game_player.territoryCount() %></div>
       </div>
     </div>
   </div>
-  <div class="column">
-    <div class="counter-container">
-      <h3 class="counter-label">Energy:</h3>
-      <h2 class='counter energy-counter'><%= @game_player.energy() %></h2>
+
+  <div class="row">
+    <div class="column">
+      <div class='territories' data-continent-type='land'>
+        <h3>Land</h3>
+        <ul class="continent-list">
+          <% for continent in @game_player.landContinents(): %>
+            <li data-id="<%= continent.get('id') %>"><span class="continent" style="background-color: <%= continent.get('color') %>"><%= continent.get('name') %> (<%= continent.get('bonus') %>)</span></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <div class="column">
+      <div class='territories' data-continent-type='water'>
+        <h3>Water</h3>
+        <ul class="continent-list">
+          <% for continent in @game_player.waterContinents(): %>
+            <li data-id="<%= continent.get('id') %>"><span class="continent" style="background-color: <%= continent.get('color') %>"><%= continent.get('name') %> (<%= continent.get('bonus') %>)</span></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <div class="column">
+      <div class='territories' data-continent-type='lunar'>
+        <h3>Lunar</h3>
+        <ul class="continent-list">
+          <% for continent in @game_player.lunarContinents(): %>
+            <li data-id="<%= continent.get('id') %>"><span class="continent" style="background-color: <%= continent.get('color') %>"><%= continent.get('name') %> (<%= continent.get('bonus') %>)</span></li>
+          <% end %>
+        </ul>
+      </div>
     </div>
   </div>
-  <div class="column">
-    <div class="counter-container">
-      <h3 class="counter-label">Units:</h3>
-      <h2 class='counter unit-counter'><%= @game_player.units() %></h2>
+
+  <div class="row">
+    <div class="column">
+      <div class="counter-container">
+        <h3 class="counter-label">Turns:</h3>
+        <h2 class="counter turn-counter"><%= @game_player.turn() %></h2>
+        <div class="save-turn-container">
+          <a href='#' class='btn btn-large btn-danger invade'><i class='icon-screenshot icon-large'></i> Invade</a>
+          <a href='#' class='btn btn-large btn-success save-turn'><i class='icon-ok icon-large'></i> End Turn</a>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="counter-container">
+        <h3 class="counter-label">Energy:</h3>
+        <h2 class='counter energy-counter'><%= @game_player.energy() %></h2>
+      </div>
+    </div>
+    <div class="column">
+      <div class="counter-container">
+        <h3 class="counter-label">Units:</h3>
+        <h2 class='counter unit-counter'><%= @game_player.units() %></h2>
+      </div>
     </div>
   </div>
 </div>
 
+<div class="invade-card" style="display: none;">
+</div>
