@@ -50,6 +50,14 @@ describe Authentication::Risk2210 do
       player.login_count.should == 5
       player.last_login_at.should_not == 1.week.ago
     end
+    it "should set the remember me token on the player" do
+      FactoryGirl.create(:player, remember_me_token: nil, password: "secret1", email: "nick.desteffen@gmail.com")
+
+      SecureRandom.should_receive(:hex).with(8).and_return("28eae6141a407dfd")
+      player = Authentication::Risk2210.new(password: "secret1", email: "nick.desteffen@gmail.com").authenticate
+
+      player.remember_me_token.should_not be_nil
+    end
   end
 
 end

@@ -92,17 +92,6 @@ describe Player do
     end
   end
 
-  describe "set_remember_me_token" do
-    it "should set the remember me token on the player" do
-      player = FactoryGirl.build(:player, remember_me_token: nil)
-
-      SecureRandom.should_receive(:hex).with(8).and_return("28eae6141a407dfd")
-      player.set_remember_me_token
-
-      player.remember_me_token.should_not be_nil
-    end
-  end
-
   describe "deliver_welcome_email" do
     it "should send an email upon account creation" do
       ActionMailer::Base.deliveries.clear

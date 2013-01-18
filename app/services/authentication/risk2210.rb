@@ -24,7 +24,7 @@ module Authentication
       return nil unless valid?
       if player && player.valid_password?(password)
         player.set_login_stats
-        player.set_remember_me_token
+        player.remember_me_token = SecureRandom.hex(8)
         player.save
         return player
       end

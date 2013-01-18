@@ -108,10 +108,6 @@ class Player
     self.last_login_at = Time.now
   end
 
-  def set_remember_me_token
-    self.remember_me_token = SecureRandom.hex(8)
-  end
-
   def valid_password?(unencrypted_password)
     password_digest.present? && BCrypt::Password.new(password_digest) == unencrypted_password
   end
