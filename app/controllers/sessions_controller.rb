@@ -1,11 +1,10 @@
 class SessionsController < ApplicationController
 
   def authenticate_facebook
-    auth = request.env["omniauth.auth"]
-    player = Player.omniauthorize(auth)
+    player = FacebookAuthenticationService.new(request.env["omniauth.auth"]).authenticate
     login(player)
   end
-  
+
   def destroy
     logout
     redirect_to root_path, notice: 'Signed out!'
@@ -15,7 +14,7 @@ class SessionsController < ApplicationController
     @page_title = "Login"
     @session = Session.new
   end
-  
+
   def create
     @page_title = "Login"
     @session = Session.new(params[:session])
@@ -26,9 +25,9 @@ class SessionsController < ApplicationController
       render action: :new
     end
   end
-  
+
   def failure
     redirect_to root_path, alert: "Facebook authentication error: #{params[:message].humanize}"
   end
-  
+
 end

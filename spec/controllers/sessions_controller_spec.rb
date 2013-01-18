@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe SessionsController do
-  
+
   let(:player) { FactoryGirl.create(:player, password: "secret1", password_confirmation: "secret1") }
-  
+
   describe "destroy" do
     it "should log the user out" do
       login player
@@ -48,7 +48,7 @@ describe SessionsController do
   end
 
   describe "authenticate_facebook" do
-    
+
     before do
       request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:facebook]
     end
@@ -65,7 +65,7 @@ describe SessionsController do
     end
     context "logging in" do
       it "should login a user" do
-        player = Player.omniauthorize(OmniAuth.config.mock_auth[:facebook])
+        player = FacebookAuthenticationService.new(OmniAuth.config.mock_auth[:facebook]).authenticate
 
         expect{
           get :authenticate_facebook
