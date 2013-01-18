@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
   def authenticate_facebook
-    player = FacebookAuthenticationService.new(request.env["omniauth.auth"]).authenticate
+    player = Authentication::Facebook.new(request.env["omniauth.auth"]).authenticate
     login(player)
   end
 
@@ -12,14 +12,14 @@ class SessionsController < ApplicationController
 
   def new
     @page_title = "Login"
-    @session = Session.new
+    @session = Authentication::Risk2210.new
   end
 
   def create
     @page_title = "Login"
-    @session = Session.new(params[:session])
-    if @session.authenticated?
-      login(@session.player, remember_me: params[:session][:remember_me])
+    @session = Authentication::Risk2210.new(params[:session])
+    if player = @session.authenticate
+      login(player, remember_me: params[:session][:remember_me])
     else
       flash.now.alert = "We are sorry, but either your email or password is invalid."
       render action: :new

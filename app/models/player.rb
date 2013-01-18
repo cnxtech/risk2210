@@ -103,20 +103,17 @@ class Player
     end
   end
 
-  def authenticate(unencrypted_password)
-    if valid_password?(unencrypted_password)
-      set_login_stats
-      set_remember_me_token
-      save
-      return true
-    else
-      return false
-    end
-  end
-
   def set_login_stats
     self.login_count = self.login_count + 1
     self.last_login_at = Time.now
+  end
+
+  def set_remember_me_token
+    self.remember_me_token = SecureRandom.hex(8)
+  end
+
+  def valid_password?(unencrypted_password)
+    password_digest.present? && BCrypt::Password.new(password_digest) == unencrypted_password
   end
 
 private
@@ -127,16 +124,8 @@ private
     end
   end
 
-  def set_remember_me_token
-    self.remember_me_token = SecureRandom.hex(8)
-  end
-
   def deliver_welcome_email
     PlayerMailer.welcome_email(self).deliver
-  end
-
-  def valid_password?(unencrypted_password)
-    password_digest.present? && BCrypt::Password.new(password_digest) == unencrypted_password
   end
 
   def link_game_players

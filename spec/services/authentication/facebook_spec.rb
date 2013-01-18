@@ -1,25 +1,25 @@
 require 'spec_helper'
 
-describe FacebookAuthenticationService do
+describe Authentication::Facebook do
 
   describe "registering using Facebook" do
     context "player doesn't already have an account" do
       it "registers me with my Facebook omniath hash" do
-        player = FacebookAuthenticationService.new(Fixtures::Facebook.me).authenticate
+        player = Authentication::Facebook.new(Fixtures::Facebook.me).authenticate
 
         player.valid?.should == true
         player.new_record?.should == false
         player.raw_authorization.should == Fixtures::Facebook.me
       end
       it "registers player1 with their facebook data" do
-        player = FacebookAuthenticationService.new(Fixtures::Facebook.player1).authenticate
+        player = Authentication::Facebook.new(Fixtures::Facebook.player1).authenticate
 
         player.valid?.should == true
         player.new_record?.should == false
         player.raw_authorization.should == Fixtures::Facebook.player1
       end
       it "registers player2 with their facebook data" do
-        player = FacebookAuthenticationService.new(Fixtures::Facebook.player2).authenticate
+        player = Authentication::Facebook.new(Fixtures::Facebook.player2).authenticate
 
         player.valid?.should == true
         player.new_record?.should == false
@@ -30,7 +30,7 @@ describe FacebookAuthenticationService do
       it "attaches the information from facebook to the existing account" do
         initial_record = FactoryGirl.create(:player, email: "nick.desteffen@gmail.com", login_count: 2)
 
-        player = FacebookAuthenticationService.new(Fixtures::Facebook.me).authenticate
+        player = Authentication::Facebook.new(Fixtures::Facebook.me).authenticate
         initial_record.reload
 
         initial_record.should == player
@@ -45,7 +45,7 @@ describe FacebookAuthenticationService do
       fixture = Fixtures::Facebook.me
       player = FactoryGirl.create(:facebook_player, email: "nick.desteffen@gmail.com", login_count: 4, uid: fixture["uid"])
 
-      authorized_player = FacebookAuthenticationService.new(fixture).authenticate
+      authorized_player = Authentication::Facebook.new(fixture).authenticate
       player.reload
 
       player.should == authorized_player

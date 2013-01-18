@@ -65,7 +65,7 @@ describe SessionsController do
     end
     context "logging in" do
       it "should login a user" do
-        player = FacebookAuthenticationService.new(OmniAuth.config.mock_auth[:facebook]).authenticate
+        player = Authentication::Facebook.new(OmniAuth.config.mock_auth[:facebook]).authenticate
 
         expect{
           get :authenticate_facebook

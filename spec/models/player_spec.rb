@@ -11,23 +11,6 @@ describe Player do
     end
   end
 
-  describe "authenticate" do
-    before do
-      Time.stub(:now).and_return(Time.mktime(2012, 7, 18, 14, 05))
-      @player = FactoryGirl.create(:player, password: "secret1", password_confirmation: "secret1", login_count: 4, last_login_at: 1.week.ago)
-    end
-    it "returns the player if the authentication succeeds" do
-      @player.authenticate("secret1").should == true
-      @player.login_count.should == 5
-      @player.last_login_at.should_not == 1.week.ago
-    end
-    it "returns false if the authentication fails" do
-      @player.authenticate("secret2").should == false
-      @player.login_count.should == 4
-      @player.last_login_at.should == 1.week.ago
-    end
-  end
-
   describe "profile_image_path" do
     it "should return the image from facebook if the image source is facebook" do
       player = FactoryGirl.create(:player, image_source: Player::ImageSource::Facebook, facebook_image_url: "http://graph.facebook.com/753509648/picture?type=square")
@@ -87,27 +70,6 @@ describe Player do
     end
   end
 
-  describe "authenticate" do
-    context "correct password" do
-      it "should return true, set login stats, set remember_me token and save" do
-        Time.stub(:now).and_return(Time.mktime(2012, 10, 22, 14, 30))
-        player = FactoryGirl.create(:player, password: "secret1", login_count: 10, last_login_at: 10.days.ago)
-
-        player.authenticate("secret1").should == true
-
-        player.login_count.should == 11
-        player.last_login_at.to_s.should == "2012-10-22T19:30:00+00:00"
-      end
-    end
-    context "wrong password" do
-      it "should return false" do
-        player = FactoryGirl.create(:player, password: "secret1")
-
-        player.authenticate("abc12").should == false
-      end
-    end
-  end
-
   describe "set_login_stats" do
     it "should increment the login_count and set the last_login_at to now" do
       Time.stub(:now).and_return(Time.mktime(2012, 10, 22, 14, 30))
@@ -135,7 +97,7 @@ describe Player do
       player = FactoryGirl.build(:player, remember_me_token: nil)
 
       SecureRandom.should_receive(:hex).with(8).and_return("28eae6141a407dfd")
-      player.send(:set_remember_me_token)
+      player.set_remember_me_token
 
       player.remember_me_token.should_not be_nil
     end
@@ -156,8 +118,8 @@ describe Player do
     it "should return true if the unencrypted_password matches the player's password" do
       player = FactoryGirl.build(:player, password: "password", password_confirmation: "password")
 
-      player.send(:valid_password?, "password").should == true
-      player.send(:valid_password?, "password1").should == false
+      player.valid_password?("password").should == true
+      player.valid_password?("password1").should == false
     end
   end
 
