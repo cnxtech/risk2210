@@ -8,3 +8,4 @@
     </div>
   <% end %>
 <% end %>
+<button class='btn btn-danger end-invasion'>End Invasion</button>

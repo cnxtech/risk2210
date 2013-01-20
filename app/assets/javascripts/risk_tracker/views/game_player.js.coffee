@@ -19,7 +19,6 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
     @model.bind("change:energy", @_updateEnergyDisplay)
     @model.bind("change:energy", @_updateBorderGlow)
     @model.bind("change:units", @_updateUnitsDisplay)
-    @model.turns.bind("add", @_updateTurnsDisplay)
     @model.bind("change:territory_count", @_updateTerritoryDisplay)
     @model.continents.bind("add", @render)
     @model.continents.bind("remove", @render)
@@ -27,7 +26,7 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
 
   render: ()=>
     @$el.html(@template({game_player: @model}))
-    @$el.find(".invade-card").append(@invadeView.render().el)
+    @$el.append($(@invadeView.render().el).hide())
     return @
 
   incrementTerritoryCount: (event)->
@@ -42,7 +41,7 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
 
   endTurn: (event)->
     event.preventDefault()
-    @model.endTurn()
+    @game.endTurn()
 
   invadeTerritories: (event)->
     event.preventDefault()
@@ -57,9 +56,6 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
 
   _updateEnergyDisplay: ()=>
     @_spinCounter(".energy-counter", @model.energy())
-
-  _updateTurnsDisplay: ()=>
-    @$el.find(".turn-counter").html(@model.turn())
 
   _spinCounter: (selector, end)->
     element = @$el.find(selector)

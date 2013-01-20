@@ -4,7 +4,6 @@ class RiskTracker.Models.GamePlayer extends Backbone.Model
     @player = new RiskTracker.Models.Player(@get("player"))
     @faction = new RiskTracker.Models.Faction(@get("faction"))
     @continents = new RiskTracker.Collections.Continents()
-    @turns = new RiskTracker.Collections.Turns(@get("turns"))
 
     @bind("change:territory_count", @_calculateResources)
     @continents.on "add", (continent) => @_calculateResources()
@@ -35,10 +34,6 @@ class RiskTracker.Models.GamePlayer extends Backbone.Model
     if @territoryCount() > 0
       @set({territory_count: @territoryCount() - 1})
 
-  endTurn: ()->
-    @turns.create({game_id: @game.get("id"), game_player_id: @get("id"), units_collected: @units(), energy_collected: @energy(), territories_held: @territoryCount(), continent_ids: @_continentIds()})
-    @game.incrementTurnCount()
-
   landContinents: ()->
     @continents.land()
 
@@ -51,14 +46,14 @@ class RiskTracker.Models.GamePlayer extends Backbone.Model
   borderGlow: ()->
     @energy() * 5
 
-  turn: ()->
-    @turns.length + 1
+  turnOrder: ()->
+    @get("starting_turn_order")
 
   hasContinent: (continentId)->
-    _.contains(@_continentIds(), continentId)
+    _.contains(@continentIds(), continentId)
 
-  _continentIds: ()->
-    @continents.pluck("id")
+  continentIds: ()->
+    @continents.pluck("id") || []
 
   _calculateResources: ()->
     @_calculateEnergy()

@@ -45,7 +45,7 @@ private
   end
 
   def game_params
-    params.require(:game).permit(:location , :notes, :map_ids, :game_players_attributes, :number_of_years, game_players_attributes: [:color, :territory_count, :energy, :units, :faction_id, :handle, :continent_ids, :map_ids, :starting_turn_position])
+    params.require(:game).permit(:location , :notes, :map_ids, :game_players_attributes, :number_of_years, game_players_attributes: [:color, :territory_count, :energy, :units, :faction_id, :handle, :continent_ids, :map_ids, :starting_turn_order])
   end
 
 end

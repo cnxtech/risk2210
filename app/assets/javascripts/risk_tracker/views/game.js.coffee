@@ -6,7 +6,7 @@ class RiskTracker.Views.Game extends Backbone.View
     @model = new RiskTracker.Models.Game(window.gameData)
     @maps = @model.maps
     @_setupContinents()
-    @model.bind("change:turn_count", @_updateProgressBar)
+    @model.turns.on "add", (turn) => @_updateProgressBar()
 
   render: ()->
     skins = _.shuffle([1..8])
@@ -26,9 +26,8 @@ class RiskTracker.Views.Game extends Backbone.View
     bar = $("#game-progress-bar").find(".bar")
     number_of_years = @model.get("number_of_years")
     number_of_players = @model.gamePlayers.length
-    turn_count = @model.get("turn_count")
 
-    percent_complete = ((turn_count / (number_of_years * number_of_players)) * 100)
+    percent_complete = ((@model.turnCount() / (number_of_years * number_of_players)) * 100)
     bar.css({width: "#{percent_complete}%"})
 
   _setupContinents: () ->

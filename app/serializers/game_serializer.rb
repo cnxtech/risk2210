@@ -4,5 +4,6 @@ class GameSerializer < ActiveModel::Serializer
 
   has_many :game_players
   has_many :maps
+  has_many :turns
 
 end

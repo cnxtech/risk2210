@@ -113,7 +113,7 @@ ul.continent-list{
   margin: 20px 10px;
   clear: left;
   padding: 10px;
-  min-height: 200px;
+  min-height: 565px;
   width: 500px;
   float: left;
   @include rounded(10px);
@@ -210,7 +210,19 @@ ul.continent-list{
         }
       }
 
+      .turn-counter-container{
+        @include container();
+        text-align: center;
+        width: 155px;
+        margin-left: 0;
+        // margin-bottom: 10px;
+        h3{
+          line-height: 1;
+        }
+      }
+
       .save-turn-container{
+        clear: both;
         width: 460px;
         a.invade{
           float: left;

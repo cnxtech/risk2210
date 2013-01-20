@@ -45,8 +45,8 @@ class Game
   end
 
   def starting_turn_positions
-    starting_turn_positions = game_players.map(&:starting_turn_position).uniq
-    errors.add(:base, "Every player must have a unique starting turn position.") if starting_turn_positions.size != game_players.size
+    starting_turn_orders = game_players.map(&:starting_turn_order).uniq
+    errors.add(:base, "Every player must have a unique starting turn order.") if starting_turn_orders.size != game_players.size
   end
 
 end
