@@ -1,4 +1,4 @@
-<h1>Invade!</h1>
+<h1>Invade</h1>
 <button class='btn invade-empty'>Invade Empty</button>
 <% for game_player in @model.game.gamePlayers.models: %>
   <% unless @model is game_player: %>

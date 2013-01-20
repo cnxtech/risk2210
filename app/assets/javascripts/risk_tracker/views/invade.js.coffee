@@ -6,6 +6,8 @@ class RiskTracker.Views.Invade extends Backbone.View
 
   events:
     "click .end-invasion": "endInvasion"
+    "click .invade"      : "invade"
+    "click .invade-empty": "invadeEmpty"
 
   initialize: ()->
     console.log "invade init"
@@ -20,3 +22,12 @@ class RiskTracker.Views.Invade extends Backbone.View
     @$el.siblings().show()
     @$el.hide()
 
+  invade: (event)->
+    event.preventDefault()
+    defender = @model.game.gamePlayers.find($(event.target).data("game-player-id"))
+    defender.decrementTerritoryCount()
+    @model.incrementTerritoryCount()
+
+  invadeEmpty: (event)->
+    event.preventDefault()
+    @model.incrementTerritoryCount()
