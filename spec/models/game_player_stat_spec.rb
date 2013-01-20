@@ -20,7 +20,7 @@ describe GamePlayerStat do
       game = FactoryGirl.create(:game, map_ids: map_ids, game_players_attributes: game_players)
       game_player = game.game_players.first
 
-      turn = FactoryGirl.create(:turn, game_player: game_player, game_player_stats_attributes: [{game_player_id: game_player.id, energy: 14, units: 14, territory_count: 25, continent_ids: continent_ids}])
+      turn = FactoryGirl.create(:turn, game: game, game_player: game_player, game_player_stats_attributes: [{game_player_id: game_player.id, energy: 14, units: 14, territory_count: 25, continent_ids: continent_ids}])
 
       game_player.reload
       game_player.energy.should == 14
