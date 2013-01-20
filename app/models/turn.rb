@@ -9,7 +9,7 @@ class Turn
   belongs_to :game
   has_many :game_player_stats, dependent: :destroy
 
-  validates_presence_of :game_player_id
+  validates_presence_of :game_player_id, :order, :year
 
   accepts_nested_attributes_for :game_player_stats
 
