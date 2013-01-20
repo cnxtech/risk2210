@@ -27,6 +27,7 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
   render: ()=>
     @$el.html(@template({game_player: @model}))
     @$el.append($(@invadeView.render().el).hide())
+    @$el.find(".faction-logo").popover(title: @model.faction.get('name'), content: @model.faction.get('abilities'))
     return @
 
   incrementTerritoryCount: (event)->

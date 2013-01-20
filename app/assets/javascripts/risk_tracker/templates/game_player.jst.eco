@@ -2,11 +2,13 @@
   <div class="row">
     <div class="player-label">
       <% unless @game_player.faction.default(): %>
-        <img src='<%= @game_player.faction.iconFileName() %>' width='50' />
+        <img class='faction-logo' src='<%= @game_player.faction.iconFileName() %>' width='50' />
       <% end %>
       <span><%= @game_player.get('handle') %></span>
     </div>
   </div>
+
+
 
   <div class="row">
     <div class="column">

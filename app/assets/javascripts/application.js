@@ -3,3 +3,4 @@
 //= require twitter/bootstrap
 //= require forums
 //= require cocoon
+//= require bootstrap
