@@ -1,5 +1,7 @@
 class TurnSerializer < ActiveModel::Serializer
 
-  attributes :id, :order, :units_collected, :energy_collected, :territories_held, :continent_ids, :game_id
+  attributes :id, :order, :year, :game_player_id, :game_id
+
+  has_many :game_player_stats
 
 end

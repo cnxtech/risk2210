@@ -1,8 +1,10 @@
 FactoryGirl.define do
-  factory :turn do
+  factory :game_player_stat do
+    turn
     game_player
-    order 1
-    year 3
+    units 12
+    energy 12
+    territory_count 20
     created_at { Time.now }
     updated_at { Time.now }
   end

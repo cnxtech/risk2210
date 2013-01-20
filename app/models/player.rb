@@ -61,7 +61,6 @@ class Player
 
   ## Facebook image size options
   ## square=50x50, small=50xVariable, normal=100xVariable, large=200xVariable
-
   def profile_image_path(size=:normal)
     default_avatar_path = "http://risk2210.net/assets/default_avatar.png"
     if image_source == ImageSource::Facebook && facebook_image_url

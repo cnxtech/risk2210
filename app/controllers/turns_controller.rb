@@ -7,11 +7,7 @@ class TurnsController < ApplicationController
   before_filter :validate_owner
 
   def create
-    turn = @game.turns.build game_player_id:   params[:game_player_id],
-                             energy_collected: params[:energy_collected],
-                             units_collected:  params[:units_collected],
-                             territories_held: params[:territories_held],
-                             continent_ids:    params[:continent_ids]
+    turn = @game.turns.create(turn_params)
 
     if turn.save
       render json: turn, root: false, status: :created
@@ -30,6 +26,10 @@ class TurnsController < ApplicationController
     if @game.creator != current_player
       head :unauthorized
     end
+  end
+
+  def turn_params
+    params.require(:turn).permit(:order, :year, :game_player_id, game_player_stats_attributes: [:game_player_id, :energy, :units, :continent_ids, :territory_count])
   end
 
 end
