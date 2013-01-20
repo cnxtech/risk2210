@@ -42,11 +42,13 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
 
   endTurn: (event)->
     event.preventDefault()
+    @game.currentPlayer = @model
     @game.endTurn()
 
   invadeTerritories: (event)->
     event.preventDefault()
     @$el.find(".info-card").hide()
+    @invadeView.refresh
     @$el.find(".invade-card").show()
 
   _updateTerritoryDisplay: ()=>

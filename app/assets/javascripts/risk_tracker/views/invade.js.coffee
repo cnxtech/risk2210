@@ -11,8 +11,9 @@ class RiskTracker.Views.Invade extends Backbone.View
 
   initialize: ()->
     console.log "invade init"
+    @model.bind("change:territory_count", @render)
 
-  render: ()->
+  render: ()=>
     @$el.html(@template({model: @model}))
     return @
 

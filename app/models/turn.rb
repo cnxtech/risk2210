@@ -9,8 +9,20 @@ class Turn
   belongs_to :game
   has_many :game_player_stats, dependent: :destroy
 
+  after_create :update_game_year
+
   validates_presence_of :game_player_id, :order, :year
 
   accepts_nested_attributes_for :game_player_stats
+
+  def last?
+    game.game_players.size == order
+  end
+
+private
+
+  def update_game_year
+    game.inc(:current_year, 1) if last?
+  end
 
 end

@@ -13,7 +13,7 @@ class RiskTracker.Models.Game extends Backbone.Model
     @maps = new RiskTracker.Collections.Maps(@get("maps"))
 
   turnCount: ()->
-   @turns.models.length()
+    @turns.models.length
 
   currentPlayer: ()->
     @currentPlayer
@@ -30,4 +30,4 @@ class RiskTracker.Models.Game extends Backbone.Model
         continent_ids:   game_player.continentIds()
       }
 
-    @turns.create(game_id: @get("id"), game_player_id: @currentPlayer.get("id"), game_player_stats_attributes: game_player_stats)
+    @turns.create(game_id: @get("id"), game_player_id: @currentPlayer.get("id"), order: @currentPlayer.turnOrder(), game_player_stats_attributes: game_player_stats)
