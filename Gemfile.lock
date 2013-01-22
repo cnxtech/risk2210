@@ -5,13 +5,6 @@ GIT
     jasminerice (0.0.10)
       coffee-rails
 
-GIT
-  remote: https://github.com/ahmozkya/cocoon.git
-  revision: 33f5df9d4c377e1f98fc8fb2b951dd37918706e0
-  branch: patch-1
-  specs:
-    cocoon (1.1.1)
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -57,6 +50,7 @@ GEM
       capistrano
       git
       tinder
+    cocoon (1.1.2)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -259,7 +253,7 @@ DEPENDENCIES
   bcrypt-ruby
   capistrano
   capistrano-helpers
-  cocoon!
+  cocoon
   coffee-rails
   database_cleaner
   debugger

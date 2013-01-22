@@ -16,7 +16,7 @@ end
 gem 'jquery-rails'
 gem 'redcarpet'
 gem 'simple_form'
-gem 'cocoon', git: "https://github.com/ahmozkya/cocoon.git", branch: "patch-1"
+gem 'cocoon'
 gem 'active_model_serializers'
 
 ## Backbone
