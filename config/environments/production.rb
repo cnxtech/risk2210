@@ -10,6 +10,7 @@ Risk2210::Application.configure do
   config.assets.precompile += %w( risk_tracker.js )
 
   config.action_mailer.default_url_options = { host: 'http://risk2210.net' }
+  config.action_mailer.perform_deliveries = false
   config.i18n.fallbacks = true
   config.active_support.deprecation = :notify
 

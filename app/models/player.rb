@@ -102,68 +102,13 @@ class Player
     end
   end
 
-  def authenticate(unencrypted_password)
-    if valid_password?(unencrypted_password)
-      set_login_stats
-      set_remember_me_token
-      save
-      return true
-    else
-      return false
-    end
-  end
-
   def set_login_stats
     self.login_count = self.login_count + 1
     self.last_login_at = Time.now
   end
 
-  def self.omniauthorize(auth)
-    player = Player.where(provider: auth['provider'], uid: auth['uid']).first || self.create_with_omniauth(auth)
-    player.set_login_stats
-    player.save
-    return player
-  end
-
-  def self.create_with_omniauth(auth)
-    player = Player.where(email: auth['info']['email']).first
-    if player
-      player.facebook_image_url = sanitize_facebook_image(auth["info"]["image"])
-      player.provider = auth['provider']
-      player.uid = auth['uid']
-      player.raw_authorization = auth
-    else
-      player = Player.new
-      player.provider = auth['provider']
-      player.uid = auth['uid']
-      player.raw_authorization = auth
-      if auth['info']
-        player.first_name = auth['info']['first_name'] || ""
-        player.last_name = auth['info']['last_name'] || ""
-        player.email = auth['info']['email'] || ""
-        player.handle = auth['info']['nickname'] || ""
-        player.website = auth["info"]["urls"]["Facebook"]
-        player.facebook_image_url = sanitize_facebook_image(auth["info"]["image"])
-        player.image_source = ImageSource::Facebook
-
-        if auth["extra"]["raw_info"]["location"]
-          location_parts = auth["extra"]["raw_info"]["location"]["name"].split(",")
-        elsif auth["extra"]["raw_info"]["hometown"]
-          location_parts = auth["extra"]["raw_info"]["hometown"]["name"].split(",")
-        end
-        if location_parts
-          player.city = location_parts[0].strip
-          player.state = States.decode(location_parts[1]) if location_parts[1]
-        end
-      end
-    end
-    player.save
-    return player
-  end
-
-  def self.sanitize_facebook_image(facebook_image_url)
-    return "" if facebook_image_url.strip.blank?
-    return facebook_image_url.gsub("?type=square", "")
+  def valid_password?(unencrypted_password)
+    password_digest.present? && BCrypt::Password.new(password_digest) == unencrypted_password
   end
 
 private
@@ -174,16 +119,8 @@ private
     end
   end
 
-  def set_remember_me_token
-    self.remember_me_token = SecureRandom.hex(8)
-  end
-
   def deliver_welcome_email
-    #PlayerMailer.welcome_email(self).deliver
-  end
-
-  def valid_password?(unencrypted_password)
-    password_digest.present? && BCrypt::Password.new(password_digest) == unencrypted_password
+    PlayerMailer.welcome_email(self).deliver
   end
 
   def link_game_players

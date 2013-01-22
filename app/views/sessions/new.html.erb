@@ -1,5 +1,5 @@
 <h1>Log in</h2>
-<%= simple_form_for @session, url: create_session_path, html: {class: 'form-vertical well'} do |f| %>
+<%= simple_form_for @session, as: :session, url: create_session_path, html: {class: 'form-vertical well'} do |f| %>
   <%= error_messages_for(@session) %>
   <fieldset>
     <%= f.input :email %>
