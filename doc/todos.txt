@@ -1,7 +1,6 @@
 ## Game Tracker ##
-Add initial turn order on startup page
-Battle mode
-Persist all player scores on each turn
+hide buttons for players not active
+turn order input screen -- automatically show after last player of year saves turn
 
 ## UI ##
 Commander icons, active and inactive

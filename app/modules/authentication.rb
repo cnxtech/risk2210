@@ -20,6 +20,7 @@ module Authentication
 
   def login_required
     if current_player.nil?
+      ## TODO handle json format
       session[:return_to_path] = request.url
       redirect_to login_path, alert: "You need to be logged in!"
     end

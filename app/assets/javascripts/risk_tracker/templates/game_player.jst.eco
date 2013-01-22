@@ -8,8 +8,6 @@
     </div>
   </div>
 
-
-
   <div class="row">
     <div class="column">
       <div class='avatar'>
@@ -84,7 +82,7 @@
 
   <div class="row">
     <div class="column">
-      <div class="save-turn-container">
+      <div class="save-turn-container" style="display: none;">
         <a href='#' class='btn btn-large btn-danger invade'><i class='icon-screenshot icon-large'></i> Invade</a>
         <a href='#' class='btn btn-large btn-success save-turn'><i class='icon-ok icon-large'></i> End Turn</a>
       </div>
@@ -92,5 +90,17 @@
   </div>
 </div>
 
-<div class="invade-card" style="display: none;">
+<div class="invade-card">
+  <h1>Invade - <%= @game_player.territoryCount() %></h1>
+  <button class='btn btn-large invade-empty'>Invade Empty</button>
+  <% for game_player in @game_player.game.gamePlayers.models: %>
+    <% unless @game_player is game_player: %>
+      <div>
+        <img src='<%= game_player.get('profile_image_path') %>' width='40px' />
+        <button class='btn btn-large invade-player' data-game-player-id='<%= game_player.get("id") %>'>Invade <%= game_player.get("handle") %></button>
+        <%= game_player.territoryCount() %>
+      </div>
+    <% end %>
+  <% end %>
+  <button class='btn btn-large btn-danger end-invasion'>End Invasion</button>
 </div>

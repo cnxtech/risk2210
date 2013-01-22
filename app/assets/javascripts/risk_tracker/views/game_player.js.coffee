@@ -2,7 +2,7 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
 
   template: JST['risk_tracker/templates/game_player']
 
-  invadeView: null
+  mode: "info"
 
   events:
     "click .increment-territory-count": "incrementTerritoryCount"
@@ -10,11 +10,14 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
     "click .save-turn":                 "endTurn"
     "click .invade":                    "invadeTerritories"
     "click .territories":               "showContinentModal"
+    "click .end-invasion":              "endInvasion"
+    "click .invade-player":             "invadePlayerOccupied"
+    "click .invade-empty":              "invadeEmpty"
 
   initialize: ()->
     @game = @options.game
+    @gameView = @options.gameView
     @util = new RiskTracker.Util()
-    @invadeView = new RiskTracker.Views.Invade(model: @model)
 
     @model.bind("change:energy", @_updateEnergyDisplay)
     @model.bind("change:energy", @_updateBorderGlow)
@@ -22,12 +25,15 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
     @model.bind("change:territory_count", @_updateTerritoryDisplay)
     @model.continents.bind("add", @render)
     @model.continents.bind("remove", @render)
+    @model.bind("change:territory_count", @render)
     _.defer(@_updateBorderGlow)
 
   render: ()=>
-    @$el.html(@template({game_player: @model}))
-    @$el.append($(@invadeView.render().el).hide())
+    @$el.html(@template({game_player: @model, mode: @mode}))
+    @gameView.activatePlayer(@model) if @game.currentPlayer == @model
     @$el.find(".faction-logo").popover(title: @model.faction.get('name'), content: @model.faction.get('abilities'))
+    @showInfoCard() if @mode is 'info'
+    @showInvadeCard() if @mode is 'invade'
     return @
 
   incrementTerritoryCount: (event)->
@@ -44,12 +50,11 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
     event.preventDefault()
     @game.currentPlayer = @model
     @game.endTurn()
+    @gameView.activateNextPlayer()
 
   invadeTerritories: (event)->
     event.preventDefault()
-    @$el.find(".info-card").hide()
-    @invadeView.refresh
-    @$el.find(".invade-card").show()
+    @showInvadeCard()
 
   _updateTerritoryDisplay: ()=>
     @_spinCounter(".territory-counter", @model.territoryCount())
@@ -86,6 +91,14 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
     sound.src = @util.beepPath()
     sound.play()
 
+  showTurnControls: ()->
+    saveTurnContainer = @$el.find(".save-turn-container")
+    saveTurnContainer.show() unless saveTurnContainer.is(":visible")
+
+  hideTurnControls: ()->
+    saveTurnContainer = @$el.find(".save-turn-container")
+    saveTurnContainer.hide() unless saveTurnContainer.is(":hidden")
+
   showContinentModal: (event)->
     @game.currentPlayer = @model
     continentType = $(event.target).data("continentType")
@@ -112,3 +125,27 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
         label.show() if label.is(":hidden")
 
     container.modal()
+
+  endInvasion: (event)->
+    event.preventDefault()
+    @showInfoCard()
+
+  invadePlayerOccupied: (event)->
+    event.preventDefault()
+    defender = @model.game.gamePlayers.find($(event.target).data("game-player-id"))
+    defender.decrementTerritoryCount()
+    @model.incrementTerritoryCount()
+
+  invadeEmpty: (event)->
+    event.preventDefault()
+    @model.incrementTerritoryCount()
+
+  showInfoCard: ()->
+    @mode = "info"
+    @$el.find(".info-card").show()
+    @$el.find(".invade-card").hide()
+
+  showInvadeCard: ()->
+    @mode = "invade"
+    @$el.find(".info-card").hide()
+    @$el.find(".invade-card").show()

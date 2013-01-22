@@ -6,7 +6,7 @@ describe Game do
     @game_player_attributes = {}
     2.times do |index|
       player = FactoryGirl.create(:player)
-      @game_player_attributes[index.to_s] = {handle: player.handle, faction_id: faction_ids[index], color: GamePlayer::COLORS.sample, starting_turn_order: index + 1}
+      @game_player_attributes[index.to_s] = {handle: player.handle, faction_id: faction_ids[index], color: GamePlayer::COLORS.sample, turn_order: index + 1}
     end
   end
 
@@ -76,7 +76,7 @@ describe Game do
       game.errors[:base].include?("You must choose one or more maps to play.").should == true
     end
     it "should be invalid if all players don't have a unique starting turn order" do
-      @game_player_attributes["1"][:starting_turn_order] = 1
+      @game_player_attributes["1"][:turn_order] = 1
       game = FactoryGirl.build(:game, map_ids: map_ids[0..1], game_players_attributes: @game_player_attributes)
 
       game.valid?.should == false

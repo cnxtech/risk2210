@@ -6,7 +6,7 @@ class RiskTracker.Models.GamePlayer extends Backbone.Model
     @player = new RiskTracker.Models.Player(@get("player"))
     @faction = new RiskTracker.Models.Faction(@get("faction"))
     @continents = new RiskTracker.Collections.Continents()
-    @currentTurnOrder = @get("starting_turn_order")
+    @currentTurnOrder = @get("turn_order")
 
     @bind("change:territory_count", @_calculateResources)
     @continents.on "add", (continent) => @_calculateResources()
