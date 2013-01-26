@@ -1,5 +1,6 @@
 FactoryGirl.define do
   factory :turn do
+    game
     game_player
     order 1
     year 3

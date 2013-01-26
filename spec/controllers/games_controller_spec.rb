@@ -4,7 +4,6 @@ describe GamesController do
 
   let(:player1) { FactoryGirl.create(:player) }
   let(:player2) { FactoryGirl.create(:player) }
-  let(:continent_ids) { Continent.all.map(&:id).sample(4) }
   let(:faction_ids) { Faction.all.map(&:id).sample(2) }
   let(:map_ids) { Map.all.map(&:id).sample(2) }
 
@@ -47,10 +46,7 @@ describe GamesController do
 
   describe "show" do
     it "should description" do
-      game_players = {}
-      game_players["0"] = {color: "Blue", handle: player1.handle, faction_id: faction_ids[0], turn_order: 1}
-      game_players["1"] = {color: "Green", handle: player2.handle, faction_id: faction_ids[1], turn_order: 2}
-      game = FactoryGirl.create(:game, map_ids: map_ids, game_players_attributes: game_players)
+      game = FactoryGirl.create(:game)
 
       get :show, id: game
 
@@ -60,10 +56,7 @@ describe GamesController do
 
   describe "destroy" do
     before do
-      game_players = {}
-      game_players["0"] = {color: "Blue", handle: player1.handle, faction_id: faction_ids[0], turn_order: 1}
-      game_players["1"] = {color: "Green", handle: player2.handle, faction_id: faction_ids[1], turn_order: 2}
-      @game = FactoryGirl.create(:game, map_ids: map_ids, game_players_attributes: game_players, creator_id: player1.id)
+      @game = FactoryGirl.create(:game, creator_id: player1.id)
     end
     it "should remove the game if the current player is the creator" do
       login player1

@@ -6,14 +6,9 @@ describe TurnsController do
   let(:player2) { FactoryGirl.create(:player) }
   let(:continent_ids_1) { Continent.all.map(&:id).sample(4) }
   let(:continent_ids_2) { Continent.all.map(&:id).sample(4) }
-  let(:faction_ids) { Faction.all.map(&:id).sample(2) }
-  let(:map_ids) { Map.all.map(&:id).sample(2) }
 
   before do
-    game_players = {}
-    game_players["0"] = {color: "Blue", handle: player1.handle, faction_id: faction_ids[0], turn_order: 1}
-    game_players["1"] = {color: "Green", handle: player2.handle, faction_id: faction_ids[1], turn_order: 2}
-    @game = FactoryGirl.create(:game, map_ids: map_ids, game_players_attributes: game_players, creator_id: player1.id)
+    @game = FactoryGirl.create(:game, creator_id: player1.id)
     @game_player = @game.game_players.first
     @game_player2 = @game.game_players.second
   end

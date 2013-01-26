@@ -2,17 +2,9 @@ require 'spec_helper'
 
 describe Game do
 
-  before do
-    @game_player_attributes = {}
-    2.times do |index|
-      player = FactoryGirl.create(:player)
-      @game_player_attributes[index.to_s] = {handle: player.handle, faction_id: faction_ids[index], color: GamePlayer::COLORS.sample, turn_order: index + 1}
-    end
-  end
-
   let(:map_ids) { Map.all.sample(3).map(&:id) }
   let(:faction_ids) { Faction.all.sample(2).map(&:id) }
-  let(:game) { FactoryGirl.create(:game, map_ids: map_ids[0..1], game_players_attributes: @game_player_attributes) }
+  let(:game) { FactoryGirl.create(:game, map_ids: map_ids[0..1]) }
 
   describe "has_map?" do
     it "should return true if a game has a map" do
@@ -51,9 +43,17 @@ describe Game do
   end
 
   describe "validations" do
+
+    before do
+      @game_player_attributes = {}
+      2.times do |index|
+        player = FactoryGirl.create(:player)
+        @game_player_attributes[index.to_s] = {handle: player.handle, faction_id: faction_ids[index], color: GamePlayer::COLORS.sample, turn_order: index + 1}
+      end
+    end
+
     it "should be invalid with less than 2 players" do
-      @game_player_attributes.delete("0")
-      game = FactoryGirl.build(:game, map_ids: map_ids[0..1], game_players_attributes: @game_player_attributes)
+      game = Game.new(map_ids: map_ids[0..1])
 
       game.valid?.should == false
       game.errors[:base].include?("You must have at least two players.").should == true
