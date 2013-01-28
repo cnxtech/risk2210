@@ -1,19 +1,17 @@
 <div class="row">
-  <div id="game-header">
-    <h3><%= @game.map_names %></h3>
-    <p>Game Progress:</p>
-    <%= progress_bar(@game, id: "game-progress-bar") %>
+  <div id="game">
+    <div id="game-header">
+      <h3><%= @game.map_names %></h3>
+      <p>Game Progress:</p>
+      <%= progress_bar(@game, id: "game-progress-bar") %>
+      <div>Current Year: <span id="year-counter"><%= @game.current_year %></span></div>
+    </div>
   </div>
-</div>
-<div class="row">Current Year: <%= @game.current_year %></div>
-
-<div class="row">
-  <div id="game"></div>
 </div>
 
 <div class="delete-game-container">
   <% if @game.creator == current_player %>
-    <%= link_to game_path(@game), data: {method: :delete, confirm: "Are you sure?"}, class: "btn btn-danger" do %>
+    <%= link_to game_path(@game), data: {method: :delete, confirm: "Are you sure you want to delete the game?"}, class: "btn btn-danger" do %>
       <i class='icon-trash icon-white'></i> Delete Game
     <% end %>
   <% end %>

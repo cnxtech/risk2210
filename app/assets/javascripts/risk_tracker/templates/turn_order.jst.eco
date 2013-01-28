@@ -1,0 +1,4 @@
+<% for game_player in @game_players: %>
+  <p><%= game_player.get("handle") %> - <input type="number" /></p>
+<% end %>
+<button class='btn btn-large btn-success'>Save Turn Order</button>

@@ -16,12 +16,14 @@ class RiskTracker.Views.Game extends Backbone.View
       style_class = "player-card #{gamePlayer.get('color').toLowerCase()}-glow background-#{skins.pop()}"
       view = new RiskTracker.Views.GamePlayer({model: gamePlayer, game: @model, gameView: @, attributes: {class: style_class}})
       @gamePlayerCards.push(view)
-
       @$el.append(view.render().el)
 
     _(['land', 'water', 'lunar']).each (type) =>
       view = new RiskTracker.Views.Continents({collection: @maps, type: type, game: @model, attributes: {class: "modal hide fade", id: "#{type}-continents"}})
       @$el.append(view.render().el)
+
+    turnOrderView = new RiskTracker.Views.TurnOrder({collection: @model.gamePlayers, attributes: {class: "modal hide fade", id: "turn-order-modal"}})
+    @$el.append(turnOrderView.render().el)
 
     @activatePlayer(@model.currentPlayer)
 
@@ -38,12 +40,12 @@ class RiskTracker.Views.Game extends Backbone.View
     turn_order = @model.currentPlayer.get("turn_order")
     game_player = @model.gamePlayers.where(turn_order: turn_order + 1)[0]
     if game_player is undefined
-      alert "End year!"
+      @_endYear()
     else
       @activatePlayer(game_player)
 
   _updateProgressBar: () =>
-    bar = $("#game-progress-bar").find(".bar")
+    bar = @$el.find(".bar")
     number_of_years = @model.get("number_of_years")
     number_of_players = @model.gamePlayers.length
 
@@ -55,3 +57,9 @@ class RiskTracker.Views.Game extends Backbone.View
 
     @model.gamePlayers.each (gamePlayer) ->
       gamePlayer.setStartingContinents()
+
+  _endYear: ()->
+    @model.endYear()
+    @$el.find("#year-counter").text(@model.get("current_year"))
+    @$el.find("#turn-order-modal").modal()
+

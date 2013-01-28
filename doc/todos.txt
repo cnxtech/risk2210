@@ -1,6 +1,6 @@
 ## Game Tracker ##
-hide buttons for players not active
 turn order input screen -- automatically show after last player of year saves turn
+end game button, takes you to a different view with charts
 
 ## UI ##
 Commander icons, active and inactive
@@ -12,9 +12,13 @@ Game completion page
 Player Leaderboard
 
 password reset
+markdown support for player bio
+screen shots and docs on using the tracker
 
 Additional Expansion pages
   - Galactic Risk
+  - Antartica
+  - single page printouts for resistance commander
 
 ## Friends
 Player to player messaging

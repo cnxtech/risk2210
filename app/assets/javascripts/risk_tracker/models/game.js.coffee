@@ -31,3 +31,7 @@ class RiskTracker.Models.Game extends Backbone.Model
       }
 
     @turns.create(game_id: @get("id"), game_player_id: @currentPlayer.get("id"), order: @currentPlayer.turnOrder(), game_player_stats_attributes: game_player_stats)
+
+  endYear: ()->
+    newYear = @get("current_year") + 1
+    @set({curentYear: newYear})
