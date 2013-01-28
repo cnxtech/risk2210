@@ -25,7 +25,6 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
     @model.bind("change:territory_count", @_updateTerritoryDisplay)
     @model.continents.bind("add", @render)
     @model.continents.bind("remove", @render)
-    @model.bind("change:territory_count", @render)
     _.defer(@_updateBorderGlow)
 
   render: ()=>
@@ -136,10 +135,12 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
     defender = @model.game.gamePlayers.find($(event.target).data("game-player-id"))
     defender.decrementTerritoryCount()
     @model.incrementTerritoryCount()
+    @render()
 
   invadeEmpty: (event)->
     event.preventDefault()
     @model.incrementTerritoryCount()
+    @render()
 
   showInfoCard: ()->
     @mode = "info"
