@@ -11,5 +11,5 @@ class RiskTracker.Views.TurnOrder extends Backbone.View
 
   saveTurnOrder: (event)->
     event.preventDefault()
-    console.log("Save turn order")
+    console.log("TODO: Update player turn order")
     @$el.modal('hide')

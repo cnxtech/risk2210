@@ -2,6 +2,9 @@ class RiskTracker.Views.Game extends Backbone.View
 
   el: "#game"
   gamePlayerCards: []
+  landModal: null
+  waterModal: null
+  lunarModal: null
 
   initialize: ()->
     @model = new RiskTracker.Models.Game(window.gameData)
@@ -18,9 +21,13 @@ class RiskTracker.Views.Game extends Backbone.View
       @gamePlayerCards.push(view)
       @$el.append(view.render().el)
 
-    _(['land', 'water', 'lunar']).each (type) =>
-      view = new RiskTracker.Views.Continents({collection: @maps, type: type, game: @model, attributes: {class: "modal hide fade", id: "#{type}-continents"}})
-      @$el.append(view.render().el)
+    @landModal  = new RiskTracker.Views.Continents({collection: @maps, type: "land", game: @model, attributes: {class: "modal hide fade", id: "land-continents"}})
+    @waterModal = new RiskTracker.Views.Continents({collection: @maps, type: "water", game: @model, attributes: {class: "modal hide fade", id: "water-continents"}})
+    @lunarModal = new RiskTracker.Views.Continents({collection: @maps, type: "lunar", game: @model, attributes: {class: "modal hide fade", id: "lunar-continents"}})
+
+    @$el.append(@landModal.render().el)
+    @$el.append(@waterModal.render().el)
+    @$el.append(@lunarModal.render().el)
 
     turnOrderView = new RiskTracker.Views.TurnOrder({collection: @model.gamePlayers, attributes: {class: "modal hide fade", id: "turn-order-modal"}})
     @$el.append(turnOrderView.render().el)
@@ -43,6 +50,14 @@ class RiskTracker.Views.Game extends Backbone.View
       @_endYear()
     else
       @activatePlayer(game_player)
+
+  showContinents: (player, continentType)->
+    if continentType is "land"
+      @landModal.activate(player)
+    else if continentType is "water"
+      @waterModal.activate(player)
+    else if continentType is "lunar"
+      @lunarModal.activate(player)
 
   _updateProgressBar: () =>
     bar = @$el.find(".bar")

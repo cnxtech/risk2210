@@ -100,31 +100,11 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
     saveTurnContainer.hide() unless saveTurnContainer.is(":hidden")
 
   showContinentModal: (event)->
-    @game.currentPlayer = @model
     continentType = $(event.target).data("continentType")
     if continentType is undefined
       continentType = $(event.target).parents(".territories").data("continentType")
 
-    container = $("##{continentType}-continents")
-    container.find(".player-name").text(@model.get("handle"))
-
-    container.find(".claimed span.continent").each (index, span)=>
-      label = $(span)
-      continentId = label.data("id")
-      if !@model.hasContinent(continentId)
-        label.hide()
-      else
-        label.show() if label.is(":hidden")
-
-    container.find(".unclaimed span.continent").each (index, span)=>
-      label = $(span)
-      continentId = label.data("id")
-      if @model.hasContinent(continentId) or !@game.availableContinents.hasContinent(continentId)
-        label.hide()
-      else
-        label.show() if label.is(":hidden")
-
-    container.modal()
+    @gameView.showContinents(@model, continentType)
 
   endInvasion: (event)->
     event.preventDefault()
