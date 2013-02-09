@@ -5,12 +5,14 @@ class RiskTracker.Views.Game extends Backbone.View
   landModal: null
   waterModal: null
   lunarModal: null
+  turnOrderModal: null
 
   initialize: ()->
     @model = new RiskTracker.Models.Game(window.gameData)
     @maps = @model.maps
     @_setupContinents()
     @model.turns.on "add", (turn) => @_updateProgressBar()
+    @bind("start_new_year", @startNewYear)
 
   render: ()->
     skins = _.shuffle([1..8])
@@ -29,8 +31,8 @@ class RiskTracker.Views.Game extends Backbone.View
     @$el.append(@waterModal.render().el)
     @$el.append(@lunarModal.render().el)
 
-    turnOrderView = new RiskTracker.Views.TurnOrder({collection: @model.gamePlayers, gameView: @, attributes: {class: "modal hide fade", id: "turn-order-modal"}})
-    @$el.append(turnOrderView.render().el)
+    @turnOrderModal = new RiskTracker.Views.TurnOrder({collection: @model.gamePlayers, gameView: @, attributes: {class: "modal hide fade", id: "turn-order-modal"}})
+    @$el.append(@turnOrderModal.render().el)
 
     @activatePlayer(@model.currentPlayer)
 
@@ -74,7 +76,13 @@ class RiskTracker.Views.Game extends Backbone.View
     @model.gamePlayers.each (gamePlayer) ->
       gamePlayer.setStartingContinents()
 
-  _endYear: ()->
+  _endYear: ()=>
+    @turnOrderModal.activate()
+
+  startNewYear: ()->
+    next_player = @model.gamePlayers.where(turn_order: 1)[0]
+    @model.startYear()
+    @activatePlayer(next_player)
     @$el.find("#year-counter").text(@model.get("current_year"))
-    @$el.find("#turn-order-modal").modal(backdrop: "static")
+
 

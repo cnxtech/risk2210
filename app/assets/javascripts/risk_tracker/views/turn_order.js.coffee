@@ -12,27 +12,32 @@ class RiskTracker.Views.TurnOrder extends Backbone.View
     @$el.html(@template({game_players: @collection.models}))
     return @
 
+  activate: ()->
+    @_turnOrderFields().each (index, field) -> $(field).val("")
+    @$el.modal(backdrop: "static")
+
   saveTurnOrder: (event)->
     event.preventDefault()
-    @setTurnOrder()
-    if @validate()
-      next_player = @collection.where(turn_order: 1)[0]
-      @gameView.model.startYear()
-      @gameView.activatePlayer(next_player)
+    @_setTurnOrder()
+    if @_validate()
+      @gameView.trigger("start_new_year")
       @$el.modal('hide')
     else
       alert("All players must have a unique turn order.")
 
-  setTurnOrder: ()->
-    @$el.find("input[type='number']").each (index, input)=>
+  _setTurnOrder: ()->
+    @_turnOrderFields().each (index, input)=>
       input = $(input)
       game_player = @collection.find(input.data("game-player-id"))
       game_player.set({turn_order: parseInt(input.val())})
 
-  validate: ()->
+  _validate: ()->
     turns = []
     _(@collection.models).each (game_player, index)=>
       turns.push(game_player.turnOrder())
 
-    return false if _.uniq(turns).length < @collection.models.length
+    return false if _.compact(_.uniq(turns)).length < @collection.models.length
     return true
+
+  _turnOrderFields: ()->
+    @$el.find("input[type='number']")
