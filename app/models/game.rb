@@ -34,6 +34,14 @@ class Game
     turns.count
   end
 
+  def start_year(turn_order)
+    self.current_year = self.current_year + 1
+    game_players.each do |game_player|
+      game_player.turn_order = turn_order[game_player.id.to_s]
+    end
+    self.save
+  end
+
   private
 
   def number_of_players

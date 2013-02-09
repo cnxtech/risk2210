@@ -29,16 +29,17 @@ class RiskTracker.Views.Game extends Backbone.View
     @$el.append(@waterModal.render().el)
     @$el.append(@lunarModal.render().el)
 
-    turnOrderView = new RiskTracker.Views.TurnOrder({collection: @model.gamePlayers, attributes: {class: "modal hide fade", id: "turn-order-modal"}})
+    turnOrderView = new RiskTracker.Views.TurnOrder({collection: @model.gamePlayers, gameView: @, attributes: {class: "modal hide fade", id: "turn-order-modal"}})
     @$el.append(turnOrderView.render().el)
 
     @activatePlayer(@model.currentPlayer)
 
     return @
 
-  activatePlayer: (game_player)->
-    _.each @gamePlayerCards, (view)->
+  activatePlayer: (game_player)=>
+    _.each @gamePlayerCards, (view)=>
       if view.model is game_player
+        @model.setCurrentPlayer(game_player)
         view.showTurnControls()
       else
         view.hideTurnControls()
@@ -74,7 +75,6 @@ class RiskTracker.Views.Game extends Backbone.View
       gamePlayer.setStartingContinents()
 
   _endYear: ()->
-    @model.endYear()
     @$el.find("#year-counter").text(@model.get("current_year"))
-    @$el.find("#turn-order-modal").modal()
+    @$el.find("#turn-order-modal").modal(backdrop: "static")
 

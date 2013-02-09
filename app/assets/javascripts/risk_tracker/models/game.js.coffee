@@ -5,6 +5,7 @@ class RiskTracker.Models.Game extends Backbone.Model
 
   initialize: ()->
     @gamePlayers = new RiskTracker.Collections.GamePlayers(@get("game_players"))
+    @gamePlayers.game = @
     @turns = new RiskTracker.Collections.Turns(@get("turns"))
     @gamePlayers.each (gamePlayer)=>
       gamePlayer.game = @
@@ -17,6 +18,9 @@ class RiskTracker.Models.Game extends Backbone.Model
 
   currentPlayer: ()->
     @currentPlayer
+
+  setCurrentPlayer: (current_player)->
+    @currentPlayer = current_player
 
   endTurn: ()->
     game_player_stats = []
@@ -32,6 +36,14 @@ class RiskTracker.Models.Game extends Backbone.Model
 
     @turns.create(game_id: @get("id"), game_player_id: @currentPlayer.get("id"), order: @currentPlayer.turnOrder(), game_player_stats_attributes: game_player_stats)
 
-  endYear: ()->
+  startYear: ()->
     newYear = @get("current_year") + 1
-    @set({curentYear: newYear})
+    @set({currentYear: newYear})
+
+    $.ajax
+      url:  "/api/v1/start-year",
+      type: "PUT",
+      data: @gamePlayers.toTurnOrder(),
+      error: (xhr, status, error)->
+        console.log(error)
+

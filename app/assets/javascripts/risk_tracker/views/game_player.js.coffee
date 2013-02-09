@@ -23,6 +23,7 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
     @model.bind("change:energy", @_updateBorderGlow)
     @model.bind("change:units", @_updateUnitsDisplay)
     @model.bind("change:territory_count", @_updateTerritoryDisplay)
+    @model.bind("change:turn_order", @render)
     @model.continents.bind("add", @render)
     @model.continents.bind("remove", @render)
     _.defer(@_updateBorderGlow)
@@ -47,13 +48,13 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
 
   endTurn: (event)->
     event.preventDefault()
-    @game.currentPlayer = @model
+    #@game.currentPlayer = @model
     @game.endTurn()
     @gameView.activateNextPlayer()
 
   invadeTerritories: (event)->
     event.preventDefault()
-    @game.currentPlayer = @model
+    #@game.currentPlayer = @model
     @showInvadeCard()
 
   _updateTerritoryDisplay: ()=>

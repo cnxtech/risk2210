@@ -8,7 +8,7 @@ describe TurnsController do
   let(:continent_ids_2) { Continent.all.map(&:id).sample(4) }
 
   before do
-    @game = FactoryGirl.create(:game, creator_id: player1.id)
+    @game = FactoryGirl.create(:game, creator_id: player1.id, current_year: 1)
     @game_player = @game.game_players.first
     @game_player2 = @game.game_players.second
   end
@@ -22,7 +22,7 @@ describe TurnsController do
           game_id: @game.id,
           game_player_id: @game_player.id,
           year: 1,
-          turn_order: 1,
+          order: 1,
           game_player_stats_attributes: [
           {
             game_player_id: @game_player.id,
@@ -86,6 +86,30 @@ describe TurnsController do
       }.to change(Turn, :count).by(0)
 
       response.status.should == 401
+    end
+  end
+
+  describe "start_year" do
+    before do
+      login player1
+    end
+    it "triggers the start the next year in the game" do
+      post :start_year, game_id: @game.id, turn_order: {"#{@game_player.id}" => "2", "#{@game_player2.id}" => "1"}
+
+      response.should be_success
+      @game.reload.current_year.should == 2
+      @game_player.reload.turn_order.should == 2
+      @game_player2.reload.turn_order.should == 1
+    end
+    it "returns error messages if the new year fails to start" do
+      put :start_year, game_id: @game.id, turn_order: {"#{@game_player.id}" => "2", "#{@game_player2.id}" => "2"}
+
+      response.should_not be_success
+      game = JSON.parse(response.body, symbolize_names: true)
+      game[:base].include?("Every player must have a unique starting turn order.").should == true
+      @game.reload.current_year.should == 1
+      @game_player.reload.turn_order.should == 1
+      @game_player2.reload.turn_order.should == 2
     end
   end
 

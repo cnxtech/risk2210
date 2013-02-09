@@ -84,4 +84,22 @@ describe Game do
     end
   end
 
+  describe "start_year" do
+    let(:game) { FactoryGirl.create(:game, current_year: 1) }
+    it "should increment the year and set each game_player's turn order" do
+      turn_order = {game.game_players.first.id.to_s => "2", game.game_players.second.id.to_s => "1"}
+      game.start_year(turn_order)
+
+      game.current_year.should == 2
+      game.game_players.first.turn_order.should == 2
+      game.game_players.second.turn_order.should == 1
+    end
+    it "should populate errors if the save fails" do
+      turn_order = {game.game_players.first.id.to_s => "2", game.game_players.second.id.to_s => "2"}
+      game.start_year(turn_order)
+
+      game.errors[:base].include?("Every player must have a unique starting turn order.").should == true
+    end
+  end
+
 end

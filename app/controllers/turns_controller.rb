@@ -7,12 +7,20 @@ class TurnsController < ApplicationController
   before_filter :validate_owner
 
   def create
-    turn = @game.turns.create(turn_params)
+    turn = @game.turns.build(turn_params)
 
     if turn.save
       render json: turn, root: false, status: :created
     else
       render json: turn.errors, status: :not_acceptable
+    end
+  end
+
+  def start_year
+    if @game.start_year(params[:turn_order])
+      render json: @game, root: false, status: :ok
+    else
+      render json: @game.errors, status: :not_acceptable
     end
   end
 
