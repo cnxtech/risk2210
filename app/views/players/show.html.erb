@@ -16,7 +16,7 @@
         <% end %>
       </div>
       <div class="span5" style="float: right;">
-        <p><%= @player.bio %></p>
+        <p><%= format_markdown(@player.bio) %></p>
       </div>
     </div>
   </div>

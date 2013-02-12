@@ -10,7 +10,6 @@ charts
 
 Player Leaderboard
 password reset
-markdown support for player bio
 apple touch icons
 screen shots and docs on using the tracker
 
