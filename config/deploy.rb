@@ -30,7 +30,7 @@ namespace :db do
     run "cd /tmp && mongodump -db risk2210_production -o /tmp && tar --remove-files -czf risk2210_production.tar.gz risk2210_production"
     download "/tmp/risk2210_production.tar.gz", "#{temp_path}/risk2210_production.tar.gz"
     system "cd #{temp_path} && tar -xzvf risk2210_production.tar.gz"
-    system "mongorestore -d risk2210_development #{temp_path}/risk2210_production"
+    system "mongorestore --drop -d risk2210_development #{temp_path}/risk2210_production"
   end
 end
 
