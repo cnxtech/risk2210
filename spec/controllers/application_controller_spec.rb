@@ -57,16 +57,29 @@ describe ApplicationController do
       end
     end
 
-    it "redirects to the homepage, stores the original destination and has an alert message if there is no player" do
-      routes.draw { get "index" => "anonymous#index" }
-      login_path = "/login"
-      controller.stub(:login_path).and_return(login_path)
+    context "html request" do
+      it "redirects to the homepage, stores the original destination and has an alert message if there is no player" do
+        routes.draw { get "index" => "anonymous#index" }
+        login_path = "/login"
+        controller.stub(:login_path).and_return(login_path)
 
-      get :index
+        get :index
 
-      response.should redirect_to login_path
-      session[:return_to_path].should_not be_nil
-      flash[:alert].should_not == nil
+        response.should redirect_to login_path
+        session[:return_to_path].should_not be_nil
+        flash[:alert].should_not == nil
+      end
+    end
+    context "json request" do
+      it "responds with a 401" do
+        routes.draw { get "index" => "anonymous#index" }
+
+        get :index, format: :json
+
+        response.status.should == 401
+        json = JSON.parse(response.body, symbolize_names: true)
+        json[:errors].include?("You need to be logged in!")
+      end
     end
   end
 

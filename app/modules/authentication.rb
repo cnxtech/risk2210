@@ -20,9 +20,15 @@ module Authentication
 
   def login_required
     if current_player.nil?
-      ## TODO handle json format
-      session[:return_to_path] = request.url
-      redirect_to login_path, alert: "You need to be logged in!"
+      respond_to do |format|
+        format.html do
+          session[:return_to_path] = request.url
+          redirect_to login_path, alert: "You need to be logged in!"
+        end
+        format.json do
+          render json: {errors: ["You need to be logged in!"]}, status: :unauthorized
+        end
+      end
     end
   end
 
