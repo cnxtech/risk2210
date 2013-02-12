@@ -38,6 +38,10 @@ class GamesController < ApplicationController
     end
   end
 
+  def results
+    @game = Game.find(params[:id])
+  end
+
 private
 
   def setup_title

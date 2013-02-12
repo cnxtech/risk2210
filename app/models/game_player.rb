@@ -4,12 +4,14 @@ class GamePlayer
 
   COLORS = %w(Green Blue Red Black Gold)
 
-  field :color,           type: String
-  field :territory_count, type: Integer
-  field :energy,          type: Integer
-  field :units,           type: Integer
-  field :handle,          type: String
-  field :turn_order,      type: Integer
+  field :color,            type: String
+  field :territory_count,  type: Integer
+  field :energy,           type: Integer
+  field :units,            type: Integer
+  field :handle,           type: String
+  field :turn_order,       type: Integer
+  field :colony_influence, type: Integer, default: 0
+  field :space_stations,   type: Integer, default: 0
 
   belongs_to :game
   belongs_to :player
@@ -36,7 +38,19 @@ class GamePlayer
     return "http://risk2210.net/assets/default_avatar.png"
   end
 
-  private
+  def continent_bonus
+    continents.sum(:bonus).to_i
+  end
+
+  def colony_influence_bonus
+    (colony_influence * 3).to_i
+  end
+
+  def final_score
+    territory_count + continent_bonus + colony_influence_bonus
+  end
+
+private
 
   def set_starting_resources
     self.territory_count ||= 0

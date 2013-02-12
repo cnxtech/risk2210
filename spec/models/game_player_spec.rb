@@ -39,4 +39,34 @@ describe GamePlayer do
     end
   end
 
+  describe "continent_bonus" do
+    it "should return the sum of the continent bonuses" do
+      continent1 = Continent.all.sample(1).first
+      continent2 = Continent.all.sample(1).first
+      game_player = FactoryGirl.build(:game_player)
+      game_player.continent_ids = [continent1.id, continent2.id]
+
+      game_player.continent_bonus.should == continent1.bonus + continent2.bonus
+    end
+  end
+
+  describe "colony_influence_bonus" do
+    it "should multiply the number of colony influence cards by 3" do
+      game_player = FactoryGirl.build(:game_player, colony_influence: 3)
+
+      game_player.colony_influence_bonus.should == 9
+    end
+  end
+
+  describe "final_score" do
+    it "should calculate the player's final score" do
+      continent1 = Continent.all.sample(1).first
+      continent2 = Continent.all.sample(1).first
+      game_player = FactoryGirl.build(:game_player, colony_influence: 2, territory_count: 30)
+      game_player.continent_ids = [continent1.id, continent2.id]
+
+      game_player.final_score.should == 30 + continent1.bonus + continent2.bonus + (2 * 3)
+    end
+  end
+
 end

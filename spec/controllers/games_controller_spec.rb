@@ -45,11 +45,12 @@ describe GamesController do
   end
 
   describe "show" do
-    it "should description" do
+    it "should have the game and render successfully" do
       game = FactoryGirl.create(:game)
 
       get :show, id: game
 
+      assigns(:game).should == game
       response.should be_success
     end
   end
@@ -77,6 +78,17 @@ describe GamesController do
 
       response.should redirect_to root_path
       flash.alert.should_not be_nil
+    end
+  end
+
+  describe "results" do
+    it "should have the game and render successfully" do
+      game = FactoryGirl.create(:game)
+
+      get :results, id: game
+
+      assigns(:game).should == game
+      response.should be_success
     end
   end
 

@@ -1,18 +1,17 @@
 ## Game Tracker ##
-turn order input screen -- automatically show after last player of year saves turn
-end game button, takes you to a different view with charts
+After last turn collect colony influence, submit button then takes you to results page
 
 ## UI ##
+Space station icons & add to Unit total
 Commander icons, active and inactive
-Space station icons
 
 ## Game over page ##
-Game completion page
-  - charts
-Player Leaderboard
+charts
 
+Player Leaderboard
 password reset
 markdown support for player bio
+apple touch icons
 screen shots and docs on using the tracker
 
 Additional Expansion pages
