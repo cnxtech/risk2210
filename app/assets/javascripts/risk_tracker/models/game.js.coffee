@@ -38,7 +38,7 @@ class RiskTracker.Models.Game extends Backbone.Model
 
   startYear: ()->
     newYear = @get("current_year") + 1
-    @set({currentYear: newYear})
+    @set({current_year: newYear})
 
     $.ajax
       url:  "/api/v1/start-year",
