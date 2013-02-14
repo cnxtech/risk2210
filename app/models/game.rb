@@ -2,10 +2,11 @@ class Game
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  field :location, type: String
+  field :location,        type: String
   field :number_of_years, type: Integer, default: 5
-  field :notes, type: String
-  field :current_year, type: Integer, default: 1
+  field :notes,           type: String
+  field :current_year,    type: Integer, default: 1
+  field :completed,       type: Boolean, default: false
 
   has_and_belongs_to_many :maps
   has_many :game_players, autosave: true, dependent: :destroy
@@ -38,6 +39,14 @@ class Game
     self.current_year = self.current_year + 1
     game_players.each do |game_player|
       game_player.turn_order = turn_order[game_player.id.to_s]
+    end
+    self.save
+  end
+
+  def end_game(colony_influence)
+    self.completed = true
+    game_players.each do |game_player|
+      game_player.colony_influence = colony_influence[game_player.id.to_s]
     end
     self.save
   end

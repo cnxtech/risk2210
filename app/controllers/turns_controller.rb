@@ -24,6 +24,11 @@ class TurnsController < ApplicationController
     end
   end
 
+  def end_game
+    @game.end_game(params[:colony_influence])
+    head :ok
+  end
+
   private
 
   def find_game

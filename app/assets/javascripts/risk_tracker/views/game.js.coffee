@@ -35,7 +35,7 @@ class RiskTracker.Views.Game extends Backbone.View
     @turnOrderModal = new RiskTracker.Views.TurnOrder({collection: @model.gamePlayers, gameView: @, attributes: {class: "modal hide fade", id: "turn-order-modal"}})
     @$el.append(@turnOrderModal.render().el)
 
-    @colonyBonusModal = new RiskTracker.Views.ColonyBonus({collection: @model.gamePlayers, gameView: @, attributes: {class: "modal hide fade", id: "colony-bonus-modal"}})
+    @colonyBonusModal = new RiskTracker.Views.ColonyBonus({model: @model, attributes: {class: "modal hide fade", id: "colony-bonus-modal"}})
     @$el.append(@colonyBonusModal.render().el)
 
     @activatePlayer(@model.currentPlayer)

@@ -94,7 +94,7 @@ describe TurnsController do
       login player1
     end
     it "triggers the start the next year in the game" do
-      post :start_year, game_id: @game.id, turn_order: {"#{@game_player.id}" => "2", "#{@game_player2.id}" => "1"}
+      put :start_year, game_id: @game.id, turn_order: {"#{@game_player.id}" => "2", "#{@game_player2.id}" => "1"}
 
       response.should be_success
       @game.reload.current_year.should == 2
@@ -110,6 +110,20 @@ describe TurnsController do
       @game.reload.current_year.should == 1
       @game_player.reload.turn_order.should == 1
       @game_player2.reload.turn_order.should == 2
+    end
+  end
+
+  describe "end_game" do
+    before do
+      login player1
+    end
+    it "should update the game player's colony influence" do
+      put :end_game, game_id: @game.id, colony_influence: {"#{@game_player.id}" => "2", "#{@game_player2.id}" => "3"}
+
+      response.should be_success
+      @game.reload.completed?.should == true
+      @game_player.reload.colony_influence.should == 2
+      @game_player2.reload.colony_influence.should == 3
     end
   end
 

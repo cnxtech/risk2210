@@ -6,7 +6,7 @@ class RiskTracker.Views.ColonyBonus extends Backbone.View
     "click .btn.btn-success": "endGame"
 
   render: ()->
-    @$el.html(@template({game_players: @collection.models}))
+    @$el.html(@template({game_players: @model.gamePlayers.models}))
     return @
 
   activate: ()->
@@ -14,5 +14,21 @@ class RiskTracker.Views.ColonyBonus extends Backbone.View
 
   endGame: (event)->
     event.preventDefault()
-    console.log("End game!")
-    ## Ajax call to save colony bonus, on success window.location = results page
+    data = {game_id: @model.get('id'), colony_influence: {}}
+
+    @$el.find("input[type='number']").each (index, input)=>
+      input = $(input)
+      game_player = @model.gamePlayers.find(input.data("game-player-id"))
+      data.colony_influence[game_player.get('id')] = parseInt(input.val())
+
+    $.ajax
+      url:  "/api/v1/end-game",
+      type: "PUT",
+      data: data,
+      error: (xhr, status, error)->
+        console.log(error)
+      success: ()=>
+        window.location = "/games/#{@model.get('id')}/results"
+
+
+

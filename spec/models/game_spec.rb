@@ -102,4 +102,17 @@ describe Game do
     end
   end
 
+  describe "end_game" do
+    let(:game) { FactoryGirl.create(:game) }
+    it "should update the player's colony influence and the game's completed flag" do
+      colony_influence = {game.game_players.first.id.to_s => "1", game.game_players.second.id.to_s => "3"}
+
+      game.end_game(colony_influence)
+
+      game.completed?.should == true
+      game.game_players.first.colony_influence.should == 1
+      game.game_players.second.colony_influence.should == 3
+    end
+  end
+
 end
