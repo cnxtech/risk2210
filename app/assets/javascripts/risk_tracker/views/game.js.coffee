@@ -6,6 +6,7 @@ class RiskTracker.Views.Game extends Backbone.View
   waterModal: null
   lunarModal: null
   turnOrderModal: null
+  colonyBonusModal: null
 
   initialize: ()->
     @model = new RiskTracker.Models.Game(window.gameData)
@@ -33,6 +34,9 @@ class RiskTracker.Views.Game extends Backbone.View
 
     @turnOrderModal = new RiskTracker.Views.TurnOrder({collection: @model.gamePlayers, gameView: @, attributes: {class: "modal hide fade", id: "turn-order-modal"}})
     @$el.append(@turnOrderModal.render().el)
+
+    @colonyBonusModal = new RiskTracker.Views.ColonyBonus({collection: @model.gamePlayers, gameView: @, attributes: {class: "modal hide fade", id: "colony-bonus-modal"}})
+    @$el.append(@colonyBonusModal.render().el)
 
     @activatePlayer(@model.currentPlayer)
 
@@ -77,7 +81,10 @@ class RiskTracker.Views.Game extends Backbone.View
       gamePlayer.setStartingContinents()
 
   _endYear: ()=>
-    @turnOrderModal.activate()
+    if @model.lastYear()
+      @colonyBonusModal.activate()
+    else
+      @turnOrderModal.activate()
 
   startNewYear: ()->
     next_player = @model.gamePlayers.where(turn_order: 1)[0]

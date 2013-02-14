@@ -1,0 +1,5 @@
+<h3>Enter Colony Bonus Cards</h3>
+<% for game_player in @game_players: %>
+  <p><%= game_player.get("handle") %> - <input data-game-player-id="<%= game_player.get('id') %>" type="number" /></p>
+<% end %>
+<button class='btn btn-large btn-success'>Save Colony Bonus</button>

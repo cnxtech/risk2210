@@ -32,5 +32,5 @@ Enhanced Forums
 
 File uploads - Photos
 Advanced Stats
-  - cards bought, played, #colonial influences
+  - cards bought, played
   - total units lost per year

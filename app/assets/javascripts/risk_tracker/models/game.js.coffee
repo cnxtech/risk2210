@@ -47,3 +47,5 @@ class RiskTracker.Models.Game extends Backbone.Model
       error: (xhr, status, error)->
         console.log(error)
 
+  lastYear: ()->
+    @get("current_year") is @get("number_of_years")
