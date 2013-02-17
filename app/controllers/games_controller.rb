@@ -14,8 +14,7 @@ class GamesController < ApplicationController
   end
 
   def create
-    @game = Game.new(game_params)
-    @game.creator_id = current_player.id
+    @game = current_player.games.build(game_params)
     if @game.save
       redirect_to game_path(@game), notice: "Created new game!"
     else
