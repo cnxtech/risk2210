@@ -12,7 +12,7 @@ RSpec.configure do |config|
   config.render_views
   config.order = :random
   config.include Mongoid::Matchers
-  
+
   config.before(:suite) do
     load_factions
     load_maps
