@@ -32,7 +32,7 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
   render: ()=>
     @$el.html(@template({game_player: @model, mode: @mode}))
     @gameView.activatePlayer(@model) if @game.currentPlayer == @model
-    @$el.find(".faction-logo").popover(title: @model.faction.get('name'), content: @model.faction.get('abilities'))
+    @setupFactionInfoPopover()
     @showInfoCard() if @mode is 'info'
     @showInvadeCard() if @mode is 'invade'
     return @
@@ -143,3 +143,13 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
     else
       icon.show()
       @model.incrementSpaceStations()
+
+  setupFactionInfoPopover: ()->
+    content = "<b>Starts with:</b><ul>"
+    _.each @model.faction.get('starting_resources'), (resource) ->
+      content = content + "<li>#{resource}</li>"
+
+    content = content + "</ul><p>#{@model.faction.get('abilities')}</p>"
+
+    @$el.find(".faction-logo").popover(html: true, title: @model.faction.get('name'), content: content)
+
