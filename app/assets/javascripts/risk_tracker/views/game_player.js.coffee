@@ -13,6 +13,7 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
     "click .end-invasion":              "endInvasion"
     "click .invade-player":             "invadePlayerOccupied"
     "click .invade-empty":              "invadeEmpty"
+    "click .space-station":             "toggleSpaceStation"
 
   initialize: ()->
     @game = @options.game
@@ -130,3 +131,15 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
     @mode = "invade"
     @$el.find(".info-card").hide()
     @$el.find(".invade-card").show()
+
+  toggleSpaceStation: (event)->
+    event.preventDefault()
+    icon = $(event.target).find("img")
+    icon = $(event.target) if icon.length is 0
+
+    if icon.is(":visible")
+      icon.hide()
+      @model.decrementSpaceStations()
+    else
+      icon.show()
+      @model.incrementSpaceStations()

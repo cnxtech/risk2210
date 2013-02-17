@@ -6,6 +6,7 @@ class RiskTracker.Models.GamePlayer extends Backbone.Model
     @continents = new RiskTracker.Collections.Continents()
 
     @bind("change:territory_count", @_calculateResources)
+    @bind("change:space_stations", @_calculateResources)
     @continents.on "add", (continent) => @_calculateResources()
     @continents.on "remove", (continent) => @_calculateResources()
     @_calculateResources()
@@ -18,6 +19,9 @@ class RiskTracker.Models.GamePlayer extends Backbone.Model
 
   units: ()->
     @get("units")
+
+  spaceStations: ()->
+    @get("space_stations")
 
   addContinent: (continent)->
     @continents.add(continent)
@@ -33,6 +37,14 @@ class RiskTracker.Models.GamePlayer extends Backbone.Model
   decrementTerritoryCount: ()->
     if @territoryCount() > 0
       @set({territory_count: @territoryCount() - 1})
+
+  incrementSpaceStations: ()->
+    if @spaceStations() <= 4
+      @set({space_stations: @spaceStations() + 1})
+
+  decrementSpaceStations: ()->
+    if @spaceStations() > 0
+      @set({space_stations: @spaceStations() - 1})
 
   landContinents: ()->
     @continents.land()
@@ -71,6 +83,12 @@ class RiskTracker.Models.GamePlayer extends Backbone.Model
     units = units + @_continentalBonuses()
     if @faction.megaCorp()
       units = units + Math.ceil(units * 0.2)
+
+    if @faction.preservation() ## Preservation gets 2 additonal units per space station
+      units = units + (@spaceStations() * 2)
+    else if !@faction.freeMilitia() ## Free Mulitia gets 0 additional units per space station
+      units = units + @spaceStations()
+
     @set({units: units})
 
   _baseResources: ()->
@@ -91,3 +109,11 @@ class RiskTracker.Models.GamePlayer extends Backbone.Model
       continent = @game.maps.findContinentById(continent_id)
       @continents.add(continent)
       @game.availableContinents.remove(continent)
+
+  spaceStationIcon: ()->
+    util = new RiskTracker.Util()
+    return util.spaceStationPath()
+
+  spaceStationActive: (index)->
+    return "" if @spaceStations() >= index
+    return "display: none"

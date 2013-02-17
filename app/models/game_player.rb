@@ -54,8 +54,9 @@ private
 
   def set_starting_resources
     self.territory_count ||= 0
-    self.energy = faction.min_energy
-    self.units = faction.min_units
+    self.energy            = faction.min_energy
+    self.units             = faction.min_units
+    self.space_stations    = faction.space_stations
   end
 
 end

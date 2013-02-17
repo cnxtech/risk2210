@@ -1,10 +1,16 @@
 class RiskTracker.Models.Faction extends Backbone.Model
 
   fusionConservancy: ()->
-    @get("name") == "The Fusion Conservancy"
+    @get("name") is "The Fusion Conservancy"
 
   megaCorp: ()->
-    @get("name") == "MegaCorp"
+    @get("name") is "MegaCorp"
+
+  freeMilitia: ()->
+    @get("name") is "Free Militia"
+
+  preservation: ()->
+    @get("name") is "Preservation"
 
   default: ()->
     @get("name") == "Default"

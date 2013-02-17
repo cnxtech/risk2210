@@ -31,7 +31,8 @@ class RiskTracker.Models.Game extends Backbone.Model
         units:           game_player.units(),
         energy:          game_player.energy(),
         territory_count: game_player.territoryCount(),
-        continent_ids:   game_player.continentIds()
+        continent_ids:   game_player.continentIds(),
+        space_stations:  game_player.spaceStations()
       }
 
     @turns.create(game_id: @get("id"), game_player_id: @currentPlayer.get("id"), order: @currentPlayer.turnOrder(), game_player_stats_attributes: game_player_stats)

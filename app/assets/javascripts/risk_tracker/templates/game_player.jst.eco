@@ -59,6 +59,13 @@
     </div>
   </div>
 
+  <div class="row" class="space-stations-row">
+    <div class="space-station"><img src="<%= @game_player.spaceStationIcon() %>" width="60px" style="<%= @game_player.spaceStationActive(1) %>" /></div>
+    <div class="space-station"><img src="<%= @game_player.spaceStationIcon() %>" width="60px" style="<%= @game_player.spaceStationActive(2) %>" /></div>
+    <div class="space-station"><img src="<%= @game_player.spaceStationIcon() %>" width="60px" style="<%= @game_player.spaceStationActive(3) %>" /></div>
+    <div class="space-station"><img src="<%= @game_player.spaceStationIcon() %>" width="60px" style="<%= @game_player.spaceStationActive(4) %>" /></div>
+  </div>
+
   <div class="row">
     <div class="column">
       <div class="counter-container turn-counter-container">

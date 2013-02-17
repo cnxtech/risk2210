@@ -3,11 +3,12 @@ class Faction
   include Mongoid::Timestamps
   include Mongoid::Slug
 
-  field :name, type: String
-  field :classification, type: String
-  field :abilities, type: String
+  field :name,               type: String
+  field :classification,     type: String
+  field :abilities,          type: String
   field :starting_resources, type: String
-  field :official, type: Boolean, default: true
+  field :official,           type: Boolean, default: true
+  field :space_stations,     type: Integer, default: 0
 
   has_many :game_players
 
@@ -31,6 +32,14 @@ class Faction
 
   def mega_corp?
     name == "MegaCorp"
+  end
+
+  def free_militia?
+    name == "Free Militia"
+  end
+
+  def preservation?
+    name == "Preservation"
   end
 
   def min_energy
