@@ -7,7 +7,7 @@ describe Continent do
       continents = Continent.ordered.map(&:name)
 
       continents.size.should == 59
-      continents.should == ["Africa", "Amazonis", "Angeln", "Arcadia", "Asia", "Australia", "Automin", "Avalon", "Balt", "Byfed", "Casius", "Cymru", "Ecclesia", "Eden", "Elysia", "Europe", "Galilei", "Ghaul", "Granada", "Hoenheim", "Narkom", "North America", "Seaxna", "Skandi", "South America", "Tartarus", "Tharsis", "Titaniya", "Ugricya", "Vulcan",                                                              "1 Ceres", "243 Ida", "4 Vesta", "Cresinion", "Dactyl", "Delphot", "Federation", "Jotunheim", "New America", "Norseland", "Sajon", "Styx", "Acidalium", "Arabia", "Asia Pacific", "Caprica", "Indian", "Isidis", "Khell", "Magreb", "Mashriq", "North Atlantic", "Nuraghe", "Propontis", "Soter", "South Atlantic", "SungTzu", "US Pacific", "Utopia"]
+      continents.should == ["Africa", "Amazonis", "Angeln", "Arcadia", "Asia", "Australia", "Automin", "Avalon", "Balt", "Byfed", "Casius", "Cymru", "Ecclesia", "Eden", "Elysia", "Europe", "Galilei", "Ghaul", "Granada", "Hoenheim", "Narkom", "North America", "Seaxna", "Skandi", "South America", "Tartarus", "Tharsis", "Titaniya", "Ugricya", "Vulcan", "1 Ceres", "243 Ida", "4 Vesta", "Cresinion", "Dactyl", "Delphot", "Federation", "Jotunheim", "New America", "Norseland", "Sajon", "Styx", "Acidalium", "Arabia", "Asia Pacific", "Caprica", "Indian", "Isidis", "Khell", "Magreb", "Mashriq", "North Atlantic", "Nuraghe", "Propontis", "Soter", "South Atlantic", "SungTzu", "US Pacific", "Utopia"]
     end
   end
 
