@@ -34,14 +34,6 @@ class Faction
     name == "MegaCorp"
   end
 
-  def free_militia?
-    name == "Free Militia"
-  end
-
-  def preservation?
-    name == "Preservation"
-  end
-
   def min_energy
     return 4 if fusion_conservancy?
     return 3
