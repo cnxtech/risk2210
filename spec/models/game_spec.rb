@@ -91,6 +91,7 @@ describe Game do
       game.start_year(turn_order)
 
       game.current_year.should == 2
+      game.current_player.should == game.game_players.second
       game.game_players.first.turn_order.should == 2
       game.game_players.second.turn_order.should == 1
     end
@@ -112,6 +113,21 @@ describe Game do
       game.completed?.should == true
       game.game_players.first.colony_influence.should == 1
       game.game_players.second.colony_influence.should == 3
+    end
+  end
+
+  describe "set_current_player" do
+    it "should set the current_player to the game_player with the first turn order on create" do
+      game = FactoryGirl.build(:game)
+      game.game_players << FactoryGirl.build(:game_player, turn_order: 3)
+      game.game_players.first.turn_order = 3
+      game.game_players.second.turn_order = 1
+      game.game_players.third.turn_order = 2
+
+      game.save
+
+      game.game_players.size.should == 3
+      game.current_player.should == game.game_players.second
     end
   end
 

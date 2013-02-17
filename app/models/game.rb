@@ -12,6 +12,9 @@ class Game
   has_many :game_players, autosave: true, dependent: :destroy
   has_many :turns
   belongs_to :creator, class_name: "Player"
+  belongs_to :current_player, class_name: "GamePlayer"
+
+  before_create :set_current_player
 
   accepts_nested_attributes_for :game_players, allow_destroy: true
 
@@ -39,6 +42,7 @@ class Game
     self.current_year = self.current_year + 1
     game_players.each do |game_player|
       game_player.turn_order = turn_order[game_player.id.to_s]
+      self.current_player = game_player if turn_order[game_player.id.to_s] == "1"
     end
     self.save
   end
@@ -51,7 +55,7 @@ class Game
     self.save
   end
 
-  private
+private
 
   def number_of_players
     errors.add(:base, "You must have at least two players.") if game_players.size < 2
@@ -65,6 +69,10 @@ class Game
   def starting_turn_positions
     turn_orders = game_players.map(&:turn_order).uniq
     errors.add(:base, "Every player must have a unique starting turn order.") if turn_orders.size != game_players.size
+  end
+
+  def set_current_player
+    self.current_player = game_players.detect{|game_player| game_player.turn_order == 1}
   end
 
 end

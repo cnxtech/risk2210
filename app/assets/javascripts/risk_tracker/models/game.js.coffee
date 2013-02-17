@@ -9,7 +9,7 @@ class RiskTracker.Models.Game extends Backbone.Model
     @turns = new RiskTracker.Collections.Turns(@get("turns"))
     @gamePlayers.each (gamePlayer)=>
       gamePlayer.game = @
-      @currentPlayer = gamePlayer if gamePlayer.get("turn_order") is 1
+      @currentPlayer = gamePlayer if gamePlayer.get("id") is @get("current_player_id")
 
     @maps = new RiskTracker.Collections.Maps(@get("maps"))
 
