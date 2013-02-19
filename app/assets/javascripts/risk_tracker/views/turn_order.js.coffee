@@ -14,6 +14,7 @@ class RiskTracker.Views.TurnOrder extends Backbone.View
 
   activate: ()->
     @_turnOrderFields().each (index, field) -> $(field).val("")
+    @$el.find(".year").text(@gameView.model.get("current_year") + 1)
     @$el.modal(backdrop: "static")
 
   saveTurnOrder: (event)->
