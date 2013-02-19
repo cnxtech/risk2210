@@ -34,6 +34,7 @@ describe PlayersController do
   describe "show" do
     context "html" do
       it "should have the requested player" do
+        pending "Add sample game data"
         get :show, id: player.slug
 
         assigns(:player).should == player

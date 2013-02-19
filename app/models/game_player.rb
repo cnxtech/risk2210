@@ -14,6 +14,7 @@ class GamePlayer
   field :space_stations,   type: Integer, default: 0
 
   belongs_to :game
+  belongs_to :game, inverse_of: :current_player
   belongs_to :player
   belongs_to :faction
   has_many :turns, dependent: :destroy
