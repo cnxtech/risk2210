@@ -34,7 +34,10 @@ describe PlayersController do
   describe "show" do
     context "html" do
       it "should have the requested player" do
-        pending "Add sample game data"
+        game = FactoryGirl.build(:game, creator: player)
+        game.game_players << FactoryGirl.build(:game_player, turn_order: 3, handle: player.handle)
+        game.save
+
         get :show, id: player.slug
 
         assigns(:player).should == player

@@ -23,7 +23,7 @@ FactoryGirl.define do
     updated_at { Time.now }
   end
 
-  factory :player, parent: :base_player do
+  factory :player, parent: :base_player, aliases: [:creator] do
     password "secret1"
     password_confirmation "secret1"
   end

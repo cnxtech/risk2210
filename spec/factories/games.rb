@@ -1,5 +1,6 @@
 FactoryGirl.define do
   factory :game do
+    creator
     location "Chicago"
     number_of_years 5
     notes ""
