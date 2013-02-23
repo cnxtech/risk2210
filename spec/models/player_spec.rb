@@ -72,13 +72,14 @@ describe Player do
 
   describe "set_login_stats" do
     it "should increment the login_count and set the last_login_at to now" do
-      Time.stub(:now).and_return(Time.mktime(2012, 10, 22, 14, 30))
+      now = Time.mktime(2012, 10, 22, 14, 30)
+      Time.stub(:now).and_return(now)
       player = FactoryGirl.create(:player, login_count: 10, last_login_at: 10.days.ago)
 
       player.set_login_stats
 
       player.login_count.should == 11
-      player.last_login_at.to_s.should == "2012-10-22T19:30:00+00:00"
+      player.last_login_at.should == now
     end
   end
 
