@@ -4,7 +4,7 @@
       <% unless @game_player.faction.default(): %>
         <img class='faction-logo' src='<%= @game_player.faction.iconFileName() %>' width='50' />
       <% end %>
-      <span><%= @game_player.get('handle') %></span>
+      <span class="name"><%= @game_player.get('handle') %></span>
     </div>
   </div>
 
@@ -98,16 +98,35 @@
 </div>
 
 <div class="invade-card">
-  <h1>Invade - <%= @game_player.territoryCount() %></h1>
-  <button class='btn btn-large invade-empty'>Invade Empty</button>
+
+  <div class="player-label">
+    <img class='faction-logo' src='<%= @game_player.faction.iconFileName() %>' width='50' />
+    <span class="name"><%= @game_player.get('handle') %></span>
+    <span class="territory-counter"><%= @game_player.territoryCount() %></span>
+  </div>
+
+  <div class="player-row">
+    <div class="avatar">&nbsp;</div>
+    <div class="invade-player-button-container">
+      <button class='btn btn-large invade-empty'>Invade Empty</button>
+    </div>
+  </div>
+
   <% for game_player in @game_player.game.gamePlayers.models: %>
     <% unless @game_player is game_player: %>
-      <div>
-        <img src='<%= game_player.get('profile_image_path') %>' width='40px' />
-        <button class='btn btn-large invade-player' data-game-player-id='<%= game_player.get("id") %>'>Invade <%= game_player.get("handle") %></button>
-        <%= game_player.territoryCount() %>
+      <div class="player-row">
+        <div class="avatar">
+          <img src='<%= game_player.get('profile_image_path') %>' />
+        </div>
+        <div class="invade-player-button-container">
+          <button class='btn btn-large invade-player' data-game-player-id='<%= game_player.get("id") %>'>Invade <%= game_player.get("handle") %></button>
+          <%= game_player.territoryCount() %>
+        </div>
       </div>
     <% end %>
   <% end %>
-  <button class='btn btn-large btn-danger end-invasion'>End Invasion</button>
+
+  <div class="end-invasion-button-container">
+    <button class='btn btn-large btn-danger end-invasion'>End Invasion</button>
+  </div>
 </div>

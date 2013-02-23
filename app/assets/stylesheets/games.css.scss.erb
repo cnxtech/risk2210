@@ -118,31 +118,31 @@ ul.continent-list{
   float: left;
   @include rounded(10px);
 
+  .player-label {
+    @include container();
+    font-family: "Gunship";
+    height: 60px;
+    line-height: 60px;
+    margin: 5px;
+    width: 490px;
+    span.name{
+      font-size: 20px;
+      padding: 5px 15px;
+    }
+    img.faction-logo{
+      cursor: pointer;
+      padding: 5px;
+      float: left;
+    }
+    .popover-content{
+      line-height: 21px;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+  }
+
   .row{
     clear: both;
     display: table-row;
-
-    .player-label {
-      @include container();
-      font-family: "Gunship";
-      height: 60px;
-      line-height: 60px;
-      margin: 5px;
-      width: 490px;
-      span{
-        font-size: 20px;
-        padding: 5px 15px;
-      }
-      img.faction-logo{
-        cursor: pointer;
-        padding: 5px;
-        float: left;
-      }
-      .popover-content{
-        line-height: 21px;
-        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      }
-    }
 
     .cellspan-two{
       width: 326px !important;
@@ -250,6 +250,42 @@ ul.continent-list{
       }
 
     }
+  }
+
+  .invade-card{
+    .territory-counter{
+      float: right;
+      @include counter();
+      font-size: 50px;
+      margin-right: 20px;
+    }
+    .player-row {
+      width: 470px;
+      display: block;
+      margin: 5px;
+      padding: 10px;
+      height: 45px;
+      @include container();
+      @include counter();
+      .avatar{
+        float: left;
+        width: 70px;
+        img{
+          max-height: 50px;
+        }
+      }
+      .invade-player-button-container{
+        float: left;
+        .btn{
+          width: 290px;
+        }
+      }
+    }
+
+    .end-invasion-button-container{
+      margin-top: 40px;
+    }
+
   }
 
 }
