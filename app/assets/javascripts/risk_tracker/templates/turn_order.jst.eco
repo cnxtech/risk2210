@@ -1,5 +1,14 @@
-<h1>Turn order for year <span class="year"></span></h1>
-<% for game_player in @game_players: %>
-  <p><%= game_player.get("handle") %> - <input data-game-player-id="<%= game_player.get('id') %>" type="number" min="1" max="<%= @game_players.length %>" /></p>
-<% end %>
-<button class='btn btn-large btn-success'>Save Turn Order</button>
+<div class="modal-wrapper">
+  <h3>Enter turn order for year <span class="year"></span></h3>
+  <% for game_player in @game_players: %>
+    <div>
+      <%= game_player.get("handle") %>
+    </div>
+    <div>
+      <input data-game-player-id="<%= game_player.get('id') %>" type="number" min="1" max="<%= @game_players.length %>" />
+    </div>
+  <% end %>
+  <div class="save-button-container">
+    <button class='btn btn-large btn-success'>Save Turn Order</button>
+  </div>
+</div>
