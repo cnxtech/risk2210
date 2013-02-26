@@ -1,12 +1,9 @@
 ## Game Tracker ##
-After last turn collect colony influence, submit button then takes you to results page
-
-## UI ##
-Space station icons & add to Unit total
 Commander icons, active and inactive
+confirmation on end of year to verify that continent bonuses are correct
 
 ## Game over page ##
-charts
+charts http://nvd3.org/
 
 Player Leaderboard
 password reset
