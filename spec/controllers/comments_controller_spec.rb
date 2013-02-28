@@ -8,7 +8,7 @@ describe CommentsController do
 
   describe "create" do
     it "should require a player be logged in" do
-      post :create, forum_id: forum.slug, topic_id: topic.slug, comment: {body: "This is a great game!"}
+      post :create, forum_id: forum, topic_id: topic, comment: {body: "This is a great game!"}
 
       response.should redirect_to login_path
       flash.now[:alert].should_not be_nil
@@ -18,7 +18,7 @@ describe CommentsController do
         login player
 
         expect{
-          post :create, forum_id: forum.slug, topic_id: topic.slug, comment: {body: "This is a great game!"}
+          post :create, forum_id: forum, topic_id: topic, comment: {body: "This is a great game!"}
         }.to change(topic.comments, :count).by(1)
 
         response.should redirect_to(forum_topic_path(forum, topic))
@@ -29,7 +29,7 @@ describe CommentsController do
         login player
 
         expect{
-          post :create, forum_id: forum.slug, topic_id: topic.slug, comment: {body: ""}
+          post :create, forum_id: forum, topic_id: topic, comment: {body: ""}
         }.to change(topic.comments, :count).by(0)
 
         response.should render_template("topics/show")
@@ -43,7 +43,7 @@ describe CommentsController do
       end
       it "should create the comment if everything is valid" do
         expect{
-          post :create, forum_id: forum.slug, topic_id: topic.slug, comment_parent_id: @original_comment.id, comment: {body: "This is a great game!"}
+          post :create, forum_id: forum, topic_id: topic, comment_parent_id: @original_comment.id, comment: {body: "This is a great game!"}
         }.to change(@original_comment.comments, :count).by(1)
 
         response.should redirect_to(forum_topic_path(forum, topic))
@@ -52,7 +52,7 @@ describe CommentsController do
       end
       it "should reload the topics/show page if there were any errors" do
         expect{
-          post :create, forum_id: forum.slug, topic_id: topic.slug, comment: {body: ""}
+          post :create, forum_id: forum, topic_id: topic, comment: {body: ""}
         }.to change(@original_comment.comments, :count).by(0)
 
         response.should render_template("topics/show")
@@ -66,7 +66,7 @@ describe CommentsController do
       comment = FactoryGirl.create(:topic_comment, commentable: topic, player: player)
       login player
 
-      get :edit, forum_id: forum.id, topic_id: topic.id, id: comment.id
+      get :edit, forum_id: forum, topic_id: topic, id: comment.id
 
       assigns(:comment).should == comment
     end
@@ -74,7 +74,7 @@ describe CommentsController do
       comment = FactoryGirl.create(:topic_comment, commentable: topic)
       login player
 
-      get :edit, forum_id: forum.id, topic_id: topic.id, id: comment.id
+      get :edit, forum_id: forum, topic_id: topic, id: comment.id
 
       response.status.should == 404
     end
@@ -86,13 +86,13 @@ describe CommentsController do
       login player
     end
     it "should update the comment if everything is valid" do
-      put :update, forum_id: forum.id, topic_id: topic.id, id: @comment.id, comment: {body: "This is the new body"}
+      put :update, forum_id: forum, topic_id: topic, id: @comment.id, comment: {body: "This is the new body"}
 
       response.should redirect_to forum_topic_path(forum, topic)
       flash.notice.should_not be_nil
     end
     it "should reload the topics/show page if the player tries to change the comment's body to be blank" do
-      put :update, forum_id: forum.id, topic_id: topic.id, id: @comment.id, comment: {body: ""}
+      put :update, forum_id: forum, topic_id: topic, id: @comment.id, comment: {body: ""}
 
       response.should render_template(:edit)
       flash.now[:alert].should_not be_nil
