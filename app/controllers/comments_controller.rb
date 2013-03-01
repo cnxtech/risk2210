@@ -52,7 +52,7 @@ private
   end
 
   def add_topic_id_to_params
-    params[:comment].merge!(topic_id: @topic.id) if params[:comment]
+    params[:comment].merge!(topic_id: @topic.slug) if params[:comment]
   end
 
   def comment_params

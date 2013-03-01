@@ -43,7 +43,7 @@ describe CommentsController do
       end
       it "should create the comment if everything is valid" do
         expect{
-          post :create, forum_id: forum, topic_id: topic, comment_parent_id: @original_comment.id, comment: {body: "This is a great game!"}
+          post :create, forum_id: forum, topic_id: topic.slug, comment_parent_id: @original_comment.id, comment: {body: "This is a great game!"}
         }.to change(@original_comment.comments, :count).by(1)
 
         response.should redirect_to(forum_topic_path(forum, topic))

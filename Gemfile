@@ -1,7 +1,7 @@
-source :rubygems
+source "https://rubygems.org"
 
 gem 'rails', '3.2.12'
-gem 'strong_parameters', '0.1.6'
+gem 'strong_parameters', '~> 0.2.0'
 
 group :assets do
   gem 'sass-rails', '~> 3.2.6'
@@ -15,7 +15,7 @@ end
 ## Frontend / Views
 gem 'jquery-rails', '~> 2.2.1'
 gem 'redcarpet', '~> 2.2.2'
-gem 'simple_form', '~> 2.0.4'
+gem 'simple_form', '~> 2.1.0'
 gem 'cocoon', '~> 1.1.2'
 gem 'active_model_serializers', '~> 0.6.0'
 
