@@ -17,7 +17,7 @@ gem 'jquery-rails', '~> 2.2.1'
 gem 'redcarpet', '~> 2.2.2'
 gem 'simple_form', '~> 2.1.0'
 gem 'cocoon', '~> 1.1.2'
-gem 'active_model_serializers', '~> 0.6.0'
+gem 'active_model_serializers', '~> 0.7.0'
 
 ## Backbone
 gem 'ejs', '~> 1.1.1'
@@ -25,7 +25,7 @@ gem 'eco', '~> 1.0.0'
 
 ## Mongo DB
 gem 'mongoid', '~> 3.1.1'
-gem 'mongoid_slug', '~> 2.0.1'
+gem 'mongoid_slug', '~> 3.0.0'
 
 ## Authentication
 gem 'omniauth', '~> 1.1.3'
