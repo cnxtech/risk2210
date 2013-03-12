@@ -15,6 +15,12 @@ svg {
   display: block;
 }
 
+#chart1{
+  background: #2e3236;
+}
+#chart1 text{
+  fill: #fff;
+}
 #chart1 svg {
   height: 500px;
   min-width: 100px;
@@ -120,7 +126,7 @@ svg {
 
 <% content_for :tail do %>
 <script>
-
+var gameData = <%= raw(GameSerializer.new(@game, root: false).to_json) %>;
 
 // Wrapping in nv.addGraph allows for '0 timeout render', stores rendered charts in nv.graphs, and may do more in the future... it's NOT required
 var chart;
