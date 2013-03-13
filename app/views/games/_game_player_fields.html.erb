@@ -2,7 +2,7 @@
   <%= f.input :handle, input_html: {data: {provide: "typeahead", source: player_handles}} %>
   <%= f.input :faction_id, collection: Faction.all %>
   <%= f.input :color, collection: GamePlayer::COLORS %>
-  <%= f.input :territory_count, as: :numeric, label: "Starting Territory Count" %>
+  <%= f.input :starting_territory_count, as: :numeric, label: "Starting Territory Count" %>
   <%= f.input :turn_order, as: :numeric, label: "Starting turn order", input_html: {min: 1, max: 5} %>
   <%= link_to_remove_association(content_tag(:i, nil, class: "icon-minus-sign").html_safe + " Remove", f, class: "btn btn-small btn-danger") %>
 </div>

@@ -4,14 +4,15 @@ class GamePlayer
 
   COLORS = %w(Green Blue Red Black Gold)
 
-  field :color,            type: String
-  field :territory_count,  type: Integer
-  field :energy,           type: Integer
-  field :units,            type: Integer
-  field :handle,           type: String
-  field :turn_order,       type: Integer
-  field :colony_influence, type: Integer, default: 0
-  field :space_stations,   type: Integer, default: 0
+  field :color,                    type: String
+  field :territory_count,          type: Integer
+  field :energy,                   type: Integer
+  field :units,                    type: Integer
+  field :handle,                   type: String
+  field :turn_order,               type: Integer
+  field :colony_influence,         type: Integer, default: 0
+  field :space_stations,           type: Integer, default: 0
+  field :starting_territory_count, type: Integer, default: 0
 
   belongs_to :game
   belongs_to :game, inverse_of: :current_player
@@ -51,13 +52,24 @@ class GamePlayer
     territory_count + continent_bonus + colony_influence_bonus
   end
 
+  def hex_color
+    case self.color
+      when "Red"   ; '#c65148'
+      when "Green" ; '#4bc649'
+      when "Blue"  ; '#488dc6'
+      when "Black" ; '#9b9b9b'
+      when "Gold"  ; '#c69e49'
+    end
+  end
+
 private
 
   def set_starting_resources
-    self.territory_count ||= 0
-    self.energy            = faction.min_energy
-    self.units             = faction.min_units
-    self.space_stations    = faction.space_stations
+    self.starting_territory_count ||= 0
+    self.territory_count            = self.starting_territory_count
+    self.energy                     = faction.min_energy
+    self.units                      = faction.min_units
+    self.space_stations             = faction.space_stations
   end
 
 end

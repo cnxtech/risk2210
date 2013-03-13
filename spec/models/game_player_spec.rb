@@ -6,10 +6,11 @@ describe GamePlayer do
     it "should set the default starting units and energy for the faction" do
       random_faction = Faction.random
 
-      game_player = FactoryGirl.build(:game_player, faction_id: random_faction.id, territory_count: nil)
+      game_player = FactoryGirl.build(:game_player, faction_id: random_faction.id, starting_territory_count: 12)
       game_player.save
 
-      game_player.territory_count.should == 0
+      game_player.starting_territory_count.should == 12
+      game_player.territory_count.should == 12
       game_player.energy = random_faction.min_energy
       game_player.units = random_faction.min_units
     end
