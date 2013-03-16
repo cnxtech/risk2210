@@ -1,40 +1,5 @@
 <% content_for :head do %>
-  <%= stylesheet_link_tag "nvd3/nv.d3.css" %>
-
-  <style>
-
-body {
-  overflow-y:scroll;
-}
-
-text {
-  font: 12px sans-serif;
-}
-
-svg {
-  display: block;
-}
-
-#chart1{
-  background: #2e3236;
-}
-#chart1 text{
-  fill: #fff;
-}
-#chart1 svg {
-  height: 500px;
-  min-width: 100px;
-  min-height: 100px;
-/*
-  margin: 50px;
-  Minimum height and width is a good idea to prevent negative SVG dimensions...
-  For example width should be =< margin.left + margin.right + 1,
-  of course 1 pixel for the entire chart would not be very useful, BUT should not have errors
-*/
-}
-
-</style>
-
+  <%= stylesheet_link_tag "results" %>
 <% end %>
 
 <h1>Game Results</h1>
@@ -108,55 +73,33 @@ svg {
   </tfoot>
 </table>
 
-  <div id="chart1">
-    <svg style="height: 500px;"></svg>
-  </div>
+<h1>Territories</h1>
+<div id="territories-chart" class="chart">
+  <svg></svg>
+</div>
+
+<h1>Units</h1>
+<div id="units-chart" class="chart">
+  <svg></svg>
+</div>
+
+<h1>Energy</h1>
+<div id="energy-chart" class="chart">
+  <svg></svg>
+</div>
+
+<h1>Space Stations</h1>
+<div id="space-stations-chart" class="chart">
+  <svg></svg>
+</div>
 
 <% content_for :tail do %>
   <%= javascript_include_tag "game_results" %>
-  <%= javascript_include_tag "nvd3/lib/d3.v2.js" %>
-  <%= javascript_include_tag "nvd3/nv.d3.js" %>
-  <%#= javascript_include_tag "nvd3/src/tooltip.js" %>
-  <%#= javascript_include_tag "nvd3/src/utils.js" %>
-  <%#= javascript_include_tag "nvd3/src/models/legend.js" %>
-  <%#= javascript_include_tag "nvd3/src/models/axis.js" %>
-  <%#= javascript_include_tag "nvd3/src/models/scatter.js" %>
-  <%= javascript_include_tag "nvd3/src/models/line.js" %>
-  <%#= javascript_include_tag "nvd3/src/models/cumulativeLineChart.js" %>
-<% end %>
 
-<% content_for :tail do %>
-<script>
-//var gameData = <%= raw(GameSerializer.new(@game, root: false).to_json) %>;
-var territory_data = <%= raw(ChartDataFormatter.new(@game).territories.to_json) %>;
-
-// Wrapping in nv.addGraph allows for '0 timeout render', stores rendered charts in nv.graphs, and may do more in the future... it's NOT required
-var chart;
-nv.addGraph(function() {
-
-   chart = nv.models.lineChart()
-             .x(function(d) { return d[0] })
-             .y(function(d) { return d[1] })
-
-   chart.xAxis.axisLabel('Turn')
-
-   chart.yAxis.axisLabel('foo')
-
-  d3.select('#chart1 svg')
-      // .datum(cumulativeTestData())
-      .datum(territory_data)
-    //.transition().duration(500)
-      .call(chart);
-
-  //TODO: Figure out a good way to do this automatically
-  //nv.utils.windowResize(chart.update);
-  //nv.utils.windowResize(function() { d3.select('#chart1 svg').call(chart) });
-
-
-  //chart.dispatch.on('stateChange', function(e) { nv.log('New State:', JSON.stringify(e)); });
-
-  return chart;
-});
-
-</script>
+  <script type="text/javascript">
+    var territory_data = <%= raw(ChartDataFormatter.new(@game).territories.to_json) %>;
+    var units_data = <%= raw(ChartDataFormatter.new(@game).units.to_json) %>;
+    var energy_data = <%= raw(ChartDataFormatter.new(@game).energy.to_json) %>;
+    var space_station_data = <%= raw(ChartDataFormatter.new(@game).space_stations.to_json) %>;
+  </script>
 <% end %>

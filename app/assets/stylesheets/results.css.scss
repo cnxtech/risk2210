@@ -1,0 +1,18 @@
+/*
+ *= require nvd3/nv.d3.css
+ *= require_self
+*/
+
+.chart{
+  background: #2e3236;
+
+  text{
+    fill: #fff;
+  }
+  svg {
+    display: block;
+    height: 600px;
+    min-width: 100px;
+    min-height: 100px;
+  }
+}

@@ -28,6 +28,8 @@ class GamePlayer
   validates_presence_of :faction_id, :handle
   validates_numericality_of :turn_order, greater_than_or_equal_to: 1, less_than_or_equal_to: 5
 
+  delegate :min_units, :min_energy, to: :faction
+
   def handle=(value)
     write_attribute(:handle, value)
     if player = Player.find(value.to_url)
@@ -62,14 +64,18 @@ class GamePlayer
     end
   end
 
+  def starting_space_stations
+    faction.space_stations
+  end
+
 private
 
   def set_starting_resources
     self.starting_territory_count ||= 0
     self.territory_count            = self.starting_territory_count
-    self.energy                     = faction.min_energy
-    self.units                      = faction.min_units
-    self.space_stations             = faction.space_stations
+    self.energy                     = min_energy
+    self.units                      = min_units
+    self.space_stations             = starting_space_stations
   end
 
 end
