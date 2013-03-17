@@ -70,4 +70,21 @@ describe GamePlayer do
     end
   end
 
+  describe "starting_space_stations" do
+    it "return the starting space station count of the game_player's faction" do
+      faction = Faction.random
+      game_player = FactoryGirl.build(:game_player, faction: faction)
+
+      game_player.starting_space_stations.should == faction.space_stations
+    end
+  end
+
+  describe "hex_color" do
+    it "should return the hex color for the color passed in" do
+      GamePlayer::COLORS.each do |color|
+        GamePlayer.hex_color(color).blank?.should == false
+      end
+    end
+  end
+
 end
