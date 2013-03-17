@@ -54,8 +54,8 @@ class GamePlayer
     territory_count + continent_bonus + colony_influence_bonus
   end
 
-  def hex_color
-    case self.color
+  def self.hex_color(color)
+    case color
       when "Red"   ; '#c65148'
       when "Green" ; '#4bc649'
       when "Blue"  ; '#488dc6'

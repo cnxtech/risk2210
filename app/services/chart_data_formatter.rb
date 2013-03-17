@@ -18,7 +18,7 @@ class ChartDataFormatter
 
         item = {
           key:    game_player.handle,
-          color:  game_player.hex_color,
+          color:  GamePlayer.hex_color(game_player.color),
           values: [[0, game_player.send(metric[:starting_value_method])]]
         }
 

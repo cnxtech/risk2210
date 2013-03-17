@@ -1,4 +1,6 @@
-@import "variables";
+<% GamePlayer::COLORS.each do |color| %>
+$<%= color.downcase %>: <%= GamePlayer.hex_color(color) %>;
+<% end %>
 
 //****************************************************************************************************************************************
 //** Mixins
