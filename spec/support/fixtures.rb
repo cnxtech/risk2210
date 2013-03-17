@@ -45,19 +45,23 @@ module Fixtures
     end
 
     def self.player1
+      first_name = Faker::Name.first_name
+      last_name  = Faker::Name.first_name
+      email      = Faker::Internet.free_email
+      handle     = "#{first_name[0]}#{last_name}".upcase
       {
         "provider" => "facebook",
         "uid" => "464337127",
         "info" => {
-          "nickname" => "LALBT",
-          "email" => "foobar9987@gmail.com",
-          "name" => "Luis Smith",
-          "first_name" => "Luis",
-          "last_name" => "Smith",
+          "nickname" => handle,
+          "email" => email,
+          "name" => "#{first_name} #{last_name}",
+          "first_name" => first_name,
+          "last_name" => last_name,
           "image" => "http://graph.facebook.com/464337127/picture?type=square",
-          "description" => "I study music and everything that has to do with music all the aspects of it from musician to all the technical stuff i play Violin , guitar, bass, drums and the piano",
+          "description" => Faker::Lorem.sentence,
           "urls" => {
-            "Facebook" => "http://www.facebook.com/LALBT"
+            "Facebook" => "http://www.facebook.com/#{first_name}.#{last_name}"
           }
         },
         "credentials" => {
@@ -68,71 +72,71 @@ module Fixtures
         "extra" => {
           "raw_info" => {
             "id" => "464337127",
-            "name" => "Luis Smith",
-            "first_name" => "Luis",
+            "name" => "#{first_name} #{last_name}",
+            "first_name" => first_name,
             "middle_name" => "",
-            "last_name" => "Smith",
+            "last_name" => last_name,
             "link" => "http://www.facebook.com/LSMITH",
-            "username" => "LSMITH",
+            "username" => handle,
             "hometown" => {
               "id" => "109216849096476",
-              "name" => "Centreville, Virginia"
+              "name" => "#{Faker::Address.city}, #{Faker::AddressUS.state}"
             },
-            "bio" => "I study music and everything that has to do with music all the aspects of it from musician to all the technical stuff i play Violin , guitar, bass, drums and the piano", "quotes"=>"\"Why not 4:21\"\r\nme talkin to dakota and stevie\r\n\r\n\"Fo Free\"\r\nThat guy from that video\r\n\r\n\"Oh shit dry grass someone go put it out\r\n\r\n\"Jeepers Creepers\"\r\nDakota\r\n\r\n\"My Jeep its a freakin Transformer\"\r\nDakota",
+            "bio" => Faker::Lorem.sentence,
             "work" => [
               {
                 "employer" => {
                   "id" => "156223891096511",
-                  "name" => "Fat Crow Antara"
+                  "name" => Faker::Job.title
                 },
                 "position" => {
                   "id" => "128674630510351",
-                  "name" => "Audio Engineer"
+                  "name" => Faker::Job.title
                 },
                 "start_date" => "2011-08"
               },
               {
                 "employer" => {
                   "id" => "223742647668475",
-                  "name" => "Atomic Thoughts"
+                  "name" => Faker::Job.title
                 },
                 "position" => {
                   "id" => "128674630510351",
-                  "name" => "Audio Engineer"
+                  "name" => Faker::Job.title
                 },
                 "start_date" => "2011-07"
               },
               {
                 "employer" => {
                   "id" => "245321145541707",
-                  "name" => "Cinbersol"
+                  "name" => Faker::Job.title
                 },
                 "position" => {
                   "id" => "128674630510351",
-                  "name" => "Audio Engineer"
+                  "name" => Faker::Job.title
                 },
                 "start_date" => "2011-03"
               },
               {
                 "employer" => {
                   "id" => "116860741677367",
-                  "name" => "Freelance Violinist"
+                  "name" => Faker::Job.title
                 },
                 "position" => {
                   "id" => "145617765464974",
-                  "name" => "Violinist"
+                  "name" => Faker::Job.title
                 },
                 "start_date" => "2009-04"
               },
               {
                 "employer" => {
                   "id" => "111078042263414",
-                  "name" => "Musician"
+                  "name" => Faker::Job.title
                 },
                 "projects" => [
                   {
                     "id" => "109871969042969",
-                    "name" => "Musician for hire",
+                    "name" => Faker::Job.title,
                     "start_date" => "2010-09"
                   }
                 ]
@@ -142,7 +146,7 @@ module Fixtures
               {
                 "school" => {
                   "id" => "111845662166573",
-                  "name" => "Westfield High School"
+                  "name" => Faker::Education.school
                 },
                 "year" => {
                   "id" => "141778012509913",
@@ -153,19 +157,19 @@ module Fixtures
               {
                 "school" => {
                   "id" => "157433874304051",
-                  "name" => "G. Martell"
+                  "name" => Faker::Education.school
                 },
                 "concentration" => [
                   {
                     "id" => "136073143125360",
-                    "name" => "Music Production & Engineering"
+                    "name" => Faker::Education.school
                   }
                 ],
                 "type" => "College"
               }
             ],
             "gender" => "male",
-            "email" => "foobar9987@gmail.com",
+            "email" => email,
             "timezone" => -5,
             "locale" => "en_US",
             "verified" => true,
@@ -176,19 +180,23 @@ module Fixtures
     end
 
     def self.player2
+      first_name = Faker::Name.first_name
+      last_name  = Faker::Name.first_name
+      email      = Faker::Internet.free_email
+      handle     = "#{first_name[0]}#{last_name}".upcase
       {
         "provider" => "facebook",
         "uid" => "12982980291",
         "info" => {
-          "nickname" => "sam.81983",
-          "email" => "sam90193225@gmail.com",
-          "name" => "Samantha Doe",
-          "first_name" => "Sam",
-          "last_name" => "Doe",
+          "nickname" => handle,
+          "email" => email,
+          "name" => "#{first_name} #{last_name}",
+          "first_name" => first_name,
+          "last_name" => last_name,
           "image" => "http://graph.facebook.com/12982980291/picture?type=square",
-          "description" => "I'm a loving person. I get really nervous around some guys, especially if I like them. I try not to show that though. XD;",
+          "description" => Faker::Lorem.sentence,
           "urls" => {
-            "Facebook" => "http://www.facebook.com/sam.81983"
+            "Facebook" => "http://www.facebook.com/#{first_name}.#{last_name}"
           },
           "verified" => true
         },
@@ -205,11 +213,11 @@ module Fixtures
             "last_name" => "Doe",
             "link" => "http://www.facebook.com/sam.81983",
             "username" => "sam.81983",
-            "about" => "I'm Sam. I like to draw, and I like to play the flute. =w= I love a treasured few, and have no enemies as of yet...",
-            "bio" => "I'm a loving person. I get really nervous around some guys, especially if I like them. I try not to show that though. XD;",
-            "quotes" => "\"We shall prevail.\"\n\"I can and I will.\"\n\"Sometimes things are harder than they seem.\"",
+            "about" => Faker::Lorem.sentence,
+            "bio" => Faker::Lorem.sentence,
+            "quotes" => Faker::Lorem.sentence,
             "gender" => "female",
-            "email" => "sam90193225@gmail.com",
+            "email" => email,
             "timezone"=> -7,
             "locale" => "en_US", "verified" => true,
             "updated_time" => "2012-06-12T12:49:57+0000"

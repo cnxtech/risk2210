@@ -12,18 +12,20 @@ describe Authentication::Facebook do
         player.raw_authorization.should == Fixtures::Facebook.me
       end
       it "registers player1 with their facebook data" do
-        player = Authentication::Facebook.new(Fixtures::Facebook.player1).authenticate
+        fixture = Fixtures::Facebook.player1
+        player = Authentication::Facebook.new(fixture).authenticate
 
         player.valid?.should == true
         player.new_record?.should == false
-        player.raw_authorization.should == Fixtures::Facebook.player1
+        player.raw_authorization.should == fixture
       end
       it "registers player2 with their facebook data" do
-        player = Authentication::Facebook.new(Fixtures::Facebook.player2).authenticate
+        fixture = Fixtures::Facebook.player2
+        player = Authentication::Facebook.new(fixture).authenticate
 
         player.valid?.should == true
         player.new_record?.should == false
-        player.raw_authorization.should == Fixtures::Facebook.player2
+        player.raw_authorization.should == fixture
       end
     end
     context "player has an existing account" do
