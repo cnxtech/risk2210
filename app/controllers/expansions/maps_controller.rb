@@ -25,5 +25,9 @@ module Expansions
       @page_title = "Pluto Expansion"
     end
 
+    def arctic
+      @page_title = "arctic Expansion"
+    end
+
   end
 end

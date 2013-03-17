@@ -37,10 +37,11 @@ Risk2210::Application.routes.draw do
     get "/europa" => "maps#europa", as: :europa
     get "/asteroid-colonies" => "maps#asteroid_colonies", as: :asteroid_colonies
     get "/pluto" => "maps#pluto", as: :pluto
+    get "/arctic" => "maps#arctic", as: :arctic
     get "/tech-commander" => "commanders#tech", as: :tech_commander
     get "/resistance-commander" => "commanders#resistance", as: :resistance_commander
     get "/invasion-of-the-giant-amoebas" => "misc#amoebas", as: :amoebas
-    get "galactic-risk" => "misc#galactic", as: :galactic
+    get "/galactic-risk" => "misc#galactic", as: :galactic
   end
 
   ## Misc
