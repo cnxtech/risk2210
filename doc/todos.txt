@@ -1,5 +1,4 @@
 confirmation on end of year to verify that continent bonuses are correct
-password reset
 screen shots and docs on using the tracker
 
 
