@@ -72,3 +72,7 @@ Continent.find_or_create_by(map_id: pluto.id, name: "Titaniya", type: "Land", bo
 Continent.find_or_create_by(map_id: pluto.id, name: "Tartarus", type: "Land", bonus: 3, color: "#ae3eac")
 Continent.find_or_create_by(map_id: pluto.id, name: "Jotunheim", type: "Lunar", bonus: 1, color: "#57b7b6")
 Continent.find_or_create_by(map_id: pluto.id, name: "Styx", type: "Lunar", bonus: 2, color: "#ba8654")
+
+arctic = Map.find_or_create_by(name: "Arctic")
+Continent.find_or_create_by(map_id: arctic.id, name: "Arctic (Pre Warming)", type: "Water", bonus: 2, color: "#fafafa")
+Continent.find_or_create_by(map_id: arctic.id, name: "Arctic (Post Warming)", type: "Water", bonus: 5, color: "#fafafa")
