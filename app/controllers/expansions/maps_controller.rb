@@ -26,7 +26,7 @@ module Expansions
     end
 
     def arctic
-      @page_title = "arctic Expansion"
+      @page_title = "Arctic Expansion"
     end
 
   end

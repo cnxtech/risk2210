@@ -48,8 +48,8 @@ module Authentication
   end
 
   def login(player, options={})
-    path = options.fetch(:redirect_to, new_game_path)
-    notice = options.fetch(:notice, "Welcome Back!")
+    path        = options.fetch(:redirect_to, new_game_path)
+    notice      = options.fetch(:notice, "Welcome Back!")
     remember_me = options.fetch(:remember_me, "0").to_boolean
 
     cookies.signed[:remember_me_token] = {value: player.remember_me_token, expires: 1.month.from_now} if remember_me

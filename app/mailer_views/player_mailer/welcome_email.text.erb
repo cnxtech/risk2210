@@ -1,7 +1,9 @@
-Welcome!
+Thanks for joining Risk2210.net!
 
-Login using: <%= @player.email %>
+<% if @player.password_digest.present? %>
+In the future you can login at <%= login_url %> using your email address.
+<% elsif @player.provider.present? && @player.uid.present? %>
+In the future you can login at <%= login_url %> using your Facebook account.
+<% end %>
 
-<%= login_url %>
-
-Thanks!
+Have a great day!

@@ -3,7 +3,9 @@ development: &defaults
   facebook:
     application_key: ''
     application_secret: ''
-  sendgrid:
+  email:
+    address: smtp.gmail.com
+    port: 587
     username: ''
     password: ''
     domain: ''

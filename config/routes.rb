@@ -29,6 +29,12 @@ Risk2210::Application.routes.draw do
     end
   end
 
+  ## Forgot Password
+  get "/forgot-password" => "password_reset#index", as: :forgot_password
+  post "/forgot-password" => "password_reset#create", as: :request_password_reset
+  get "/reset-password/:token" => "password_reset#show", as: :find_password_reset
+  put "/reset-password/:token" => "password_reset#update", as: :reset_password
+
   ## Expansions
   namespace :expansions do
     resources :factions, only: [:index, :show]

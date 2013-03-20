@@ -50,6 +50,12 @@ describe Player do
       success.should == false
       player.errors[:password].should_not be_nil
     end
+    it "should not allow the setting of a blank password" do
+      success = player.change_password(old_password: "secret1", password: "", password_confirmation: "")
+
+      success.should == false
+      player.errors[:password].should_not be_nil
+    end
   end
 
   describe "location" do
@@ -120,6 +126,18 @@ describe Player do
       player = FactoryGirl.create(:player, handle: "Jack")
 
       game_player.reload.player.should == player
+    end
+  end
+
+  describe "request_password_reset!" do
+    it "should update the password reset token and send an email with instructions" do
+      player = FactoryGirl.create(:player, password_reset_token: nil)
+      ActionMailer::Base.deliveries.clear
+
+      player.request_password_reset!
+
+      player.password_reset_token.should_not be_nil
+      ActionMailer::Base.deliveries.size.should == 1
     end
   end
 

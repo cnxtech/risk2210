@@ -34,12 +34,13 @@ module Risk2210
 
     ActionMailer::Base.prepend_view_path "#{Rails.root}/app/mailer_views"
     ActionMailer::Base.smtp_settings = {
-      address:        "smtp.sendgrid.net",
-      port:           "25",
+      address:        config.settings.email.address,
+      port:           config.settings.email.port,
       authentication: :plain,
-      user_name:      config.settings.sendgrid.username,
-      password:       config.settings.sendgrid.password,
-      domain:         config.settings.sendgrid.domain
+      user_name:      config.settings.email.username,
+      password:       config.settings.email.password,
+      domain:         config.settings.email.domain,
+      enable_starttls_auto: true
     }
 
     config.password_cost = BCrypt::Engine::DEFAULT_COST

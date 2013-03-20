@@ -30,6 +30,7 @@ class Player
   field :login_count, type: Integer, default: 1
   field :last_login_at, type: DateTime, default: -> { Time.now }
   field :favorite_color, type: String
+  field :password_reset_token, type: String
 
   ## Associations
   has_many :topics, dependent: :destroy, autosave: true
@@ -77,9 +78,13 @@ class Player
     end
   end
 
-  def change_password(password_attributes={})
-    if password_digest.present? && !valid_password?(password_attributes.delete(:old_password))
+  def change_password(password_attributes={}, options={})
+    validate_old_password = options.fetch(:validate_old_password, true)
+    if password_digest.present? && validate_old_password && !valid_password?(password_attributes.delete(:old_password))
       errors.add(:base, "Old password doesn't match")
+      return false
+    elsif password_attributes[:password].blank?
+      errors.add(:password, "Password can't be blank")
       return false
     else
       return update_attributes(password_attributes)
@@ -109,6 +114,12 @@ class Player
 
   def valid_password?(unencrypted_password)
     password_digest.present? && BCrypt::Password.new(password_digest) == unencrypted_password
+  end
+
+  def request_password_reset!
+    self.password_reset_token = SecureRandom.hex(8)
+    self.save
+    PlayerMailer.password_reset(self).deliver
   end
 
 private

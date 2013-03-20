@@ -1,0 +1,8 @@
+<h2>Reset Password</h2>
+<%= simple_form_for :player, url: reset_password_path, html: {class: 'form-vertical well', method: :put} do |f| %>
+  <fieldset>
+    <%= f.input :password %>
+    <%= f.input :password_confirmation %>
+    <%= f.submit "Reset Password", class: 'btn btn-primary' %>
+  </fieldset>
+<% end %>

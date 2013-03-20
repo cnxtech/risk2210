@@ -19,6 +19,7 @@ FactoryGirl.define do
     website nil
     gravatar_hash nil
     raw_authorization nil
+    password_reset_token nil
     created_at { Time.now }
     updated_at { Time.now }
   end
