@@ -25,6 +25,7 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
+    raise Mongoid::Errors::DocumentNotFound.new(Game, params[:id], params[:id]) if @game.nil?
   end
 
   def destroy
