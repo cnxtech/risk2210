@@ -48,5 +48,5 @@ group :development, :test do
   gem 'database_cleaner', '~> 0.9.1'
   gem 'debugger'
   gem 'ffaker', '~> 1.15.0'
-  gem 'jasminerice', git: "git@github.com:nick-desteffen/jasminerice.git"
+  gem 'teabag', '~> 0.6.0'
 end
