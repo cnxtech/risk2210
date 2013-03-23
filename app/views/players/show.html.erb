@@ -26,7 +26,7 @@
   <h2>Games</h2>
   <ul>
     <% @player.game_players.map(&:game).each do |game| %>
-      <li><%= link_to format_date(game.created_at), game_path(game) %></li>
+      <li><%= link_to format_date(game.created_at), results_game_path(game) %></li>
     <% end %>
   </ul>
 <% end %>
