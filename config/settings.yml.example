@@ -9,6 +9,10 @@ development: &defaults
     username: ''
     password: ''
     domain: ''
+    default_from: ''
+  exception_notifier:
+    sender: ''
+    recipients: ''
 
 test:
   <<: *defaults

@@ -9,10 +9,13 @@ Risk2210::Application.configure do
   config.assets.compile = false
   config.assets.precompile += ["risk_tracker.js", "game_results.js", "results.css"]
 
-  config.action_mailer.default_url_options = { host: 'risk2210.net' }
+  config.action_mailer.default_url_options = { host: config.settings.email.domain }
   config.action_mailer.perform_deliveries = true
   config.i18n.fallbacks = true
   config.active_support.deprecation = :notify
 
-  config.middleware.use ExceptionNotifier, sender_address: 'nick.desteffen@gmail.com', exception_recipients: 'nick.desteffen@gmail.com'
+  config.middleware.use ExceptionNotifier,
+    sender_address:       Rails.configuration.settings.exception_notifier.sender,
+    exception_recipients: Rails.configuration.settings.exception_notifier.recipients
+
 end

@@ -13,7 +13,7 @@
         <tr>
           <td><%= link_to player.handle, player_path(player) %></td>
           <td><%= player.location %></td>
-          <td><%= player.game_players.size %></td>
+          <td><%= player.game_players.count %></td>
         </tr>
       <% end %>
     </tbody>
