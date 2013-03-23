@@ -17,7 +17,7 @@ describe ChartDataFormatter do
       FactoryGirl.create(:game_player_stat, turn: game_player2_turn, game_player: game_player2)
     end
 
-    @chart_data_formatter = ChartDataFormatter.new(@game)
+    @chart_data_formatter = ChartDataFormatter.new(@game, formatter: "to_a")
   end
 
   describe "metric methods" do
@@ -26,6 +26,7 @@ describe ChartDataFormatter do
       @chart_data_formatter.respond_to?(:energy).should == true
       @chart_data_formatter.respond_to?(:units).should == true
       @chart_data_formatter.respond_to?(:space_stations).should == true
+      @chart_data_formatter.respond_to?(:continent_bonus).should == true
     end
     it "should return the data formatted correctly" do
       @chart_data_formatter.territories.is_a?(Array).should == true

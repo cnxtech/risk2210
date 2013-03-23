@@ -40,6 +40,7 @@ class GamesController < ApplicationController
 
   def results
     @game = Game.find(params[:id])
+    @chart_data_formatter = ChartDataFormatter.new(@game)
   end
 
 private

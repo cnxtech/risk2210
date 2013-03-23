@@ -6,6 +6,7 @@ FactoryGirl.define do
     energy 12
     territory_count 20
     space_stations 1
+    continent_ids []
     created_at { Time.now }
     updated_at { Time.now }
   end

@@ -13,6 +13,10 @@ class GamePlayerStat
 
   after_create :cache_game_player_stats
 
+  def continent_bonus
+    continents.sum(&:bonus).to_i
+  end
+
 private
 
   def cache_game_player_stats

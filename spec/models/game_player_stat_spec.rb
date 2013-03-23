@@ -18,4 +18,13 @@ describe GamePlayerStat do
     end
   end
 
+  describe "continent_bonus" do
+    it "should return the sum of the player's continent bonus" do
+      continents = Continent.all.sample(4)
+      game_player_stat = FactoryGirl.create(:game_player_stat, continent_ids: continents.map(&:id))
+
+      game_player_stat.continent_bonus.should == continents.sum(&:bonus).to_i
+    end
+  end
+
 end

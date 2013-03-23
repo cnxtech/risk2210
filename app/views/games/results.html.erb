@@ -93,13 +93,19 @@
   <svg></svg>
 </div>
 
+<h1>Continent Bonus</h1>
+<div id="continent-bonus-chart" class="chart">
+  <svg></svg>
+</div>
+
 <% content_for :tail do %>
   <%= javascript_include_tag "game_results" %>
 
   <script type="text/javascript">
-    var territory_data = <%= raw(ChartDataFormatter.new(@game).territories.to_json) %>;
-    var units_data = <%= raw(ChartDataFormatter.new(@game).units.to_json) %>;
-    var energy_data = <%= raw(ChartDataFormatter.new(@game).energy.to_json) %>;
-    var space_station_data = <%= raw(ChartDataFormatter.new(@game).space_stations.to_json) %>;
+    var territory_data       = <%= raw(@chart_data_formatter.territories) %>;
+    var units_data           = <%= raw(@chart_data_formatter.units) %>;
+    var energy_data          = <%= raw(@chart_data_formatter.energy) %>;
+    var space_station_data   = <%= raw(@chart_data_formatter.space_stations) %>;
+    var continent_bonus_data = <%= raw(@chart_data_formatter.continent_bonus) %>;
   </script>
 <% end %>

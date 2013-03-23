@@ -1,7 +1,6 @@
 confirmation on end of year to verify that continent bonuses are correct
 screen shots and docs on using the tracker
 
-
 Additional Expansion pages
   - Galactic Risk
   - Antarctica
@@ -28,17 +27,3 @@ File uploads - Photos
 Advanced Stats
   - cards bought, played
   - total units lost per year
-
-
-------
-Make Derek's color Blue
-
-Year 2
-nick add yellow water, remove pink from derek
-
-Year 5
-Dustin all moon last year
-Nick + casius
-Derek 31 territories last year
-Boods 6 territories
-Dustin 21 territories

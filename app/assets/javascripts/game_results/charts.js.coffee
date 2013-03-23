@@ -25,4 +25,5 @@ $ ->
   chart_renderer.renderChart("#units-chart", "Turn", "Units", units_data)
   chart_renderer.renderChart("#energy-chart", "Turn", "Energy", energy_data)
   chart_renderer.renderChart("#space-stations-chart", "Turn", "Space Stations", space_station_data)
+  chart_renderer.renderChart("#continent-bonus-chart", "Turn", "Continent Bonus", continent_bonus_data)
 
