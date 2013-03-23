@@ -42,7 +42,7 @@ class TurnsController < ApplicationController
   end
 
   def turn_params
-    params.permit(:order, :year, :game_player_id, game_player_stats_attributes: [:game_player_id, :energy, :units, :continent_ids, :territory_count, :space_stations])
+    params.permit(:order, :year, :game_player_id, game_player_stats_attributes: [:game_player_id, :energy, :units, {continent_ids: []}, :territory_count, :space_stations])
   end
 
 end
