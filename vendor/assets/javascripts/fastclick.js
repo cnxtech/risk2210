@@ -1,7 +1,7 @@
 /**
  * @preserve FastClick: polyfill to remove click delays on browsers with touch UIs.
  *
- * @version 0.5.8
+ * @version 0.6.2
  * @codingstandard ftlabs-jsv2
  * @copyright The Financial Times Limited [All Rights Reserved]
  * @license MIT License (see LICENSE.txt)
@@ -157,7 +157,7 @@ function FastClick(layer) {
 
 
 /**
- * Android requires an exception for labels.
+ * Android requires exceptions.
  *
  * @type boolean
  */
@@ -165,7 +165,7 @@ FastClick.prototype.deviceIsAndroid = navigator.userAgent.indexOf('Android') > 0
 
 
 /**
- * iOS requires an exception for alert confirm dialogs.
+ * iOS requires exceptions.
  *
  * @type boolean
  */
@@ -240,7 +240,7 @@ FastClick.prototype.needsFocus = function(target) {
 		}
 
 		// No point in attempting to focus disabled inputs
-		return !target.disabled;
+		return !target.disabled && !target.readOnly;
 	default:
 		return (/\bneedsfocus\b/).test(target.className);
 	}
@@ -527,10 +527,7 @@ FastClick.prototype.onTouchEnd = function(event) {
 	// real clicks or if it is in the whitelist in which case only non-programmatic clicks are permitted.
 	if (!this.needsClick(targetElement)) {
 		event.preventDefault();
-		var self = this;
-		setTimeout(function(){
-			self.sendClick(targetElement, event);
-		}, 0);
+		this.sendClick(targetElement, event);
 	}
 
 	return false;
@@ -656,6 +653,17 @@ FastClick.prototype.destroy = function() {
 };
 
 
+/**
+ * Factory method for creating a FastClick object
+ *
+ * @param {Element} layer The layer to listen on
+ */
+FastClick.attach = function(layer) {
+	'use strict';
+	return new FastClick(layer);
+};
+
+
 if (typeof define !== 'undefined' && define.amd) {
 
 	// AMD. Register as an anonymous module.
@@ -666,10 +674,6 @@ if (typeof define !== 'undefined' && define.amd) {
 }
 
 if (typeof module !== 'undefined' && module.exports) {
-	module.exports = function(layer) {
-		'use strict';
-		return new FastClick(layer);
-	};
-
+	module.exports = FastClick.attach;
 	module.exports.FastClick = FastClick;
 }
