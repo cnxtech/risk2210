@@ -131,4 +131,10 @@ describe Game do
     end
   end
 
+  describe "players_by_score" do
+    it "should description" do
+      pending
+    end
+  end
+
 end

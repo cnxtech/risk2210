@@ -51,7 +51,7 @@ class GamePlayer
   end
 
   def final_score
-    territory_count + continent_bonus + colony_influence_bonus
+    @final_score ||= (territory_count + continent_bonus + colony_influence_bonus)
   end
 
   def self.hex_color(color)

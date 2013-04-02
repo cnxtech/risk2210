@@ -3,50 +3,50 @@
 <% end %>
 
 <h1>Game Results</h1>
-
+<p><%= link_to "View Game Cards", game_path(@game) %></p>
 <table class="table table-bordered" style="background-color: #2e3236">
   <thead>
     <tr>
       <th>&nbsp;</th>
-      <% @game.game_players.each do |game_player| %>
-        <th><%= game_player.handle %></th>
+      <% @game.players_by_score.each do |game_player| %>
+        <th class="player"><%= faction_icon(game_player.faction, 25) %><span><%= game_player.handle %></span></th>
       <% end %>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>Units</td>
-      <% @game.game_players.each do |game_player| %>
+      <% @game.players_by_score.each do |game_player| %>
         <td><%= game_player.units %></td>
       <% end %>
     </tr>
     <tr>
       <td>Energy</td>
-      <% @game.game_players.each do |game_player| %>
+      <% @game.players_by_score.each do |game_player| %>
         <td><%= game_player.energy %></td>
       <% end %>
     </tr>
     <tr>
       <td>Space Stations</td>
-      <% @game.game_players.each do |game_player| %>
+      <% @game.players_by_score.each do |game_player| %>
         <td><%= game_player.space_stations %></td>
       <% end %>
     </tr>
     <tr>
       <td>Territories</td>
-      <% @game.game_players.each do |game_player| %>
+      <% @game.players_by_score.each do |game_player| %>
         <td><%= game_player.territory_count %></td>
       <% end %>
     </tr>
     <tr>
       <td>Continent Bonus</td>
-      <% @game.game_players.each do |game_player| %>
+      <% @game.players_by_score.each do |game_player| %>
         <td><%= game_player.continent_bonus %></td>
       <% end %>
     </tr>
     <tr>
       <td>Continents</td>
-      <% @game.game_players.each do |game_player| %>
+      <% @game.players_by_score.each do |game_player| %>
         <td>
           <ul class="continent-list">
             <% game_player.continents.each do |continent| %>
@@ -58,7 +58,7 @@
     </tr>
     <tr>
       <td>Colony Influence</td>
-      <% @game.game_players.each do |game_player| %>
+      <% @game.players_by_score.each do |game_player| %>
         <td><%= game_player.colony_influence_bonus %></td>
       <% end %>
     </tr>
@@ -66,7 +66,7 @@
   <tfoot>
     <tr>
       <td>Final Score</td>
-      <% @game.game_players.each do |game_player| %>
+      <% @game.players_by_score.each do |game_player| %>
         <td><%= game_player.final_score %></td>
       <% end %>
     </tr>

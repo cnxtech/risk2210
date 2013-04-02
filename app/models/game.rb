@@ -55,6 +55,10 @@ class Game
     self.save
   end
 
+  def players_by_score
+    @scored ||= game_players.includes([:turns]).to_a.sort{|x, y| y.final_score <=> x.final_score}
+  end
+
 private
 
   def number_of_players

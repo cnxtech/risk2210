@@ -19,7 +19,7 @@ Risk2210::Application.routes.draw do
 
   ## Game Tracker
   resources :games, only: [:new, :create, :show, :destroy] do
-    get "results", on: :member
+    get :results, on: :member
   end
 
   ## Forums
