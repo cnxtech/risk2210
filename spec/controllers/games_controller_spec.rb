@@ -83,12 +83,19 @@ describe GamesController do
 
   describe "results" do
     it "should have the game and render successfully" do
-      game = FactoryGirl.create(:game)
+      game = FactoryGirl.create(:game, completed: true)
 
       get :results, id: game
 
       assigns(:game).should == game
       response.should be_success
+    end
+    it "should redirect to the game#show if the game isn't complete" do
+      game = FactoryGirl.create(:game, completed: false)
+
+      get :results, id: game
+
+      response.should redirect_to game_path(game)
     end
   end
 

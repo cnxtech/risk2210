@@ -40,6 +40,10 @@ class GamesController < ApplicationController
 
   def results
     @game = Game.find(params[:id])
+    unless @game.completed?
+      redirect_to game_path(@game) and return
+    end
+
     @chart_data_formatter = ChartDataFormatter.new(@game)
   end
 

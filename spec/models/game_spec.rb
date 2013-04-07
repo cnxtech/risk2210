@@ -132,8 +132,14 @@ describe Game do
   end
 
   describe "players_by_score" do
-    it "should description" do
-      pending
+    it "should return the game players sorted by score" do
+      game = FactoryGirl.create(:game)
+      game_player1 = game.game_players.first
+      game_player2 = game.game_players.second
+      game_player1.update_attribute(:territory_count, 15)
+      game_player2.update_attribute(:territory_count, 20)
+
+      game.players_by_score.should == [game_player2, game_player1]
     end
   end
 
