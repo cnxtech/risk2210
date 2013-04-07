@@ -2,16 +2,16 @@
 I built this website as a way to learn [Backbone.js](http://backbonejs.org) and [MongoDB](http://www.mongodb.org/).  You can check it out at [http://risk2210.net](http://risk2210.net).
 It was built using the following frameworks & libraries:
 
- * Ruby on Rails
- * Mongoid
- * Backbone.js
- * Twitter Bootstrap
- * NVD3
+ * [Ruby on Rails](http://rubyonrails.org)
+ * [Mongoid](http://mongoid.org)
+ * [Backbone.js](http://backbonejs.org)
+ * [Twitter Bootstrap](http://twitter.github.io/bootstrap/)
+ * [NVD3](http://nvd3.org)
 
 ## Dependencies
 
- * MongoDB >= 2.2.0
- * Ruby >= 1.9.3
+ * [MongoDB](http://www.mongodb.org) >= 2.2.0
+ * [Ruby](http://www.ruby-lang.org/en/) >= 1.9.3
 
 ## MongoDB Installation
 #### Ubuntu
