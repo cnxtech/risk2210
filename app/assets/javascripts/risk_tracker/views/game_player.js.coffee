@@ -49,8 +49,9 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
 
   endTurn: (event)->
     event.preventDefault()
-    @game.endTurn()
-    @gameView.activateNextPlayer()
+    if confirm("Are all the continents, territories, and space stations are recorded correctly?")
+      @game.endTurn()
+      @gameView.activateNextPlayer()
 
   invadeTerritories: (event)->
     event.preventDefault()

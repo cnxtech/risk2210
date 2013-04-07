@@ -6,7 +6,7 @@ gem 'strong_parameters', '~> 0.2.0'
 group :assets do
   gem 'sass-rails', '~> 3.2.6'
   gem 'coffee-rails', '~> 3.2.2'
-  gem 'uglifier', '~> 1.3.0'
+  gem 'uglifier', '~> 2.0.1'
   gem 'twitter-bootstrap-rails'#, git: "git@github.com:seyhunak/twitter-bootstrap-rails.git"
   gem 'less-rails', '~> 2.3.2'
   gem 'therubyracer', '~> 0.11.3'
@@ -48,5 +48,5 @@ group :development, :test do
   gem 'database_cleaner', '~> 0.9.1'
   gem 'debugger'
   gem 'ffaker', '~> 1.15.0'
-  gem 'teabag', '~> 0.6.0'
+  gem 'teabag', '~> 0.7.0'
 end
