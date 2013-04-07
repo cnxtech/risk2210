@@ -117,12 +117,11 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
     defender = @model.game.gamePlayers.find($(event.target).data("game-player-id"))
     defender.decrementTerritoryCount()
     @model.incrementTerritoryCount()
-    @render()
+    @_spinCounter($(event.target).siblings(".opponent-counter"), defender.territoryCount())
 
   invadeEmpty: (event)->
     event.preventDefault()
     @model.incrementTerritoryCount()
-    @render()
 
   showInfoCard: ()->
     @mode = "info"

@@ -120,7 +120,7 @@
         </div>
         <div class="invade-player-button-container">
           <button class='btn btn-large invade-player' data-game-player-id='<%= game_player.get("id") %>'>Invade <%= game_player.get("handle") %></button>
-          <%= game_player.territoryCount() %>
+          <span class="opponent-counter"><%= game_player.territoryCount() %></span>
         </div>
       </div>
     <% end %>
