@@ -1,5 +1,6 @@
 #= require application
 #= require risk_tracker
+#= require_tree ./../../fixtures
 
 describe "RiskTracker.Models.Game", ()->
 
@@ -15,10 +16,3 @@ describe "RiskTracker.Models.Game", ()->
 
       expect(game.maps.length).toEqual(2)
 
-  describe "incrementTurnCount", ()->
-    it "should increase the turn count by 1", ()->
-      game = new RiskTracker.Models.Game(turn_count: 5)
-
-      game.incrementTurnCount()
-
-      expect(game.get("turn_count")).toBe(6)

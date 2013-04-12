@@ -12,6 +12,7 @@ class RiskTracker.Models.Game extends Backbone.Model
       @currentPlayer = gamePlayer if gamePlayer.get("id") is @get("current_player_id")
 
     @maps = new RiskTracker.Collections.Maps(@get("maps"))
+    @_initializeAvailableContinents()
 
   turnCount: ()->
     @turns.models.length
@@ -50,3 +51,9 @@ class RiskTracker.Models.Game extends Backbone.Model
 
   lastYear: ()->
     @get("current_year") is @get("number_of_years")
+
+  _initializeAvailableContinents: () ->
+    @availableContinents = new RiskTracker.Collections.Continents(@maps.continents())
+
+    @gamePlayers.each (gamePlayer) ->
+      gamePlayer.setStartingContinents()

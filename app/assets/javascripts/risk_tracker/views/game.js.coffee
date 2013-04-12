@@ -8,10 +8,9 @@ class RiskTracker.Views.Game extends Backbone.View
   turnOrderModal: null
   colonyBonusModal: null
 
-  initialize: ()->
-    @model = new RiskTracker.Models.Game(window.gameData)
+  initialize: (game_data)->
+    @model = new RiskTracker.Models.Game(game_data)
     @maps = @model.maps
-    @_setupContinents()
     @model.turns.on "add", (turn) => @_updateProgressBar()
     @bind("start_new_year", @startNewYear)
 
@@ -73,12 +72,6 @@ class RiskTracker.Views.Game extends Backbone.View
 
     percent_complete = ((@model.turnCount() / (number_of_years * number_of_players)) * 100)
     bar.css({width: "#{percent_complete}%"})
-
-  _setupContinents: () ->
-    @model.availableContinents = new RiskTracker.Collections.Continents(@maps.continents())
-
-    @model.gamePlayers.each (gamePlayer) ->
-      gamePlayer.setStartingContinents()
 
   _endYear: ()=>
     if @model.lastYear()
