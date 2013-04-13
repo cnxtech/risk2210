@@ -1,29 +1,70 @@
-<div class="row">
-  <div class="span4">
-    <h2>Regular Authentication</h2>
-    <p>If you already have an account you can login using that</p>
-    <%= link_to "Login", login_path, class: "btn btn-inverse btn-large" %>
-    <%= link_to "Register", new_player_path, class: "btn btn-inverse btn-large" %>
+<% content_for :sidebar do %>
+  <div class="well">
+    <div>
+      <h4>Email Authentication</h4>
+      <p>Login or register using your email address</p>
+      <%= link_to "Login", login_path, class: "btn btn-inverse btn-large" %>
+      <%= link_to "Register", new_player_path, class: "btn btn-inverse btn-large" %>
+    </div>
+    <div class="auth-choice-facebook">
+      <h4>Facebook Authentication</h4>
+      <p>Login or register using your Facebook account</p>
+      <%= facebook_button size: "btn-large" %>
+    </div>
   </div>
-  <div class="span4">
-    <h2>Facebook Authentication</h2>
-    <p>You can login using your Facebook account</p>
-    <%= facebook_button size: "btn-large" %>
-  </div>
-</div>
+<% end %>
 
-<div class="row" style="margin-top: 30px;">
+<div class="row">
   <div class="span8">
-    <%= image_tag("faction_icons/primus_oceanus.png", width: 35) %>
-    <%= image_tag("faction_icons/havoc.png", width: 35) %>
-    <%= image_tag("faction_icons/church_of_him.png", width: 35) %>
-    <%= image_tag("faction_icons/free_militia.png", width: 35) %>
-    <%= image_tag("faction_icons/gayans.png", width: 35) %>
-    <%= image_tag("faction_icons/megacorp.png", width: 35) %>
-    <%= image_tag("faction_icons/preservation.png", width: 35) %>
-    <%= image_tag("faction_icons/republicanists.png", width: 35) %>
-    <%= image_tag("faction_icons/silicon_knights.png", width: 35) %>
-    <%= image_tag("faction_icons/the_fusion_conservancy.png", width: 35) %>
-    <%= image_tag("faction_icons/tranquility.png", width: 35) %>
+
+    <div id="tracker-carousel" class="carousel slide">
+      <ol class="carousel-indicators">
+        <li data-target="#tracker-carousel" data-slide-to="0"></li>
+        <li data-target="#tracker-carousel" data-slide-to="1"></li>
+        <li data-target="#tracker-carousel" data-slide-to="2"></li>
+        <li data-target="#tracker-carousel" data-slide-to="3"></li>
+        <li data-target="#tracker-carousel" data-slide-to="4"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="item active">
+          <%= image_tag("screen_shots/setup.png") %>
+          <div class="carousel-caption">
+            <h4>Game Setup</h4>
+            <p>Choose maps, add players, configure first year settings</p>
+          </div>
+        </div>
+        <div class="item">
+          <%= image_tag("screen_shots/game_card.png") %>
+          <div class="carousel-caption">
+            <h4>Game Tracking Card</h4>
+            <p>Track territories, continent bonuses, and space stations as you play the game, unit and energy generation is automatically calculated</p>
+          </div>
+        </div>
+        <div class="item">
+          <%= image_tag("screen_shots/invasion_card.png") %>
+          <div class="carousel-caption">
+            <h4>Invasion Mode</h4>
+            <p>Simplified invasion tracking mode</p>
+          </div>
+        </div>
+        <div class="item">
+          <%= image_tag("screen_shots/continent_manager.png") %>
+          <div class="carousel-caption">
+            <h4>Add continent bonus</h4>
+            <p>Manage continent bonuses</p>
+          </div>
+        </div>
+        <div class="item">
+          <%= image_tag("screen_shots/territories_chart.png") %>
+          <div class="carousel-caption">
+            <h4>Completion Charts</h4>
+            <p>View game progress charts, territories, units, energy, bonuses</p>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control left" href="#tracker-carousel" data-slide="prev">&lsaquo;</a>
+      <a class="carousel-control right" href="#tracker-carousel" data-slide="next">&rsaquo;</a>
+    </div>
+
   </div>
 </div>

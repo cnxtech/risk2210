@@ -3,7 +3,6 @@ class PagesController < ApplicationController
   active_tab :home
 
   def home
-    render layout: "no_sidebar"
   end
 
   def resources
