@@ -37,6 +37,7 @@ Risk2210::Application.routes.draw do
 
   ## Expansions
   namespace :expansions do
+    get "/" => "base#index", as: :index
     resources :factions, only: [:index, :show]
     get "/mars" => "maps#mars", as: :mars
     get "/io" => "maps#io", as: :io
