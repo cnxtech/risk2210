@@ -56,4 +56,14 @@ describe Expansions::MapsController do
     end
   end
 
+  describe "titan" do
+    it "should render" do
+      get :titan
+
+      assigns(:page_title).should_not be_nil
+      response.should be_success
+    end
+  end
+
+
 end

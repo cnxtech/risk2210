@@ -1,0 +1,28 @@
+<h1>Titan Expansion</h1>
+
+<h2>Rules</h2>
+
+<p>
+  Coming soon, see this forum thread for now:
+  <%= link_to "http://boardgamegeek.com/thread/843893/risk-2210-titan-dione", "http://boardgamegeek.com/thread/843893/risk-2210-titan-dione", target: "_blank" %>
+</p>
+
+<p>Map layout by <%= link_to "gueltron", "http://boardgamegeek.com/user/gueltron", target: "_blank" %>, design by <%= link_to "MrMan2k3", "http://boardgamegeek.com/user/MrMan2k3", target: "_blank" %>.</p>
+<div class="bundle-download-container">
+  <%= link_to content_tag(:i, "", class: "icon-arrow-down icon-large") + " Download Bundled Expansion Pack", "/expansions/titan_expansion.zip", class: "btn btn-danger btn-large" %>
+  <p class="description">The bundled expansion pack contains high-resolution versions of the Titan map, Rhea map, Continent bonus reference card, and each territory card.</p>
+</div>
+
+<div class="bundle-download-container">
+  <%= link_to content_tag(:i, "", class: "icon-arrow-down icon-large") + " Download Card Sheet", "/expansions/card_sheets/Titan_Territory_Cards.pdf", class: "btn btn-danger btn-large" %>
+  <p class="description">A pdf for printing your own cards</p>
+</div>
+
+<hr />
+
+<p><%= link_to image_tag("titan/Titan.jpg"), asset_path("titan/original/Titan.png"), target: "_blank" %></p>
+<p>
+  <%= link_to image_tag("titan/Rhea.jpg"), asset_path("titan/original/Rhea.png"), target: "_blank" %>
+  &nbsp;&nbsp;&nbsp;
+  <%= link_to image_tag("titan/BonusBoard.jpg"), asset_path("titan/original/BonusBoard.png"), target: "_blank" %>
+</p>

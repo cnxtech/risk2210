@@ -29,5 +29,9 @@ module Expansions
       @page_title = "Arctic Expansion"
     end
 
+    def titan
+      @page_title = "Titan Expansion"
+    end
+
   end
 end
