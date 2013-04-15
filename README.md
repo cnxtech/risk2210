@@ -7,6 +7,7 @@ It was built using the following frameworks & libraries:
  * [Backbone.js](http://backbonejs.org)
  * [Twitter Bootstrap](http://twitter.github.io/bootstrap/)
  * [NVD3](http://nvd3.org)
+ * [RSpec](http://rspec.info/)
 
 ## Dependencies
 
