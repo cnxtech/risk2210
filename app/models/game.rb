@@ -38,6 +38,20 @@ class Game
     turns.count
   end
 
+  def save_event(event, payload)
+    if event == 'start-year'
+      start_year(payload)
+    elsif event == 'end-game'
+      end_game(payload)
+    end
+  end
+
+  def players_by_score
+    @scored ||= game_players.includes([:turns]).to_a.sort{|x, y| y.final_score <=> x.final_score}
+  end
+
+private
+
   def start_year(turn_order)
     self.current_year = self.current_year + 1
     game_players.each do |game_player|
@@ -54,12 +68,6 @@ class Game
     end
     self.save
   end
-
-  def players_by_score
-    @scored ||= game_players.includes([:turns]).to_a.sort{|x, y| y.final_score <=> x.final_score}
-  end
-
-private
 
   def number_of_players
     errors.add(:base, "You must have at least two players.") if game_players.size < 2

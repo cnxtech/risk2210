@@ -64,8 +64,7 @@ Risk2210::Application.routes.draw do
     get "/players" => "players#index"
     get "/players/:id" => "players#show"
     post "/turns" => "turns#create"
-    put "/start-year" => "turns#start_year"
-    put "/end-game" => "turns#end_game"
+    put "/games/:id/:event" => "games#update"
   end
 
   ## Root

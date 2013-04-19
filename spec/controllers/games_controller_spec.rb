@@ -99,4 +99,46 @@ describe GamesController do
     end
   end
 
+  describe "update" do
+    before do
+      login player1
+      @game = FactoryGirl.create(:game, creator_id: player1.id, current_year: 1)
+      @game_player = @game.game_players.first
+      @game_player2 = @game.game_players.second
+    end
+
+    context "start-year event" do
+      it "triggers the start the next year in the game" do
+        put :update, id: @game.id, event: "start-year", payload: {"#{@game_player.id}" => "2", "#{@game_player2.id}" => "1"}
+
+        response.should be_success
+        @game.reload.current_year.should == 2
+        @game_player.reload.turn_order.should == 2
+        @game_player2.reload.turn_order.should == 1
+      end
+      it "returns error messages if the new year fails to start" do
+        put :update, id: @game.id, event: "start-year", payload: {"#{@game_player.id}" => "2", "#{@game_player2.id}" => "2"}
+
+        response.should_not be_success
+        game = JSON.parse(response.body, symbolize_names: true)
+        game[:base].include?("Every player must have a unique starting turn order.").should == true
+        @game.reload.current_year.should == 1
+        @game_player.reload.turn_order.should == 1
+        @game_player2.reload.turn_order.should == 2
+      end
+    end
+
+    context "end-game event" do
+      it "should update the game player's colony influence" do
+        put :update, id: @game.id, event: "end-game", payload: {"#{@game_player.id}" => "2", "#{@game_player2.id}" => "3"}
+
+        response.should be_success
+        @game.reload.completed?.should == true
+        @game_player.reload.colony_influence.should == 2
+        @game_player2.reload.colony_influence.should == 3
+      end
+    end
+
+  end
+
 end

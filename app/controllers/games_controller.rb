@@ -29,11 +29,11 @@ class GamesController < ApplicationController
   end
 
   def destroy
-    @game = Game.find(params[:id])
-    if current_player != @game.creator
+    game = Game.find(params[:id])
+    if current_player != game.creator
       redirect_to root_path, alert: "Sorry, you can't delete a game you didn't create!"
     else
-      @game.destroy
+      game.destroy
       redirect_to root_path, notice: "Successfully removed game."
     end
   end
@@ -47,6 +47,16 @@ class GamesController < ApplicationController
     @chart_data_formatter = ChartDataFormatter.new(@game)
   end
 
+  def update
+    game = Game.find(params[:id])
+
+    if game.save_event(params[:event], params[:payload])
+      render json: game, root: false, status: :ok
+    else
+      render json: game.errors, status: :not_acceptable
+    end
+  end
+
 private
 
   def setup_title
@@ -54,7 +64,7 @@ private
   end
 
   def game_params
-    params.require(:game).permit(:location, :notes, {map_ids: []}, :game_players_attributes, :number_of_years, game_players_attributes: [:color, :starting_territory_count, :energy, :units, :faction_id, :handle, :continent_ids, :map_ids, :turn_order])
+    params.require(:game).permit(:location, :notes, {map_ids: []}, :number_of_years, game_players_attributes: [:color, :starting_territory_count, :energy, :units, :faction_id, :handle, :continent_ids, :map_ids, :turn_order])
   end
 
 end

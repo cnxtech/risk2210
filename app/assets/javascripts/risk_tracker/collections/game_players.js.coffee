@@ -6,7 +6,7 @@ class RiskTracker.Collections.GamePlayers extends Backbone.Collection
     @where(id: id)[0]
 
   toTurnOrder: ()->
-    data = {game_id: @game.get("id"), turn_order: {}}
+    data = {payload: {}}
     _(@models).each (game_player)->
-      data.turn_order[game_player.get("id")] = game_player.turnOrder()
+      data.payload[game_player.get("id")] = game_player.turnOrder()
     return data

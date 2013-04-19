@@ -84,35 +84,36 @@ describe Game do
     end
   end
 
-  describe "start_year" do
+  describe "save_event" do
     let(:game) { FactoryGirl.create(:game, current_year: 1) }
-    it "should increment the year and set each game_player's turn order" do
-      turn_order = {game.game_players.first.id.to_s => "2", game.game_players.second.id.to_s => "1"}
-      game.start_year(turn_order)
+    context "start-year" do
+      it "should increment the year and set each game_player's turn order" do
+        turn_order = {game.game_players.first.id.to_s => "2", game.game_players.second.id.to_s => "1"}
+        game.save_event("start-year", turn_order)
 
-      game.current_year.should == 2
-      game.current_player.should == game.game_players.second
-      game.game_players.first.turn_order.should == 2
-      game.game_players.second.turn_order.should == 1
+        game.current_year.should == 2
+        game.current_player.should == game.game_players.second
+        game.game_players.first.turn_order.should == 2
+        game.game_players.second.turn_order.should == 1
+      end
+      it "should populate errors if the save fails" do
+        turn_order = {game.game_players.first.id.to_s => "2", game.game_players.second.id.to_s => "2"}
+        game.save_event("start-year", turn_order)
+
+        game.errors[:base].include?("Every player must have a unique starting turn order.").should == true
+      end
     end
-    it "should populate errors if the save fails" do
-      turn_order = {game.game_players.first.id.to_s => "2", game.game_players.second.id.to_s => "2"}
-      game.start_year(turn_order)
 
-      game.errors[:base].include?("Every player must have a unique starting turn order.").should == true
-    end
-  end
+    context "end-game" do
+      it "should update the player's colony influence and the game's completed flag" do
+        colony_influence = {game.game_players.first.id.to_s => "1", game.game_players.second.id.to_s => "3"}
 
-  describe "end_game" do
-    let(:game) { FactoryGirl.create(:game) }
-    it "should update the player's colony influence and the game's completed flag" do
-      colony_influence = {game.game_players.first.id.to_s => "1", game.game_players.second.id.to_s => "3"}
+        game.save_event("end-game", colony_influence)
 
-      game.end_game(colony_influence)
-
-      game.completed?.should == true
-      game.game_players.first.colony_influence.should == 1
-      game.game_players.second.colony_influence.should == 3
+        game.completed?.should == true
+        game.game_players.first.colony_influence.should == 1
+        game.game_players.second.colony_influence.should == 3
+      end
     end
   end
 

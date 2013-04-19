@@ -16,20 +16,7 @@ class TurnsController < ApplicationController
     end
   end
 
-  def start_year
-    if @game.start_year(params[:turn_order])
-      render json: @game, root: false, status: :ok
-    else
-      render json: @game.errors, status: :not_acceptable
-    end
-  end
-
-  def end_game
-    @game.end_game(params[:colony_influence])
-    head :ok
-  end
-
-  private
+private
 
   def find_game
     @game = Game.find(params[:game_id])

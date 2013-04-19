@@ -14,15 +14,15 @@ class RiskTracker.Views.ColonyBonus extends Backbone.View
 
   endGame: (event)->
     event.preventDefault()
-    data = {game_id: @model.get('id'), colony_influence: {}}
+    data = {payload: {}}
 
     @$el.find("input[type='number']").each (index, input)=>
       input = $(input)
       game_player = @model.gamePlayers.find(input.data("game-player-id"))
-      data.colony_influence[game_player.get('id')] = parseInt(input.val())
+      data.payload[game_player.get('id')] = parseInt(input.val())
 
     $.ajax
-      url:  "/api/v1/end-game",
+      url:  "/api/v1/games/#{@model.get('id')}/end-game",
       type: "PUT",
       data: data,
       error: (xhr, status, error)->
