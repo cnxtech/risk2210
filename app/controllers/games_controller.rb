@@ -1,6 +1,8 @@
 class GamesController < ApplicationController
 
   before_filter :login_required, only: [:new, :create, :destroy]
+  before_filter :find_game, only: [:show, :update, :destroy, :results]
+  before_filter :validate_creator, only: [:update, :destroy]
   before_filter :setup_title
 
   layout "no_sidebar"
@@ -24,22 +26,15 @@ class GamesController < ApplicationController
   end
 
   def show
-    @game = Game.find(params[:id])
     raise Mongoid::Errors::DocumentNotFound.new(Game, params[:id], params[:id]) if @game.nil?
   end
 
   def destroy
-    game = Game.find(params[:id])
-    if current_player != game.creator
-      redirect_to root_path, alert: "Sorry, you can't delete a game you didn't create!"
-    else
-      game.destroy
-      redirect_to root_path, notice: "Successfully removed game."
-    end
+    @game.destroy
+    redirect_to root_path, notice: "Successfully removed game."
   end
 
   def results
-    @game = Game.find(params[:id])
     unless @game.completed?
       redirect_to game_path(@game) and return
     end
@@ -48,12 +43,10 @@ class GamesController < ApplicationController
   end
 
   def update
-    game = Game.find(params[:id])
-
-    if game.save_event(params[:event], params[:payload])
-      render json: game, root: false, status: :ok
+    if @game.save_event(params[:event], params[:payload])
+      render json: @game, root: false, status: :ok
     else
-      render json: game.errors, status: :not_acceptable
+      render json: @game.errors, status: :not_acceptable
     end
   end
 
@@ -65,6 +58,16 @@ private
 
   def game_params
     params.require(:game).permit(:location, :notes, {map_ids: []}, :number_of_years, game_players_attributes: [:color, :starting_territory_count, :energy, :units, :faction_id, :handle, :continent_ids, :map_ids, :turn_order])
+  end
+
+  def find_game
+    @game = Game.find(params[:id])
+  end
+
+  def validate_creator
+    if current_player != @game.creator
+      redirect_to root_path, alert: "Sorry, you aren't authorized to modify this game."
+    end
   end
 
 end

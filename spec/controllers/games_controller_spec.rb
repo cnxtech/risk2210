@@ -107,6 +107,15 @@ describe GamesController do
       @game_player2 = @game.game_players.second
     end
 
+    it "should display an alert if the current player is not the creator" do
+      login player2
+
+      put :update, id: @game.id, event: "start_year", payload: {}
+
+      response.should redirect_to root_path
+      flash.alert.should_not be_nil
+    end
+
     context "start_year event" do
       it "triggers the start the next year in the game" do
         put :update, id: @game.id, event: "start_year", payload: {"#{@game_player.id}" => "2", "#{@game_player2.id}" => "1"}
