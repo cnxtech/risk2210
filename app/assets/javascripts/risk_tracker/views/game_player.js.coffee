@@ -39,12 +39,10 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
 
   incrementTerritoryCount: (event)->
     event.preventDefault()
-    @_beep()
     @model.incrementTerritoryCount()
 
   decrementTerritoryCount: (event)->
     event.preventDefault()
-    @_beep()
     @model.decrementTerritoryCount()
 
   endTurn: (event)->
@@ -87,11 +85,6 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
 
   _updateBorderGlow: ()=>
     @$el.animate({boxShadow: "0 0 #{@model.borderGlow()}px"})
-
-  _beep: ()->
-    sound = new Audio()
-    sound.src = @util.beepPath()
-    sound.play()
 
   showTurnControls: ()->
     saveTurnContainer = @$el.find(".save-turn-container")
