@@ -48,6 +48,7 @@ Risk2210::Application.routes.draw do
     get "/titan" => "maps#titan", as: :titan
     get "/tech-commander" => "commanders#tech", as: :tech_commander
     get "/resistance-commander" => "commanders#resistance", as: :resistance_commander
+    get "/majors-promo-cards" => "commanders#majors_promo_cards", as: :majors_promo_cards
     get "/invasion-of-the-giant-amoebas" => "misc#amoebas", as: :amoebas
     get "/galactic-risk" => "misc#galactic", as: :galactic
   end
