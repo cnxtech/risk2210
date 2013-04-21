@@ -36,7 +36,7 @@ class RiskTracker.Views.TurnOrder extends Backbone.View
 
       @$el.modal('hide')
     else
-      alert("All players must have a unique turn order.")
+      alert("All players must have a unique turn order less or equal to the number of players.")
 
   _setTurnOrder: ()->
     @_turnOrderFields().each (index, input)=>
@@ -50,6 +50,7 @@ class RiskTracker.Views.TurnOrder extends Backbone.View
       turns.push(game_player.turnOrder())
 
     return false if _.compact(_.uniq(turns)).length < @collection.models.length
+    return false if _.max(_.compact(_.uniq(turns))) > @collection.models.length
     return true
 
   _turnOrderFields: ()->
