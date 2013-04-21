@@ -8,6 +8,9 @@ class RiskTracker.Views.Game extends Backbone.View
   turnOrderModal: null
   colonyBonusModal: null
 
+  events:
+    "click .adjust-turn-order": "adjustTurnOrder"
+
   initialize: (game_data)->
     @model = new RiskTracker.Models.Game(game_data)
     @maps = @model.maps
@@ -30,6 +33,7 @@ class RiskTracker.Views.Game extends Backbone.View
     @$el.append(@landModal.render().el)
     @$el.append(@waterModal.render().el)
     @$el.append(@lunarModal.render().el)
+    @$el.append(JST['risk_tracker/templates/game_controls'])
 
     @turnOrderModal = new RiskTracker.Views.TurnOrder({collection: @model.gamePlayers, gameView: @, attributes: {class: "modal hide fade", id: "turn-order-modal"}})
     @$el.append(@turnOrderModal.render().el)
@@ -85,4 +89,11 @@ class RiskTracker.Views.Game extends Backbone.View
     @activatePlayer(next_player)
     @$el.find("#year-counter").text(@model.get("current_year"))
 
+  adjustTurnOrder: (event)->
+    event.preventDefault()
+    @turnOrderModal.activate("adjustment")
 
+  updateTurnOrder: ()->
+    next_player = @model.gamePlayers.where(turn_order: 1)[0]
+    @model.updateTurnOrder()
+    @activatePlayer(next_player)

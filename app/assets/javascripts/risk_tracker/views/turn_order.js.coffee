@@ -2,6 +2,8 @@ class RiskTracker.Views.TurnOrder extends Backbone.View
 
   template: JST['risk_tracker/templates/turn_order']
 
+  mode: "end_year"
+
   events:
     "click .btn.btn-success": "saveTurnOrder"
 
@@ -12,16 +14,26 @@ class RiskTracker.Views.TurnOrder extends Backbone.View
     @$el.html(@template({game_players: @collection.models}))
     return @
 
-  activate: ()->
+  activate: (mode='end_year')->
+    @mode = mode
     @_turnOrderFields().each (index, field) -> $(field).val("")
-    @$el.find(".year").text(@gameView.model.get("current_year") + 1)
+
+    year = @gameView.model.get("current_year")
+    if mode is 'end_year'
+      year += 1
+
+    @$el.find(".year").text(year)
     @$el.modal(backdrop: "static")
 
   saveTurnOrder: (event)->
     event.preventDefault()
     @_setTurnOrder()
     if @_validate()
-      @gameView.trigger("start_new_year")
+      if @mode is "end_year"
+        @gameView.trigger("start_new_year")
+      else
+        @gameView.updateTurnOrder()
+
       @$el.modal('hide')
     else
       alert("All players must have a unique turn order.")

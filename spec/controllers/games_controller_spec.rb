@@ -107,9 +107,9 @@ describe GamesController do
       @game_player2 = @game.game_players.second
     end
 
-    context "start-year event" do
+    context "start_year event" do
       it "triggers the start the next year in the game" do
-        put :update, id: @game.id, event: "start-year", payload: {"#{@game_player.id}" => "2", "#{@game_player2.id}" => "1"}
+        put :update, id: @game.id, event: "start_year", payload: {"#{@game_player.id}" => "2", "#{@game_player2.id}" => "1"}
 
         response.should be_success
         @game.reload.current_year.should == 2
@@ -117,7 +117,7 @@ describe GamesController do
         @game_player2.reload.turn_order.should == 1
       end
       it "returns error messages if the new year fails to start" do
-        put :update, id: @game.id, event: "start-year", payload: {"#{@game_player.id}" => "2", "#{@game_player2.id}" => "2"}
+        put :update, id: @game.id, event: "start_year", payload: {"#{@game_player.id}" => "2", "#{@game_player2.id}" => "2"}
 
         response.should_not be_success
         game = JSON.parse(response.body, symbolize_names: true)
@@ -128,9 +128,9 @@ describe GamesController do
       end
     end
 
-    context "end-game event" do
+    context "end_game event" do
       it "should update the game player's colony influence" do
-        put :update, id: @game.id, event: "end-game", payload: {"#{@game_player.id}" => "2", "#{@game_player2.id}" => "3"}
+        put :update, id: @game.id, event: "end_game", payload: {"#{@game_player.id}" => "2", "#{@game_player2.id}" => "3"}
 
         response.should be_success
         @game.reload.completed?.should == true

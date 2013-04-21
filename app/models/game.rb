@@ -39,11 +39,8 @@ class Game
   end
 
   def save_event(event, payload)
-    if event == 'start-year'
-      start_year(payload)
-    elsif event == 'end-game'
-      end_game(payload)
-    end
+    raise "Invalid Event!" unless ['start_year', 'end_game', 'update_turn_order'].include?(event)
+    send(event, payload)
   end
 
   def players_by_score
@@ -54,17 +51,21 @@ private
 
   def start_year(turn_order)
     self.current_year = self.current_year + 1
-    game_players.each do |game_player|
-      game_player.turn_order = turn_order[game_player.id.to_s]
-      self.current_player = game_player if turn_order[game_player.id.to_s] == "1"
-    end
-    self.save
+    update_turn_order(turn_order)
   end
 
   def end_game(colony_influence)
     self.completed = true
     game_players.each do |game_player|
       game_player.colony_influence = colony_influence[game_player.id.to_s]
+    end
+    self.save
+  end
+
+  def update_turn_order(turn_order)
+    game_players.each do |game_player|
+      game_player.turn_order = turn_order[game_player.id.to_s]
+      self.current_player = game_player if turn_order[game_player.id.to_s] == "1"
     end
     self.save
   end

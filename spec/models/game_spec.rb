@@ -86,10 +86,10 @@ describe Game do
 
   describe "save_event" do
     let(:game) { FactoryGirl.create(:game, current_year: 1) }
-    context "start-year" do
+    context "start_year" do
       it "should increment the year and set each game_player's turn order" do
         turn_order = {game.game_players.first.id.to_s => "2", game.game_players.second.id.to_s => "1"}
-        game.save_event("start-year", turn_order)
+        game.save_event("start_year", turn_order)
 
         game.current_year.should == 2
         game.current_player.should == game.game_players.second
@@ -98,23 +98,44 @@ describe Game do
       end
       it "should populate errors if the save fails" do
         turn_order = {game.game_players.first.id.to_s => "2", game.game_players.second.id.to_s => "2"}
-        game.save_event("start-year", turn_order)
+        game.save_event("start_year", turn_order)
 
         game.errors[:base].include?("Every player must have a unique starting turn order.").should == true
       end
     end
 
-    context "end-game" do
+    context "end_game" do
       it "should update the player's colony influence and the game's completed flag" do
         colony_influence = {game.game_players.first.id.to_s => "1", game.game_players.second.id.to_s => "3"}
 
-        game.save_event("end-game", colony_influence)
+        game.save_event("end_game", colony_influence)
 
         game.completed?.should == true
         game.game_players.first.colony_influence.should == 1
         game.game_players.second.colony_influence.should == 3
       end
     end
+
+    context "update_turn_order" do
+      it "should update the turn order without incrementing the year" do
+        turn_order = {game.game_players.first.id.to_s => "2", game.game_players.second.id.to_s => "1"}
+        game.save_event("update_turn_order", turn_order)
+
+        game.current_year.should == 1
+        game.current_player.should == game.game_players.second
+        game.game_players.first.turn_order.should == 2
+        game.game_players.second.turn_order.should == 1
+      end
+    end
+
+    context "invalid event" do
+      it "should raise an exception" do
+        expect{
+          game.save_event("destroy_game", {})
+        }.to raise_error(Exception)
+      end
+    end
+
   end
 
   describe "set_current_player" do

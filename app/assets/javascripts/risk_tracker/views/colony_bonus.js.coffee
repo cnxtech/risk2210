@@ -22,7 +22,7 @@ class RiskTracker.Views.ColonyBonus extends Backbone.View
       data.payload[game_player.get('id')] = parseInt(input.val())
 
     $.ajax
-      url:  "/api/v1/games/#{@model.get('id')}/end-game",
+      url:  "/api/v1/games/#{@model.get('id')}/end_game",
       type: "PUT",
       data: data,
       error: (xhr, status, error)->

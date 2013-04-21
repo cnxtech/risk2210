@@ -43,7 +43,15 @@ class RiskTracker.Models.Game extends Backbone.Model
     @set({current_year: newYear})
 
     $.ajax
-      url:  "/api/v1/games/#{@get('id')}/start-year",
+      url:  "/api/v1/games/#{@get('id')}/start_year",
+      type: "PUT",
+      data: @gamePlayers.toTurnOrder(),
+      error: (xhr, status, error)->
+        console.log(error)
+
+  updateTurnOrder: ()->
+    $.ajax
+      url:  "/api/v1/games/#{@get('id')}/update_turn_order",
       type: "PUT",
       data: @gamePlayers.toTurnOrder(),
       error: (xhr, status, error)->
