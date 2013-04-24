@@ -65,5 +65,13 @@ describe Expansions::MapsController do
     end
   end
 
+  describe "antarctica" do
+    it "should render" do
+      get :antarctica
+
+      assigns(:page_title).should_not be_nil
+      response.should be_success
+    end
+  end
 
 end

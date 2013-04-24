@@ -33,5 +33,9 @@ module Expansions
       @page_title = "Titan Expansion"
     end
 
+    def antarctica
+      @page_title = "Antarctica Expansion"
+    end
+
   end
 end

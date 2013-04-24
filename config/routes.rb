@@ -46,6 +46,7 @@ Risk2210::Application.routes.draw do
     get "/pluto" => "maps#pluto", as: :pluto
     get "/arctic" => "maps#arctic", as: :arctic
     get "/titan" => "maps#titan", as: :titan
+    get "/antarctica" => "maps#antarctica", as: :antarctica
     get "/tech-commander" => "commanders#tech", as: :tech_commander
     get "/resistance-commander" => "commanders#resistance", as: :resistance_commander
     get "/majors-promo-cards" => "commanders#majors_promo_cards", as: :majors_promo_cards
