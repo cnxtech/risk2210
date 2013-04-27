@@ -35,15 +35,15 @@ gem 'bcrypt-ruby', '~> 3.0.1'
 ## Operations
 gem 'passenger', '3.0.19'
 gem 'exception_notification', '~> 3.0.1'
-gem 'hashie', '~> 2.0.3'
+gem 'hashie', '~> 2.0.4'
 
 group :development do
-  gem 'capistrano', '~> 2.14.2', require: false
+  gem 'capistrano', '~> 2.15.3', require: false
   gem 'capistrano-helpers', '~> 0.7.1', require: false
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 2.13.0'
+  gem 'rspec-rails', '~> 2.13.1'
   gem 'factory_girl_rails', '~> 4.2.1'
   gem 'database_cleaner', '~> 0.9.1'
   gem 'debugger', '~> 1.5.0'
