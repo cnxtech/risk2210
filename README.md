@@ -14,7 +14,7 @@ It was built using the following frameworks & libraries:
 ## Dependencies
 
  * [MongoDB](http://www.mongodb.org) >= 2.2.0
- * [Ruby](http://www.ruby-lang.org/en/) >= 1.9.3
+ * [Ruby](http://www.ruby-lang.org/en/) >= 2.0.0
 
 ## MongoDB Installation
 #### Ubuntu
@@ -26,7 +26,7 @@ Use [HomeBrew](http://mxcl.github.com/homebrew/)
 
 ## Ruby Installation
 #### Ubuntu
-I've got a script to install Ruby 1.9.3 or Ruby 2.0.0 on Ubuntu, just follow the instructions on the repo:  
+I've got a script to install Ruby 2.0.0 on Ubuntu, just follow the instructions on the repo:  
 [https://github.com/nick-desteffen/ruby-bootstrap](https://github.com/nick-desteffen/ruby-bootstrap)
 
 #### OSX

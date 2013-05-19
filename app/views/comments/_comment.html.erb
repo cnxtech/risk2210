@@ -1,5 +1,5 @@
 <div class="well comment" >
-  <%= image_tag(comment.player.profile_image_path(:square)) %>
+  <%= avatar(comment.player, size: :normal) %>
   <%= edit_comment_link(@forum, @topic, comment) %>
   <%= link_to "Player: #{comment.player.handle}", player_path(comment.player), class: "profile-link" %>
   <br />
