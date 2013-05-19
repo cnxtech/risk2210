@@ -54,7 +54,7 @@ class Player
   validates_inclusion_of :image_source, in: [ImageSource::Facebook, ImageSource::Gravatar], allow_blank: true
   validates_format_of :email, with: EmailAddressValidation::EMAIL_ADDRESS_EXACT_PATTERN, allow_blank: true
   validates_confirmation_of :password
-  validates_presence_of :password_digest, if: lambda{ |player| player.uid.blank? }
+  validates_presence_of :password_digest, if: ->(player) { player.uid.blank? }
   validates_inclusion_of :favorite_color, in: GamePlayer::COLORS, allow_blank: true
 
   ## Scopes
