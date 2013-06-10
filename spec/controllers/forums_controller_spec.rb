@@ -30,6 +30,11 @@ describe ForumsController do
       assigns(:topic).comments.size.should == 1
       response.should be_success
     end
+    it "should render a 404 for a forum that doesn't exist" do
+      get :show, id: "foo-bar"
+
+      response.status.should == 404
+    end
   end
 
 end
