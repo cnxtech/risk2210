@@ -20,6 +20,12 @@ describe Faction do
     end
   end
 
+  describe "default?" do
+    it "should return true if the faction is Default" do
+      Faction.where(name: "Default").first.default?.should == true
+    end
+  end
+
   describe "non_default" do
     it "should return all factions except the default one" do
       default_faction = Faction.where(name: "Default")

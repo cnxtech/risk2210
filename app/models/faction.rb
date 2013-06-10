@@ -34,6 +34,10 @@ class Faction
     name == "MegaCorp"
   end
 
+  def default?
+    name == "Default"
+  end
+
   def min_energy
     return 4 if fusion_conservancy?
     return 3
