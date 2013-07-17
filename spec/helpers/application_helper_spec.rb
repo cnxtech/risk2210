@@ -1,14 +1,14 @@
 require 'spec_helper'
 
 describe ApplicationHelper do
-  
+
   describe "error_messages_for" do
     it "builds out error messages with the object" do
       player = FactoryGirl.build(:player, email: nil)
       player.valid?
 
       error_messages = helper.error_messages_for(player)
-      
+
       error_messages.should =~ /Email can&#x27;t be blank/
       error_messages.should =~ /alert-heading/
     end
@@ -38,23 +38,23 @@ describe ApplicationHelper do
 
   describe "navigation_item" do
     it "should return a formatted item for the navigation list" do
-      controller = mock(:controller, active_tab: :home)
+      controller = double(:controller, active_tab: :home)
       helper.stub(:controller).and_return(controller)
 
       helper.navigation_item("Players", "/players", :players).should == "<li class=\"\"><a href=\"/players\">Players</a></li>"
     end
     it "should have the active class if the current controller's active_tab key matches the key on the item" do
-      controller = mock(:controller, active_tab: :home)
+      controller = double(:controller, active_tab: :home)
       helper.stub(:controller).and_return(controller)
 
-      helper.navigation_item("Home", "/", :home).should == "<li class=\"active\"><a href=\"/\">Home</a></li>"      
+      helper.navigation_item("Home", "/", :home).should == "<li class=\"active\"><a href=\"/\">Home</a></li>"
     end
   end
 
   describe "format_timestamp" do
     it "should return a formatted timestamp" do
       Time.stub(:now).and_return(Time.mktime(2012, 10, 22, 14, 30))
-      
+
       helper.format_timestamp(Time.now).should == "10/22/2012 02:30pm"
     end
   end
@@ -62,7 +62,7 @@ describe ApplicationHelper do
   describe "format_date" do
     it "should return a formated date" do
       Time.stub(:now).and_return(Time.mktime(2012, 10, 22, 14, 30))
-      
+
       helper.format_date(Time.now).should == "10/22/2012"
     end
   end

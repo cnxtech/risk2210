@@ -33,7 +33,7 @@ gem 'omniauth-facebook', '~> 1.4.1'
 gem 'bcrypt-ruby', '~> 3.0.1'
 
 ## Operations
-gem 'passenger', '4.0.5'
+gem 'passenger', '4.0.10'
 gem 'exception_notification', '~> 3.0.1'
 gem 'hashie', '~> 2.0.4'
 
@@ -43,10 +43,10 @@ group :development do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 2.13.1'
+  gem 'rspec-rails', '~> 2.14.0'
   gem 'factory_girl_rails', '~> 4.2.1'
   gem 'database_cleaner', '~> 1.0.1'
-  gem 'debugger', '~> 1.6.0'
-  gem 'ffaker', '~> 1.16.1'
-  gem 'teabag', '~> 0.7.0'
+  gem 'debugger', '~> 1.6.1'
+  gem 'ffaker', '~> 1.16.2'
+  gem 'teaspoon', '~> 0.7.3'
 end
