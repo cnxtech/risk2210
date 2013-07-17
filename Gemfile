@@ -9,6 +9,7 @@ group :assets do
   gem 'uglifier', '~> 2.1.2'
   gem 'twitter-bootstrap-rails', "~> 2.2.7"
   gem 'less-rails', '~> 2.3.2'
+  gem 'therubyracer', '~> 0.11.3'
 end
 
 ## Frontend / Views
