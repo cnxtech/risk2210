@@ -31,6 +31,7 @@ class Player
   field :last_login_at, type: DateTime, default: -> { Time.now }
   field :favorite_color, type: String
   field :password_reset_token, type: String
+  field :admin, type: Boolean, default: false
 
   ## Associations
   has_many :topics, dependent: :destroy, autosave: true

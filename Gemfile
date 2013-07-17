@@ -50,3 +50,5 @@ group :development, :test do
   gem 'ffaker', '~> 1.16.1'
   gem 'teabag', '~> 0.7.0'
 end
+
+gem 'mongoid_document_editor', path: "/Users/nickd/projects/mongoid-document-editor"

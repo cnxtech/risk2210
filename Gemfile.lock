@@ -1,3 +1,12 @@
+PATH
+  remote: /Users/nickd/projects/mongoid-document-editor
+  specs:
+    mongoid_document_editor (0.0.2)
+      mongoid (~> 3.1.0)
+      rails (~> 3.2.0)
+      simple_form (~> 2.1.0)
+      strong_parameters
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -93,7 +102,7 @@ GEM
     git (1.2.5)
     hashie (2.0.5)
     highline (1.6.19)
-    hike (1.2.2)
+    hike (1.2.3)
     http_parser.rb (0.5.3)
     httparty (0.11.0)
       multi_json (~> 1.0)
@@ -126,7 +135,7 @@ GEM
       mongoid (> 3.0)
       stringex (~> 1.4)
     moped (1.5.0)
-    multi_json (1.7.4)
+    multi_json (1.7.6)
     multi_xml (0.5.3)
     multipart-post (1.2.0)
     net-scp (1.1.1)
@@ -234,7 +243,7 @@ GEM
       httparty
       mime-types
       twitter-stream
-    treetop (1.4.12)
+    treetop (1.4.14)
       polyglot
       polyglot (>= 0.3.1)
     twitter-bootstrap-rails (2.2.6)
@@ -273,6 +282,7 @@ DEPENDENCIES
   jquery-rails (~> 3.0.0)
   less-rails (~> 2.3.2)
   mongoid (~> 3.1.1)
+  mongoid_document_editor!
   mongoid_slug (~> 3.1.1)
   omniauth (~> 1.1.4)
   omniauth-facebook (~> 1.4.1)

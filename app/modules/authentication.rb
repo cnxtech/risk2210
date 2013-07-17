@@ -32,6 +32,12 @@ module Authentication
     end
   end
 
+  def admin_required
+    if current_player.nil? || !current_player.admin?
+      raise UnauthorizedAccessError
+    end
+  end
+
   def redirect_back_or_default(default=:back, flash={})
     if session[:return_to_path].present?
       return_to_path = session[:return_to_path]
@@ -58,4 +64,7 @@ module Authentication
     redirect_back_or_default(path, notice: notice)
   end
 
+end
+
+class UnauthorizedAccessError < Exception
 end
