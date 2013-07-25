@@ -44,3 +44,8 @@ Seed it:
 
 Run: `bundle exec passenger start`  
 Visit: [http://localhost:3000](lhttp://localhost:3000)
+
+## Running Tests
+Ruby: `bundle exec rake spec`  
+  
+Javascript: `bundle exec teaspoon`
