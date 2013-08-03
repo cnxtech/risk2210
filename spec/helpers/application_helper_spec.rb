@@ -77,15 +77,6 @@ describe ApplicationHelper do
     end
   end
 
-  describe "yes_or_no" do
-    it "should return yes for true" do
-      helper.yes_or_no(true).should == "Yes"
-    end
-    it "should return no for false" do
-      helper.yes_or_no(false).should == "No"
-    end
-  end
-
   describe "logged_in?" do
     it "should be true if there is a current player" do
       helper.stub(:current_player).and_return(FactoryGirl.create(:player))

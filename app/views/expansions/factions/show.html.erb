@@ -1,7 +1,7 @@
 <div class="well">
   <h1><%= @faction.name %></h1>
   <h2><%= @faction.classification %></h2>
-  <p>Official Faction: <%= yes_or_no(@faction.official?) %></p>
+  <p>Official Faction: <%= @faction.official?.yes_or_no %></p>
   <h3>Starting Resources:</h3>
   <ul>
     <% @faction.starting_resources.each do |resource| %>

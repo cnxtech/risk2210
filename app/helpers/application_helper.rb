@@ -52,10 +52,6 @@ module ApplicationHelper
     return "Risk Tracker | Risk 2210 A.D."
   end
 
-  def yes_or_no(boolean)
-    boolean ? "Yes" : "No"
-  end
-
   def logged_in?
     current_player.present?
   end

@@ -37,7 +37,7 @@ class Player
   has_many :topics, dependent: :destroy, autosave: true
   has_many :comments, dependent: :destroy, autosave: true
   has_many :game_players
-  has_many :games, inverse_of: :creator
+  has_many :games, inverse_of: :creator, dependent: :destroy
 
   ## Plugins
   slug :handle
