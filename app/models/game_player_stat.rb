@@ -7,9 +7,9 @@ class GamePlayerStat
   field :territory_count, type: Integer
   field :space_stations,  type: Integer, default: 0
 
-  belongs_to :turn
-  belongs_to :game_player
-  has_and_belongs_to_many :continents
+  belongs_to :turn, index: true
+  belongs_to :game_player, index: true
+  has_and_belongs_to_many :continents, index: true
 
   after_create :cache_game_player_stats
 

@@ -14,12 +14,12 @@ class GamePlayer
   field :space_stations,           type: Integer, default: 0
   field :starting_territory_count, type: Integer, default: 0
 
-  belongs_to :game
-  belongs_to :game, inverse_of: :current_player
-  belongs_to :player
-  belongs_to :faction
+  belongs_to :game, index: true
+  belongs_to :game, inverse_of: :current_player, index: true
+  belongs_to :player, index: true
+  belongs_to :faction, index: true
   has_many :turns, dependent: :destroy
-  has_and_belongs_to_many :continents
+  has_and_belongs_to_many :continents, index: true
   has_many :game_player_stats
 
   before_create :set_starting_resources

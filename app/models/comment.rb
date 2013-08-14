@@ -6,8 +6,8 @@ class Comment
 
   attr_accessor :topic_id
 
-  belongs_to :player
-  belongs_to :commentable, polymorphic: true
+  belongs_to :player, index: true
+  belongs_to :commentable, polymorphic: true, index: true
   has_many :comments, as: :commentable, dependent: :destroy
 
   after_create :update_topic_stats

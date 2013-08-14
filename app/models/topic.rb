@@ -10,8 +10,8 @@ class Topic
 
   slug :subject
 
-  belongs_to :player
-  belongs_to :forum
+  belongs_to :player, index: true
+  belongs_to :forum, index: true
   has_many :comments, as: :commentable, dependent: :destroy, autosave: true
 
   validates_presence_of :subject

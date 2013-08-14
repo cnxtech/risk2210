@@ -42,6 +42,11 @@ class Player
   ## Plugins
   slug :handle
 
+  ## Indexes
+
+  index({handle: 1, email: 1, uuid: 1}, {unique: true})
+  index zip_code: 1, city: 1, state: 1
+
   attr_reader :password
 
   ## Callbacks

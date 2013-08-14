@@ -11,8 +11,8 @@ class Game
   has_and_belongs_to_many :maps
   has_many :game_players, autosave: true, dependent: :destroy
   has_many :turns
-  belongs_to :creator, class_name: "Player"
-  belongs_to :current_player, class_name: "GamePlayer"
+  belongs_to :creator, class_name: "Player", index: true
+  belongs_to :current_player, class_name: "GamePlayer", index: true
 
   before_create :set_current_player
 

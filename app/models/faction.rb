@@ -14,6 +14,8 @@ class Faction
 
   slug :name
 
+  index name: 1
+
   validates_presence_of :name, :classification, :starting_resources, :abilities
 
   scope :non_default, ne(name: "Default")

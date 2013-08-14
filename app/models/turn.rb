@@ -5,8 +5,8 @@ class Turn
   field :order, type: Integer, default: 1
   field :year,  type: Integer, default: 1
 
-  belongs_to :game_player
-  belongs_to :game
+  belongs_to :game_player, index: true
+  belongs_to :game, index: true
   has_many :game_player_stats, dependent: :destroy
 
   after_create :set_current_player
