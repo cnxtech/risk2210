@@ -20,4 +20,22 @@ describe Expansions::CommandersController do
     end
   end
 
+  describe "majors_promo_cards" do
+    it "should render" do
+      get :majors_promo_cards
+
+      assigns(:page_title).should_not be_nil
+      response.should be_success
+    end
+  end
+
+  describe "galaxy" do
+    it "should render" do
+      get :galaxy
+
+      assigns(:page_title).should_not be_nil
+      response.should be_success
+    end
+  end
+
 end
