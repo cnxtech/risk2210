@@ -53,6 +53,7 @@ Risk2210::Application.routes.draw do
     get "/majors-promo-cards" => "commanders#majors_promo_cards", as: :majors_promo_cards
     get "/invasion-of-the-giant-amoebas" => "misc#amoebas", as: :amoebas
     get "/galactic-risk" => "misc#galactic", as: :galactic
+    get "/dark-side-of-the-moon" => "maps#dark_side_moon", as: :dark_side_moon
   end
 
   ## Misc

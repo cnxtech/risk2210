@@ -74,4 +74,13 @@ describe Expansions::MapsController do
     end
   end
 
+  describe "dark_side_moon" do
+    it "should render" do
+      get :dark_side_moon
+
+      assigns(:page_title).should_not be_nil
+      response.should be_success
+    end
+  end
+
 end

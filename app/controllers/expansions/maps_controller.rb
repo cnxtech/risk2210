@@ -37,5 +37,9 @@ module Expansions
       @page_title = "Antarctica Expansion"
     end
 
+    def dark_side_moon
+      @page_title = "Dark Side of the Moon Expansion"
+    end
+
   end
 end
