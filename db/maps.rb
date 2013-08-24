@@ -98,3 +98,7 @@ Continent.find_or_create_by(map_id: rhea.id, name: "Legate", type: "Water", bonu
 Continent.find_or_create_by(map_id: rhea.id, name: "Novaya Rossiya", type: "Water", bonus: 2, color: "#d50213")
 Continent.find_or_create_by(map_id: rhea.id, name: "Yok", type: "Lunar", bonus: 1, color: "#82d5d5")
 Continent.find_or_create_by(map_id: rhea.id, name: "Free Siberiana", type: "Lunar", bonus: 2, color: "#93c655")
+
+dark_side_moon = Map.find_or_create_by(name: "Dark Side of the Moon")
+Continent.find_or_create_by(map_id: dark_side_moon.id, name: "North Luna", type: "Lunar", bonus: 3, color: "#c7f0e8")
+Continent.find_or_create_by(map_id: dark_side_moon.id, name: "South Luna", type: "Lunar", bonus: 3, color: "#d9d3a1")
