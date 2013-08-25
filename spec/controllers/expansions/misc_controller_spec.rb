@@ -20,4 +20,13 @@ describe Expansions::MiscController do
     end
   end
 
+  describe "capitals" do
+    it "should render" do
+      get :capitals
+
+      assigns(:page_title).should_not be_nil
+      response.should be_success
+    end
+  end
+
 end
