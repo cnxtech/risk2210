@@ -34,7 +34,7 @@ gem 'bcrypt-ruby', '~> 3.1.1'
 
 ## Operations
 gem 'passenger', '4.0.10'
-gem 'exception_notification', '~> 4.0.0'
+gem 'exception_notification', '~> 4.0.0', group: [:production]
 gem 'hashie', '~> 2.0.4'
 
 group :development do
