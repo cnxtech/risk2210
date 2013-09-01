@@ -65,7 +65,7 @@ module ApplicationHelper
   def facebook_button(options={})
     size = options.fetch(:size, "")
     button = content_tag(:i, "", class: "icon-facebook-sign icon-large") + " Login with Facebook"
-    link_to button, facebook_authentication_path, class: "btn btn-inverse #{size}"
+    link_to button, facebook_authentication_path, class: "btn btn-default #{size}"
   end
 
 end

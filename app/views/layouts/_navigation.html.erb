@@ -1,72 +1,71 @@
-<div class="navbar navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container">
-      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-      </a>
+      </button>
       <%= link_to "Risk Tracker", root_path, class: "brand" %>
-      <div class="nav-collapse">
-        <ul class="nav">
-          <%= navigation_item("Players", players_path, :players) %>
-          <%= navigation_item("Forums", forums_path, :forums) %>
-          <%= navigation_item("Tracker", new_game_path, :tracker) %>
-          <li class="dropdown <%= controller.active_tab == :expansions ? 'active' : '' %>">
-            <a href="#" class="dropdown-toggle needsclick" data-toggle="dropdown">Expansions <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <%= navigation_item("Factions", expansions_factions_path, nil) %>
-              <li class="divider"></li>
-              <%= navigation_item("Antarctica", expansions_antarctica_path, nil) %>
-              <%= navigation_item("Arctic", expansions_arctic_path, nil) %>
-              <%= navigation_item("Asteroid Colonies", expansions_asteroid_colonies_path, nil) %>
-              <%= navigation_item("Dark Side of the Moon", expansions_dark_side_moon_path, nil) %>
-              <%= navigation_item("Europa", expansions_europa_path, nil) %>
-              <%= navigation_item("Io", expansions_io_path, nil) %>
-              <%= navigation_item("Mars", expansions_mars_path, nil) %>
-              <%= navigation_item("Pluto", expansions_pluto_path, nil) %>
-              <%= navigation_item("Titan", expansions_titan_path, nil) %>
-              <li class="divider"></li>
-              <%= navigation_item("Galaxy Commander", expansions_galaxy_commander_path, nil) %>
-              <%= navigation_item("Majors Promo Cards", expansions_majors_promo_cards_path, nil) %>
-              <%= navigation_item("Resistance Commander", expansions_resistance_commander_path, nil) %>
-              <%= navigation_item("Tech Commander", expansions_tech_commander_path, nil) %>
-              <li class="divider"></li>
-              <%= navigation_item("Capitals", expansions_capitals_path, nil) %>
-              <%= navigation_item("Invasion of the Giant Amoebas", expansions_amoebas_path, nil) %>
-              <%= navigation_item("Galactic Risk", expansions_galactic_path, nil) %>
-            </ul>
-          </li>
-          <%= navigation_item("Resources", resources_path, :resources) %>
-        </ul>
-        <ul class="nav pull-right">
-          <% if current_player %>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle needsclick" data-toggle="dropdown">Account <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li>
-                <%= link_to edit_player_path(current_player) do %>
-                  <i class="icon-cogs no-dropdown-arrow"></i> Edit Profile
-                <% end %>
-              </li>
-              <li>
-                <%= link_to edit_password_path do %>
-                  <i class="icon-lock no-dropdown-arrow"></i> Change Password
-                <% end %>
-              </li>
-              <li class="divider"></li>
-              <li>
-                <%= link_to logout_path, method: :delete do %>
-                  <i class="icon-off no-dropdown-arrow"></i> Logout
-                <% end %>
-              </li>
-            </ul>
-          </li>
-          <% else %>
-            <li><a data-toggle="modal" href="#login-modal">Login</a></li>
-          <% end %>
-        </ul>
-      </div>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <%= navigation_item("Players", players_path, :players) %>
+        <%= navigation_item("Forums", forums_path, :forums) %>
+        <%= navigation_item("Tracker", new_game_path, :tracker) %>
+        <li class="dropdown <%= controller.active_tab == :expansions ? 'active' : '' %>">
+          <a href="#" class="dropdown-toggle needsclick" data-toggle="dropdown">Expansions <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <%= navigation_item("Factions", expansions_factions_path, nil) %>
+            <li class="divider"></li>
+            <%= navigation_item("Antarctica", expansions_antarctica_path, nil) %>
+            <%= navigation_item("Arctic", expansions_arctic_path, nil) %>
+            <%= navigation_item("Asteroid Colonies", expansions_asteroid_colonies_path, nil) %>
+            <%= navigation_item("Dark Side of the Moon", expansions_dark_side_moon_path, nil) %>
+            <%= navigation_item("Europa", expansions_europa_path, nil) %>
+            <%= navigation_item("Io", expansions_io_path, nil) %>
+            <%= navigation_item("Mars", expansions_mars_path, nil) %>
+            <%= navigation_item("Pluto", expansions_pluto_path, nil) %>
+            <%= navigation_item("Titan", expansions_titan_path, nil) %>
+            <li class="divider"></li>
+            <%= navigation_item("Galaxy Commander", expansions_galaxy_commander_path, nil) %>
+            <%= navigation_item("Majors Promo Cards", expansions_majors_promo_cards_path, nil) %>
+            <%= navigation_item("Resistance Commander", expansions_resistance_commander_path, nil) %>
+            <%= navigation_item("Tech Commander", expansions_tech_commander_path, nil) %>
+            <li class="divider"></li>
+            <%= navigation_item("Capitals", expansions_capitals_path, nil) %>
+            <%= navigation_item("Invasion of the Giant Amoebas", expansions_amoebas_path, nil) %>
+            <%= navigation_item("Galactic Risk", expansions_galactic_path, nil) %>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <% if current_player %>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle needsclick" data-toggle="dropdown">Account <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li>
+              <%= link_to edit_player_path(current_player) do %>
+                <i class="icon-cogs no-dropdown-arrow"></i> Edit Profile
+              <% end %>
+            </li>
+            <li>
+              <%= link_to edit_password_path do %>
+                <i class="icon-lock no-dropdown-arrow"></i> Change Password
+              <% end %>
+            </li>
+            <li class="divider"></li>
+            <li>
+              <%= link_to logout_path, method: :delete do %>
+                <i class="icon-off no-dropdown-arrow"></i> Logout
+              <% end %>
+            </li>
+          </ul>
+        </li>
+        <% else %>
+          <li><a data-toggle="modal" href="#login-modal">Login</a></li>
+        <% end %>
+      </ul>
     </div>
   </div>
 </div>
