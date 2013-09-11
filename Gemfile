@@ -6,10 +6,10 @@ gem 'strong_parameters', '~> 0.2.1'
 group :assets do
   gem 'sass-rails', '~> 3.2.6'
   gem 'coffee-rails', '~> 3.2.2'
-  gem 'uglifier', '~> 2.1.2'
+  gem 'uglifier', '~> 2.2.1'
   gem 'twitter-bootstrap-rails', "~> 2.2.8"
-  gem 'less-rails', '~> 2.3.2'
-  gem 'therubyracer', '~> 0.11.3'
+  gem 'less-rails', '~> 2.4.2'
+  gem 'therubyracer', '~> 0.12.0'
 end
 
 ## Frontend / Views
@@ -30,10 +30,10 @@ gem 'mongoid_slug', '~> 3.1.2'
 ## Authentication
 gem 'omniauth', '~> 1.1.4'
 gem 'omniauth-facebook', '~> 1.4.1'
-gem 'bcrypt-ruby', '~> 3.1.1'
+gem 'bcrypt-ruby', '~> 3.1.2'
 
 ## Operations
-gem 'passenger', '4.0.10'
+gem 'passenger', '4.0.17'
 gem 'exception_notification', '~> 4.0.0', group: [:production]
 gem 'hashie', '~> 2.0.4'
 
@@ -45,10 +45,10 @@ end
 group :development, :test do
   gem 'rspec-rails', '~> 2.14.0'
   gem 'factory_girl_rails', '~> 4.2.1'
-  gem 'database_cleaner', '~> 1.0.1'
+  gem 'database_cleaner', '~> 1.1.1'
   gem 'debugger', '~> 1.6.1'
-  gem 'ffaker', '~> 1.16.2'
-  gem 'teaspoon', '~> 0.7.3'
+  gem 'ffaker', '~> 1.18.0'
+  gem 'teaspoon', '~> 0.7.4'
 end
 
 gem 'mongoid_document_editor'#, path: "/Users/nickd/projects/mongoid-document-editor"
