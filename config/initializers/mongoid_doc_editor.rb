@@ -44,8 +44,8 @@ Mongoid::DocumentEditor.configure do
 
   index_configuration_for Player do
     column :handle
-    column :email
-    column :favorite_color
+    column :email, value: ->(player) { "<a href='mailto:#{player.email}'>#{player.email}</a>".html_safe }
+    column :favorite_color, value: ->(player) { "<span style='color: #{GamePlayer.hex_color(player.favorite_color)}'>#{player.favorite_color}</span>".html_safe }
   end
 
   index_configuration_for Game do

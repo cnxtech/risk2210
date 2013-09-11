@@ -51,4 +51,4 @@ group :development, :test do
   gem 'teaspoon', '~> 0.7.3'
 end
 
-gem 'mongoid_document_editor', git: "git@github.com:nick-desteffen/mongoid-document-editor.git" #path: "/Users/nickd/projects/mongoid-document-editor"
+gem 'mongoid_document_editor'#, path: "/Users/nickd/projects/mongoid-document-editor"
