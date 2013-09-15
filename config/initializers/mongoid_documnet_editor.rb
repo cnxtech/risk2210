@@ -39,6 +39,10 @@ Mongoid::DocumentEditor.configure do
   end
 
   form_configuration_for GamePlayerStat do
+    field :units
+    field :energy
+    field :territory_count
+    field :space_stations
     field :continent_ids, values: ->(game_player_stat) { game_player_stat.game_player.game.maps.collect(&:continents).flatten }, label: :name, value: :id
   end
 

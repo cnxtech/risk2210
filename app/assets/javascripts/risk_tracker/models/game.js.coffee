@@ -36,6 +36,7 @@ class RiskTracker.Models.Game extends Backbone.Model
         space_stations:  game_player.spaceStations()
       }
 
+    ## FIXME: Year isn't saving
     @turns.create(game_id: @get("id"), game_player_id: @currentPlayer.get("id"), order: @currentPlayer.turnOrder(), game_player_stats_attributes: game_player_stats)
 
   startYear: ()->
