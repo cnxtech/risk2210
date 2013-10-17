@@ -8,7 +8,7 @@ class RiskTracker.Views.Continents extends Backbone.View
     "click .unclaimed .continent": "addContinent"
     "click .claimed .continent":   "removeContinent"
 
-  initialize: ()->
+  initialize: (@options={})->
     @game = @options.game
     @type = @options.type
 

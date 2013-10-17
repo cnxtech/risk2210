@@ -15,7 +15,7 @@ class RiskTracker.Views.GamePlayer extends Backbone.View
     "click .invade-empty":              "invadeEmpty"
     "click .space-station":             "toggleSpaceStation"
 
-  initialize: ()->
+  initialize: (@options={})->
     @game = @options.game
     @gameView = @options.gameView
     @util = new RiskTracker.Util()

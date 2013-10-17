@@ -7,7 +7,7 @@ class RiskTracker.Views.TurnOrder extends Backbone.View
   events:
     "click .btn.btn-success": "saveTurnOrder"
 
-  initialize: ()->
+  initialize: (@options={})->
     @gameView = @options.gameView
 
   render: ()->

@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem 'rails', '3.2.14'
+gem 'rails', '3.2.15'
 gem 'strong_parameters', '~> 0.2.1'
 
 group :assets do
@@ -16,7 +16,7 @@ end
 gem 'jquery-rails', '~> 3.0.4'
 gem 'redcarpet', '~> 3.0.0'
 gem 'simple_form', '~> 2.1.0'
-gem 'cocoon', '~> 1.2.0'
+gem 'cocoon', '~> 1.2.1'
 gem 'active_model_serializers', '~> 0.8.1'
 
 ## Backbone
@@ -24,7 +24,7 @@ gem 'ejs', '~> 1.1.1'
 gem 'eco', '~> 1.0.0'
 
 ## Mongo DB
-gem 'mongoid', '~> 3.1.1'
+gem 'mongoid', '~> 3.1.5'
 gem 'mongoid_slug', '~> 3.1.2'
 
 ## Authentication
@@ -34,7 +34,7 @@ gem 'bcrypt-ruby', '~> 3.1.2'
 
 ## Operations
 gem 'passenger', '4.0.17'
-gem 'exception_notification', '~> 4.0.0', group: [:production]
+gem 'exception_notification', '~> 4.0.1', group: [:production]
 gem 'hashie', '~> 2.0.4'
 
 group :development do
@@ -45,10 +45,10 @@ end
 group :development, :test do
   gem 'rspec-rails', '~> 2.14.0'
   gem 'factory_girl_rails', '~> 4.2.1'
-  gem 'database_cleaner', '~> 1.1.1'
-  gem 'debugger', '~> 1.6.1'
-  gem 'ffaker', '~> 1.18.0'
-  gem 'teaspoon', '~> 0.7.4'
+  gem 'database_cleaner', '~> 1.2.0'
+  gem 'debugger', '~> 1.6.2'
+  gem 'ffaker', '~> 1.19.0'
+  gem 'teaspoon', '~> 0.7.7'
 end
 
 gem 'mongoid_document_editor'#, path: "/Users/nickd/projects/mongoid-document-editor"
