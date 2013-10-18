@@ -38,8 +38,9 @@ gem 'exception_notification', '~> 4.0.1', group: [:production]
 gem 'hashie', '~> 2.0.4'
 
 group :development do
-  gem 'capistrano', '~> 2.15.5', require: false
-  gem 'capistrano-helpers', '~> 0.7.1', require: false
+  gem 'capistrano', '~> 3.0.0', require: false
+  gem 'capistrano-rails', '~> 1.0.0', require: false
+  gem 'capistrano-bundler', '~> 1.0.0', require: false
 end
 
 group :development, :test do
