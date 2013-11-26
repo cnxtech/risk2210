@@ -33,7 +33,7 @@ gem 'omniauth-facebook', '~> 1.4.1'
 gem 'bcrypt-ruby', '~> 3.1.2'
 
 ## Operations
-gem 'passenger', '4.0.17'
+gem 'passenger', '4.0.25'
 gem 'exception_notification', '~> 4.0.1', group: [:production]
 gem 'hashie', '~> 2.0.4'
 
@@ -50,6 +50,7 @@ group :development, :test do
   gem 'debugger', '~> 1.6.2'
   gem 'ffaker', '~> 1.19.0'
   gem 'teaspoon', '~> 0.7.7'
+  gem 'pry-rails'
 end
 
 gem 'mongoid_document_editor'#, path: "/Users/nickd/projects/mongoid-document-editor"
