@@ -10,3 +10,7 @@ OmniAuth.config.logger = Rails.logger
 if Rails.env.test?
   OmniAuth.config.test_mode = true
 end
+
+if Rails.env.production?
+  OmniAuth.config.full_host = "https://risk2210.net"
+end
