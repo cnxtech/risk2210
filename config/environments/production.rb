@@ -7,6 +7,7 @@ Risk2210::Application.configure do
   config.assets.compress = true
   config.assets.digest = true
   config.assets.compile = false
+  config.assets.js_compressor = :uglifier
   config.assets.precompile += ["risk_tracker.js", "game_results.js", "results.css"]
 
   config.action_mailer.default_url_options = { host: config.settings.email.domain }

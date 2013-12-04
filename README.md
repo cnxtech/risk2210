@@ -1,7 +1,7 @@
 # Risk 2210 Website
 [![Code Climate](https://codeclimate.com/github/nick-desteffen/risk2210.png)](https://codeclimate.com/github/nick-desteffen/risk2210)
 
-I built this website as a way to learn [Backbone.js](http://backbonejs.org) and [MongoDB](http://www.mongodb.org/).  You can check it out at [http://risk2210.net](http://risk2210.net).
+I built this website as a way to learn [Backbone.js](http://backbonejs.org) and [MongoDB](http://www.mongodb.org/).  You can check it out at [https://risk2210.net](https://risk2210.net).
 It was built using the following frameworks & libraries:
 
  * [Ruby on Rails](http://rubyonrails.org)
