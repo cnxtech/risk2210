@@ -26,6 +26,7 @@ gem 'eco', '~> 1.0.0'
 ## Mongo DB
 gem 'mongoid', '~> 3.1.6'
 gem 'mongoid_slug', '~> 3.2.0'
+gem 'geocoder', '~> 1.1.8'
 
 ## Authentication
 gem 'omniauth', '~> 1.1.4'

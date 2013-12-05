@@ -80,7 +80,7 @@ module Fixtures
             "username" => handle,
             "hometown" => {
               "id" => "109216849096476",
-              "name" => "#{Faker::Address.city}, #{Faker::AddressUS.state}"
+              "name" => "Chicago, Illinois"
             },
             "bio" => Faker::Lorem.sentence,
             "work" => [

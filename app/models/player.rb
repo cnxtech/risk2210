@@ -2,6 +2,7 @@ class Player
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Slug
+  include Geocoder::Model::Mongoid
 
   module ImageSource
     Facebook = "Facebook"
@@ -32,6 +33,7 @@ class Player
   field :favorite_color, type: String
   field :password_reset_token, type: String
   field :admin, type: Boolean, default: false
+  field :coordinates, type: Array
 
   ## Associations
   has_many :topics, dependent: :destroy, autosave: true
@@ -41,9 +43,9 @@ class Player
 
   ## Plugins
   slug :handle
+  geocoded_by :location
 
   ## Indexes
-
   index({handle: 1, email: 1, uuid: 1}, {unique: true})
   index zip_code: 1, city: 1, state: 1
 
@@ -53,6 +55,7 @@ class Player
   before_save :generate_gravatar_hash
   after_create :deliver_welcome_email
   after_create :link_game_players
+  before_save :geocode, if: ->(player) { player.location.present? && (player.zip_code_changed? || player.city_changed? || player.state_changed?) }
 
   ## Validations
   validates_presence_of :email, :handle
