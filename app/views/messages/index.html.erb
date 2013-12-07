@@ -1,0 +1,12 @@
+<div class="messages">
+  <%= render partial: "messages/nav" %>
+
+  <% @messages.each do |message| %>
+    <div class="message well">
+      <h4><%= message.subject %></h4>
+      <div class="timestamp">Sent on: <%= format_timestamp(message.created_at) %></div>
+      <div class="from">From: <%= link_to message.sender.name, player_path(message.sender) %></div>
+      <p class="body"><%= message.body %></p>
+    </div>
+  <% end %>
+</div>

@@ -1,5 +1,5 @@
 <h1>All Players</h1>
-<div id="player-listing">
+<div class="player-listing">
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
@@ -19,3 +19,7 @@
     </tbody>
   </table>
 </div>
+
+<% content_for :sidebar do %>
+  <%= nearby_players %>
+<% end %>

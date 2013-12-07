@@ -141,5 +141,13 @@ describe Player do
     end
   end
 
+  describe "name" do
+    it "should concatenate first and last names" do
+      player = FactoryGirl.build(:player, first_name: "Jack", last_name: "Sparrow")
+
+      player.name.should == "Jack Sparrow"
+    end
+  end
+
 end
 

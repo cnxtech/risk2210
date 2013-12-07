@@ -29,6 +29,11 @@ Risk2210::Application.routes.draw do
     end
   end
 
+  ## Messages
+  get "/messages/new", to: "messages#new", as: :new_message
+  post "/messages/new", to: "messages#create", as: :create_message
+  get "/messages(/:filter)", to: "messages#index", as: :messages
+
   ## Forgot Password
   get "/forgot-password" => "password_reset#index", as: :forgot_password
   post "/forgot-password" => "password_reset#create", as: :request_password_reset

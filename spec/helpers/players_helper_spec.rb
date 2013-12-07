@@ -22,4 +22,10 @@ describe PlayersHelper do
     end
   end
 
+  describe "nearby_players" do
+    it "should description" do
+      pending
+    end
+  end
+
 end

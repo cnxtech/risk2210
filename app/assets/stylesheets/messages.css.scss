@@ -1,0 +1,16 @@
+.messages{
+  .message{
+    .timestamp{
+      font-weight: bold;
+    }
+    .from{
+      font-weight: bold;
+    }
+    .body{
+      margin-top: 10px;
+    }
+  }
+  textarea{
+    width: 570px;
+  }
+}

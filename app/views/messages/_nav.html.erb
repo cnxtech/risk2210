@@ -1,0 +1,5 @@
+<ul class="nav nav-pills">
+  <%= navigation_item("Inbox", messages_path, :inbox) %>
+  <%= navigation_item("Sent Messages", messages_path(:sent), :sent) %>
+  <%= navigation_item("New Message", new_message_path, :new_message) %>
+</ul>

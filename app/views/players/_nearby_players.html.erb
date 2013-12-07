@@ -1,0 +1,18 @@
+<div class="nearby-players">
+  <h3>Nearby Players</h3>
+  <h6>(within 50 miles of <%= current_player.location %>)</h6>
+  <div class="player-listing">
+    <table class="table table-bordered table-striped">
+      <% nearby_players.each do |player| %>
+        <tr>
+          <td>
+            <%= link_to(player.slug, player_path(player)) %>
+          </td>
+          <td>
+            <%= link_to(content_tag(:i, "", class: "icon-envelope") + "Message", new_message_path(recipient: player.slug), class: "btn btn-mini btn-info") %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

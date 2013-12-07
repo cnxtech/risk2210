@@ -40,6 +40,8 @@ class Player
   has_many :comments, dependent: :destroy, autosave: true
   has_many :game_players
   has_many :games, inverse_of: :creator, dependent: :destroy
+  has_many :messages, inverse_of: :recipients
+  has_many :sent_messages, inverse_of: :sender, class_name: "Message"
 
   ## Plugins
   slug :handle
@@ -129,6 +131,10 @@ class Player
     self.password_reset_token = SecureRandom.hex(8)
     self.save
     PlayerMailer.password_reset(self).deliver
+  end
+
+  def name
+    "#{first_name} #{last_name}"
   end
 
 private
