@@ -14,3 +14,10 @@
     </fieldset>
   <% end %>
 </div>
+
+<% content_for :sidebar do %>
+  <p>
+    Messages support <a href='http://en.wikipedia.org/wiki/Markdown' target="_blank">Markdown</a> formatting.  Below are some examples of how you can format your messages.
+  </p>
+  <%= render partial: "shared/markdown_examples" %>
+<% end %>

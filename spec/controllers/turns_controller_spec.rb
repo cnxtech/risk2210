@@ -44,7 +44,8 @@ describe TurnsController do
       json = JSON.parse(response.body, symbolize_names: true)
       json[:game_id].should == @game.id.to_s
       json[:game_player_stats].size.should == 2
-      json[:game_player_stats][1][:continent_ids].should =~ continent_ids_2.map(&:to_s)
+      json[:game_player_stats].detect{ |game_player_stat| game_player_stat[:game_player_id] == @game_player.id.to_s }[:continent_ids].should =~ continent_ids_1.map(&:to_s)
+      json[:game_player_stats].detect{ |game_player_stat| game_player_stat[:game_player_id] == @game_player2.id.to_s }[:continent_ids].should =~ continent_ids_2.map(&:to_s)
       response.should be_success
     end
     it "should respond with errors if the turn doesn't save" do
