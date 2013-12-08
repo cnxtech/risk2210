@@ -1,18 +1,26 @@
 <div class="nearby-players">
   <h3>Nearby Players</h3>
-  <h6>(within 50 miles of <%= current_player.location %>)</h6>
-  <div class="player-listing">
-    <table class="table table-bordered table-striped">
-      <% nearby_players.each do |player| %>
-        <tr>
-          <td>
-            <%= link_to(player.slug, player_path(player)) %>
-          </td>
-          <td>
-            <%= link_to(content_tag(:i, "", class: "icon-envelope") + "Message", new_message_path(recipient: player.slug), class: "btn btn-mini btn-info") %>
-          </td>
-        </tr>
-      <% end %>
-    </table>
-  </div>
+  <% if current_player.location.blank? %>
+    <p>Update your <%= link_to "profile's", edit_player_path(current_player) %> location settings to see nearby Risk 2210 players.</p>
+  <% else %>
+    <h6>(within 50 miles of <%= current_player.location %>)</h6>
+    <% if nearby_players.size > 0 %>
+      <div class="player-listing">
+        <table class="table table-bordered table-striped">
+          <% nearby_players.each do |player| %>
+            <tr>
+              <td>
+                <%= link_to(player.slug, player_path(player)) %>
+              </td>
+              <td>
+                <%= message_link(player) %>
+              </td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+      <% else %>
+      <p>Sorry, there are no other Risk 2210 players nearby.</p>
+    <% end %>
+  <% end %>
 </div>

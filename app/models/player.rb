@@ -40,7 +40,7 @@ class Player
   has_many :comments, dependent: :destroy, autosave: true
   has_many :game_players
   has_many :games, inverse_of: :creator, dependent: :destroy
-  has_many :messages, inverse_of: :recipients
+  has_many :messages, inverse_of: :recipient
   has_many :sent_messages, inverse_of: :sender, class_name: "Message"
 
   ## Plugins

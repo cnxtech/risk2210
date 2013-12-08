@@ -13,4 +13,9 @@ class PlayerMailer < ActionMailer::Base
     mail(to: player.email, subject: "Risk2210.net Password Reset")
   end
 
+  def message_notification(message)
+    @message = message
+    mail(to: message.recipient.email, subject: "Risk2210.net New Message")
+  end
+
 end

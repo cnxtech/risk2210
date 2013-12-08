@@ -44,6 +44,6 @@ module Risk2210
     }
 
     config.password_cost = BCrypt::Engine::DEFAULT_COST
-
+    I18n.enforce_available_locales = true
   end
 end

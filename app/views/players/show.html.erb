@@ -6,17 +6,26 @@
         <div class='photo-container'>
           <%= avatar(@player, size: :large) %>
         </div>
+      </div>
+      <div class="span5 bio">
+        <%= format_markdown(@player.bio) %>
+      </div>
+    </div>
+    <% if @player.website.present? %>
+      <div class="row">
+        <div class='span7 site'>
+          <%= link_to @player.website, @player.website, target: "_blank" %>
+        </div>
+      </div>
+    <% end %>
+    <div class="row">
+      <div class="span5">
         <div class='location'>
           <%= @player.location %>
         </div>
-        <% if @player.website.present? %>
-          <div class='site'>
-            <%= link_to @player.website, @player.website, target: "_blank" %>
-          </div>
-        <% end %>
       </div>
-      <div class="span5" style="float: right;">
-        <p><%= format_markdown(@player.bio) %></p>
+      <div class="span2 message-link">
+        <%= message_link(@player) %>
       </div>
     </div>
   </div>
