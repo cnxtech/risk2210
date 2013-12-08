@@ -21,9 +21,9 @@ module PlayersHelper
     render partial: "players/nearby_players", locals: {nearby_players: nearby_players}
   end
 
-  def message_link(player)
+  def message_link(player, label="Message")
     return if current_player.nil?
-    return link_to(content_tag(:i, "", class: "icon-envelope") + " Message", new_message_path(recipient: player.slug), class: "btn btn-mini btn-info")
+    return link_to(content_tag(:i, "", class: "icon-envelope") + " #{label}", new_message_path(recipient: player.slug), class: "btn btn-mini btn-info")
   end
 
 end

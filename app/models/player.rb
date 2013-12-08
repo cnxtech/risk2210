@@ -134,7 +134,11 @@ class Player
   end
 
   def name
-    "#{first_name} #{last_name}"
+    if first_name.present? || last_name.present?
+      "#{first_name} #{last_name}"
+    else
+      slug
+    end
   end
 
 private

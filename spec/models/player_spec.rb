@@ -147,6 +147,11 @@ describe Player do
 
       player.name.should == "Jack Sparrow"
     end
+    it "should return the slug if first and last name are both blank" do
+      player = FactoryGirl.build(:player, first_name: "", last_name: "")
+
+      player.name.should == player.slug
+    end
   end
 
 end

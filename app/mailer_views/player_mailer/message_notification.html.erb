@@ -1,0 +1,8 @@
+<p>
+  Greetings <%= @message.recipient.name %>!<br>
+  <br>
+  You have received a new message from <%= link_to @message.sender.name, player_url(@message.sender) %>.<br>
+  <%= link_to "Login", login_url %> to <%= link_to "view your messages", messages_url %>.<br>
+  <br>
+  Thanks and have a great day!
+</p>
