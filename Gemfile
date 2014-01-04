@@ -34,7 +34,7 @@ gem 'omniauth-facebook', '~> 1.5.1'
 gem 'bcrypt-ruby', '~> 3.1.2'
 
 ## Operations
-gem 'passenger', '4.0.26'
+gem 'passenger', '4.0.33'
 gem 'exception_notification', '~> 4.0.1', group: [:production]
 gem 'hashie', '~> 2.0.4'
 
