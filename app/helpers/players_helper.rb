@@ -16,7 +16,11 @@ module PlayersHelper
     if current_player.location.blank?
       nearby_players = []
     else
-      nearby_players = Player.near(current_player.location, 50).except(current_player)
+      begin
+        nearby_players = Player.near(current_player.location, 50).except(current_player)
+      rescue Exception => exception
+        nearby_players = []
+      end
     end
     render partial: "players/nearby_players", locals: {nearby_players: nearby_players}
   end
