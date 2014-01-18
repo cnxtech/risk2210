@@ -1,4 +1,4 @@
-Mongoid::DocumentEditor.configure do
+Mongoid::Scribe.configure do
 
   authenticate_with :admin_required
 
@@ -12,7 +12,7 @@ Mongoid::DocumentEditor.configure do
     field :state
     field :zip_code
     field :website
-    field :bio, type: :text
+    field :bio, type: :textarea
     field :favorite_color, values: GamePlayer::COLORS
     field :email, type: :email
     field :admin
@@ -20,8 +20,8 @@ Mongoid::DocumentEditor.configure do
 
   form_configuration_for Game do
     field :location
-    field :notes, type: :text
-    field :map_ids, values: -> { Map.all }, label: :name, value: :id
+    field :notes, type: :textarea
+    field :map_ids, label: :name
   end
 
   form_configuration_for GamePlayer do
@@ -34,8 +34,8 @@ Mongoid::DocumentEditor.configure do
     field :colony_influence
     field :space_stations
     field :starting_territory_count
-    field :player_id, values: -> { Player.all }, label: :handle, value: :id
-    field :faction_id, values: -> { Faction.all }, label: :name, value: :id
+    field :player_id, label: :handle
+    field :faction_id
   end
 
   form_configuration_for GamePlayerStat do
@@ -43,7 +43,13 @@ Mongoid::DocumentEditor.configure do
     field :energy
     field :territory_count
     field :space_stations
-    field :continent_ids, values: ->(game_player_stat) { game_player_stat.game_player.game.maps.collect(&:continents).flatten }, label: :name, value: :id
+    field :continent_ids, values: ->(game_player_stat) { game_player_stat.game_player.game.maps.collect(&:continents).flatten.sort_by(&:name) }, label: :name
+  end
+
+  form_configuration_for Turn do
+    field :game_player_id, label: :handle, values: ->(turn) { turn.game.game_players.all }
+    field :order
+    field :year
   end
 
   index_configuration_for Player do

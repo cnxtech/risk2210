@@ -54,4 +54,4 @@ group :development, :test do
   gem 'pry-rails', '~> 0.3.2'
 end
 
-gem 'mongoid_document_editor'#, path: "/Users/nickd/projects/mongoid-document-editor"
+gem 'mongoid_scribe', "~> 0.1.0"
