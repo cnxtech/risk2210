@@ -7,8 +7,8 @@ Risk2210::Application.routes.draw do
 
   ## Facebook Sessions
   get '/login/facebook' => redirect('/auth/facebook'), as: :facebook_authentication
-  match '/auth/:provider/callback' => 'sessions#authenticate_facebook'
-  match '/auth/failure' => 'sessions#failure'
+  get '/auth/:provider/callback' => 'sessions#authenticate_facebook'
+  get '/auth/failure' => 'sessions#failure'
 
   ## Change Password
   get "/account/password" => "passwords#edit", as: :edit_password

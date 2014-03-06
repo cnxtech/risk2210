@@ -10,6 +10,7 @@ set :linked_files, %w{config/settings.yml}
 set :keep_releases, 5
 
 namespace :deploy do
+  after :publishing, :restart
 
   desc 'Restart application'
   task :restart do
@@ -19,7 +20,6 @@ namespace :deploy do
   end
 
   after :finishing, 'deploy:cleanup'
-
 end
 
 namespace :db do
