@@ -6,9 +6,9 @@ gem 'strong_parameters', '~> 0.2.2'
 group :assets do
   gem 'sass-rails', '~> 3.2.6'
   gem 'coffee-rails', '~> 3.2.2'
-  gem 'uglifier', '~> 2.4.0'
+  gem 'uglifier', '~> 2.5.0'
   gem 'twitter-bootstrap-rails', "~> 2.2.8"
-  gem 'less-rails', '~> 2.4.2'
+  gem 'less-rails', '~> 2.5.0'
   gem 'therubyracer', '~> 0.12.0'
 end
 
@@ -16,7 +16,7 @@ end
 gem 'jquery-rails', '~> 3.1.0'
 gem 'redcarpet', '~> 3.1.1'
 gem 'simple_form', '~> 2.1.0'
-gem 'cocoon', '~> 1.2.5'
+gem 'cocoon', '~> 1.2.6'
 gem 'active_model_serializers', '~> 0.8.1'
 
 ## Backbone
@@ -25,7 +25,7 @@ gem 'eco', '~> 1.0.0'
 
 ## Mongo DB
 gem 'mongoid', '~> 3.1.6'
-gem 'mongoid_slug', '~> 3.2.0'
+gem 'mongoid_slug', '~> 3.2.1'
 gem 'geocoder', '~> 1.1.9'
 
 ## Authentication
@@ -36,7 +36,7 @@ gem 'bcrypt-ruby', '~> 3.1.5'
 ## Operations
 gem 'passenger', '4.0.37'
 gem 'exception_notification', '~> 4.0.1', group: [:production]
-gem 'hashie', '~> 2.0.4'
+gem 'hashie', '~> 2.1.0'
 
 group :development do
   gem 'capistrano', '~> 3.1.0', require: false
@@ -45,11 +45,11 @@ group :development do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 2.14.1'
+  gem 'rspec-rails', '~> 2.14.2'
   gem 'factory_girl_rails', '~> 4.4.1'
   gem 'database_cleaner', '~> 1.2.0'
   gem 'debugger', '~> 1.6.6'
-  gem 'ffaker', '~> 1.23.0'
+  gem 'ffaker', '~> 1.24.0'
   gem 'teaspoon', '~> 0.7.8'
   gem 'pry-rails', '~> 0.3.2'
 end
