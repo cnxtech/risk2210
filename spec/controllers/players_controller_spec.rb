@@ -3,19 +3,18 @@ require 'spec_helper'
 describe PlayersController do
 
   let(:player) { FactoryGirl.create(:player) }
+  let(:other_player) { FactoryGirl.create(:player) }
 
   describe "authorization" do
     it "only allows the logged in player edit, update, and destroy" do
-      other_player = FactoryGirl.create(:player)
       login player
 
       {put: :update, get: :edit, delete: :destroy}.each do |verb, action|
         send(verb, action, id: other_player.slug, player: {})
 
-        response.should redirect_to root_path
-        flash.alert.should_not be_nil
+        expect(response).to redirect_to root_path
+        expect(flash.alert).to_not be_nil
       end
-
     end
   end
 

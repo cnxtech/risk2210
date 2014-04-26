@@ -9,9 +9,9 @@ describe ForumsController do
 
       get :index
 
-      assigns(:forums).size.should == 2
-      assigns(:page_title).should_not be_nil
-      response.should be_success
+      expect(assigns(:forums).size).to eq(2)
+      expect(assigns(:page_title)).to_not be_nil
+      expect(response).to be_success
     end
   end
 
@@ -23,17 +23,17 @@ describe ForumsController do
 
       get :show, id: forum.slug
 
-      assigns(:forum).should == forum
-      assigns(:page_title).include?(forum.name).should == true
-      assigns(:topics).size.should == forum.topics.size
-      assigns(:topic).new_record?.should == true
-      assigns(:topic).comments.size.should == 1
-      response.should be_success
+      expect(assigns(:forum)).to eq(forum)
+      expect(assigns(:page_title)).to include(forum.name)
+      expect(assigns(:topics).size).to eq(forum.topics.size)
+      expect(assigns(:topic)).to be_new_record
+      expect(assigns(:topic).comments.size).to eq(1)
+      expect(response).to be_success
     end
     it "should render a 404 for a forum that doesn't exist" do
       get :show, id: "foo-bar"
 
-      response.status.should == 404
+      expect(response.status).to eq(404)
     end
   end
 
