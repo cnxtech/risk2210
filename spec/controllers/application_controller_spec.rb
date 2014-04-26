@@ -8,10 +8,10 @@ describe ApplicationController do
     it "returns the currently logged in player" do
       session[:player_id] = player.id
 
-      controller.current_player.should == player
+      expect(controller.current_player).to eq(player)
     end
     it "returns nil if no player is logged in" do
-      controller.current_player.should == nil
+      expect(controller.current_player).to be_nil
     end
   end
 
@@ -26,14 +26,14 @@ describe ApplicationController do
 
     it "sets the players's id in the session, remember me token in cookies, and redirects" do
       routes.draw { get "index" => "anonymous#index" }
-      controller.stub(:new_game_path).and_return("/")
+      allow(controller).to receive(:new_game_path).and_return("/")
 
       get :index, player_id: player.id
 
-      session[:player_id].should == player.id
-      response.should redirect_to "/"
-      cookies.signed[:remember_me_token].should == player.remember_me_token
-      flash.notice.should == "Welcome!"
+      expect(session[:player_id]).to eq(player.id)
+      expect(response).to redirect_to("/")
+      expect(cookies.signed[:remember_me_token]).to eq(player.remember_me_token)
+      expect(flash.notice).to eq("Welcome!")
     end
   end
 
@@ -44,8 +44,8 @@ describe ApplicationController do
 
       controller.send(:logout)
 
-      session[:player_id].should == nil
-      cookies[:remember_me_token].should == nil
+      expect(session[:player_id]).to be_nil
+      expect(cookies[:remember_me_token]).to be_nil
     end
   end
 
@@ -61,13 +61,13 @@ describe ApplicationController do
       it "redirects to the homepage, stores the original destination and has an alert message if there is no player" do
         routes.draw { get "index" => "anonymous#index" }
         login_path = "/login"
-        controller.stub(:login_path).and_return(login_path)
+        allow(controller).to receive(:login_path).and_return(login_path)
 
         get :index
 
-        response.should redirect_to login_path
-        session[:return_to_path].should_not be_nil
-        flash[:alert].should_not == nil
+        expect(response).to redirect_to(login_path)
+        expect(session[:return_to_path]).to eq("http://test.host/index")
+        expect(flash[:alert]).to_not be_nil
       end
     end
     context "json request" do
@@ -76,9 +76,9 @@ describe ApplicationController do
 
         get :index, format: :json
 
-        response.status.should == 401
         json = JSON.parse(response.body, symbolize_names: true)
-        json[:errors].include?("You need to be logged in!")
+        expect(response.status).to eq(401)
+        expect(json[:errors]).to include("You need to be logged in!")
       end
     end
   end
@@ -100,14 +100,14 @@ describe ApplicationController do
 
       get :index
 
-      response.should redirect_to "/games/new"
+      expect(response).to redirect_to("/games/new")
     end
     it "redirects to a default place if no destination was set" do
       session[:return_to_path] = nil
 
       get :index
 
-      response.should redirect_to "/"
+      expect(response).to redirect_to("/")
     end
   end
 
@@ -124,7 +124,7 @@ describe ApplicationController do
     it "should have the active tab set" do
       get :index
 
-      controller.active_tab.should == :games
+      expect(controller.active_tab).to eq(:games)
     end
   end
 

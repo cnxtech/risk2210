@@ -4,10 +4,10 @@ describe States do
 
   describe "decode" do
     it "should return the abbreviated name for the state passed in" do
-      States.decode(" Wisconsin ").should == "WI"
+      expect(States.decode(" Wisconsin ")).to eq("WI")
     end
     it "should return nil if a state isn't found" do
-      States.decode(" Foo ").should == nil
+      expect(States.decode(" Foo ")).to be_nil
     end
   end
 

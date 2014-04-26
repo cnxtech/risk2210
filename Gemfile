@@ -45,7 +45,7 @@ group :development do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 2.14.2'
+  gem 'rspec-rails', '3.0.0.beta2'
   gem 'factory_girl_rails', '~> 4.4.1'
   gem 'database_cleaner', '~> 1.2.0'
   gem 'debugger', '~> 1.6.6'

@@ -4,10 +4,10 @@ describe Player do
 
   describe "registration" do
     it "should require a password if the player is not registering through Facebook" do
-      player = Player.new(email: Faker::Internet.free_email, handle: Faker::Name.first_name)
+      player = FactoryGirl.build(:player, email: Faker::Internet.free_email, handle: Faker::Name.first_name, password: nil, password_confirmation: nil)
 
-      player.valid?.should == false
-      player.errors[:password_digest].should_not be_nil
+      expect(player).to_not be_valid
+      expect(player.errors[:password_digest]).to_not be_nil
     end
   end
 
@@ -15,17 +15,17 @@ describe Player do
     it "should return the image from facebook if the image source is facebook" do
       player = FactoryGirl.create(:player, image_source: Player::ImageSource::Facebook, facebook_image_url: "http://graph.facebook.com/753509648/picture?type=square")
 
-      player.profile_image_path.should == "https://graph.facebook.com/753509648/picture?type=square?type=normal"
+      expect(player.profile_image_path).to eq("https://graph.facebook.com/753509648/picture?type=square?type=normal")
     end
     it "should return the image from gravatar if the image source is gravatar" do
       player = FactoryGirl.create(:player, image_source: Player::ImageSource::Gravatar)
 
-      player.profile_image_path.should == "https://www.gravatar.com/avatar/#{player.gravatar_hash}?size=100&default=https%3A%2F%2Frisk2210.net%2Fassets%2Fdefault_avatar.png"
+      expect(player.profile_image_path).to eq("https://www.gravatar.com/avatar/#{player.gravatar_hash}?size=100&default=https%3A%2F%2Frisk2210.net%2Fassets%2Fdefault_avatar.png")
     end
     it "should return the default image if no image source is specified" do
       player = FactoryGirl.create(:player, image_source: nil)
 
-      player.profile_image_path.should == "https://risk2210.net/assets/default_avatar.png"
+      expect(player.profile_image_path).to eq("https://risk2210.net/assets/default_avatar.png")
     end
   end
 
@@ -36,33 +36,33 @@ describe Player do
     it "should add an error if the old password doesn't match" do
       success = player.change_password(old_password: "abc123", password: "abc123", password_confirmation: "abc123")
 
-      success.should == false
-      player.errors[:base].include?("Old password doesn't match").should == true
+      expect(success).to be_falsey
+      expect(player.errors[:base]).to include("Old password doesn't match")
     end
     it "should update the password if the old password matches and the new password matches the confirmation" do
       success = player.change_password(old_password: "secret1", password: "abc123", password_confirmation: "abc123")
 
-      success.should == true
+      expect(success).to be_truthy
     end
     it "should add a confirmation error if the new password doesn't match the confirmation" do
       success = player.change_password(old_password: "secret1", password: "abc123", password_confirmation: "abc321")
 
-      success.should == false
-      player.errors[:password].should_not be_nil
+      expect(success).to be_falsey
+      expect(player.errors[:password]).to_not be_nil
     end
     it "should not allow the setting of a blank password" do
       success = player.change_password(old_password: "secret1", password: "", password_confirmation: "")
 
-      success.should == false
-      player.errors[:password].should_not be_nil
+      expect(success).to be_falsey
+      expect(player.errors[:password]).to_not be_nil
     end
   end
 
   describe "location" do
     it "format the city, state, and zip code" do
-      player = FactoryGirl.create(:player, city: "Chicago", state: "IL", zip_code: "60640")
+      player = FactoryGirl.build(:player, city: "Chicago", state: "IL", zip_code: "60640")
 
-      player.location.should == "Chicago, IL 60640"
+      expect(player.location).to eq("Chicago, IL 60640")
     end
   end
 
@@ -72,7 +72,7 @@ describe Player do
 
       player.password = "secret1"
 
-      player.password_digest.should_not be_nil
+      expect(player.password_digest).to_not be_nil
     end
   end
 
@@ -84,29 +84,25 @@ describe Player do
 
       player.set_login_stats
 
-      player.login_count.should == 11
-      player.last_login_at.should == now
+      expect(player.login_count).to eq(11)
+      expect(player.last_login_at).to eq(now)
     end
   end
 
   describe "generate_gravatar_hash" do
     it "should generate the hash if the email is present" do
-      player = FactoryGirl.build(:player, gravatar_hash: nil)
+      player = FactoryGirl.create(:player, gravatar_hash: nil)
 
-      player.save
-
-      player.reload.gravatar_hash.should_not be_nil
+      expect(player.gravatar_hash).to_not be_nil
     end
   end
 
   describe "deliver_welcome_email" do
+    before { ActionMailer::Base.deliveries.clear }
     it "should send an email upon account creation" do
-      ActionMailer::Base.deliveries.clear
-      player = FactoryGirl.build(:player)
+      player = FactoryGirl.create(:player)
 
-      player.save
-
-      ActionMailer::Base.deliveries.size.should == 1
+      expect(ActionMailer::Base.deliveries.size).to eq(1)
     end
   end
 
@@ -114,8 +110,8 @@ describe Player do
     it "should return true if the unencrypted_password matches the player's password" do
       player = FactoryGirl.build(:player, password: "password", password_confirmation: "password")
 
-      player.valid_password?("password").should == true
-      player.valid_password?("password1").should == false
+      expect(player.valid_password?("password")).to be_truthy
+      expect(player.valid_password?("password1")).to be_falsey
     end
   end
 
@@ -125,7 +121,7 @@ describe Player do
 
       player = FactoryGirl.create(:player, handle: "Jack")
 
-      game_player.reload.player.should == player
+      expect(game_player.reload.player).to eq(player)
     end
   end
 
@@ -136,8 +132,8 @@ describe Player do
 
       player.request_password_reset!
 
-      player.password_reset_token.should_not be_nil
-      ActionMailer::Base.deliveries.size.should == 1
+      expect(player.password_reset_token).to_not be_nil
+      expect(ActionMailer::Base.deliveries.size).to eq(1)
     end
   end
 
@@ -145,14 +141,13 @@ describe Player do
     it "should concatenate first and last names" do
       player = FactoryGirl.build(:player, first_name: "Jack", last_name: "Sparrow")
 
-      player.name.should == "Jack Sparrow"
+      expect(player.name).to eq("Jack Sparrow")
     end
     it "should return the slug if first and last name are both blank" do
       player = FactoryGirl.build(:player, first_name: "", last_name: "")
 
-      player.name.should == player.slug
+      expect(player.name).to eq(player.slug)
     end
   end
 
 end
-

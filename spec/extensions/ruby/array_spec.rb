@@ -8,7 +8,7 @@ describe Array do
 
       results = array.except(3)
 
-      results.should == [1,2,4,5,6]
+      expect(results).to eq [1,2,4,5,6]
     end
   end
 

@@ -9,10 +9,12 @@ describe FactionsHelper do
     it "should return the image tag for the faction card image" do
       tag = helper.faction_card_image(church_of_him)
 
-      tag.should =~ /faction_cards\/church_of_him.jpg/
+      expect(tag).to match(/faction_cards\/church_of_him.jpg/)
     end
     it "should return nothing for the default faction" do
       tag = helper.faction_card_image(default)
+
+      expect(tag).to be_nil
     end
   end
 
@@ -20,17 +22,17 @@ describe FactionsHelper do
     it "should return the image tag for the faction icon" do
       tag = helper.faction_icon(church_of_him)
 
-      tag.should =~ /faction_icons\/church_of_him.png/
+      expect(tag).to match(/faction_icons\/church_of_him.png/)
     end
     it "should allow me to overide the width" do
       tag = helper.faction_icon(church_of_him, 25)
 
-      tag.should =~ /width="25"/
+      expect(tag).to match(/width="25"/)
     end
     it "should return nothing for the default faction" do
       tag = helper.faction_icon(default)
 
-      tag.should be_nil
+      expect(tag).to be_nil
     end
   end
 

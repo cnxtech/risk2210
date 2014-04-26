@@ -6,7 +6,7 @@ describe PagesController do
     it "should render" do
       get :home
 
-      response.should be_success
+      expect(response).to be_success
     end
   end
 
@@ -14,9 +14,9 @@ describe PagesController do
     it "should render" do
       get :resources
 
-      controller.active_tab.should == :resources
-      assigns(:page_title).should_not be_nil
-      response.should be_success
+      expect(controller.active_tab).to eq(:resources)
+      expect(assigns(:page_title)).to_not be_nil
+      expect(response).to be_success
     end
   end
 
@@ -24,19 +24,19 @@ describe PagesController do
     it "should render" do
       get :about
 
-      assigns(:page_title).should_not be_nil
-      response.should be_success
+      expect(assigns(:page_title)).to_not be_nil
+      expect(response).to be_success
     end
   end
 
   describe "api_docs" do
     it "should render" do
       FactoryGirl.create(:player)
-      
+
       get :api_docs
 
-      assigns(:page_title).should_not be_nil
-      response.should be_success
+      expect(assigns(:page_title)).to_not be_nil
+      expect(response).to be_success
     end
   end
 

@@ -6,8 +6,8 @@ describe Expansions::MapsController do
     it "should render" do
       get :mars
 
-      assigns(:page_title).should_not be_nil
-      response.should be_success
+      expect(assigns(:page_title)).to_not be_nil
+      expect(response).to be_success
     end
   end
 
@@ -15,8 +15,8 @@ describe Expansions::MapsController do
     it "should render" do
       get :io
 
-      assigns(:page_title).should_not be_nil
-      response.should be_success
+      expect(assigns(:page_title)).to_not be_nil
+      expect(response).to be_success
     end
   end
 
@@ -24,8 +24,8 @@ describe Expansions::MapsController do
     it "should render" do
       get :europa
 
-      assigns(:page_title).should_not be_nil
-      response.should be_success
+      expect(assigns(:page_title)).to_not be_nil
+      expect(response).to be_success
     end
   end
 
@@ -33,8 +33,8 @@ describe Expansions::MapsController do
     it "should render" do
       get :asteroid_colonies
 
-      assigns(:page_title).should_not be_nil
-      response.should be_success
+      expect(assigns(:page_title)).to_not be_nil
+      expect(response).to be_success
     end
   end
 
@@ -42,8 +42,8 @@ describe Expansions::MapsController do
     it "should render" do
       get :pluto
 
-      assigns(:page_title).should_not be_nil
-      response.should be_success
+      expect(assigns(:page_title)).to_not be_nil
+      expect(response).to be_success
     end
   end
 
@@ -51,8 +51,8 @@ describe Expansions::MapsController do
     it "should render" do
       get :arctic
 
-      assigns(:page_title).should_not be_nil
-      response.should be_success
+      expect(assigns(:page_title)).to_not be_nil
+      expect(response).to be_success
     end
   end
 
@@ -60,8 +60,8 @@ describe Expansions::MapsController do
     it "should render" do
       get :titan
 
-      assigns(:page_title).should_not be_nil
-      response.should be_success
+      expect(assigns(:page_title)).to_not be_nil
+      expect(response).to be_success
     end
   end
 
@@ -69,8 +69,8 @@ describe Expansions::MapsController do
     it "should render" do
       get :antarctica
 
-      assigns(:page_title).should_not be_nil
-      response.should be_success
+      expect(assigns(:page_title)).to_not be_nil
+      expect(response).to be_success
     end
   end
 
@@ -78,8 +78,8 @@ describe Expansions::MapsController do
     it "should render" do
       get :dark_side_moon
 
-      assigns(:page_title).should_not be_nil
-      response.should be_success
+      expect(assigns(:page_title)).to_not be_nil
+      expect(response).to be_success
     end
   end
 

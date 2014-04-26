@@ -10,7 +10,7 @@ describe PasswordsController do
 
       get :edit
 
-      assigns(:player).should == player
+      expect(assigns(:player)).to eq(player)
     end
   end
 
@@ -20,16 +20,16 @@ describe PasswordsController do
 
       put :update, player: {old_password: "secret1", password: "secret2", password_confirmation: "secret2"}
 
-      response.should redirect_to player_path(player)
-      flash[:notice].should_not be_nil
+      expect(response).to redirect_to player_path(player)
+      expect(flash[:notice]).to_not be_nil
     end
     it "should reload the page if the password doesn't update" do
       login player
 
       put :update, player: {old_password: "", password: "secret2", password_confirmation: "secret2"}
 
-      response.should render_template :edit
-      flash.now[:alert].should_not be_nil      
+      expect(response).to render_template(:edit)
+      expect(flash.now[:alert]).to_not be_nil
     end
   end
 end

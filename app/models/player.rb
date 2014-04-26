@@ -103,12 +103,13 @@ class Player
   end
 
   def location
-    address = ""
-    address = city if city.present?
-    address = "#{address}, " if city.present? && state.present?
-    address = "#{address}#{state}" if state.present?
-    address = "#{address} #{zip_code}" if zip_code.present?
-    return address
+    @location ||= begin
+      @location = ""
+      @location = city if city.present?
+      @location = "#{@location}, " if city.present? && state.present?
+      @location = "#{@location}#{state}" if state.present?
+      @location = "#{@location} #{zip_code}" if zip_code.present?
+    end
   end
 
   def password=(unencrypted_password)
@@ -119,7 +120,7 @@ class Player
   end
 
   def set_login_stats
-    self.login_count = self.login_count + 1
+    self.login_count   = self.login_count + 1
     self.last_login_at = Time.now
   end
 
@@ -134,10 +135,12 @@ class Player
   end
 
   def name
-    if first_name.present? || last_name.present?
-      "#{first_name} #{last_name}"
-    else
-      slug
+    @name ||= begin
+      if first_name.present? || last_name.present?
+        [first_name, last_name].compact.join(" ")
+      else
+        slug
+      end
     end
   end
 

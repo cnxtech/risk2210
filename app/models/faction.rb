@@ -51,7 +51,7 @@ class Faction
   end
 
   def image_name_format
-    name.downcase.split(" ").join("_")
+    @image_name_format ||= name.downcase.split(" ").join("_")
   end
 
 end

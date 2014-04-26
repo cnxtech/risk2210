@@ -2,15 +2,16 @@ require 'spec_helper'
 
 describe Message do
 
+  let!(:sender) { FactoryGirl.create(:player) }
+  let!(:recipient) { FactoryGirl.create(:player) }
+
+  before { ActionMailer::Base.deliveries.clear }
+
   describe "notify_recipient" do
     it "should send an email to the recipient after the message has been created" do
-      sender = FactoryGirl.create(:player)
-      recipient = FactoryGirl.create(:player)
-      ActionMailer::Base.deliveries.clear
-
       message = FactoryGirl.create(:message, sender: sender, recipient: recipient)
 
-      ActionMailer::Base.deliveries.size.should == 1
+      expect(ActionMailer::Base.deliveries.size).to eq(1)
     end
   end
 

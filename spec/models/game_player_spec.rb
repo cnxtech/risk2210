@@ -6,13 +6,12 @@ describe GamePlayer do
     it "should set the default starting units and energy for the faction" do
       random_faction = Faction.random
 
-      game_player = FactoryGirl.build(:game_player, faction_id: random_faction.id, starting_territory_count: 12)
-      game_player.save
+      game_player = FactoryGirl.create(:game_player, faction_id: random_faction.id, starting_territory_count: 12)
 
-      game_player.starting_territory_count.should == 12
-      game_player.territory_count.should == 12
-      game_player.energy = random_faction.min_energy
-      game_player.units = random_faction.min_units
+      expect(game_player.starting_territory_count).to eq(12)
+      expect(game_player.territory_count).to eq(12)
+      expect(game_player.energy).to eq(random_faction.min_energy)
+      expect(game_player.units).to eq(random_faction.min_units)
     end
   end
 
@@ -22,7 +21,7 @@ describe GamePlayer do
 
       game_player = FactoryGirl.create(:game_player, handle: "Payton", player: nil)
 
-      game_player.player.should == player
+      expect(game_player.player).to eq(player)
     end
   end
 
@@ -31,12 +30,12 @@ describe GamePlayer do
       player = FactoryGirl.create(:player, facebook_image_url: "http://example.com", image_source: Player::ImageSource::Facebook)
       game_player = FactoryGirl.create(:game_player, player: player)
 
-      game_player.profile_image_path.should == player.profile_image_path
+      expect(game_player.profile_image_path).to eq(player.profile_image_path)
     end
     it "should return the default profile image if there is no player" do
       game_player = FactoryGirl.create(:game_player, player: nil)
 
-      game_player.profile_image_path.should == "http://risk2210.net/assets/default_avatar.png"
+      expect(game_player.profile_image_path).to eq("http://risk2210.net/assets/default_avatar.png")
     end
   end
 
@@ -47,7 +46,7 @@ describe GamePlayer do
       game_player = FactoryGirl.build(:game_player)
       game_player.continent_ids = [continent1.id, continent2.id]
 
-      game_player.continent_bonus.should == continent1.bonus + continent2.bonus
+      expect(game_player.continent_bonus).to eq(continent1.bonus + continent2.bonus)
     end
   end
 
@@ -55,7 +54,7 @@ describe GamePlayer do
     it "should multiply the number of colony influence cards by 3" do
       game_player = FactoryGirl.build(:game_player, colony_influence: 3)
 
-      game_player.colony_influence_bonus.should == 9
+      expect(game_player.colony_influence_bonus).to eq(9)
     end
   end
 
@@ -66,7 +65,7 @@ describe GamePlayer do
       game_player = FactoryGirl.build(:game_player, colony_influence: 2, territory_count: 30)
       game_player.continent_ids = [continent1.id, continent2.id]
 
-      game_player.final_score.should == 30 + continent1.bonus + continent2.bonus + (2 * 3)
+      expect(game_player.final_score).to eq(30 + continent1.bonus + continent2.bonus + (2 * 3))
     end
   end
 
@@ -75,14 +74,14 @@ describe GamePlayer do
       faction = Faction.random
       game_player = FactoryGirl.build(:game_player, faction: faction)
 
-      game_player.starting_space_stations.should == faction.space_stations
+      expect(game_player.starting_space_stations).to eq(faction.space_stations)
     end
   end
 
   describe "hex_color" do
     it "should return the hex color for the color passed in" do
       GamePlayer::COLORS.each do |color|
-        GamePlayer.hex_color(color).blank?.should == false
+        expect(GamePlayer.hex_color(color)).to_not be_blank
       end
     end
   end
