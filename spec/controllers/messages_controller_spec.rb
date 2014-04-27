@@ -14,18 +14,18 @@ describe MessagesController do
       it "should list all messages sent" do
         get :index, filter: "sent"
 
-        assigns(:messages).include?(received_message).should == false
-        assigns(:messages).include?(sent_message).should == true
-        response.should be_success
+        expect(assigns(:messages)).to_not include(received_message)
+        expect(assigns(:messages)).to include(sent_message)
+        expect(response).to be_success
       end
     end
     context "no filter" do
       it "should list all messages received" do
         get :index
 
-        assigns(:messages).include?(received_message).should == true
-        assigns(:messages).include?(sent_message).should == false
-        response.should be_success
+        expect(assigns(:messages)).to include(received_message)
+        expect(assigns(:messages)).to_not include(sent_message)
+        expect(response).to be_success
       end
     end
   end
@@ -37,14 +37,14 @@ describe MessagesController do
 
         get :new, recipient: other_player.slug
 
-        assigns(:message).recipient.should == other_player
+        expect(assigns(:message).recipient).to eq(other_player)
       end
     end
     context "no recipient present" do
       it "should have a blank message object" do
         get :new
 
-        assigns(:message).should_not be_nil
+        expect(assigns(:message)).to_not be_nil
       end
     end
   end
@@ -56,16 +56,16 @@ describe MessagesController do
           post :create, message: {recipient_id: other_player.id, body: Faker::Lorem.sentences.join(". "), subject: Faker::Lorem::sentence}
         }.to change(Message, :count).by(1)
 
-        response.should redirect_to messages_path
-        flash.notice.should_not be_nil
+        expect(response).to redirect_to messages_path
+        expect(flash.notice).to_not be_nil
       end
     end
     context "failure" do
       it "should reload the page" do
         post :create, message: {recipient_id: other_player.id, body: "", subject: ""}
 
-        response.should render_template(:new)
-        flash.now[:alert].should_not be_nil
+        expect(response).to render_template(:new)
+        expect(flash.now[:alert]).to_not be_nil
       end
     end
   end

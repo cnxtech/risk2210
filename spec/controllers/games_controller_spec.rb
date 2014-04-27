@@ -13,9 +13,9 @@ describe GamesController do
 
       get :new
 
-      assigns(:game).should_not be_nil
-      assigns(:game).game_players.first.handle.should == player1.handle
-      assigns(:game).game_players.second.should_not be_nil
+      expect(assigns(:game)).to_not be_nil
+      expect(assigns(:game).game_players.first.handle).to eq(player1.handle)
+      expect(assigns(:game).game_players.second).to_not be_nil
     end
   end
 
@@ -30,17 +30,17 @@ describe GamesController do
 
       post :create, game: {game_players_attributes: game_players, map_ids: map_ids, location: "Chicago"}
 
-      response.should redirect_to game_path(assigns(:game))
-      assigns(:game).creator.should == player1
-      flash[:notice].should_not be_nil
+      expect(response).to redirect_to game_path(assigns(:game))
+      expect(assigns(:game).creator).to eq(player1)
+      expect(flash[:notice]).to_not be_nil
     end
     it "should reload the page if there were any errors" do
       login player1
 
       post :create, game: {game_players_attributes: {}, map_ids: [], location: "Chicago"}
 
-      response.should render_template :new
-      flash.now[:alert].should_not be_nil
+      expect(response).to render_template :new
+      expect(flash.now[:alert]).to_not be_nil
     end
   end
 
@@ -50,34 +50,34 @@ describe GamesController do
 
       get :show, id: game
 
-      assigns(:game).should == game
-      response.should be_success
+      expect(assigns(:game)).to eq(game)
+      expect(response).to be_success
     end
   end
 
   describe "destroy" do
-    before do
-      @game = FactoryGirl.create(:game, creator_id: player1.id)
-    end
+
+    let!(:game) { FactoryGirl.create(:game, creator_id: player1.id) }
+
     it "should remove the game if the current player is the creator" do
       login player1
 
       expect{
-        delete :destroy, id: @game.id
+        delete :destroy, id: game.id
       }.to change(Game, :count).by(-1)
 
-      response.should redirect_to root_path
-      flash.notice.should_not be_nil
+      expect(response).to redirect_to root_path
+      expect(flash.notice).to_not be_nil
     end
     it "should display an alert if the current player is not the creator" do
       login player2
 
       expect{
-        delete :destroy, id: @game.id
+        delete :destroy, id: game.id
       }.to change(Game, :count).by(0)
 
-      response.should redirect_to root_path
-      flash.alert.should_not be_nil
+      expect(response).to redirect_to root_path
+      expect(flash.alert).to_not be_nil
     end
   end
 
@@ -87,67 +87,67 @@ describe GamesController do
 
       get :results, id: game
 
-      assigns(:game).should == game
-      response.should be_success
+      expect(assigns(:game)).to eq(game)
+      expect(response).to be_success
     end
     it "should redirect to the game#show if the game isn't complete" do
       game = FactoryGirl.create(:game, completed: false)
 
       get :results, id: game
 
-      response.should redirect_to game_path(game)
+      expect(response).to redirect_to game_path(game)
     end
   end
 
   describe "update" do
-    before do
-      login player1
-      @game = FactoryGirl.create(:game, creator_id: player1.id, current_year: 1)
-      @game_player = @game.game_players.first
-      @game_player2 = @game.game_players.second
-    end
+    let(:game) { FactoryGirl.create(:game, creator_id: player1.id, current_year: 1) }
+    let(:game_player) { game.game_players.first }
+    let(:game_player2) { game.game_players.second }
 
     it "should display an alert if the current player is not the creator" do
       login player2
 
-      put :update, id: @game.id, event: "start_year", payload: {}
+      put :update, id: game.id, event: "start_year", payload: {}
 
-      response.should redirect_to root_path
-      flash.alert.should_not be_nil
+      expect(response).to redirect_to root_path
+      expect(flash.alert).to_not be_nil
     end
 
     context "start_year event" do
+      before {login player1}
       it "triggers the start the next year in the game" do
-        put :update, id: @game.id, event: "start_year", payload: {"#{@game_player.id}" => "2", "#{@game_player2.id}" => "1"}
+        put :update, id: game.id, event: "start_year", payload: {"#{game_player.id}" => "2", "#{game_player2.id}" => "1"}
 
-        response.should be_success
-        @game.reload.current_year.should == 2
-        @game_player.reload.turn_order.should == 2
-        @game_player2.reload.turn_order.should == 1
+        expect(response).to be_success
+        expect(game.reload.current_year).to eq(2)
+        expect(game_player.reload.turn_order).to eq(2)
+        expect(game_player2.reload.turn_order).to eq(1)
       end
       it "returns error messages if the new year fails to start" do
-        put :update, id: @game.id, event: "start_year", payload: {"#{@game_player.id}" => "2", "#{@game_player2.id}" => "2"}
+        put :update, id: game.id, event: "start_year", payload: {"#{game_player.id}" => "2", "#{game_player2.id}" => "2"}
 
-        response.should_not be_success
-        game = JSON.parse(response.body, symbolize_names: true)
-        game[:base].include?("Every player must have a unique starting turn order.").should == true
-        @game.reload.current_year.should == 1
-        @game_player.reload.turn_order.should == 1
-        @game_player2.reload.turn_order.should == 2
+        json = JSON.parse(response.body, symbolize_names: true)
+
+        expect(json[:base]).to include("Every player must have a unique starting turn order.")
+        expect(response).to_not be_success
+        expect(game.reload.current_year).to eq(1)
+        expect(game_player.reload.turn_order).to eq(1)
+        expect(game_player2.reload.turn_order).to eq(2)
       end
     end
 
     context "end_game event" do
       it "should update the game player's colony influence" do
-        put :update, id: @game.id, event: "end_game", payload: {"#{@game_player.id}" => "2", "#{@game_player2.id}" => "3"}
+        login player1
 
-        response.should be_success
-        @game.reload.completed?.should == true
-        @game_player.reload.colony_influence.should == 2
-        @game_player2.reload.colony_influence.should == 3
+        put :update, id: game.id, event: "end_game", payload: {"#{game_player.id}" => "2", "#{game_player2.id}" => "3"}
+
+        expect(response).to be_success
+        expect(game.reload).to be_completed
+        expect(game_player.reload.colony_influence).to eq(2)
+        expect(game_player2.reload.colony_influence).to eq(3)
       end
     end
-
   end
 
 end

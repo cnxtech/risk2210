@@ -4,25 +4,29 @@ describe Faction do
 
   describe "starting_resources" do
     it "should return an array of starting resources" do
-      Faction.random.starting_resources.is_a?(Array).should == true
+      faction = Faction.random
+      expect(faction.starting_resources).to be_a(Array)
     end
   end
 
   describe "fusion_conservancy?" do
     it "should return true if the faction is The Fusion Conservancy" do
-      Faction.where(name: "The Fusion Conservancy").first.fusion_conservancy?.should == true
+      faction = Faction.where(name: "The Fusion Conservancy").first
+      expect(faction).to be_fusion_conservancy
     end
   end
 
   describe "mega_corp?" do
     it "should return true if the faction is the MegaCorp" do
-      Faction.where(name: "MegaCorp").first.mega_corp?.should == true
+      faction = Faction.where(name: "MegaCorp").first
+      expect(faction).to be_mega_corp
     end
   end
 
   describe "default?" do
     it "should return true if the faction is Default" do
-      Faction.where(name: "Default").first.default?.should == true
+      faction = Faction.where(name: "Default").first
+      expect(faction).to be_default
     end
   end
 
@@ -31,8 +35,8 @@ describe Faction do
       default_faction = Faction.where(name: "Default")
       factions = Faction.non_default
 
-      factions.size.should == 11
-      factions.include?(default_faction).should == false
+      expect(factions.size).to eq(11)
+      expect(factions).to_not include(default_faction)
     end
   end
 
@@ -40,7 +44,7 @@ describe Faction do
     it "should return a random faction" do
       faction = Faction.random
 
-      faction.is_a?(Faction).should == true
+      expect(faction).to be_a(Faction)
     end
   end
 
@@ -48,9 +52,9 @@ describe Faction do
     it "should be 4 if faction is The Fusion Conservancy otherwise it should be 3" do
       Faction.all.each do |faction|
         if faction.fusion_conservancy?
-          faction.min_energy.should == 4
+          expect(faction.min_energy).to eq(4)
         else
-          faction.min_energy.should == 3
+          expect(faction.min_energy).to eq(3)
         end
       end
     end
@@ -60,9 +64,9 @@ describe Faction do
     it "should be 4 if faction is MegaCorp otherwise it should be 3" do
       Faction.all.each do |faction|
         if faction.mega_corp?
-          faction.min_units.should == 4
+          expect(faction.min_units).to eq(4)
         else
-          faction.min_units.should == 3
+          expect(faction.min_units).to eq(3)
         end
       end
     end
@@ -72,7 +76,7 @@ describe Faction do
     it "should downcase the name and replace spaces" do
       faction = Faction.where(name: "Primus Oceanus").first
 
-      faction.image_name_format.should == "primus_oceanus"
+      expect(faction.image_name_format).to eq("primus_oceanus")
     end
   end
 
