@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem 'rails', '3.2.17'
+gem 'rails', '3.2.18'
 gem 'strong_parameters', '~> 0.2.2'
 
 group :assets do
@@ -26,7 +26,7 @@ gem 'eco', '~> 1.0.0'
 ## Mongo DB
 gem 'mongoid', '~> 3.1.6'
 gem 'mongoid_slug', '~> 3.2.1'
-gem 'geocoder', '~> 1.1.9'
+gem 'geocoder', '~> 1.2.0'
 
 ## Authentication
 gem 'omniauth', '~> 1.2.1'
@@ -34,12 +34,12 @@ gem 'omniauth-facebook', '~> 1.6.0'
 gem 'bcrypt-ruby', '~> 3.1.5'
 
 ## Operations
-gem 'passenger', '4.0.37'
+gem 'passenger', '4.0.42'
 gem 'exception_notification', '~> 4.0.1', group: [:production]
-gem 'hashie', '~> 2.1.0'
+gem 'hashie', '~> 2.1.1'
 
 group :development do
-  gem 'capistrano', '~> 3.1.0', require: false
+  gem 'capistrano', '~> 3.2.1', require: false
   gem 'capistrano-rails', '~> 1.1.1', require: false
   gem 'capistrano-bundler', '~> 1.1.1', require: false
 end
