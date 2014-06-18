@@ -18,4 +18,6 @@ class Continent
 
   scope :ordered, order_by(type: "asc").order_by(name: "asc")
 
+  validates_presence_of :name, :type, :bonus, :color
+
 end

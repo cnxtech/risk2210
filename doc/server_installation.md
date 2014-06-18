@@ -1,7 +1,7 @@
 # Server Installation Instructions
 
 ### Install Ruby
-`curl -L https://raw.github.com/nick-desteffen/ruby-bootstrap/master/bootstrap_ruby_193.sh | sudo bash`
+`curl -L https://raw.github.com/nick-desteffen/ruby-bootstrap/master/bootstrap_ruby_210.sh | sudo bash`
 
 ### Install MongoDB
 `curl -L https://raw.github.com/nick-desteffen/mongodb-bootstrap/master/bootstrap_mongodb.sh | sudo bash`

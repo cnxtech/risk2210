@@ -43,13 +43,21 @@ Mongoid::Scribe.configure do
     field :energy
     field :territory_count
     field :space_stations
-    field :continent_ids, values: ->(game_player_stat) { game_player_stat.game_player.game.maps.collect(&:continents).flatten.sort_by(&:name) }, label: :name
+    field :continent_ids, label: :name, values: ->(game_player_stat) { game_player_stat.game_player.game.maps.collect(&:continents).flatten.sort_by(&:name) }
   end
 
   form_configuration_for Turn do
     field :game_player_id, label: :handle, values: ->(turn) { turn.game.game_players.all }
     field :order
     field :year
+  end
+
+  form_configuration_for Continent do
+    field :name
+    field :type, values: Continent::TYPES
+    field :color
+    field :bonus
+    field :map_id, label: :name
   end
 
   index_configuration_for Player do

@@ -45,6 +45,13 @@ describe Expansions::FactionsController do
         expect(json[:slug]).to eq(random_faction.slug)
       end
     end
+    context "not found" do
+      it "should return a 404" do
+        get :show, id: "foo"
+
+        expect(response.status).to eq(404)
+      end
+    end
   end
 
 end
