@@ -1,4 +1,4 @@
-<% unless logged_in? %>
+<% unless current_player %>
   <div class="modal fade sign-in" id="login-modal" style="display: none;">
     <%= simple_form_for :session, url: create_session_path, html: {class: 'form-vertical'} do |f| %>
       <div class="modal-body">

@@ -7,7 +7,7 @@
       <div class="timestamp">Sent on: <%= format_timestamp(message.created_at) %></div>
       <div class="from">From: <%= link_to message.sender.name, player_path(message.sender) %></div>
       <p class="body"><%= format_markdown(message.body) %></p>
-      <div class="reply"><%= message_link(message.sender, "Reply") %></div>
+      <div class="reply"><%= message_link(current_player, message.sender, "Reply") %></div>
     </div>
   <% end %>
 </div>

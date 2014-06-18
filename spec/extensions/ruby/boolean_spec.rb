@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe TrueClass do
   describe "yes_or_no" do
     it "should return Yes" do

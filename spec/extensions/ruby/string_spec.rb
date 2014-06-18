@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe String do
 
   describe "to_boolean" do

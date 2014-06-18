@@ -1,39 +1,22 @@
-ENV["RAILS_ENV"] ||= 'test'
-
-require File.expand_path("../../config/environment", __FILE__)
-require 'rspec/rails'
-require 'database_cleaner'
-
-Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
-
 RSpec.configure do |config|
-  config.infer_base_class_for_anonymous_controllers = false
-  config.render_views
+  config.filter_run :focus
+  config.run_all_when_everything_filtered = true
+
+  if config.files_to_run.one?
+    config.default_formatter = 'doc'
+  end
+
+  config.profile_examples = 10
   config.order = :random
-  config.include Mongoid::Matchers
+  Kernel.srand config.seed
 
-  config.before(:suite) do
-    load_factions
-    load_maps
-    DatabaseCleaner.strategy = :truncation, {except: ["factions", "maps", "continents"]}
-    DatabaseCleaner.orm = "mongoid"
+  config.expect_with :rspec do |expectations|
+    expectations.syntax = :expect
   end
 
-  config.before(:each) do
-    DatabaseCleaner.clean
-    Mongoid::IdentityMap.clear
+  config.mock_with :rspec do |mocks|
+    mocks.syntax = :expect
+    mocks.verify_partial_doubles = true
   end
 
-end
-
-def login(player)
-  session[:player_id] = player.id
-end
-
-def load_factions
-  load("#{Rails.root}/db/factions.rb")
-end
-
-def load_maps
-  load("#{Rails.root}/db/maps.rb")
 end

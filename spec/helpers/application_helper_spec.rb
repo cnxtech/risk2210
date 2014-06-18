@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe ApplicationHelper do
 
@@ -74,19 +74,6 @@ describe ApplicationHelper do
     end
     it "should just return a default title if no instance variable has been set" do
       expect(helper.page_title).to eq("Risk Tracker | Risk 2210 A.D.")
-    end
-  end
-
-  describe "logged_in?" do
-    it "should be true if there is a current player" do
-      allow(helper).to receive(:current_player).and_return(FactoryGirl.create(:player))
-
-      expect(helper).to be_logged_in
-    end
-    it "should return false if there is no current user logged in" do
-      allow(helper).to receive(:current_player).and_return(nil)
-
-      expect(helper).to_not be_logged_in
     end
   end
 

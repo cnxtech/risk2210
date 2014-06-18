@@ -52,10 +52,6 @@ module ApplicationHelper
     return "Risk Tracker | Risk 2210 A.D."
   end
 
-  def logged_in?
-    current_player.present?
-  end
-
   def format_markdown(string)
     return "" if string.blank?
     markdown_renderer = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, space_after_headers: true)

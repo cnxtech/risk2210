@@ -4,7 +4,7 @@
 
   <h3>Reply (Top Level)</h3>
   <div class="comment-form">
-    <% if logged_in? %>
+    <% if current_player %>
       <%= simple_form_for :comment, url: forum_topic_comments_path(@forum, @topic), html: {class: 'form-vertical'} do |f| %>
         <%= f.input :body, as: :text, label: false, input_html: {class: 'comment-text'} %>
         <%= f.submit "Comment", class: 'btn btn-primary' %>

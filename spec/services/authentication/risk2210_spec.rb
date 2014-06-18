@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Authentication::Risk2210 do
   include ActiveModel::Lint::Tests

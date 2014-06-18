@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Array do
 
   describe "except" do

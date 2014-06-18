@@ -11,10 +11,10 @@ module PlayersHelper
     return image_tag(image_path, width: "#{pixels}px;", alt: player.handle)
   end
 
-  def nearby_players
+  def nearby_players(current_player)
     return if current_player.nil?
     if current_player.location.blank?
-      nearby_players = []
+      other_players = []
     else
       begin
         nearby_players = Player.near(current_player.location, 50).except(current_player)
@@ -22,10 +22,10 @@ module PlayersHelper
         nearby_players = []
       end
     end
-    render partial: "players/nearby_players", locals: {nearby_players: nearby_players}
+    render partial: "players/nearby_players", locals: {nearby_players: nearby_players, current_player: current_player}
   end
 
-  def message_link(player, label="Message")
+  def message_link(current_player, player, label="Message")
     return if current_player.nil?
     return link_to(content_tag(:i, "", class: "icon-envelope") + " #{label}", new_message_path(recipient: player.slug), class: "btn btn-mini btn-info")
   end

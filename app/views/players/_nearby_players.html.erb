@@ -13,7 +13,7 @@
                 <%= link_to(player.slug, player_path(player)) %>
               </td>
               <td>
-                <%= message_link(player) %>
+                <%= message_link(current_player, player) %>
               </td>
             </tr>
           <% end %>

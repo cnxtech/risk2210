@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe States do
 
   describe "decode" do
