@@ -16,7 +16,7 @@ class Continent
 
   belongs_to :map, index: true
 
-  scope :ordered, order_by(type: "asc").order_by(name: "asc")
+  scope :ordered, ->() { order_by(type: "asc").order_by(name: "asc") }
 
   validates_presence_of :name, :type, :bonus, :color
 

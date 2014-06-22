@@ -22,12 +22,12 @@ class Comment
   private
 
   def update_topic_stats
-    topic.inc(:comment_count, 1)
+    topic.inc(comment_count: 1)
     topic.update_attribute(:last_comment_at, Time.now)
   end
 
   def decrement_comment_counter
-    topic.inc(:comment_count, -1)
+    topic.inc(comment_count: -1)
   end
 
 end

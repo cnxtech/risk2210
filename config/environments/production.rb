@@ -1,7 +1,9 @@
 Risk2210::Application.configure do
   config.cache_classes = true
+  config.eager_load = true
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
+  config.log_level = :info
 
   config.serve_static_assets = false
   config.assets.compress = true
@@ -14,6 +16,7 @@ Risk2210::Application.configure do
   config.action_mailer.perform_deliveries = true
   config.i18n.fallbacks = true
   config.active_support.deprecation = :notify
+  config.log_formatter = ::Logger::Formatter.new
 
   config.middleware.use ExceptionNotification::Rack, email: {
     sender_address:       Rails.configuration.settings.exception_notifier.sender,

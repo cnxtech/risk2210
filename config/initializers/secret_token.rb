@@ -1,1 +1,1 @@
-Risk2210::Application.config.secret_token = Rails.configuration.settings.secret_token
+Risk2210::Application.config.secret_key_base = Rails.configuration.settings.secret_token

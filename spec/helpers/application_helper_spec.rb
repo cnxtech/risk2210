@@ -9,7 +9,7 @@ describe ApplicationHelper do
 
       error_messages = helper.error_messages_for(player)
 
-      expect(error_messages).to match(/Email can&#x27;t be blank/)
+      expect(error_messages).to match(/Email can&#39;t be blank/)
       expect(error_messages).to match(/alert-heading/)
     end
   end
@@ -85,7 +85,7 @@ describe ApplicationHelper do
 
   describe "facebook_button" do
     it "should return a button to authenicate via Facebook" do
-      expect(helper.facebook_button).to eq("<a href=\"/login/facebook\" class=\"btn btn-inverse \"><i class=\"icon-facebook-sign icon-large\"></i> Login with Facebook</a>")
+      expect(helper.facebook_button).to eq("<a class=\"btn btn-inverse \" href=\"/login/facebook\"><i class=\"icon-facebook-sign icon-large\"></i> Login with Facebook</a>")
     end
   end
 

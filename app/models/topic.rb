@@ -19,7 +19,7 @@ class Topic
   accepts_nested_attributes_for :comments
 
   def increment_view_counter
-    inc(:view_count, 1)
+    inc(view_count: 1)
   end
 
 end

@@ -18,7 +18,7 @@ class Faction
 
   validates_presence_of :name, :classification, :starting_resources, :abilities
 
-  scope :non_default, ne(name: "Default")
+  scope :non_default, ->() { ne(name: "Default") }
 
   def starting_resources
     read_attribute(:starting_resources).split("\n")

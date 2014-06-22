@@ -120,7 +120,6 @@ describe Player do
       game_player = FactoryGirl.create(:game_player, handle: "Jack", player: nil)
 
       player = FactoryGirl.create(:player, handle: "Jack")
-
       expect(game_player.reload.player).to eq(player)
     end
   end

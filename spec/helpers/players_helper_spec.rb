@@ -52,7 +52,7 @@ describe PlayersHelper do
       player = FactoryGirl.create(:player)
       other_player = FactoryGirl.create(:player)
 
-      expect(helper.message_link(player, other_player)).to eq "<a href=\"/messages/new?recipient=#{other_player.slug}\" class=\"btn btn-mini btn-info\"><i class=\"icon-envelope\"></i> Message</a>"
+      expect(helper.message_link(player, other_player)).to eq "<a class=\"btn btn-mini btn-info\" href=\"/messages/new?recipient=#{other_player.slug}\"><i class=\"icon-envelope\"></i> Message</a>"
     end
   end
 

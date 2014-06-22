@@ -69,7 +69,7 @@ class Player
   validates_inclusion_of :favorite_color, in: GamePlayer::COLORS, allow_blank: true
 
   ## Scopes
-  scope :public_profiles, where(public_profile: true).asc(:created_at)
+  scope :public_profiles, ->() { where(public_profile: true).asc(:created_at) }
 
   ## Facebook image size options
   ## square=50x50, small=50xVariable, normal=100xVariable, large=200xVariable

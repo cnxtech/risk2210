@@ -56,7 +56,7 @@ describe SessionsController do
     context "registration" do
       it "should authenticate a user via Facebook Connect" do
         expect{
-          get :authenticate_facebook
+          get :authenticate_facebook, provider: "facebook"
         }.to change(Player, :count).by(1)
 
         expect(response).to redirect_to new_game_path
@@ -68,7 +68,7 @@ describe SessionsController do
         player = Authentication::Facebook.new(OmniAuth.config.mock_auth[:facebook]).authenticate
 
         expect{
-          get :authenticate_facebook
+          get :authenticate_facebook, provider: "facebook"
         }.to change(Player, :count).by(0)
 
         expect(response).to redirect_to new_game_path
@@ -80,7 +80,7 @@ describe SessionsController do
         player = FactoryGirl.create(:player, email: "payton@dog.com")
 
         expect{
-          get :authenticate_facebook
+          get :authenticate_facebook, provider: "facebook"
         }.to change(Player, :count).by(0)
 
         expect(player.reload.uid).to_not be_nil

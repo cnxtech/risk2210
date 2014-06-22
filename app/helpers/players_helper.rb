@@ -14,7 +14,7 @@ module PlayersHelper
   def nearby_players(current_player)
     return if current_player.nil?
     if current_player.location.blank?
-      other_players = []
+      nearby_players = []
     else
       begin
         nearby_players = Player.near(current_player.location, 50).except(current_player)

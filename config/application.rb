@@ -5,9 +5,7 @@ require "action_mailer/railtie"
 require "sprockets/railtie"
 require 'bcrypt'
 
-if defined?(Bundler)
-  Bundler.require(*Rails.groups(assets: %w(development test)))
-end
+Bundler.require(*Rails.groups)
 
 module Risk2210
   class Application < Rails::Application
@@ -18,9 +16,6 @@ module Risk2210
     end
 
     config.encoding = "utf-8"
-    config.filter_parameters += [:password]
-
-    config.assets.enabled = true
     config.assets.version = '1.0'
 
     config.generators do |generator|
