@@ -1,23 +1,21 @@
 require 'rails_helper'
 
 describe Authentication::Risk2210 do
-  include ActiveModel::Lint::Tests
-  include Test::Unit::Assertions
 
-  def model
-    Authentication::Risk2210.new
-  end
+  # def model
+  #   Authentication::Risk2210.new
+  # end
 
-  describe "ActiveModel::Lint::Tests" do
-    it "should be an ActiveModel compliant object" do
-      test_to_key
-      test_to_param
-      test_to_partial_path
-      test_persisted?
-      test_model_naming
-      test_errors_aref
-    end
-  end
+  # describe "ActiveModel::Lint::Tests" do
+  #   it "should be an ActiveModel compliant object" do
+  #     test_errors_aref
+  #     test_model_naming
+  #     test_persisted?
+  #     test_to_key
+  #     test_to_param
+  #     test_to_partial_path
+  #   end
+  # end
 
   describe "authenticate" do
     it "should return nil if the session isn't valid" do

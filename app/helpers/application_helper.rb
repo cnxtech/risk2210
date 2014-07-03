@@ -24,8 +24,8 @@ module ApplicationHelper
 
     flash.each do |key, value|
       style_class = case key
-        when :notice ; "alert-success"
-        when :alert ; "alert-error"
+        when 'notice' ; "alert-success"
+        when 'alert'  ; "alert-error"
       end
       html += content_tag(:div, (content_tag(:a, "&times;".html_safe, close_link_options) + content_tag(:i, "", class: "icon-info-sign") + content_tag(:span, value, class: "flash-text")), class: "alert fade in #{style_class}")
     end

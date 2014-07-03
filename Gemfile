@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem 'rails', '4.0.6.rc2'
+gem 'rails', '4.1.4'
 
 ## Assets
 gem 'sass-rails', '~> 4.0.0'
@@ -22,7 +22,7 @@ gem 'ejs', '~> 1.1.1'
 gem 'eco', '~> 1.0.0'
 
 ## Mongo DB
-gem 'mongoid', '~> 4.0.0.rc2'
+gem 'mongoid', '~> 4.0.0'
 gem 'mongoid_slug', '~> 3.2.1'
 gem 'geocoder', '~> 1.2.2'
 
@@ -52,4 +52,4 @@ group :development, :test do
   gem 'pry-rails', '~> 0.3.2'
 end
 
-#gem 'mongoid_scribe', "~> 0.1.0"
+gem 'mongoid_scribe', '~> 0.2.0'

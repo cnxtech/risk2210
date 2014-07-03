@@ -15,4 +15,4 @@
 /tmp
 .DS_Store
 .idea/
-config/settings.yml
+config/secrets.yml

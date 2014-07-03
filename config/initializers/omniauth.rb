@@ -1,7 +1,7 @@
 Rails.application.config.middleware.use OmniAuth::Builder do
   provider :facebook,
-           Rails.configuration.settings.facebook.application_key,
-           Rails.configuration.settings.facebook.application_secret,
+           Rails.application.secrets.facebook['application_key'],
+           Rails.application.secrets.facebook['application_secret'],
            scope: 'publish_stream,offline_access,email,user_location,user_about_me'
 end
 

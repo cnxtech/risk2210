@@ -1,6 +1,6 @@
 class PlayerMailer < ActionMailer::Base
 
-  default from: Rails.configuration.settings.email.default_from
+  default from: Rails.application.secrets.email['default_from']
   layout "application_mailer"
 
   def welcome_email(player)

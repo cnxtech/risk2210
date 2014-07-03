@@ -3,6 +3,8 @@ require File.expand_path('../boot', __FILE__)
 require "action_controller/railtie"
 require "action_mailer/railtie"
 require "sprockets/railtie"
+require "active_model/railtie"
+require "rails/test_unit/railtie"
 require 'bcrypt'
 
 Bundler.require(*Rails.groups)
@@ -25,16 +27,14 @@ module Risk2210
       generator.helper      false
     end
 
-    config.settings = Hashie::Mash.new(YAML.load_file("#{Rails.root}/config/settings.yml"))[Rails.env]
-
     ActionMailer::Base.prepend_view_path "#{Rails.root}/app/mailer_views"
     ActionMailer::Base.smtp_settings = {
-      address:        config.settings.email.address,
-      port:           config.settings.email.port,
+      address:        Rails.application.secrets.email['address'],
+      port:           Rails.application.secrets.email['port'],
       authentication: :plain,
-      user_name:      config.settings.email.username,
-      password:       config.settings.email.password,
-      domain:         config.settings.email.domain,
+      user_name:      Rails.application.secrets.email['username'],
+      password:       Rails.application.secrets.email['password'],
+      domain:         Rails.application.secrets.email['domain'],
       enable_starttls_auto: true
     }
 

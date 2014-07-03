@@ -6,7 +6,7 @@ set :scm, :git
 set :format, :pretty
 set :log_level, :info
 set :pty, true
-set :linked_files, %w{config/settings.yml}
+set :linked_files, %w{config/secrets.yml}
 set :keep_releases, 5
 
 namespace :deploy do

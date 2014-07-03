@@ -33,8 +33,8 @@ I've got a script to install Ruby 2.0.0 on Ubuntu, just follow the instructions 
 Use [RVM](http://rvm.io) or [rbenv](https://github.com/sstephenson/rbenv/)
 
 ## Project Setup
-#### settings.yml
-Copy the **config/settings.yml.example** file to **config/settings.yml** and update it to include your own email config, Facebook auth, exception notifier, and secret token values.
+#### secrets.yml
+Copy the **config/secrets.yml.example** file to **config/secrets.yml** and update it to include your own email config, Facebook auth, exception notifier, and secret token values.
 
 #### Database
 Seed it:  

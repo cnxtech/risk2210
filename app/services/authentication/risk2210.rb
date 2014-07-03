@@ -1,24 +1,11 @@
 module Authentication
   class Risk2210
-    extend ActiveModel::Naming
-    extend ActiveModel::Translation
-    include ActiveModel::Conversion
-    include ActiveModel::Validations
+    include ActiveModel::Model
 
     attr_accessor :email, :password, :remember_me
 
     validates_presence_of :email
     validates_presence_of :password
-
-    def initialize(attributes = {})
-       attributes.each do |name, value|
-         public_send("#{name}=", value)
-       end
-     end
-
-    def persisted?
-      false
-    end
 
     def authenticate
       return nil unless valid?
@@ -31,7 +18,7 @@ module Authentication
       return nil
     end
 
-private
+  private
 
     def player
       @player ||= Player.where(email: email).first

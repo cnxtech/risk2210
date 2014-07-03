@@ -12,7 +12,7 @@
         <%= f.input :location %>
         <%= f.input :number_of_years, collection: (5..10), include_blank: false %>
         <%= f.input :notes, as: :text, input_html: {rows: 3} %>
-        <%= f.association :maps, as: :check_boxes, collection: Map.all %>
+        <%= f.association :maps, as: :check_boxes, collection: Map.alphabetical %>
       </div>
       <div class="span3">
         <div id="game-players-setup">

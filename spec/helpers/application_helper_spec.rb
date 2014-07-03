@@ -21,14 +21,14 @@ describe ApplicationHelper do
       expect(helper.flash_messages).to be_nil
     end
     it "builds out error flash messages with a close button and error class" do
-      flash_messages = {alert: "Something went wrong"}
+      flash_messages = {'alert' => "Something went wrong"}
       allow(helper).to receive(:flash).and_return(flash_messages)
 
       expect(helper.flash_messages).to match(/alert-error/)
       expect(helper.flash_messages).to match(/Something went wrong/)
     end
     it "builds out error flash messages with a close button and error class" do
-      flash_messages = {notice: "Something went right"}
+      flash_messages = {'notice' => "Something went right"}
       allow(helper).to receive(:flash).and_return(flash_messages)
 
       expect(helper.flash_messages).to match(/alert-success/)

@@ -1,5 +1,17 @@
 class PlayerSerializer < ActiveModel::Serializer
+  include SerializableId
 
-  attributes :id, :handle, :first_name, :last_name, :email, :bio, :city, :state, :zip_code, :slug, :website, :profile_image_path
+  attributes :id,
+             :handle,
+             :first_name,
+             :last_name,
+             :email,
+             :bio,
+             :city,
+             :state,
+             :zip_code,
+             :slug,
+             :website,
+             :profile_image_path
 
 end

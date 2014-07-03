@@ -13,4 +13,6 @@ class Map
 
   index slug: 1
 
+  scope :alphabetical, ->() { asc(:name) }
+
 end

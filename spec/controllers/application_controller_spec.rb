@@ -30,7 +30,7 @@ describe ApplicationController do
 
       get :index, player_id: player.id
 
-      expect(session[:player_id]).to eq(player.id)
+      expect(session[:player_id]).to eq(player.id.to_s)
       expect(response).to redirect_to("/")
       expect(cookies.signed[:remember_me_token]).to eq(player.remember_me_token)
       expect(flash.notice).to eq("Welcome!")

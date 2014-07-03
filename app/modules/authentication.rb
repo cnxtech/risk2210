@@ -60,7 +60,7 @@ module Authentication
 
     cookies.signed[:remember_me_token] = {value: player.remember_me_token, expires: 1.month.from_now} if remember_me
 
-    session[:player_id] = player.id
+    session[:player_id] = player.id.to_s
     redirect_back_or_default(path, notice: notice)
   end
 
