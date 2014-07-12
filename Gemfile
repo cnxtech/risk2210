@@ -24,7 +24,7 @@ gem 'eco', '~> 1.0.0'
 ## Mongo DB
 gem 'mongoid', '~> 4.0.0'
 gem 'mongoid_slug', '~> 3.2.1'
-gem 'geocoder', '~> 1.2.2'
+gem 'geocoder', '~> 1.2.3'
 
 ## Authentication
 gem 'omniauth', '~> 1.2.1'
@@ -34,7 +34,6 @@ gem 'bcrypt', '~> 3.1.7'
 ## Operations
 gem 'passenger', '4.0.45'
 gem 'exception_notification', '~> 4.0.1', group: [:production]
-gem 'hashie', '~> 2.1.1'
 
 group :development do
   gem 'capistrano', '~> 3.2.1', require: false
