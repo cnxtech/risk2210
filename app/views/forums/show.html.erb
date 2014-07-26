@@ -1,23 +1,25 @@
-<table class="table table-bordered table-striped">
-  <thead>
-    <tr>
-      <th>Subject</th>
-      <th>Comments</th>
-      <th>Views</th>
-      <th>Last post</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @topics.each do |topic| %>
+<div class='table-wrapper'>
+  <table class="table table-bordered table-striped">
+    <thead>
       <tr>
-        <td><%= link_to topic.subject, forum_topic_path(@forum, topic) %></td>
-        <td><span class="badge badge-success"><%= topic.comment_count %></span></td>
-        <td><span class="badge badge-error"><%= topic.view_count %></span></td>
-        <td><%= format_timestamp(topic.comments.last.created_at) %></td>
+        <th>Subject</th>
+        <th>Comments</th>
+        <th>Views</th>
+        <th>Last post</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @topics.each do |topic| %>
+        <tr>
+          <td><%= link_to topic.subject, forum_topic_path(@forum, topic) %></td>
+          <td><span class="badge badge-success"><%= topic.comment_count %></span></td>
+          <td><span class="badge badge-error"><%= topic.view_count %></span></td>
+          <td><%= format_timestamp(topic.comments.last.created_at) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
 <h2>New topic</h2>
 <%= simple_form_for @topic, url: forum_topics_path(@forum), html: {class: 'form-vertical well'} do |f| %>
