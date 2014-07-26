@@ -1,6 +1,6 @@
 <div class="well">
   <h1>Risk 2210 A.D. Expansions</h1>
-  <p>Listed below are a bunch of expansions for Risk 2210 A.D. I use <%= link_to "Artscow", "http://www.artscow.com/", target: "_blank" %> for printing the cards and <%= link_to "Print & Play", "http://printplaygames.com/", target: "_blank" %> for the custom board prints.</p>
+  <p>Listed below are a bunch of expansions for Risk 2210 A.D. I use <%= link_to "Artscow", "http://www.artscow.com/?Ref=1185504", target: "_blank" %> for printing the cards and <%= link_to "Print & Play Productions", "http://printplaygames.com/", target: "_blank" %> for the custom board prints.</p>
 
   <h3>Maps</h3>
   <%= link_to("Antarctica", expansions_antarctica_path) %><br>
@@ -25,3 +25,8 @@
   <%= link_to("Galactic Risk", expansions_galactic_path) %><br>
   <%= link_to("Invasion of the Giant Amoebas", expansions_amoebas_path) %><br>
 </div>
+
+<% content_for :sidebar do %>
+  <p><%= link_to image_tag("artscow.png"), "http://www.artscow.com/?Ref=1185504", target: "_blank" %></p>
+  <p class="link"><%= link_to "Print & Play Productions", "http://printplaygames.com/", target: "_blank" %></p>
+<% end %>
