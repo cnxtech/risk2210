@@ -13,5 +13,5 @@
   </div>
 </div>
 <div class="nested-comments">
-  <%= render partial: "comments/comment", :collection => comment.comments %>
+  <%= render partial: "comments/comment", collection: comment.comments.asc(:created_at) %>
 </div>

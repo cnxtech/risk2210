@@ -63,6 +63,7 @@ Mongoid::Scribe.configure do
   index_configuration_for Player do
     column :handle
     column :email, value: ->(player) { "<a href='mailto:#{player.email}'>#{player.email}</a>".html_safe }
+    column :location
     column :favorite_color, value: ->(player) { "<span style='color: #{GamePlayer.hex_color(player.favorite_color)}'>#{player.favorite_color}</span>".html_safe }
   end
 
@@ -110,6 +111,14 @@ Mongoid::Scribe.configure do
     column :starting_resources, value: ->(faction) { faction.starting_resources.join("<br />").html_safe }
     column :official, value: ->(faction) { faction.official?.yes_or_no }
     column :space_stations
+  end
+
+  index_configuration_for Message do
+    column :created_at
+    column :subject
+    column :body, value: ->(message) { message.body.truncate(160) }
+    column :sender, value: ->(message) { message.sender.slug }
+    column :recipient, value: ->(message) { message.recipient.slug }
   end
 
 end

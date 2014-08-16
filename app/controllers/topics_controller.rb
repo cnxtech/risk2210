@@ -12,7 +12,7 @@ class TopicsController < ApplicationController
       @topic.increment_view_counter
       topics_viewed << @topic.id
     end
-    @comments = @topic.comments
+    @comments = @topic.comments.asc(:created_at)
   end
 
   def create

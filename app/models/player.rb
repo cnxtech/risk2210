@@ -109,6 +109,7 @@ class Player
       @location = "#{@location}, " if city.present? && state.present?
       @location = "#{@location}#{state}" if state.present?
       @location = "#{@location} #{zip_code}" if zip_code.present?
+      @location
     end
   end
 
