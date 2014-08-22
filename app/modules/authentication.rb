@@ -15,6 +15,8 @@ module Authentication
       end
     rescue Mongoid::Errors::DocumentNotFound
       nil
+    rescue Moped::Errors::QueryFailure
+      logout
     end
   end
 
