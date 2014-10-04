@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem 'rails', '4.1.5'
+gem 'rails', '4.1.6'
 
 ## Assets
 gem 'sass-rails', '~> 4.0.0'
@@ -51,4 +51,4 @@ group :development, :test do
   gem 'pry-rails', '~> 0.3.2'
 end
 
-gem 'mongoid_scribe', '~> 0.2.0'
+gem 'mongoid_scribe', github: "nick-desteffen/mongoid-scribe"

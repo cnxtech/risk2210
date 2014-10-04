@@ -4,7 +4,6 @@ class CommentsController < ApplicationController
 
   before_filter :find_forum
   before_filter :find_topic
-  before_filter :add_topic_id_to_params
   before_filter :login_required
 
   def create
@@ -49,10 +48,6 @@ private
 
   def find_topic
     @topic = Topic.find(params[:topic_id])
-  end
-
-  def add_topic_id_to_params
-    params[:comment].merge!(topic_id: @topic.slug) if params[:comment]
   end
 
   def comment_params

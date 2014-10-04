@@ -60,6 +60,12 @@ Mongoid::Scribe.configure do
     field :map_id, label: :name
   end
 
+  form_configuration_for Comment do
+    field :player_id, label: :name
+    field :commentable_id, label: :commentable_label
+    field :body, type: :textarea
+  end
+
   index_configuration_for Player do
     column :handle
     column :email, value: ->(player) { "<a href='mailto:#{player.email}'>#{player.email}</a>".html_safe }

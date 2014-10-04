@@ -31,9 +31,14 @@ describe Comment do
     end
     it "should return the commentable's topic if it is a comment" do
       comment = FactoryGirl.create(:topic_comment, commentable: topic)
-      second_comment = FactoryGirl.create(:comment_comment, commentable: comment, topic_id: topic.id)
+      second_comment = FactoryGirl.create(:comment_comment, commentable: comment)
 
       expect(second_comment.topic).to eq(topic)
+    end
+    it "should return nil if the parent is nil" do
+      comment = FactoryGirl.create(:base_comment, commentable: nil)
+
+      expect(comment.topic).to be_nil
     end
   end
 

@@ -22,4 +22,8 @@ class Topic
     inc(view_count: 1)
   end
 
+  def commentable_label
+    "Topic - #{comments.first.body.truncate(30)}"
+  end
+
 end
