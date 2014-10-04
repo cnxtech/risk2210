@@ -51,4 +51,4 @@ group :development, :test do
   gem 'pry-rails', '~> 0.3.2'
 end
 
-gem 'mongoid_scribe', github: "nick-desteffen/mongoid-scribe"
+gem 'mongoid_scribe', '~> 0.3.0'
