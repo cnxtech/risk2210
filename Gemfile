@@ -48,6 +48,6 @@ group :development, :test do
   gem 'database_cleaner', '~> 1.3.0'
   gem 'byebug'
   gem 'ffaker', '~> 1.25.0'
-  gem 'teaspoon', '~> 0.7.8'
+  gem 'teaspoon', '~> 0.8.0'
   gem 'pry-rails', '~> 0.3.2'
 end
