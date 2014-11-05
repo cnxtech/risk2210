@@ -15,7 +15,6 @@ describe PagesController do
       get :resources
 
       expect(controller.active_tab).to eq(:resources)
-      expect(assigns(:page_title)).to_not be_nil
       expect(response).to be_success
     end
   end
@@ -24,7 +23,6 @@ describe PagesController do
     it "should render" do
       get :about
 
-      expect(assigns(:page_title)).to_not be_nil
       expect(response).to be_success
     end
   end
@@ -35,7 +33,6 @@ describe PagesController do
 
       get :api_docs
 
-      expect(assigns(:page_title)).to_not be_nil
       expect(response).to be_success
     end
   end

@@ -9,19 +9,16 @@ class PlayersController < ApplicationController
   active_tab :players
 
   def index
-    @page_title = "Players"
     @players = Player.public_profiles
 
     respond_with(@players)
   end
 
   def show
-    @page_title = "#{@player.handle} | Players"
     respond_with(@player, root: false)
   end
 
   def new
-    @page_title = "New Player"
     @player = Player.new
   end
 
@@ -30,14 +27,12 @@ class PlayersController < ApplicationController
     if @player.save
       login(@player, redirect_to: edit_player_path(@player), notice: "Thanks for registering! Please fill out your profile.")
     else
-      @page_title = "New Player"
       flash.now.alert = "There was an error creating your account."
       render action: :new
     end
   end
 
   def edit
-    @page_title = "Edit Profile"
   end
 
   def update
@@ -47,7 +42,6 @@ class PlayersController < ApplicationController
         format.json { render nothing: true }
       end
     else
-      @page_title = "Edit Profile"
       respond_to do |format|
         format.html {
           flash.now.alert = "There was an error updating your profile."

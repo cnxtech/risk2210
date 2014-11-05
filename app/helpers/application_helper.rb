@@ -48,7 +48,13 @@ module ApplicationHelper
   end
 
   def page_title
-    return "#{@page_title} | Risk Tracker | Risk 2210 A.D." if defined?(@page_title)
+    if content_for?(:page_title)
+      page_title = content_for(:page_title)
+      return "#{page_title} | Risk Tracker | Risk 2210 A.D."
+    else
+      title = controller.active_tab.present? ? controller.active_tab.capitalize : nil
+      return "#{title} | Risk Tracker | Risk 2210 A.D." if title
+    end
     return "Risk Tracker | Risk 2210 A.D."
   end
 

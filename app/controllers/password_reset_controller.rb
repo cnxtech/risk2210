@@ -1,7 +1,6 @@
 class PasswordResetController < ApplicationController
 
   def index
-    @page_title = "Forgot Password"
   end
 
   def create
@@ -15,7 +14,6 @@ class PasswordResetController < ApplicationController
   end
 
   def show
-    @page_title = "Password Reset"
     @player = Player.where(password_reset_token: params[:token]).first
     if @player.nil?
       redirect_to root_path, alert: "Sorry, no player was found with the token used."
@@ -23,7 +21,6 @@ class PasswordResetController < ApplicationController
   end
 
   def update
-    @page_title = "Password Reset"
     @player = Player.where(password_reset_token: params[:token]).first
     if @player.change_password(player_params, validate_old_password: false)
       @player.update_attribute(:password_reset_token, nil)

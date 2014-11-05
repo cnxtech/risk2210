@@ -7,7 +7,6 @@ module Expansions
 
     def index
       @factions = Faction.non_default
-      @page_title = "Factions Expansion"
 
       respond_with(@factions)
     end
@@ -15,7 +14,6 @@ module Expansions
     def show
       @faction = Faction.find(params[:id])
       raise Mongoid::Errors::DocumentNotFound.new(Faction, params[:id], params[:id]) if @faction.nil?
-      @page_title = "#{@faction.name} Faction"
 
       respond_with(@faction, root: false)
     end

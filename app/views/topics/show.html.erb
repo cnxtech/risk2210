@@ -1,3 +1,4 @@
+<% content_for :page_title, "#{@topic.subject} | #{@forum.name}" %>
 <div id="topic">
   <h1><%= @topic.subject %></h1>
   <%= render partial: "comments/comment", collection: @comments %>

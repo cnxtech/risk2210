@@ -2,7 +2,6 @@ class PasswordsController < ApplicationController
 
   before_filter :login_required
   before_filter :find_player
-  before_filter :setup_title
 
   def edit
   end
@@ -20,10 +19,6 @@ private
 
   def find_player
     @player = current_player
-  end
-
-  def setup_title
-    @page_title = "Change Password"
   end
 
   def player_params

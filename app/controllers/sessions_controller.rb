@@ -11,12 +11,10 @@ class SessionsController < ApplicationController
   end
 
   def new
-    @page_title = "Login"
     @session = Authentication::Risk2210.new
   end
 
   def create
-    @page_title = "Login"
     @session = Authentication::Risk2210.new(params[:session])
     if player = @session.authenticate
       login(player, remember_me: params[:session][:remember_me])

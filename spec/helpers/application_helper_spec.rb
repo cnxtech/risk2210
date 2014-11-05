@@ -68,12 +68,18 @@ describe ApplicationHelper do
   end
 
   describe "page_title" do
-    it "should return the page title with the @page_title instance variable set" do
-      @page_title = "Factions"
-      expect(helper.page_title).to eq("Factions | Risk Tracker | Risk 2210 A.D.")
+    before do
+      allow(helper).to receive(:controller).and_return(ApplicationController.new)
     end
-    it "should just return a default title if no instance variable has been set" do
-      expect(helper.page_title).to eq("Risk Tracker | Risk 2210 A.D.")
+    it "and_return the page title in @page_title" do
+      view.content_for(:page_title, "Test")
+
+      expect(helper.page_title).to eq("Test | Risk Tracker | Risk 2210 A.D.")
+    end
+    it "and_return the active tab value if it is present" do
+      allow(helper.controller).to receive(:active_tab).and_return(:factions)
+
+      expect(helper.page_title).to eq("Factions | Risk Tracker | Risk 2210 A.D.")
     end
   end
 

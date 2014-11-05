@@ -10,7 +10,6 @@ describe ForumsController do
       get :index
 
       expect(assigns(:forums).size).to eq(2)
-      expect(assigns(:page_title)).to_not be_nil
       expect(response).to be_success
     end
   end
@@ -24,7 +23,6 @@ describe ForumsController do
       get :show, id: forum.slug
 
       expect(assigns(:forum)).to eq(forum)
-      expect(assigns(:page_title)).to include(forum.name)
       expect(assigns(:topics).size).to eq(forum.topics.size)
       expect(assigns(:topic)).to be_new_record
       expect(assigns(:topic).comments.size).to eq(1)

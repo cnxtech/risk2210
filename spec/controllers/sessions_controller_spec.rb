@@ -21,7 +21,6 @@ describe SessionsController do
       get :new
 
       expect(assigns(:session)).to_not be_nil
-      expect(assigns(:page_title)).to_not be_nil
     end
   end
 
@@ -36,7 +35,6 @@ describe SessionsController do
       post :create, session: {email: player.email, password: "", remember_me: "0"}
 
       expect(assigns(:session)).to_not be_nil
-      expect(assigns(:page_title)).to_not be_nil
       expect(flash.now[:alert]).to_not be_nil
       expect(response).to render_template :new
     end

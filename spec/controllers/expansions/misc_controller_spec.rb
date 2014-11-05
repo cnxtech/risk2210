@@ -6,7 +6,6 @@ describe Expansions::MiscController do
     it "should render" do
       get :amoebas
 
-      expect(assigns(:page_title)).to_not be_nil
       expect(response).to be_success
     end
   end
@@ -15,7 +14,6 @@ describe Expansions::MiscController do
     it "should render" do
       get :galactic
 
-      expect(assigns(:page_title)).to_not be_nil
       expect(response).to be_success
     end
   end
@@ -24,7 +22,6 @@ describe Expansions::MiscController do
     it "should render" do
       get :capitals
 
-      expect(assigns(:page_title)).to_not be_nil
       expect(response).to be_success
     end
   end

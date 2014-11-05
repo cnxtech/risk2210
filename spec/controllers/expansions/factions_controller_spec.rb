@@ -8,7 +8,6 @@ describe Expansions::FactionsController do
         get :index
 
         expect(assigns(:factions).size).to eq(Faction.non_default.count)
-        expect(assigns(:page_title)).to_not be_nil
         expect(response).to be_success
       end
     end
@@ -30,7 +29,6 @@ describe Expansions::FactionsController do
         get :show, id: random_faction
 
         expect(assigns(:faction)).to eq(random_faction)
-        expect(assigns(:page_title)).to include(random_faction.name)
         expect(response).to be_success
       end
     end

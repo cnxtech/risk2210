@@ -26,7 +26,6 @@ describe PlayersController do
 
       expect(assigns(:players)).to include(player)
       expect(assigns(:players)).to_not include(private_player)
-      expect(assigns(:page_title)).to_not be_nil
     end
   end
 
@@ -38,7 +37,6 @@ describe PlayersController do
         get :show, id: player.slug
 
         expect(assigns(:player)).to eq(player)
-        expect(assigns(:page_title)).to_not be_nil
       end
     end
     context "json" do
@@ -79,7 +77,6 @@ describe PlayersController do
 
       expect(assigns(:player)).to_not be_nil
       expect(assigns(:player)).to be_new_record
-      expect(assigns(:page_title)).to_not be_nil
     end
   end
 
@@ -90,7 +87,6 @@ describe PlayersController do
       get :edit, id: player.slug
 
       expect(assigns(:player)).to eq(player)
-      expect(assigns(:page_title)).to_not be_nil
     end
   end
 
@@ -139,7 +135,6 @@ describe PlayersController do
 
       expect(response).to render_template(:new)
       expect(flash.now[:alert]).to_not be_nil
-      expect(assigns(:page_title)).to_not be_nil
     end
   end
 
