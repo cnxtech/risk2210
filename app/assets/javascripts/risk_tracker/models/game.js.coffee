@@ -24,20 +24,19 @@ class RiskTracker.Models.Game extends Backbone.Model
     @currentPlayer = current_player
 
   endTurn: ()->
-    game_player_stats = []
+    gamePlayerStats = []
 
-    _(@gamePlayers.models).each (game_player)->
-      game_player_stats.push {
-        game_player_id:  game_player.get("id")
-        units:           game_player.units(),
-        energy:          game_player.energy(),
-        territory_count: game_player.territoryCount(),
-        continent_ids:   game_player.continentIds(),
-        space_stations:  game_player.spaceStations()
+    _(@gamePlayers.models).each (gamePlayer)->
+      gamePlayerStats.push {
+        game_player_id:  gamePlayer.get("id")
+        units:           gamePlayer.units(),
+        energy:          gamePlayer.energy(),
+        territory_count: gamePlayer.territoryCount(),
+        continent_ids:   gamePlayer.continentIds(),
+        space_stations:  gamePlayer.spaceStations()
       }
 
-    ## FIXME: Year isn't saving
-    @turns.create(game_id: @get("id"), game_player_id: @currentPlayer.get("id"), order: @currentPlayer.turnOrder(), game_player_stats_attributes: game_player_stats)
+    @turns.create(game_id: @get("id"), game_player_id: @currentPlayer.get("id"), order: @currentPlayer.turnOrder(), year: @get('current_year'), game_player_stats_attributes: gamePlayerStats)
 
   startYear: ()->
     newYear = @get("current_year") + 1

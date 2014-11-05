@@ -30,7 +30,7 @@ class RiskTracker.Views.TurnOrder extends Backbone.View
     @_setTurnOrder()
     if @_validate()
       if @mode is "end_year"
-        @gameView.trigger("start_new_year")
+        @gameView.trigger("start-new-year")
       else
         @gameView.updateTurnOrder()
 
@@ -41,13 +41,13 @@ class RiskTracker.Views.TurnOrder extends Backbone.View
   _setTurnOrder: ()->
     @_turnOrderFields().each (index, input)=>
       input = $(input)
-      game_player = @collection.find(input.data("game-player-id"))
-      game_player.set({turn_order: parseInt(input.val())})
+      gamePlayer = @collection.find(input.data("game-player-id"))
+      gamePlayer.set({turn_order: parseInt(input.val())})
 
   _validate: ()->
     turns = []
-    _(@collection.models).each (game_player, index)=>
-      turns.push(game_player.turnOrder())
+    _(@collection.models).each (gamePlayer, index)=>
+      turns.push(gamePlayer.turnOrder())
 
     return false if _.compact(_.uniq(turns)).length < @collection.models.length
     return false if _.max(_.compact(_.uniq(turns))) > @collection.models.length

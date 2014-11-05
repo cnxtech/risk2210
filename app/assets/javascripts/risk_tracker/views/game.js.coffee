@@ -11,11 +11,11 @@ class RiskTracker.Views.Game extends Backbone.View
   events:
     "click .adjust-turn-order": "adjustTurnOrder"
 
-  initialize: (game_data)->
-    @model = new RiskTracker.Models.Game(game_data)
+  initialize: (gameData)->
+    @model = new RiskTracker.Models.Game(gameData)
     @maps = @model.maps
     @model.turns.on "add", (turn) => @_updateProgressBar()
-    @bind("start_new_year", @startNewYear)
+    @bind("start-new-year", @startNewYear)
 
   render: ()->
     skins = _.shuffle([1..8])
