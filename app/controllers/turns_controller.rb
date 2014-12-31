@@ -1,7 +1,5 @@
 class TurnsController < ApplicationController
 
-  respond_to :json
-
   before_filter :login_required
   before_filter :find_game
   before_filter :validate_owner

@@ -13,12 +13,12 @@ describe PlayersHelper do
     it "should return the player's avatar for the size requested" do
       avatar_image = helper.avatar(player)
 
-      expect(avatar_image).to eq '<img alt="Payton Dog" src="https://risk2210.net/assets/default_avatar.png" width="150px;" />'
+      expect(avatar_image).to eq '<img width="150px;" alt="Payton Dog" src="https://risk2210.net/assets/default_avatar.png" />'
     end
     it "should allow me to use a smaller image" do
       avatar_image = helper.avatar(player, size: :small)
 
-      expect(avatar_image).to eq '<img alt="Payton Dog" src="https://risk2210.net/assets/default_avatar.png" width="50px;" />'
+      expect(avatar_image).to eq '<img width="50px;" alt="Payton Dog" src="https://risk2210.net/assets/default_avatar.png" />'
     end
   end
 

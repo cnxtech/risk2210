@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   rescue_from Mongoid::Errors::DocumentNotFound do |exception|
     format = params.fetch(:format, "html")
     if format == "html"
-      render "#{Rails.root}/public/404", status: 404, format: "html"
+      render file: "#{Rails.root}/public/404", status: 404, format: "html"
     else
       head :not_found
     end

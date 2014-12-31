@@ -39,15 +39,6 @@ describe PlayersController do
         expect(assigns(:player)).to eq(player)
       end
     end
-    context "json" do
-      it "should render the player json" do
-        get :show, id: player.slug, format: :json
-
-        json = JSON.parse(response.body, symbolize_names: true)
-
-        expect(json[:id]).to_not be_nil
-      end
-    end
     context "player not found" do
       it "should render the 404 page" do
         get :show, id: "foo"
@@ -104,21 +95,6 @@ describe PlayersController do
 
         expect(response).to render_template(:edit)
         expect(flash.now[:alert]).to_not be_nil
-      end
-    end
-    context "json requests" do
-      it "should update the player and return success if all fields are valid" do
-        put :update, id: player.slug, player: {bio: "My updated bio"}, format: :json
-
-        expect(response).to be_success
-      end
-      it "should return a 400 and an array of errors if the update fails" do
-        put :update, id: player.slug, player: {handle: ""}, format: :json
-
-        json = JSON.parse(response.body)
-
-        expect(response).to_not be_success
-        expect(json).to be_a(Array)
       end
     end
   end

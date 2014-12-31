@@ -11,15 +11,6 @@ describe Expansions::FactionsController do
         expect(response).to be_success
       end
     end
-    context "json" do
-      it "should return all non-default factions as json" do
-        get :index, format: :json
-
-        json = JSON.parse(response.body, symbolize_names: true)
-        expect(response).to be_success
-        expect(json.size).to eq(Faction.non_default.count)
-      end
-    end
   end
 
   describe "show" do
@@ -30,17 +21,6 @@ describe Expansions::FactionsController do
 
         expect(assigns(:faction)).to eq(random_faction)
         expect(response).to be_success
-      end
-    end
-    context "json" do
-      it "should return the faction as json" do
-        random_faction = Faction.random
-        get :show, id: random_faction, format: :json
-
-        json = JSON.parse(response.body, symbolize_names: true)
-
-        expect(response).to be_success
-        expect(json[:slug]).to eq(random_faction.slug)
       end
     end
     context "not found" do

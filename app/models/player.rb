@@ -132,7 +132,7 @@ class Player
   def request_password_reset!
     self.password_reset_token = SecureRandom.hex(8)
     self.save
-    PlayerMailer.password_reset(self).deliver
+    PlayerMailer.password_reset(self).deliver_now
   end
 
   def name
@@ -154,7 +154,7 @@ private
   end
 
   def deliver_welcome_email
-    PlayerMailer.welcome_email(self).deliver
+    PlayerMailer.welcome_email(self).deliver_now
   end
 
   def link_game_players

@@ -12,7 +12,7 @@ Risk2210::Application.routes.draw do
 
   ## Change Password
   get "/account/password" => "passwords#edit", as: :edit_password
-  put "/account/password" => "passwords#update", as: :update_password
+  patch "/account/password" => "passwords#update", as: :update_password
 
   ## Players
   resources :players

@@ -1,7 +1,5 @@
 class PlayersController < ApplicationController
 
-  respond_to :html, :json
-
   before_filter :login_required, only: [:edit, :update, :destroy]
   before_filter :find_player, only: [:show, :edit, :update, :destroy]
   before_filter :authorize_current_player, only: [:edit, :update, :destroy]
@@ -10,12 +8,9 @@ class PlayersController < ApplicationController
 
   def index
     @players = Player.public_profiles
-
-    respond_with(@players)
   end
 
   def show
-    respond_with(@player, root: false)
   end
 
   def new
@@ -37,18 +32,10 @@ class PlayersController < ApplicationController
 
   def update
     if @player.update_attributes(player_params)
-      respond_to do |format|
-        format.html { redirect_to player_path(@player), notice: "Thanks for updating your profile!" }
-        format.json { render nothing: true }
-      end
+      redirect_to player_path(@player), notice: "Thanks for updating your profile!"
     else
-      respond_to do |format|
-        format.html {
-          flash.now.alert = "There was an error updating your profile."
-          render action: :edit
-        }
-        format.json { render json: @player.errors.full_messages, status: 400 }
-      end
+      flash.now.alert = "There was an error updating your profile."
+      render action: :edit
     end
   end
 

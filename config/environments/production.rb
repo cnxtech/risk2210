@@ -5,7 +5,7 @@ Risk2210::Application.configure do
   config.action_controller.perform_caching = true
   config.log_level = :info
 
-  config.serve_static_assets = false
+  config.serve_static_files = false
   config.assets.compress = true
   config.assets.digest = true
   config.assets.compile = false

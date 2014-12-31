@@ -33,7 +33,7 @@ module ApplicationHelper
   end
 
   def navigation_item(title, path, key=nil)
-    style_class = key == controller.active_tab ? "active" : ""
+    style_class = (key && key == controller.active_tab) ? "active" : ""
     content_tag(:li, link_to(title, path), class: style_class)
   end
 

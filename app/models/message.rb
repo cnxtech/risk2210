@@ -15,7 +15,7 @@ class Message
 private
 
   def notify_recipient
-    PlayerMailer.message_notification(self).deliver
+    PlayerMailer.message_notification(self).deliver_now
   end
 
 end
