@@ -33,7 +33,7 @@ gem 'omniauth-facebook', '~> 2.0.0'
 gem 'bcrypt', '~> 3.1.9'
 
 ## Operations
-gem 'passenger', '4.0.56'
+gem 'passenger', '4.0.57'
 gem 'exception_notification', '~> 4.0.1', group: [:production]
 
 group :development do
