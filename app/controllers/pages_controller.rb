@@ -8,6 +8,7 @@ class PagesController < ApplicationController
   end
 
   def about
+    render layout: "no_sidebar"
   end
 
   def api_docs

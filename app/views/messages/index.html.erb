@@ -1,13 +1,21 @@
 <div class="messages">
   <%= render partial: "messages/nav" %>
-
+  <% if @messages.none? %>
+    <p>You don't have any messages</p>
+  <% end %>
   <% @messages.each do |message| %>
-    <div class="message well">
-      <h4><%= message.subject %></h4>
-      <div class="timestamp">Sent on: <%= format_timestamp(message.created_at) %></div>
-      <div class="from">From: <%= link_to message.sender.name, player_path(message.sender) %></div>
-      <p class="body"><%= format_markdown(message.body) %></p>
-      <div class="reply"><%= message_link(current_player, message.sender, "Reply") %></div>
+    <div class="panel panel-default message">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= message.subject %></h3>
+      </div>
+      <div class="panel-body">
+        <div class="from">From: &nbsp;&nbsp;<%= link_to message.sender.name, player_path(message.sender) %></div>
+        <div class="timestamp">Sent: &nbsp;&nbsp;&nbsp;<%= format_timestamp(message.created_at) %></div>
+        <p class="body"><%= format_markdown(message.body) %></p>
+      </div>
+      <div class="panel-footer">
+        <%= message_link(current_player, message.sender, "Reply") %>
+      </div>
     </div>
   <% end %>
 </div>

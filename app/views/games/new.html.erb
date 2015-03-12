@@ -1,38 +1,41 @@
 <% content_for :page_title, "Game Tracker" %>
 
-<h2>New Game</h2>
 <div class="alert alert-info">
   <i class="icon-info-sign"></i>
   RiskTracker will automatically keep track of resources collected in real time.
   Enter player info and number of territories each player posesses at setup.
 </div>
-<%= simple_form_for @game, html: {class: 'form-vertical well'} do |f| %>
-  <%= error_messages_for @game %>
-  <fieldset>
-    <div class="row">
-      <div class="span3">
-        <%= f.input :location %>
-        <%= f.input :number_of_years, collection: (5..10), include_blank: false %>
-        <%= f.input :notes, as: :text, input_html: {rows: 3} %>
-        <%= f.association :maps, as: :check_boxes, collection: Map.alphabetical %>
-      </div>
-      <div class="span3">
-        <div id="game-players-setup">
-          <%= f.simple_fields_for :game_players do |game_player| %>
-            <%= render partial: "games/game_player_fields", locals: {f: game_player} %>
-          <% end %>
-          <div class="add-player-button-container">
-            <%= link_to_add_association content_tag(:i, nil, class: "icon-plus-sign").html_safe + " Add Another Player", f, :game_players, class: "btn btn-success btn-large" %>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">New Game</h3>
+  </div>
+  <div class="panel-body">
+    <%= simple_form_for @game do |f| %>
+      <%= error_messages_for @game %>
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.input :location %>
+          <%= f.input :number_of_years, collection: (5..10), include_blank: false %>
+          <%= f.input :notes, as: :text, input_html: {rows: 3} %>
+          <%= f.association :maps, as: :check_boxes, collection: Map.alphabetical %>
+        </div>
+        <div class="col-md-6">
+          <div id="game-players-setup">
+            <%= f.simple_fields_for :game_players do |game_player| %>
+              <%= render partial: "games/game_player_fields", locals: {f: game_player} %>
+            <% end %>
+            <div class="add-player-button-container">
+              <%= link_to_add_association content_tag(:i, nil, class: "fa fa-user-plus").html_safe + " Add Another Player", f, :game_players, class: "btn btn-success btn-large" %>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="form-actions">
       <%= f.submit "Start Game", class: 'btn btn-primary' %>
-      <%= link_to 'Cancel', :back, class: 'btn' %>
-    </div>
-  </fieldset>
-<% end %>
+      <%= link_to 'Cancel', :back, class: 'btn btn-default' %>
+    <% end %>
+  </div>
+</div>
 
 <% content_for :sidebar do %>
 <% end %>

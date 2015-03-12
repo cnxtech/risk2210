@@ -1,56 +1,83 @@
 <% content_for :page_title, "Edit Profile" %>
-<h2>Player Profile</h2>
-<%= simple_form_for @player, html: {class: 'form-vertical well'} do |f| %>
-  <%= error_messages_for @player %>
-  <fieldset>
-    <div class="row">
-      <div class="span3">
-        <%= f.input :first_name %>
-        <%= f.input :last_name %>
-        <%= f.input :email %>
-        <%= f.input :handle %>
-        <%= f.input :favorite_color, collection: GamePlayer::COLORS %>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Edit Player Profile</h3>
+  </div>
+  <div class="panel-body">
+    <%= simple_form_for @player do |f| %>
+      <%= error_messages_for @player %>
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.input :first_name %>
+          <%= f.input :last_name %>
+          <%= f.input :email %>
+          <%= f.input :handle %>
+          <%= f.input :favorite_color, collection: GamePlayer::COLORS %>
+        </div>
+        <div class="col-md-6">
+          <%= f.input :city %>
+          <%= f.input :state, collection: us_states_options %>
+          <%= f.input :zip_code %>
+          <%= f.input :image_source, collection: [Player::ImageSource::Facebook, Player::ImageSource::Gravatar], as: :radio_buttons, label: "Profile Image Source" %>
+          <%= f.input :public_profile, as: :boolean %>
+        </div>
       </div>
-      <div class="span3">
-        <%= f.input :city %>
-        <%= f.input :state, collection: us_states_options %>
-        <%= f.input :zip_code %>
-        <%= f.input :image_source, collection: [Player::ImageSource::Facebook, Player::ImageSource::Gravatar], as: :radio_buttons, label: "Profile Image Source" %>
-        <%= f.input :public_profile, as: :boolean, wrapper: :checkbox %>
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.input :website %>
+          <%= f.input :bio, as: :text, input_html: {class: 'span6', rows: 10} %>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="span6">
-        <%= f.input :website %>
-        <%= f.input :bio, as: :text, input_html: {class: 'span6', rows: 10} %>
-      </div>
-    </div>
-    <div class="form-actions">
       <%= f.submit "Update Profile", class: 'btn btn-primary' %>
-      <%= link_to 'Cancel', players_path, class: 'btn' %>
-    </div>
-  </fieldset>
-<% end %>
+      <%= link_to 'Cancel', players_path, class: 'btn btn-default' %>
+    <% end %>
+  </div>
+</div>
 
 <% content_for :sidebar do %>
-  <h2>Help</h2>
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h3 class="panel-title">Profile Image Source</h3>
+    </div>
+    <div class="panel-body">
+      If you registered via Facebook your Facebook profile image will be available for use.  You can also setup a free <a href='http://www.gravatar.com' target="_blank">Gravatar</a> account and choose that as your profile image.
+    </div>
+  </div>
 
-  <h3>Profile Image Source</h3>
-  <p>If you registered via Facebook your Facebook profile image will be available for use.  You can also setup a free <a href='http://www.gravatar.com' target="_blank">Gravatar</a> account and choose that as your profile image.</p>
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h3 class="panel-title">Public Profile</h3>
+    </div>
+    <div class="panel-body">
+      If the public profile checkbox is unchecked, your profile won't be listed on the site.
+    </div>
+  </div>
 
-  <h3>Public Profile</h3>
-  <p>If the public profile checkbox is unchecked, your profile won't be listed on the site.</p>
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h3 class="panel-title">Bio</h3>
+    </div>
+    <div class="panel-body">
+      <p>
+        You can use <a href='http://en.wikipedia.org/wiki/Markdown' target="_blank">Markdown</a> formatting in your bio.  Below are some syntax examples.
+      </p>
+      <%= render partial: "shared/markdown_examples" %>
+    </div>
+  </div>
 
-  <h3>Bio</h3>
-  <p>
-    You can use <a href='http://en.wikipedia.org/wiki/Markdown' target="_blank">Markdown</a> formatting in your bio.  Below are some examples of how you can format your bio.
-  </p>
-  <%= render partial: "shared/markdown_examples" %>
+  <div class="panel panel-danger">
+    <div class="panel-heading">
+      <h3 class="panel-title">Remove Account</h3>
+    </div>
+    <div class="panel-body">
+      We hate to see you go. If you must, press the red button. All your data will be permanently removed and you will never hear from us again.
+    </div>
+    <div class="panel-footer">
+      <%= link_to  player_path(@player), class: "btn btn-danger", data: {confirm: "Are you sure you want to remove your account?", method: :delete} do %>
+        <i class='fa fa-trash icon-white'></i> Remove Account
+      <% end %>
+    </div>
+  </div>
 
-  <h3>Remove Account</h3>
-  <p>We hate to see you go. If you must, press the red button. All your data will be permanently removed and you will never hear from us again.</p>
-  <br>
-  <%= link_to  player_path(@player), class: "btn btn-danger", data: {confirm: "Are you sure you want to remove your account?", method: :delete} do %>
-    <i class='icon-trash icon-white'></i> Remove Account
-  <% end %>
 <% end %>

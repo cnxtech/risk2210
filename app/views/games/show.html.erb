@@ -14,7 +14,7 @@
 <div class="delete-game-container">
   <% if @game.creator == current_player %>
     <%= link_to game_path(@game), data: {method: :delete, confirm: "Are you sure you want to delete the game?"}, class: "btn btn-danger" do %>
-      <i class='icon-trash icon-white'></i> Delete Game
+      <i class='fa fa-trash fa-white'></i> Delete Game
     <% end %>
   <% end %>
 </div>

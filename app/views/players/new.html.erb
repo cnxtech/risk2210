@@ -1,12 +1,16 @@
 <% content_for :page_title, "New Player" %>
-<h2>New Player Account</h2>
-<%= simple_form_for @player, html: {class: 'form-vertical well'} do |f| %>
-  <%= error_messages_for @player %>
-  <fieldset>
-    <%= f.input :email %>
-    <%= f.input :handle %>
-    <%= f.input :password %>
-    <%= f.input :password_confirmation %>
-    <%= f.submit "Create Account", class: 'btn btn-primary' %>
-  </fieldset>
-<% end %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">New Player Account</h3>
+  </div>
+  <div class="panel-body">
+    <%= simple_form_for @player do |f| %>
+      <%= error_messages_for @player %>
+        <%= f.input :email %>
+        <%= f.input :handle %>
+        <%= f.input :password %>
+        <%= f.input :password_confirmation %>
+        <%= f.submit "Create Account", class: 'btn btn-success' %>
+    <% end %>
+  </div>
+</div>

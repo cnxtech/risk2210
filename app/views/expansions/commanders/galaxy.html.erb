@@ -8,7 +8,7 @@
 <hr />
 <p>Design and concept by <%= link_to "sklar", "http://boardgamegeek.com/user/sklar", target: "_blank" %>.</p>
 <div class="bundle-download-container">
-  <%= link_to content_tag(:i, "", class: "icon-arrow-down icon-large") + " Download Bundled Expansion Pack", "/expansions/galaxy_commander_expansion.zip", class: "btn btn-danger btn-large" %>
+  <%= download_expansion_button("/expansions/galaxy_commander_expansion.zip") %>
   <p class="description">The bundled expansion pack contains high-resolution versions of all Galaxy Commander command cards and a PDF with cutouts of the commander units.</p>
 </div>
 
@@ -102,4 +102,3 @@ Cost: 0<br />
 Before First Invasion<br />
 Place the space station card on the table. Put 1 MOD in each territory in the space station.
 </p>
-

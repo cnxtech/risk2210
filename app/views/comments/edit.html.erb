@@ -1,9 +1,10 @@
-<div id="topic">
+<div id="topic" class="well">
+  <h2>Edit Comment</h2>
   <div class="comment-form">
     <%= simple_form_for @comment, url: forum_topic_comment_path(@forum, @topic, @comment), html: {class: 'form-vertical'} do |f| %>
       <%= f.input :body, as: :text, label: false, input_html: {class: 'comment-text'} %>
       <%= f.submit "Update", class: 'btn btn-primary' %>
-      <%= link_to 'Cancel', forum_topic_path(@forum, @topic), class: 'btn' %>
+      <%= link_to 'Cancel', forum_topic_path(@forum, @topic), class: 'btn btn-default' %>
     <% end %>
   </div>
 </div>

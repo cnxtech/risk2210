@@ -3,19 +3,25 @@
   <h1><%= @topic.subject %></h1>
   <%= render partial: "comments/comment", collection: @comments %>
 
-  <h3>Reply (Top Level)</h3>
-  <div class="comment-form">
-    <% if current_player %>
-      <%= simple_form_for :comment, url: forum_topic_comments_path(@forum, @topic), html: {class: 'form-vertical'} do |f| %>
-        <%= f.input :body, as: :text, label: false, input_html: {class: 'comment-text'} %>
-        <%= f.submit "Comment", class: 'btn btn-primary' %>
-      <% end %>
-    <% else %>
-      <%= link_to "Login to comment", login_path %>
-    <% end %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Reply (Top Level)</h3>
+    </div>
+    <div class="panel-body">
+      <div class="comment-form">
+        <% if current_player %>
+          <%= simple_form_for :comment, url: forum_topic_comments_path(@forum, @topic), html: {class: 'form-vertical'} do |f| %>
+            <%= f.input :body, as: :text, label: false, input_html: {class: 'comment-text'} %>
+            <%= f.submit "Comment", class: 'btn btn-primary' %>
+          <% end %>
+        <% else %>
+          <%= link_to "Login to comment", login_path %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
 
 <% content_for :sidebar do %>
-  <%= render partial: "shared/markdown_examples" %>
+  <%= render partial: "forums/comment_formatting" %>
 <% end %>

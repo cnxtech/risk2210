@@ -4,5 +4,5 @@
   <%= f.input :color, collection: GamePlayer::COLORS %>
   <%= f.input :starting_territory_count, as: :numeric, label: "Starting Territory Count" %>
   <%= f.input :turn_order, as: :numeric, label: "Starting turn order", input_html: {min: 1, max: 5} %>
-  <%= link_to_remove_association(content_tag(:i, nil, class: "icon-minus-sign").html_safe + " Remove", f, class: "btn btn-small btn-danger") %>
+  <%= link_to_remove_association(content_tag(:i, nil, class: "fa fa-user-times").html_safe + " Remove", f, class: "btn btn-small btn-danger") %>
 </div>

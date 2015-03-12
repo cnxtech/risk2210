@@ -29,7 +29,7 @@ describe PlayersHelper do
     it "should return a message if the player hasn't entered a location" do
       player = FactoryGirl.create(:player, city: nil, state: nil, zip_code: nil)
 
-      expect(helper.nearby_players(player)).to match(/location settings to see nearby Risk 2210 players./)
+      expect(helper.nearby_players(player)).to match(/to see nearby Risk 2210 players./)
     end
     it "should return a message if there are no nearby players" do
       player = FactoryGirl.create(:player, city: "Chicago", state: "IL", zip_code: "60640")
@@ -52,7 +52,7 @@ describe PlayersHelper do
       player = FactoryGirl.create(:player)
       other_player = FactoryGirl.create(:player)
 
-      expect(helper.message_link(player, other_player)).to eq "<a class=\"btn btn-mini btn-info\" href=\"/messages/new?recipient=#{other_player.slug}\"><i class=\"icon-envelope\"></i> Message</a>"
+      expect(helper.message_link(player, other_player)).to eq "<a class=\"btn btn-xs btn-info\" href=\"/messages/new?recipient=#{other_player.slug}\"><i class=\"fa fa-envelope\"></i> Message</a>"
     end
   end
 

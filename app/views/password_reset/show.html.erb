@@ -1,10 +1,14 @@
 <% content_for :page_title, "Password Reset" %>
 
-<h2>Reset Password</h2>
-<%= simple_form_for :player, url: reset_password_path, html: {class: 'form-vertical well', method: :put} do |f| %>
-  <fieldset>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Reset Password</h3>
+  </div>
+  <div class="panel-body">
+    <%= simple_form_for :player, url: reset_password_path, html: {method: :put} do |f| %>
     <%= f.input :password %>
     <%= f.input :password_confirmation %>
     <%= f.submit "Reset Password", class: 'btn btn-primary' %>
-  </fieldset>
-<% end %>
+    <% end %>
+  </div>
+</div>

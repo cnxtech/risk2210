@@ -1,16 +1,20 @@
 <% content_for :page_title, "Login" %>
 
-<h1>Log in</h2>
-<%= simple_form_for @session, as: :session, url: create_session_path, html: {class: 'form-vertical well'} do |f| %>
-  <%= error_messages_for(@session) %>
-  <fieldset>
-    <%= f.input :email %>
-    <%= f.input :password %>
-    <%= f.input :remember_me, as: :boolean, wrapper: :checkbox %>
-    <%= f.submit "Login", class: 'btn btn-primary' %>
-    &nbsp;&nbsp;
-    <%= facebook_button %>
-  </fieldset>
-  <br />
-  <%= link_to "Forgot Password?", forgot_password_path %>
-<% end %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Login</h3>
+  </div>
+  <div class="panel-body">
+    <%= simple_form_for @session, as: :session, url: create_session_path do |f| %>
+      <%= error_messages_for(@session) %>
+      <%= f.input :email %>
+      <%= f.input :password %>
+      <%= f.input :remember_me, as: :boolean %>
+      <%= f.submit "Login", class: 'btn btn-primary' %>
+      &nbsp;&nbsp;
+      <%= facebook_button %>
+      <br><br>
+      <%= link_to "Forgot Password?", forgot_password_path %>
+    <% end %>
+  </div>
+</div>

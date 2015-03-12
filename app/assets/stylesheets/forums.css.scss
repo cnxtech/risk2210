@@ -14,6 +14,9 @@
   }
 
   .comment{
+    margin: 25px 0 25px 25px;
+    padding: 20px;
+    background-color: #272b30;
     img{
       float: left;
       margin: 0 10px 10px 0;
@@ -33,7 +36,7 @@
     margin-left: 60px;
   }
   .comment-form {
-    margin-top: 20px;
+    margin-top: 10px;
     textarea{
       width: 400px; height: 100px;
     }

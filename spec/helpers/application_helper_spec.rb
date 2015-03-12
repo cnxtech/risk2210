@@ -24,7 +24,7 @@ describe ApplicationHelper do
       flash_messages = {'alert' => "Something went wrong"}
       allow(helper).to receive(:flash).and_return(flash_messages)
 
-      expect(helper.flash_messages).to match(/alert-error/)
+      expect(helper.flash_messages).to match(/alert-danger/)
       expect(helper.flash_messages).to match(/Something went wrong/)
     end
     it "builds out error flash messages with a close button and error class" do
@@ -91,7 +91,13 @@ describe ApplicationHelper do
 
   describe "facebook_button" do
     it "should return a button to authenicate via Facebook" do
-      expect(helper.facebook_button).to eq("<a class=\"btn btn-inverse \" href=\"/login/facebook\"><i class=\"icon-facebook-sign icon-large\"></i> Login with Facebook</a>")
+      expect(helper.facebook_button).to eq("<a class=\"btn btn-social btn-facebook\" href=\"/login/facebook\"><i class=\"fa fa-facebook\"></i>Login with Facebook</a>")
+    end
+  end
+
+  describe "download_expansion_button" do
+    it "should return a download expansion button" do
+      expect(helper.download_expansion_button("/expansion.zip")).to eq("<a class=\"btn btn-danger btn-large\" href=\"/expansion.zip\"><i class=\"fa fa-arrow-down fa-lg\"></i> Download Bundled Expansion Pack</a>")
     end
   end
 

@@ -27,7 +27,7 @@ module PlayersHelper
 
   def message_link(current_player, player, label="Message")
     return if current_player.nil?
-    return link_to(content_tag(:i, "", class: "icon-envelope") + " #{label}", new_message_path(recipient: player.slug), class: "btn btn-mini btn-info")
+    return link_to(content_tag(:i, "", class: "fa fa-envelope") + " #{label}", new_message_path(recipient: player.slug), class: "btn btn-xs btn-info")
   end
 
 end

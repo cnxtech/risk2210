@@ -6,7 +6,7 @@
 <p>Concept and design by <%= link_to "Mohawk", "http://boardgamegeek.com/user/mohawk", target: "_blank" %> and <%= link_to "Teleute", "http://boardgamegeek.com/user/teleute", target: "_blank" %></p>
 
 <div class="bundle-download-container">
-  <%= link_to content_tag(:i, "", class: "icon-arrow-down icon-large") + " Download Bundled Expansion Pack", "/expansions/capitals_expansion.zip", class: "btn btn-danger btn-large" %>
+  <%= download_expansion_button("/expansions/capitals_expansion.zip") %>
   <p class="description">The bundled expansion pack contains high-resolution versions of all Homefront Commander command cards, additional Land, Water, Space, and Diplomat cards, the rules, and PDF with cutouts of the commander units &amp; capital tokens.</p>
 </div>
 
@@ -162,4 +162,3 @@ Cost: 0<br />
 After you successfuly invade a water territory with your Naval Commander.<br />
 Collect 2 energy.  You may only play 1 copy of this card per turn.
 </p>
-

@@ -1,19 +1,26 @@
 <% unless current_player %>
-  <div class="modal fade sign-in" id="login-modal" style="display: none;">
-    <%= simple_form_for :session, url: create_session_path, html: {class: 'form-vertical'} do |f| %>
-      <div class="modal-body">
-        <%= f.input :email %>
-        <%= f.input :password %>
-        <div class="remember-me">
-          <%= f.input :remember_me, as: :boolean, wrapper: :checkbox %>
+  <div class="modal fade sign-in" id="login-modal" aria-hidden="true" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="login-modal-label">Login</h4>
         </div>
+        <%= simple_form_for :session, url: create_session_path, html: {class: 'form-vertical'} do |f| %>
+          <div class="modal-body">
+            <%= f.input :email %>
+            <%= f.input :password %>
+            <div class="remember-me">
+              <%= f.input :remember_me, as: :boolean %>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <%= f.submit "Login", class: 'btn btn-primary' %>
+            <%= facebook_button %>
+            <%= link_to "Forgot Password?", forgot_password_path, class: "btn btn-default" %>
+          </div>
+        <% end %>
       </div>
-      <div class="modal-footer">
-        <%= f.submit "Login", class: 'btn btn-danger' %><br /><br />
-        <%= facebook_button %>
-        <br /><br />
-        <%= link_to "Forgot Password?", forgot_password_path %>
-      </div>
-    <% end %>
+    </div>
   </div>
 <% end %>

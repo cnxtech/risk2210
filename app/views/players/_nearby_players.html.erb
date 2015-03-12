@@ -1,11 +1,13 @@
-<div class="nearby-players">
-  <h3>Nearby Players</h3>
-  <% if current_player.location.blank? %>
-    <p>Update your <%= link_to "profile's", edit_player_path(current_player) %> location settings to see nearby Risk 2210 players.</p>
-  <% else %>
-    <h6>(within 50 miles of <%= current_player.location %>)</h6>
-    <% if nearby_players.size > 0 %>
-      <div class="table-wrapper">
+<div class="panel panel-info nearby-players">
+  <div class="panel-heading">
+    <h3 class="panel-title">Nearby Players</h3>
+  </div>
+  <div class="panel-body">
+    <% if current_player.location.blank? %>
+      <p>Update the location settings on your <%= link_to "profile", edit_player_path(current_player) %> to see nearby Risk 2210 players.</p>
+    <% else %>
+      <p>(within 50 miles of <%= current_player.location %>)</p>
+      <% if nearby_players.size > 0 %>
         <table class="table table-bordered table-striped">
           <% nearby_players.each do |player| %>
             <tr>
@@ -18,9 +20,9 @@
             </tr>
           <% end %>
         </table>
-      </div>
       <% else %>
-      <p>Sorry, there are no other Risk 2210 players nearby.</p>
+        <p>Sorry, there are no other Risk 2210 players nearby.</p>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>

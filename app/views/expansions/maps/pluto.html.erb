@@ -5,12 +5,12 @@
 <hr />
 
 <div class="bundle-download-container">
-  <%= link_to content_tag(:i, "", class: "icon-arrow-down icon-large") + " Download Bundled Expansion Pack", "/expansions/pluto_expansion.zip", class: "btn btn-danger btn-large" %>
+  <%= download_expansion_button("/expansions/pluto_expansion.zip") %>
   <p class="description">The bundled expansion pack contains high-resolution versions of the Pluto map and each territory card.</p>
 </div>
 
 <div class="bundle-download-container">
-  <%= link_to content_tag(:i, "", class: "icon-arrow-down icon-large") + " Download Card Sheet", "/expansions/card_sheets/Pluto_Territory_Cards.pdf", class: "btn btn-danger btn-large" %>
+  <%= download_expansion_button("/expansions/card_sheets/Pluto_Territory_Cards.pdf", text: "Download Card Sheet") %>
   <p class="description">A pdf for printing your own cards</p>
 </div>
 

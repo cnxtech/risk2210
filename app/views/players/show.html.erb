@@ -1,46 +1,56 @@
 <% content_for :page_title, "#{@player.handle} | Players" %>
 <div id="player-profile">
-  <div class="well">
-    <h2><%= @player.handle %></h2>
-    <div class="row">
-      <div class="span2">
-        <div class='photo-container'>
-          <%= avatar(@player, size: :large) %>
-        </div>
-      </div>
-      <div class="span5 bio">
-        <%= format_markdown(@player.bio) %>
-      </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title"><%= @player.handle %></h3>
     </div>
-    <% if @player.website.present? %>
+    <div class="panel-body">
       <div class="row">
-        <div class='span7 site'>
-          <%= link_to @player.website, @player.website, target: "_blank" %>
+        <div class="col-md-2">
+          <div class='photo-container'>
+            <%= avatar(@player, size: :large) %>
+          </div>
+        </div>
+        <div class="col-md-5 bio">
+          <%= format_markdown(@player.bio) %>
         </div>
       </div>
-    <% end %>
-    <div class="row">
-      <div class="span5">
-        <div class='location'>
-          <%= @player.location %>
+      <% if @player.website.present? %>
+        <div class="row">
+          <div class='col-md-7 site'>
+            <%= link_to @player.website, @player.website, target: "_blank" %>
+          </div>
         </div>
-      </div>
-      <div class="span2 message-link">
-        <%= message_link(current_player, @player) %>
+      <% end %>
+      <div class="row">
+        <div class="col-md-5">
+          <div class='location'>
+            <%= @player.location %>
+          </div>
+        </div>
+        <div class="col-md-2 message-link">
+          <%= message_link(current_player, @player) %>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
 <% content_for :sidebar do %>
-  <h2>Games</h2>
-  <ul>
-    <% @player.game_players.map(&:game).each do |game| %>
-      <% if game.completed? %>
-        <li><%= link_to format_date(game.created_at), results_game_path(game) %></li>
-      <% else %>
-        <li><%= link_to format_date(game.created_at), game_path(game) %></li>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Games Played</h3>
+  </div>
+  <div class="panel-body">
+    <ul>
+      <% @player.game_players.map(&:game).each do |game| %>
+        <% if game.completed? %>
+          <li><%= link_to format_date(game.created_at), results_game_path(game) %></li>
+        <% else %>
+          <li><%= link_to format_date(game.created_at), game_path(game) %></li>
+        <% end %>
       <% end %>
-    <% end %>
-  </ul>
+    </ul>
+  </div>
+</div>
 <% end %>

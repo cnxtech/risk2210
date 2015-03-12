@@ -1,7 +1,7 @@
 <% content_for :page_title, "About" %>
 
-<h1>About</h1>
 <div class="well">
+  <h2>About</h2>
   <p>The source code for this site is freely available at <%= link_to "https://github.com/nick-desteffen/risk2210", "https://github.com/nick-desteffen/risk2210", target: "_blank" %> and was built using the following open source technologies:</p>
   <div class="tech">
     <%= link_to image_tag("logos/rails.png"), "http://rubyonrails.org", target: "_blank" %><br>
@@ -13,7 +13,7 @@
   <%= link_to image_tag("logos/mongoid-logo-small.png"), "http://mongoid.org", target: "_blank" %><br>
   </div>
   <div class="tech">
-    <%= link_to image_tag("logos/bootstrap-apple-touch-128_bigger.png"), "http://twitter.github.io/bootstrap/", target: "_blank" %><br>
+    <%= link_to image_tag("logos/bootstrap-apple-touch-128_bigger.png", width: 100), "http://getbootstrap.com", target: "_blank" %><br>
   </div>
   <div class="tech backbone">
     <%= link_to image_tag("logos/backbone.png"), "http://backbonejs.org", target: "_blank" %><br>

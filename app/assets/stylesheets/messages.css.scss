@@ -1,11 +1,10 @@
 .messages{
+  .message-nav{
+    margin-bottom: 25px;
+  }
+  background-color: #272b30;
+  padding: 25px;
   .message{
-    .timestamp{
-      font-weight: bold;
-    }
-    .from{
-      font-weight: bold;
-    }
     .body{
       margin-top: 10px;
     }

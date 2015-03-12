@@ -6,14 +6,15 @@ gem 'rails', '4.2.1.rc3'
 gem 'sass-rails', '~> 5.0.1'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'uglifier', '~> 2.7.1'
-gem 'twitter-bootstrap-rails', "~> 2.2.8"
+gem 'bootstrap-on-rails', '3.3.1'
+gem 'font-awesome-rails', '~> 4.3.0'
 gem 'less-rails', '~> 2.6.0'
 gem 'therubyracer', '~> 0.12.0'
 
 ## Frontend / Views
 gem 'jquery-rails', '~> 4.0.3'
 gem 'redcarpet', '~> 3.2.0'
-gem 'simple_form', '~> 3.0.0'
+gem 'simple_form', '~> 3.1.0'
 gem 'cocoon', '~> 1.2.6'
 gem 'active_model_serializers', '~> 0.8.2'
 
@@ -33,7 +34,7 @@ gem 'omniauth-facebook', '~> 2.0.0'
 gem 'bcrypt', '~> 3.1.10'
 
 ## Operations
-gem 'passenger', '5.0.2'
+gem 'passenger', '5.0.4'
 gem 'exception_notification', '~> 4.0.1', group: [:production]
 
 group :development do

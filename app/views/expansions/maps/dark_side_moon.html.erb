@@ -5,12 +5,12 @@
 <hr />
 
 <div class="bundle-download-container">
-  <%= link_to content_tag(:i, "", class: "icon-arrow-down icon-large") + " Download Bundled Expansion Pack", "/expansions/dark_side_moon_expansion.zip", class: "btn btn-danger btn-large" %>
+  <%= download_expansion_button("/expansions/dark_side_moon_expansion.zip") %>
   <p class="description">The bundled expansion pack contains high-resolution versions of the Dark Side of the Moon map and each territory card.</p>
 </div>
 
 <div class="bundle-download-container">
-  <%= link_to content_tag(:i, "", class: "icon-arrow-down icon-large") + " Download Card Sheet", "/expansions/card_sheets/Earth_Territories_Lunar_Dark_Side.pdf", class: "btn btn-danger btn-large" %>
+  <%= download_expansion_button("/expansions/card_sheets/Earth_Territories_Lunar_Dark_Side.pdf", text: "Download Card Sheet") %>
   <p class="description">A pdf for printing your own cards</p>
 </div>
 

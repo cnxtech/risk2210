@@ -1,4 +1,4 @@
-<div class="well comment" >
+<div class="comment">
   <%= avatar(comment.player, size: :normal) %>
   <%= edit_comment_link(@forum, @topic, comment) %>
   <%= link_to "Player: #{comment.player.handle}", player_path(comment.player), class: "profile-link" %>
@@ -7,7 +7,7 @@
   <p class="body">
     <%= format_markdown(comment.body) %>
   </p>
-  <a href='#' class='nested_comment_link btn btn-inverse'><i class='icon-comment'></i> Reply to this comment</a>
+  <a href='#' class='nested_comment_link btn btn-primary'><i class='icon-comment'></i> Reply to this comment</a>
   <div class="comment_form_container" style="display: none;">
     <%= render partial: "comments/form", locals: {parent_id: comment.id} %>
   </div>

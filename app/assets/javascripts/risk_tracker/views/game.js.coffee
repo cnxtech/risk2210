@@ -26,16 +26,16 @@ class RiskTracker.Views.Game extends Backbone.View
       @gamePlayerCards.push(view)
       @$el.append(view.render().el)
 
-    @landModal  = new RiskTracker.Views.Continents({collection: @maps, type: "land", game: @model, attributes: {class: "modal hide fade", id: "land-continents"}})
-    @waterModal = new RiskTracker.Views.Continents({collection: @maps, type: "water", game: @model, attributes: {class: "modal hide fade", id: "water-continents"}})
-    @lunarModal = new RiskTracker.Views.Continents({collection: @maps, type: "lunar", game: @model, attributes: {class: "modal hide fade", id: "lunar-continents"}})
+    @landModal  = new RiskTracker.Views.Continents({collection: @maps, type: "land", game: @model, attributes: {class: "modal fade", id: "land-continents"}})
+    @waterModal = new RiskTracker.Views.Continents({collection: @maps, type: "water", game: @model, attributes: {class: "modal fade", id: "water-continents"}})
+    @lunarModal = new RiskTracker.Views.Continents({collection: @maps, type: "lunar", game: @model, attributes: {class: "modal fade", id: "lunar-continents"}})
 
     @$el.append(@landModal.render().el)
     @$el.append(@waterModal.render().el)
     @$el.append(@lunarModal.render().el)
     @$el.append(JST['risk_tracker/templates/game_controls'])
 
-    @turnOrderModal = new RiskTracker.Views.TurnOrder({collection: @model.gamePlayers, gameView: @, attributes: {class: "modal hide fade", id: "turn-order-modal"}})
+    @turnOrderModal = new RiskTracker.Views.TurnOrder({collection: @model.gamePlayers, gameView: @, attributes: {class: "modal fade", id: "turn-order-modal"}})
     @$el.append(@turnOrderModal.render().el)
 
     @colonyBonusModal = new RiskTracker.Views.ColonyBonus({model: @model, attributes: {class: "modal hide fade", id: "colony-bonus-modal"}})
