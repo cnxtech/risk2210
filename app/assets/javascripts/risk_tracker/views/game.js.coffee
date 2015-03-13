@@ -70,12 +70,14 @@ class RiskTracker.Views.Game extends Backbone.View
       @lunarModal.activate(player)
 
   _updateProgressBar: () =>
-    bar = @$el.find(".bar")
+    bar = @$el.find("#game-progress-bar")
     number_of_years = @model.get("number_of_years")
     number_of_players = @model.gamePlayers.length
 
     percent_complete = ((@model.turnCount() / (number_of_years * number_of_players)) * 100)
     bar.css({width: "#{percent_complete}%"})
+    bar.attr({"aria-valuenow", "#{percent_complete}"})
+    bar.find("span").text("#{percent_complete}% Complete")
 
   _endYear: ()=>
     if @model.lastYear()

@@ -6,29 +6,23 @@
     </div>
     <div class="panel-body">
       <div class="row">
-        <div class="col-md-2">
-          <div class='photo-container'>
-            <%= avatar(@player, size: :large) %>
-          </div>
-        </div>
-        <div class="col-md-5 bio">
-          <%= format_markdown(@player.bio) %>
-        </div>
-      </div>
-      <% if @player.website.present? %>
-        <div class="row">
-          <div class='col-md-7 site'>
-            <%= link_to @player.website, @player.website, target: "_blank" %>
-          </div>
-        </div>
-      <% end %>
-      <div class="row">
-        <div class="col-md-5">
-          <div class='location'>
+        <div class="col-md-3">
+          <%= avatar(@player, size: :large) %>
+          <% if @player.website.present? %>
+            <div class="site">
+              <%= link_to @player.website, @player.website, target: "_blank" %>
+            </div>
+          <% end %>
+          <div class="location">
             <%= @player.location %>
           </div>
         </div>
-        <div class="col-md-2 message-link">
+        <div class="col-md-9">
+          <%= format_markdown(@player.bio) %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 message-link">
           <%= message_link(current_player, @player) %>
         </div>
       </div>

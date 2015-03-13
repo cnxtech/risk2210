@@ -8,7 +8,7 @@ describe GamesHelper do
     it "should return a div with the game progress bar" do
       allow(game).to receive(:percent_complete).and_return(50.0)
 
-      expect(helper.progress_bar(game, id: "game")).to eq "<div class=\"progress progress-danger\" id=\"game\"><div class=\"bar\" style=\"width: 50.0%;\"></div></div>"
+      expect(helper.progress_bar(game, id: "game")).to eq("<div class=\"progress\"><div class=\"progress-bar progress-bar-danger\" id=\"game\" role=\"progressbar\" aria-valuenow=\"50.0\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: 50.0%;\"><span class=\"sr-only\">50.0% Complete</span></div></div>")
     end
   end
 
