@@ -1,32 +1,52 @@
-<div class="well">
+<div class="page-header">
   <h1>Risk 2210 A.D. Expansions</h1>
-  <p>Listed below are a bunch of expansions for Risk 2210 A.D. I use <%= link_to "Artscow", "http://www.artscow.com/?Ref=1185504", target: "_blank" %> for printing the cards and <%= link_to "Print & Play Productions", "http://printplaygames.com/", target: "_blank" %> for the custom board prints.</p>
+</div>
 
-  <h3>Maps</h3>
-  <%= link_to("Antarctica", expansions_antarctica_path) %><br>
-  <%= link_to("Arctic", expansions_arctic_path) %><br>
-  <%= link_to("Asteroid Colonies", expansions_asteroid_colonies_path) %><br>
-  <%= link_to("Dark Side of the Moon", expansions_dark_side_moon_path) %><br>
-  <%= link_to("Europa", expansions_europa_path) %><br>
-  <%= link_to("Io", expansions_io_path) %><br>
-  <%= link_to("Mars", expansions_mars_path) %><br>
-  <%= link_to("Pluto", expansions_pluto_path) %><br>
-  <%= link_to("Titan", expansions_titan_path) %><br>
+<p class="lead">Listed below are a bunch of expansions for Risk 2210 A.D. I use <%= link_to "Artscow", "http://www.artscow.com/?Ref=1185504", target: "_blank" %> for printing the cards and <%= link_to "Print & Play Productions", "http://printplaygames.com/", target: "_blank" %> for the custom board prints.</p>
 
-  <h3>Commanders</h3>
-  <%= link_to("Galaxy Commander", expansions_galaxy_commander_path) %><br>
-  <%= link_to("Majors Promo Cards", expansions_majors_promo_cards_path) %><br>
-  <%= link_to("Resistance Commander", expansions_resistance_commander_path) %><br>
-  <%= link_to("Tech Commander", expansions_tech_commander_path) %><br>
+<div class="panel panel-default">
+  <div class="panel-heading">Maps</div>
+  <div class="panel-body">
+    <%= link_to("Antarctica", expansions_antarctica_path) %><br>
+    <%= link_to("Arctic", expansions_arctic_path) %><br>
+    <%= link_to("Asteroid Colonies", expansions_asteroid_colonies_path) %><br>
+    <%= link_to("Dark Side of the Moon", expansions_dark_side_moon_path) %><br>
+    <%= link_to("Europa", expansions_europa_path) %><br>
+    <%= link_to("Io", expansions_io_path) %><br>
+    <%= link_to("Mars", expansions_mars_path) %><br>
+    <%= link_to("Pluto", expansions_pluto_path) %><br>
+    <%= link_to("Titan", expansions_titan_path) %><br>
+  </div>
+</div>
 
-  <h3>Misc</h3>
-  <%= link_to("Capitals", expansions_capitals_path) %><br>
-  <%= link_to("Factions", expansions_factions_path) %><br>
-  <%= link_to("Galactic Risk", expansions_galactic_path) %><br>
-  <%= link_to("Invasion of the Giant Amoebas", expansions_amoebas_path) %><br>
+
+<div class="panel panel-default">
+  <div class="panel-heading">Commanders</div>
+  <div class="panel-body">
+    <%= link_to("Galaxy Commander", expansions_galaxy_commander_path) %><br>
+    <%= link_to("Majors Promo Cards", expansions_majors_promo_cards_path) %><br>
+    <%= link_to("Resistance Commander", expansions_resistance_commander_path) %><br>
+    <%= link_to("Tech Commander", expansions_tech_commander_path) %><br>
+  </div>
+</div>
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">Misc</div>
+  <div class="panel-body">
+    <%= link_to("Capitals", expansions_capitals_path) %><br>
+    <%= link_to("Factions", expansions_factions_path) %><br>
+    <%= link_to("Galactic Risk", expansions_galactic_path) %><br>
+    <%= link_to("Invasion of the Giant Amoebas", expansions_amoebas_path) %><br>
+  </div>
 </div>
 
 <% content_for :sidebar do %>
-  <p><%= link_to image_tag("artscow.png"), "http://www.artscow.com/?Ref=1185504", target: "_blank" %></p>
-  <p class="link"><%= link_to "Print & Play Productions", "http://printplaygames.com/", target: "_blank" %></p>
+  <div class="panel panel-primary affiliate">
+    <div class="panel-heading">Printing</div>
+    <div class="panel-body">
+      <p><%= link_to image_tag("artscow.png"), "http://www.artscow.com/?Ref=1185504", target: "_blank" %></p>
+      <p class="link"><%= link_to "Print & Play Productions", "http://printplaygames.com/", target: "_blank" %></p>
+    </div>
+  </div>
 <% end %>
