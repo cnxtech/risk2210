@@ -9,7 +9,6 @@ gem 'uglifier', '~> 2.7.1'
 gem 'bootstrap-on-rails', '3.3.1'
 gem 'font-awesome-rails', '~> 4.3.0'
 gem 'less-rails', '~> 2.6.0'
-gem 'therubyracer', '~> 0.12.0'
 
 ## Frontend / Views
 gem 'jquery-rails', '~> 4.0.3'
