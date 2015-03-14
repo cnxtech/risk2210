@@ -8,6 +8,7 @@ class PagesController < ApplicationController
   end
 
   def about
+    self.active_tab = :about
     render layout: "no_sidebar"
   end
 
