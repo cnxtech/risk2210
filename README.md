@@ -7,13 +7,13 @@ It was built using the following frameworks & libraries:
  * [Ruby on Rails](http://rubyonrails.org)
  * [Mongoid](http://mongoid.org)
  * [Backbone.js](http://backbonejs.org)
- * [Twitter Bootstrap](http://twitter.github.io/bootstrap/)
+ * [Twitter Bootstrap](http://getbootstrap.com)
  * [NVD3](http://nvd3.org)
  * [RSpec](http://rspec.info/)
 
 ## Dependencies
 
- * [MongoDB](http://www.mongodb.org) >= 2.2.0
+ * [MongoDB](http://www.mongodb.org) >= 2.4.0
  * [Ruby](http://www.ruby-lang.org/en/) >= 2.0.0
 
 ## MongoDB Installation
@@ -26,7 +26,7 @@ Use [HomeBrew](http://mxcl.github.com/homebrew/)
 
 ## Ruby Installation
 #### Ubuntu
-I've got a script to install Ruby 2.0.0 on Ubuntu, just follow the instructions on the repo:  
+I've got a script to install Ruby 2.2.0 on Ubuntu, just follow the instructions on the repo:  
 [https://github.com/nick-desteffen/ruby-bootstrap](https://github.com/nick-desteffen/ruby-bootstrap)
 
 #### OSX
@@ -47,5 +47,5 @@ Visit: [http://localhost:3000](lhttp://localhost:3000)
 
 ## Running Tests
 Ruby: `bundle exec rake spec`  
-  
+
 Javascript: `bundle exec teaspoon`

@@ -2,7 +2,7 @@
 <% if @player.password_digest.present? %>
   <p>In the future you can <%= link_to "login", login_url %> using your email address.</p>
 <% elsif @player.provider.present? && @player.uid.present? %>
-  <p>In the future you can login using your Facebook account</p>
+  <p>In the future you can login using your Facebook account.</p>
 <% end %>
 <p>Have a great day!</p>
 
