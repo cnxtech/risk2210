@@ -1,31 +1,41 @@
 <% content_for :page_title, "Mars Expansion" %>
 
-<h1>Mars Expansion</h1>
+<div class='well'>
+  <h1>Mars Expansion</h1>
 
-<h2>Rules</h2>
-<p>Use all of the game pieces from the main game with the exception of the maps and territory cards obviously.</p>
+  <h3>Rules</h3>
+  <p>
+    Use all of the game pieces from the base game with the exception of the maps and territory cards.
+    <br><br>
+    Standard game rules apply with the following exceptions:
+  </p>
 
-<p>Use the standard game rules with the following exceptions:</p>
+  <ol>
+    <li>
+      <h5>Neutral Territories</h5>
+      Players do not start in the neutral territories.
+      There is no continent bonus for controlling all the neutral territories, but they do count toward your total number of controlled territories.
+      North and South Moab wrap across the board (so North Moab for example borders both Sirenum in Amazonis and Apygia in Casius).
+      <br><br>
+      <b>Optional Rule:</b><br> Place neutral units (glass beads or unused player mods) in the territories, when attacking another player can defend using a 6 sided die for the neutral units.
+    </li>
+    <li>
+      <h5>Moons of Mars</h5>
+      You must control all the spaces of both moons to collect the bonus from the Energy Extraction space command card.
+    </li>
+    <li>
+      <h5>Nuclear Cards</h5>
+      When playing The Mother, Aqua Brother, or Nicky Boy use the continent bonus listings on the Mars maps in place of the listing on the command cards.
+    </li>
+  </ol>
+  <hr>
+  <p>Map design by <%= link_to "v0lrath", "http://boardgamegeek.com/user/v0lrath", target: "_blank" %>.</p>
+  <div class="bundle-download-container">
+    <%= download_expansion_button("/expansions/mars_expansion.zip") %>
+    <p class="description">The bundled expansion pack contains high-resolution versions of the Mars map, Phobos &amp; Diemos map, and each territory card.</p>
+  </div>
 
-<h4>Neutral Territories</h4>
-<p>Players do not start in the neutral territories.
-There is no continent bonus for controlling all the neutral territories but they do count toward your total number of controlled territories.
-North and South Moab wrap across the board (so North Moab for example borders both Sirenum in Amazonis and Apygia in Casius).</p>
-
-<h4>Moons of Mars</h4>
-<p>You must control all the spaces of both moons to collect the bonus from the Energy Extraction space command card.</p>
-
-<h4>Nuclear Cards</h4>
-<p>When playing The Mother, Aqua Brother, or Nicky Boy use the charts on the Mars map in place of the charts on the command cards.</p>
-
-<hr />
-<p>Map design by <%= link_to "v0lrath", "http://boardgamegeek.com/user/v0lrath", target: "_blank" %>.</p>
-<div class="bundle-download-container">
-  <%= download_expansion_button("/expansions/mars_expansion.zip") %>
-  <p class="description">The bundled expansion pack contains high-resolution versions of the Mars map, Phobos &amp; Diemos map, and each territory card.</p>
 </div>
-
-<hr />
 
 <p><%= link_to image_tag("mars/Mars.jpg"), asset_path("mars/original/Mars.jpg"), target: "_blank" %></p>
 <p><%= link_to image_tag("mars/Mars-Moons.jpg"), asset_path("mars/original/Mars-Moons.jpg"), target: "_blank" %></p>

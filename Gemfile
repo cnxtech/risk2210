@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem 'rails', '4.2.1.rc3'
+gem 'rails', '4.2.1'
 
 ## Assets
 gem 'sass-rails', '~> 5.0.1'
@@ -47,8 +47,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.2.1'
   gem 'factory_girl_rails', '~> 4.5.0'
   gem 'database_cleaner', '~> 1.4.1'
-  gem 'byebug'
-  gem 'ffaker', '~> 1.32.1'
+  gem 'byebug', '~> 4.0.3'
+  gem 'faker', '~> 1.4.3'
   gem 'teaspoon', '~> 0.9.1'
   gem 'pry-rails', '~> 0.3.3'
 end

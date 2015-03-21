@@ -1,27 +1,36 @@
 <% content_for :page_title, "Factions Expansion" %>
-
-<h1>Factions</h1>
-<p>Throughout history different factions have vied for control within various societies and governments.  Each has their own agenda.  Now choose which faction you think will help you win on the battlefield in Risk 2210!</p>
-<p>This expansion pack includes the official Frontline factions as well as fan made factions.  View each faction page for more details.</p>
-
-<h2>Rules</h2>
-<p>The official rules say that the first player chooses their faction.  You can also choose one randomly.  Another option is to randomly draw two cards and pick one from those.</p>
-
-<hr />
-
-<p>Card designs by <%= link_to "Grinborg", "http://boardgamegeek.com/user/burbidge", target: "_blank" %>.</p>
-
-<div class="bundle-download-container">
-  <%= download_expansion_button("/expansions/factions_expansion.zip") %>
-  <p class="description">The bundled expansion pack contains high-resolution versions of all Faction cards.</p>
-</div>
-
-<hr />
-
-<% @factions.each do |faction| %>
-  <p class="faction-item">
-    <%= link_to expansions_faction_path(faction) do %>
-      <%= image_tag("faction_icons/#{faction.image_name_format}.png", width: 35) %><%= faction.name %>
-    <% end %>
+<div class='well'>
+  <h1>Factions</h1>
+  <p>
+    Throughout history different factions have vied for control within various societies and governments.  Each has their own agenda.  Now choose which faction you think will help you win on the battlefield in Risk 2210!
+    <br><br>
+    This expansion pack includes the official Frontline factions as well as fan made factions.  Each faction page contains additional details.
   </p>
-<% end %>
+
+  <h3>Rules</h3>
+  <p>Choose a method for faction selection from the following:</p>
+  <ul>
+    <li>Each player rolls a die, choose in order</li>
+    <li>Each player randomly chooses one card</li>
+    <li>Each player randomly chooses two cards, and then keeps one</li>
+  </ul>
+
+  <hr />
+
+  <p>Card designs by <%= link_to "Grinborg", "http://boardgamegeek.com/user/burbidge", target: "_blank" %>.</p>
+
+  <div class="bundle-download-container">
+    <%= download_expansion_button("/expansions/factions_expansion.zip") %>
+    <p class="description">The bundled expansion pack contains high-resolution versions of all Faction cards.</p>
+  </div>
+
+  <hr />
+
+  <% @factions.each do |faction| %>
+    <p class="faction-item">
+      <%= link_to expansions_faction_path(faction) do %>
+        <%= image_tag("faction_icons/#{faction.image_name_format}.png", width: 35) %><%= faction.name %>
+      <% end %>
+    </p>
+  <% end %>
+</div>

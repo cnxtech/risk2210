@@ -1,81 +1,86 @@
 <% content_for :page_title, "Tech Commander Expansion" %>
+<div class="well">
+  <h1>Tech Commander</h1>
 
-<h1>Tech Commander</h1>
-<%= image_tag("tech_commander/card_back.png", width: 200) %>
-<h2>Rules</h2>
-<p>The Tech Commander receives an eight sided dice on defensive rolls and a six sided dice when attacking.</p>
+  <%= image_tag("tech_commander/card_back.png", width: 200) %>
+  <h3>Rules</h3>
+  <p>The Tech Commander receives an eight sided dice on defensive rolls and a six sided dice when attacking.</p>
 
-<hr />
-<p>Design by <%= link_to "v0lrath", "http://boardgamegeek.com/user/v0lrath", target: "_blank" %>.</p>
-<div class="bundle-download-container">
-  <%= download_expansion_button("/expansions/tech_commander_expansion.zip") %>
-  <p class="description">The bundled expansion pack contains high-resolution versions of all Tech Commander command cards and a PDF with cutouts of the commander units.</p>
+  <hr />
+  <p>Design by <%= link_to "v0lrath", "http://boardgamegeek.com/user/v0lrath", target: "_blank" %>.</p>
+  <div class="bundle-download-container">
+    <%= download_expansion_button("/expansions/tech_commander_expansion.zip") %>
+    <p class="description">The bundled expansion pack contains high-resolution versions of all Tech Commander command cards and a PDF with cutouts of the commander units.</p>
+  </div>
+
+  <hr />
+
+  <h3>Command Cards</h3>
+  <p>Below is a listing of all the cards contained in the Tech Commander deck from season two of Avalon Hill's Frontline program for Risk 2210:</p>
+
+  <ul class='command-card-listing'>
+    <li>
+      <strong>Advanced Recycling</strong><br/>
+      Count: 2<br />
+      Cost: 0<br/>
+      Play this card at any time.<br/>
+      Discard any number of Command Cards you own. Collect 1 Energy for each card discarded.
+    </li>
+    <li>
+      <strong>CBN Protection</strong><br />
+      Count: 2<br />
+      Cost: 1<br />
+      Play on your turn before your first invasion is declared.<br />
+      Choose 1 territory that has a Devastation marker on it. For the duration of your turn, you can move units through that territory.
+    </li>
+    <li>
+      <strong>Combat Enhancer</strong><br/>
+      Count: 4<br />
+      Cost: 0<br />
+      Play on your turn before your first invasion is declared or after an opponent declares an invasion into a territory you control.<br />
+      For this turn, gain +1 to all your combat rolls between the invading and invaded territory.
+    </li>
+    <li>
+      <strong>Mind Control</strong><br/>
+      Count: 4<br />
+      Cost: *<br />
+      Play this card in response to any Command Card being played.<br />
+      Pay the cost of the played Command Card in order to cancel its effects.
+    </li>
+    <li>
+      <strong>Superconductivity</strong><br/>
+      Count: 1<br />
+      Cost: 2<br />
+      Play on your turn before your first invasion is declared.<br />
+      Place this card face up in front of you. While this card is in play, the Energy Activation cost for all Command Cards you play is reduced by 1.
+    </li>
+    <li>
+      <strong>Tech Investment</strong><br/>
+      Count: 2<br />
+      Cost: 0<br />
+      Play this card after your Collect and Deploy MODs and Energy action this turn.<br />
+      Roll 1 8-sided die and gain that many energy chips. At the end of your turn (after fortification) roll 1 6-sided die and lose that many energy chips.
+    </li>
+    <li>
+      <strong>Technical Espionage</strong><br/>
+      Count: 2<br />
+      Cost: 2<br />
+      Play on your turn before your first invasion is declared.<br />
+      Choose 1 of your opponents and look at his or her Command Cards. Choose 1 of their cards and discard it.
+    </li>
+    <li>
+      <strong>Teleporation</strong><br/>
+      Count: 1<br />
+      Cost: 0<br />
+      Play on your turn before your first invasion is declared.<br />
+      You may make one redeployment before your first invasion.
+    </li>
+    <li>
+      <strong>Time Dilation</strong><br/>
+      Count: 2<br />
+      Cost: 4<br />
+      Play this card after bidding for turn order has been completed.<br />
+      Switch turn order markers with the opponent of your choice.
+    </li>
+  </ul>
 </div>
-
-<hr />
-
-<h2>Command Cards</h2>
-<p>Here's a detailed breakdown of the Tech Commander deck from season two of Avalon Hill's Frontline program for Risk 2210:</p>
-
-<p><strong>Advanced Recycling</strong><br/>
-Count: 2<br />
-Cost: 0<br/>
-Play this card at any time.<br/>
-Discard any number of Command Cards you own. Collect 1 Energy for each card discarded.<br/>
-</p>
-
-<p><strong>CBN Protection</strong><br />
-Count: 2<br />
-Cost: 1<br />
-Play on your turn before your first invasion is declared.<br />
-Choose 1 territory that has a Devastation marker on it. For the duration of your turn, you can move units through that territory.
-</p>
-
-<p><strong>Combat Enhancer</strong><br/>
-Count: 4<br />
-Cost: 0<br />
-Play on your turn before your first invasion is declared or after an opponent declares an invasion into a territory you control.<br />
-For this turn, gain +1 to all your combat rolls between the invading and invaded territory.
-</p>
-
-<p><strong>Mind Control</strong><br/>
-Count: 4<br />
-Cost: *<br />
-Play this card in response to any Command Card being played.<br />
-Pay the cost of the played Command Card in order to cancel its effects.
-</p>
-
-<p><strong>Superconductivity</strong><br/>
-Count: 1<br />
-Cost: 2<br />
-Play on your turn before your first invasion is declared.<br />
-Place this card face up in front of you. While this card is in play, the Energy Activation cost for all Command Cards you play is reduced by 1.
-</p>
-
-<p><strong>Tech Investment</strong><br/>
-Count: 2<br />
-Cost: 0<br />
-Play this card after your Collect and Deploy MODs and Energy action this turn.<br />
-Roll 1 8-sided die and gain that many energy chips. At the end of your turn (after fortification) roll 1 6-sided die and lose that many energy chips.
-</p>
-
-<p><strong>Technical Espionage</strong><br/>
-Count: 2<br />
-Cost: 2<br />
-Play on your turn before your first invasion is declared.<br />
-Choose 1 of your opponents and look at his or her Command Cards. Choose 1 of their cards and discard it.
-</p>
-
-<p><strong>Teleporation</strong><br/>
-Count: 1<br />
-Cost: 0<br />
-Play on your turn before your first invasion is declared.<br />
-You may make one redeployment before your first invasion.
-</p>
-
-<p><strong>Time Dilation</strong><br/>
-Count: 2<br />
-Cost: 4<br />
-Play this card after bidding for turn order has been completed.<br />
-Switch turn order markers with the opponent of your choice
-</p>

@@ -87,56 +87,56 @@ module Fixtures
               {
                 "employer" => {
                   "id" => "156223891096511",
-                  "name" => Faker::Job.title
+                  "name" => Faker::Lorem.word
                 },
                 "position" => {
                   "id" => "128674630510351",
-                  "name" => Faker::Job.title
+                  "name" => Faker::Lorem.word
                 },
                 "start_date" => "2011-08"
               },
               {
                 "employer" => {
                   "id" => "223742647668475",
-                  "name" => Faker::Job.title
+                  "name" => Faker::Lorem.word
                 },
                 "position" => {
                   "id" => "128674630510351",
-                  "name" => Faker::Job.title
+                  "name" => Faker::Lorem.word
                 },
                 "start_date" => "2011-07"
               },
               {
                 "employer" => {
                   "id" => "245321145541707",
-                  "name" => Faker::Job.title
+                  "name" => Faker::Lorem.word
                 },
                 "position" => {
                   "id" => "128674630510351",
-                  "name" => Faker::Job.title
+                  "name" => Faker::Lorem.word
                 },
                 "start_date" => "2011-03"
               },
               {
                 "employer" => {
                   "id" => "116860741677367",
-                  "name" => Faker::Job.title
+                  "name" => Faker::Lorem.word
                 },
                 "position" => {
                   "id" => "145617765464974",
-                  "name" => Faker::Job.title
+                  "name" => Faker::Lorem.word
                 },
                 "start_date" => "2009-04"
               },
               {
                 "employer" => {
                   "id" => "111078042263414",
-                  "name" => Faker::Job.title
+                  "name" => Faker::Lorem.word
                 },
                 "projects" => [
                   {
                     "id" => "109871969042969",
-                    "name" => Faker::Job.title,
+                    "name" => Faker::Lorem.word,
                     "start_date" => "2010-09"
                   }
                 ]
@@ -146,7 +146,7 @@ module Fixtures
               {
                 "school" => {
                   "id" => "111845662166573",
-                  "name" => Faker::Education.school
+                  "name" => Faker::Lorem.word
                 },
                 "year" => {
                   "id" => "141778012509913",
@@ -157,12 +157,12 @@ module Fixtures
               {
                 "school" => {
                   "id" => "157433874304051",
-                  "name" => Faker::Education.school
+                  "name" => Faker::Lorem.word
                 },
                 "concentration" => [
                   {
                     "id" => "136073143125360",
-                    "name" => Faker::Education.school
+                    "name" => Faker::Lorem.word
                   }
                 ],
                 "type" => "College"
