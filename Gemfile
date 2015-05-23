@@ -47,8 +47,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.2.1'
   gem 'factory_girl_rails', '~> 4.5.0'
   gem 'database_cleaner', '~> 1.4.1'
-  gem 'byebug', '~> 4.0.5'
+  gem 'byebug', '~> 5.0.0'
   gem 'faker', '~> 1.4.3'
-  gem 'teaspoon', '~> 0.9.1'
+  gem 'teaspoon-jasmine', '~> 2.2.0'
   gem 'pry-rails', '~> 0.3.4'
 end
