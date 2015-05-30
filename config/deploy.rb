@@ -8,17 +8,9 @@ set :log_level, :info
 set :pty, true
 set :linked_files, %w{config/secrets.yml}
 set :keep_releases, 5
+set :passenger_restart_with_sudo, true
 
 namespace :deploy do
-  after :publishing, :restart
-
-  desc 'Restart application'
-  task :restart do
-    on roles(:app), in: :sequence, wait: 5 do
-      execute :touch, release_path.join('tmp/restart.txt')
-    end
-  end
-
   after :finishing, 'deploy:cleanup'
 end
 
