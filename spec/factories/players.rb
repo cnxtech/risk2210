@@ -20,13 +20,15 @@ FactoryGirl.define do
     gravatar_hash nil
     raw_authorization nil
     password_reset_token nil
+    password "secret1"
+    password_confirmation { password }
     created_at { Time.now }
     updated_at { Time.now }
   end
 
   factory :player, parent: :base_player, aliases: [:creator] do
     password "secret1"
-    password_confirmation "secret1"
+    password_confirmation { password }
   end
   factory :facebook_player, parent: :base_player do
     provider "facebook"

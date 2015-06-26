@@ -1,4 +1,4 @@
-ENV["RAILS_ENV"] ||= 'test'
+ENV["RAILS_ENV"] = 'test'
 
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
@@ -16,6 +16,7 @@ RSpec.configure do |config|
     load_maps
     DatabaseCleaner.strategy = :truncation, {except: ["factions", "maps", "continents"]}
     DatabaseCleaner.orm = "mongoid"
+    FactoryGirl.lint
   end
 
   config.before(:each) do

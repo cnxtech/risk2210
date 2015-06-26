@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem 'rails', '4.2.1'
+gem 'rails', '4.2.3'
 
 ## Assets
 gem 'sass-rails', '~> 5.0.3'
@@ -13,7 +13,7 @@ gem 'therubyracer', '~> 0.12.2'
 
 ## Frontend / Views
 gem 'jquery-rails', '~> 4.0.3'
-gem 'redcarpet', '~> 3.2.3'
+gem 'redcarpet', '~> 3.3.2'
 gem 'simple_form', '~> 3.1.0'
 gem 'cocoon', '~> 1.2.6'
 gem 'active_model_serializers', '~> 0.8.2'
@@ -34,18 +34,18 @@ gem 'omniauth-facebook', '~> 2.0.0'
 gem 'bcrypt', '~> 3.1.10'
 
 ## Operations
-gem 'passenger', '5.0.6'
-gem 'exception_notification', '~> 4.1.0', group: [:production]
+gem 'passenger', '5.0.11'
+gem 'exception_notification', '~> 4.1.1', group: [:production]
 
 group :development do
   gem 'capistrano', '~> 3.4.0', require: false
   gem 'capistrano-rails', '~> 1.1.3', require: false
   gem 'capistrano-bundler', '~> 1.1.1', require: false
-  gem 'capistrano-passenger', '~> 0.0.5', require: false
+  gem 'capistrano-passenger', '~> 0.1.0', require: false
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.2.1'
+  gem 'rspec-rails', '~> 3.3.2'
   gem 'factory_girl_rails', '~> 4.5.0'
   gem 'database_cleaner', '~> 1.4.1'
   gem 'byebug', '~> 5.0.0'
