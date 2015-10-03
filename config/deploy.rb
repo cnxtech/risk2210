@@ -7,6 +7,7 @@ set :format, :pretty
 set :log_level, :info
 set :pty, true
 set :linked_files, %w{config/secrets.yml}
+set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
 set :keep_releases, 5
 set :passenger_restart_with_sudo, true
 
