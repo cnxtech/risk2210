@@ -26,9 +26,8 @@ gem 'eco', '~> 1.0.0'
 ## Mongo DB
 gem 'mongoid', '~> 5.0.0'
 gem 'mongoid-slug', '~> 5.1.0'
-gem 'geocoder', '~> 1.2.11' #https://github.com/alexreisner/geocoder/issues/832
+gem 'geocoder', '~> 1.2.11'
 gem 'mongoid_scribe', '~> 0.3.0'
-# mongoid-geospatial
 
 ## Authentication
 gem 'omniauth', '~> 1.2.1'

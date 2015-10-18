@@ -13,11 +13,11 @@ module PlayersHelper
 
   def nearby_players(current_player)
     return if current_player.nil?
-    if current_player.location.blank?
+    if current_player.coordinates.nil? || current_player.coordinates.empty?
       nearby_players = []
     else
       begin
-        nearby_players = Player.near(current_player.location, 50).except(current_player)
+        nearby_players = Player.nearby(current_player.coordinates).except(current_player)
       rescue Exception => exception
         nearby_players = []
       end

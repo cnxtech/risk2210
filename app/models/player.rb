@@ -9,6 +9,8 @@ class Player
     Gravatar = "Gravatar"
   end
 
+  FIFTY_MILES = (69 / 50)
+
   ## Field Definitions
   field :provider, type: String
   field :uid, type: String
@@ -70,6 +72,7 @@ class Player
 
   ## Scopes
   scope :public_profiles, ->() { where(public_profile: true).asc(:created_at) }
+  scope :nearby, ->(coordinates) { where(coordinates: {'$near' => coordinates, '$maxDistance' => FIFTY_MILES}) }
 
   ## Facebook image size options
   ## square=50x50, small=50xVariable, normal=100xVariable, large=200xVariable
