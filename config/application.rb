@@ -19,6 +19,7 @@ module Risk2210
     config.assets.version = '1.0'
 
     config.generators do |generator|
+      generator.orm :mongoid
       generator.test_framework :rspec, fixture: false
       generator.stylesheets false
       generator.javascripts false
@@ -38,5 +39,8 @@ module Risk2210
 
     config.password_cost = BCrypt::Engine::DEFAULT_COST
     I18n.enforce_available_locales = true
+
+    Mongoid.logger.level = Logger::INFO
+    Mongo::Logger.logger.level = Logger::INFO
   end
 end
