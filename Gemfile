@@ -37,6 +37,7 @@ gem 'bcrypt', '~> 3.1.10'
 ## Operations
 gem 'passenger', '5.0.13'
 gem 'exception_notification', '~> 4.1.1', group: [:production]
+gem 'pry-rails', '~> 0.3.4'
 
 group :development do
   gem 'capistrano', '~> 3.4.0', require: false
@@ -52,5 +53,4 @@ group :development, :test do
   gem 'byebug', '~> 8.2.0'
   gem 'faker', '~> 1.5.0'
   gem 'teaspoon-jasmine', '~> 2.3.4'
-  gem 'pry-rails', '~> 0.3.4'
 end
