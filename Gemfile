@@ -31,7 +31,7 @@ gem 'mongoid_scribe', '~> 0.3.0'
 
 ## Authentication
 gem 'omniauth', '~> 1.2.1'
-gem 'omniauth-facebook', '~> 2.0.0'
+gem 'omniauth-facebook', '~> 3.0.0'
 gem 'bcrypt', '~> 3.1.10'
 
 ## Operations
