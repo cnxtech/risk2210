@@ -89,16 +89,22 @@ describe Game do
     let(:game) { FactoryGirl.create(:game, current_year: 1) }
     context "start_year" do
       it "should increment the year and set each game_player's turn order" do
-        turn_order = {game.game_players.first.id.to_s => "2", game.game_players.second.id.to_s => "1"}
+        turn_order = {}
+        turn_order[game.game_players[0].id.to_s] = "2"
+        turn_order[game.game_players[1].id.to_s] = "1"
+
         game.save_event("start_year", turn_order)
 
         expect(game.current_year).to eq(2)
-        expect(game.current_player).to eq(game.game_players.second)
-        expect(game.game_players.first.turn_order).to eq(2)
-        expect(game.game_players.second.turn_order).to eq(1)
+        expect(game.current_player).to eq(game.game_players[1])
+        expect(game.game_players[0].turn_order).to eq(2)
+        expect(game.game_players[1].turn_order).to eq(1)
       end
       it "should populate errors if the save fails" do
-        turn_order = {game.game_players.first.id.to_s => "2", game.game_players.second.id.to_s => "2"}
+        turn_order = {}
+        turn_order[game.game_players[0].id.to_s] = "2"
+        turn_order[game.game_players[1].id.to_s] = "2"
+
         game.save_event("start_year", turn_order)
 
         expect(game.errors[:base]).to include("Every player must have a unique starting turn order.")
@@ -107,25 +113,30 @@ describe Game do
 
     context "end_game" do
       it "should update the player's colony influence and the game's completed flag" do
-        colony_influence = {game.game_players.first.id.to_s => "1", game.game_players.second.id.to_s => "3"}
+        colony_influence = {}
+        colony_influence[game.game_players[0].id.to_s] = "1"
+        colony_influence[game.game_players[1].id.to_s] = "3"
 
         game.save_event("end_game", colony_influence)
 
         expect(game).to be_completed
-        expect(game.game_players.first.colony_influence).to eq(1)
-        expect(game.game_players.second.colony_influence).to eq(3)
+        expect(game.game_players[0].colony_influence).to eq(1)
+        expect(game.game_players[1].colony_influence).to eq(3)
       end
     end
 
     context "update_turn_order" do
       it "should update the turn order without incrementing the year" do
-        turn_order = {game.game_players.first.id.to_s => "2", game.game_players.second.id.to_s => "1"}
+        turn_order = {}
+        turn_order[game.game_players[0].id.to_s] = "2"
+        turn_order[game.game_players[1].id.to_s] = "1"
+
         game.save_event("update_turn_order", turn_order)
 
         expect(game.current_year).to eq(1)
         expect(game.current_player).to eq(game.game_players.second)
-        expect(game.game_players.first.turn_order).to eq(2)
-        expect(game.game_players.second.turn_order).to eq(1)
+        expect(game.game_players[0].turn_order).to eq(2)
+        expect(game.game_players[1].turn_order).to eq(1)
       end
     end
 
@@ -143,22 +154,22 @@ describe Game do
     it "should set the current_player to the game_player with the first turn order on create" do
       game = FactoryGirl.build(:game)
       game.game_players << FactoryGirl.build(:game_player, turn_order: 3)
-      game.game_players.first.turn_order = 3
-      game.game_players.second.turn_order = 1
-      game.game_players.third.turn_order = 2
+      game.game_players[0].turn_order = 3
+      game.game_players[1].turn_order = 1
+      game.game_players[2].turn_order = 2
 
       game.save
 
       expect(game.game_players.size).to eq(3)
-      expect(game.current_player).to eq(game.game_players.second)
+      expect(game.current_player).to eq(game.game_players[1])
     end
   end
 
   describe "players_by_score" do
     it "should return the game players sorted by score" do
       game = FactoryGirl.create(:game)
-      game_player1 = game.game_players.first
-      game_player2 = game.game_players.second
+      game_player1 = game.game_players[0]
+      game_player2 = game.game_players[1]
       game_player1.update_attribute(:territory_count, 15)
       game_player2.update_attribute(:territory_count, 20)
 

@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem 'rails', '4.2.4'
+gem 'rails', '4.2.5'
 
 ## Assets
 gem 'sass-rails', '~> 5.0.3'
@@ -24,9 +24,9 @@ gem 'ejs', '~> 1.1.1'
 gem 'eco', '~> 1.0.0'
 
 ## Mongo DB
-gem 'mongoid', '~> 5.0.0'
-gem 'mongoid-slug', '~> 5.1.0'
-gem 'geocoder', '~> 1.2.11'
+gem 'mongoid', '~> 5.0.1'
+gem 'mongoid-slug', '~> 5.1.1'
+gem 'geocoder', '~> 1.2.12'
 gem 'mongoid_scribe', '~> 0.3.0'
 
 ## Authentication
@@ -46,10 +46,10 @@ group :development do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.3.3'
+  gem 'rspec-rails', '~> 3.4.0'
   gem 'factory_girl_rails', '~> 4.5.0'
   gem 'database_cleaner', '~> 1.5.1'
-  gem 'byebug', '~> 6.0.2'
+  gem 'byebug', '~> 8.2.0'
   gem 'faker', '~> 1.5.0'
   gem 'teaspoon-jasmine', '~> 2.3.4'
   gem 'pry-rails', '~> 0.3.4'

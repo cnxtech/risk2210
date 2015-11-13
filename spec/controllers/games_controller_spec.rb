@@ -14,8 +14,8 @@ describe GamesController do
       get :new
 
       expect(assigns(:game)).to_not be_nil
-      expect(assigns(:game).game_players.first.handle).to eq(player1.handle)
-      expect(assigns(:game).game_players.second).to_not be_nil
+      expect(assigns(:game).game_players[0].handle).to eq(player1.handle)
+      expect(assigns(:game).game_players[1]).to_not be_nil
     end
   end
 
@@ -101,8 +101,8 @@ describe GamesController do
 
   describe "update" do
     let(:game) { FactoryGirl.create(:game, creator_id: player1.id, current_year: 1) }
-    let(:game_player) { game.game_players.first }
-    let(:game_player2) { game.game_players.second }
+    let(:game_player) { game.game_players[0] }
+    let(:game_player2) { game.game_players[1] }
 
     it "should display an alert if the current player is not the creator" do
       login player2

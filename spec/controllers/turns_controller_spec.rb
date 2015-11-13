@@ -7,8 +7,8 @@ describe TurnsController do
   let(:continent_ids_1) { Continent.all.map(&:id).sample(4) }
   let(:continent_ids_2) { Continent.all.map(&:id).sample(4) }
   let(:game) { FactoryGirl.create(:game, creator_id: player1.id, current_year: 1) }
-  let(:game_player) { game.game_players.first }
-  let(:game_player2) { game.game_players.second }
+  let(:game_player) { game.game_players[0] }
+  let(:game_player2) { game.game_players[1] }
 
   describe "create" do
     it "should create a turn and a record for each player of the game" do
