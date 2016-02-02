@@ -7,7 +7,7 @@ gem 'sass-rails', '~> 5.0.3'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'uglifier', '~> 2.7.1'
 gem 'bootstrap-on-rails', '3.3.1'
-gem 'font-awesome-rails', '~> 4.4.0'
+gem 'font-awesome-rails', '~> 4.5.0'
 gem 'less-rails', '~> 2.7.1'
 gem 'therubyracer', '~> 0.12.2'
 gem 'quiet_assets', '~> 1.1.0'
@@ -24,13 +24,13 @@ gem 'ejs', '~> 1.1.1'
 gem 'eco', '~> 1.0.0'
 
 ## Mongo DB
-gem 'mongoid', '~> 5.0.1'
+gem 'mongoid', '~> 5.1.0'
 gem 'mongoid-slug', '~> 5.1.1'
 gem 'geocoder', '~> 1.3.0'
 gem 'mongoid_scribe', '~> 0.3.0'
 
 ## Authentication
-gem 'omniauth', '~> 1.2.1'
+gem 'omniauth', '~> 1.3.1'
 gem 'omniauth-facebook', '~> 3.0.0'
 gem 'bcrypt', '~> 3.1.10'
 
