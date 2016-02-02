@@ -16,7 +16,6 @@ module Risk2210
     end
 
     config.encoding = "utf-8"
-    config.assets.version = '1.0'
 
     config.generators do |generator|
       generator.orm :mongoid

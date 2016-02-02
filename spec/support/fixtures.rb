@@ -226,5 +226,32 @@ module Fixtures
       }
     end
 
+    def self.player3
+      first_name = Faker::Name.first_name
+      last_name  = Faker::Name.first_name
+      email      = Faker::Internet.free_email
+      {
+        "provider" => "facebook",
+        "uid" => "01171101564850447",
+        "info" => {
+          "email" => email,
+          "name" => "#{first_name} #{last_name}",
+          "image" => "http://graph.facebook.com/10156401171850447/picture"
+        },
+        "credentials" => {
+          "token" => "CAADMjLRob70BAJOxYS0AD4NcSBtHYWaZBeEmuRb7MdKhUQayUVSD2skJZByy4vEQtw4DB5MZAYNWbj4lYB8JDPR6sjOkmH0K7uDZAIgZBZAOEcgn5EZCW6ohz3AOroc808qp8G74LoqpYZBz2GHnZCGORZAGdg4aJxDM2WnW0vxAMZD",
+          "expires_at" => 1459452378,
+          "expires" => true
+        },
+        "extra" => {
+          "raw_info" => {
+            "name" => "#{first_name} #{last_name}",
+            "email" => email,
+            "id" => "01171101564850447"
+          }
+        }
+      }
+    end
+
   end
 end

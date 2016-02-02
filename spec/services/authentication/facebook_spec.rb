@@ -4,6 +4,7 @@ describe Authentication::Facebook do
 
   let(:player1) { Fixtures::Facebook.player1 }
   let(:player2) { Fixtures::Facebook.player2 }
+  let(:player3) { Fixtures::Facebook.player3 }
   let(:me) { Fixtures::Facebook.me }
 
   describe "registering using Facebook" do
@@ -28,6 +29,13 @@ describe Authentication::Facebook do
         expect(player).to be_valid
         expect(player).to_not be_new_record
         expect(player.raw_authorization).to eq(player2)
+      end
+      it "registers player3 with their facebook data" do
+        player = Authentication::Facebook.new(player3).authenticate
+
+        expect(player).to be_valid
+        expect(player).to_not be_new_record
+        expect(player.raw_authorization).to eq(player3)
       end
     end
     context "player has an existing account" do

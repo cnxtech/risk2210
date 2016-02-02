@@ -30,8 +30,10 @@ private
           player.first_name         = @auth['info']['first_name'] || ""
           player.last_name          = @auth['info']['last_name'] || ""
           player.email              = @auth['info']['email'] || ""
-          player.handle             = @auth['info']['nickname'] || ""
-          player.website            = @auth["info"]["urls"]["Facebook"]
+          player.handle             = @auth['info']['nickname'] || "#{player.first_name.downcase}-#{player.last_name.downcase}"
+          if @auth['info']['urls']
+            player.website            = @auth['info']['urls']['Facebook']
+          end
           player.facebook_image_url = sanitized_facebook_image
           player.image_source       = Player::ImageSource::Facebook
 
