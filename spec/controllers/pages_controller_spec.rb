@@ -27,14 +27,4 @@ describe PagesController do
     end
   end
 
-  describe "api_docs" do
-    it "should render" do
-      FactoryGirl.create(:player)
-
-      get :api_docs
-
-      expect(response).to be_success
-    end
-  end
-
 end

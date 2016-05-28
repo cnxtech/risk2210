@@ -2,8 +2,6 @@ set :application, 'risk2210'
 set :repo_url, 'git@github.com:nick-desteffen/risk2210.git'
 set :branch, "master"
 set :deploy_to, "/var/www/apps/risk2210"
-set :scm, :git
-set :format, :pretty
 set :log_level, :info
 set :pty, true
 set :linked_files, %w{config/secrets.yml}
