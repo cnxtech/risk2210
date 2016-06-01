@@ -1,0 +1,23 @@
+@import "bootstrap-sprockets";
+@import "bootswatch/slate/variables";
+@import "bootstrap";
+@import "bootswatch/slate/bootswatch";
+@import "font-awesome";
+@import "bootstrap-social";
+@import "font";
+@import "layout";
+@import "expansions";
+@import "forums";
+@import "games";
+@import "players";
+@import "home";
+@import "messages";
+
+body {
+  padding-top: 70px;
+  background-image: image-url("hixs_pattern_evolution.png");
+}
+
+.carousel-control.left, .carousel-control.right {
+  background-image: none
+}

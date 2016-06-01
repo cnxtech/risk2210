@@ -37,6 +37,7 @@ private
 
   def find_topic
     @topic = Topic.find(params[:id])
+    raise Mongoid::Errors::DocumentNotFound.new(Topic, params[:id], params[:id]) if @topic.nil?
   end
 
   def topics_viewed

@@ -6,10 +6,8 @@ gem 'rails', '4.2.6'
 gem 'sass-rails', '~> 5.0.3'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'uglifier', '~> 3.0.0'
-gem 'bootstrap-on-rails', '3.3.1'
+gem 'bootstrap-sass', '3.3.6'
 gem 'font-awesome-rails', '~> 4.6.3.0'
-gem 'less-rails', '~> 2.7.1'
-gem 'therubyracer', '~> 0.12.2'
 gem 'quiet_assets', '~> 1.1.0'
 
 ## Frontend / Views

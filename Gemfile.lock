@@ -41,9 +41,12 @@ GEM
     airbrussh (1.0.2)
       sshkit (>= 1.6.1, != 1.7.0)
     arel (6.0.3)
+    autoprefixer-rails (6.3.6.2)
+      execjs
     bcrypt (3.1.11)
-    bootstrap-on-rails (3.3.1)
-      less-rails
+    bootstrap-sass (3.3.6)
+      autoprefixer-rails (>= 5.2.1)
+      sass (>= 3.3.4)
     bson (4.1.1)
     builder (3.2.2)
     byebug (9.0.4)
@@ -71,7 +74,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.10.0)
-    commonjs (0.2.7)
     concurrent-ruby (1.0.2)
     database_cleaner (1.5.3)
     diff-lcs (1.2.5)
@@ -108,14 +110,6 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.3)
     jwt (1.5.1)
-    less (2.6.0)
-      commonjs (~> 0.2.7)
-    less-rails (2.7.1)
-      actionpack (>= 4.0)
-      less (~> 2.6.0)
-      sprockets (> 2, < 4)
-      tilt
-    libv8 (3.16.14.15)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.4)
@@ -207,7 +201,6 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rake (11.1.2)
     redcarpet (3.3.4)
-    ref (2.0.0)
     rspec-core (3.4.4)
       rspec-support (~> 3.4.0)
     rspec-expectations (3.4.0)
@@ -251,9 +244,6 @@ GEM
       railties (>= 3.2.5, < 6)
     teaspoon-jasmine (2.3.4)
       teaspoon (>= 1.0.0)
-    therubyracer (0.12.2)
-      libv8 (~> 3.16.14.0)
-      ref
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.4)
@@ -268,7 +258,7 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers (~> 0.8.3)
   bcrypt (~> 3.1.11)
-  bootstrap-on-rails (= 3.3.1)
+  bootstrap-sass (= 3.3.6)
   byebug (~> 9.0.4)
   capistrano-passenger (~> 0.2.0)
   capistrano-rails (~> 1.1.6)
@@ -283,7 +273,6 @@ DEPENDENCIES
   font-awesome-rails (~> 4.6.3.0)
   geocoder (~> 1.3.5)
   jquery-rails (~> 4.1.1)
-  less-rails (~> 2.7.1)
   mongoid (~> 5.1.3)
   mongoid-slug (~> 5.2.0)
   mongoid_scribe (~> 0.3.0)
@@ -298,7 +287,6 @@ DEPENDENCIES
   sass-rails (~> 5.0.3)
   simple_form (~> 3.2.0)
   teaspoon-jasmine (~> 2.3.4)
-  therubyracer (~> 0.12.2)
   uglifier (~> 3.0.0)
 
 BUNDLED WITH
