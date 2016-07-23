@@ -1,13 +1,13 @@
 source "https://rubygems.org"
 
-gem 'rails', '4.2.6'
+gem 'rails', '4.2.7'
 
 ## Assets
-gem 'sass-rails', '~> 5.0.3'
-gem 'coffee-rails', '~> 4.1.0'
+gem 'sass-rails', '~> 5.0.6'
+gem 'coffee-rails', '~> 4.2.1'
 gem 'uglifier', '~> 3.0.0'
 gem 'bootstrap-sass', '3.3.6'
-gem 'font-awesome-rails', '~> 4.6.3.0'
+gem 'font-awesome-rails', '~> 4.6.3.1'
 gem 'quiet_assets', '~> 1.1.0'
 
 ## Frontend / Views
@@ -24,7 +24,7 @@ gem 'eco', '~> 1.0.0'
 ## Mongo DB
 gem 'mongoid', '~> 5.1.3'
 gem 'mongoid-slug', '~> 5.2.0'
-gem 'geocoder', '~> 1.3.5'
+gem 'geocoder', '~> 1.3.7'
 gem 'mongoid_scribe', '~> 0.3.0'
 
 ## Authentication
@@ -34,7 +34,7 @@ gem 'bcrypt', '~> 3.1.11'
 
 ## Operations
 gem 'passenger', '5.0.28', require: 'phusion_passenger/rack_handler'
-gem 'exception_notification', '~> 4.1.1', group: [:production]
+gem 'exception_notification', '~> 4.2.1', group: [:production]
 gem 'pry-rails', '~> 0.3.4'
 
 group :development do
@@ -43,10 +43,10 @@ group :development do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.4.2'
+  gem 'rspec-rails', '~> 3.5.1'
   gem 'factory_girl_rails', '~> 4.7.0'
   gem 'database_cleaner', '~> 1.5.3'
-  gem 'byebug', '~> 9.0.4'
-  gem 'faker', '~> 1.6.3'
+  gem 'byebug', '~> 9.0.5'
+  gem 'faker', '~> 1.6.5'
   gem 'teaspoon-jasmine', '~> 2.3.4'
 end
