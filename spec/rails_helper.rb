@@ -13,6 +13,7 @@ RSpec.configure do |config|
   config.include(FactoryBot::Syntax::Methods)
 
   config.before(:suite) do
+    DatabaseCleaner.clean
     load_factions
     load_maps
     DatabaseCleaner.strategy = :truncation, {except: ["factions", "maps", "continents"]}

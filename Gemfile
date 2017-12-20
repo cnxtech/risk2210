@@ -28,7 +28,7 @@ gem 'geocoder', '~> 1.4.5'
 gem 'mongoid_scribe', '~> 0.3.0'
 
 ## Authentication
-gem 'omniauth', '~> 1.3.2'
+gem 'omniauth', '~> 1.7.1'
 gem 'omniauth-facebook', '~> 4.0.0'
 gem 'bcrypt', '~> 3.1.11'
 
