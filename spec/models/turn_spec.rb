@@ -10,7 +10,7 @@ describe Turn do
       game.game_players << next_player
       game.save
 
-      FactoryGirl.create(:turn, game: game, game_player: game.game_players.second, order: 2)
+      create(:turn, game: game, game_player: game.game_players.second, order: 2)
 
       expect(game.current_player).to eq(next_player)
     end

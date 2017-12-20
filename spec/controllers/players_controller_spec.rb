@@ -2,8 +2,8 @@ require 'rails_helper'
 
 describe PlayersController do
 
-  let(:player) { FactoryGirl.create(:player) }
-  let(:other_player) { FactoryGirl.create(:player) }
+  let(:player) { create(:player) }
+  let(:other_player) { create(:player) }
 
   describe "authorization" do
     it "only allows the logged in player edit, update, and destroy" do
@@ -20,7 +20,7 @@ describe PlayersController do
 
   describe "index" do
     it "should have all players with public profiles" do
-      private_player = FactoryGirl.create(:player, public_profile: false)
+      private_player = create(:player, public_profile: false)
 
       get :index
 
@@ -32,7 +32,7 @@ describe PlayersController do
   describe "show" do
     context "html" do
       it "should have the requested player" do
-        game = FactoryGirl.create(:game, creator: player)
+        game = create(:game, creator: player)
 
         get :show, id: player.slug
 

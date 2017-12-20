@@ -13,8 +13,8 @@ describe GamesHelper do
   end
 
   describe "player_handles" do
-    let!(:player1) { FactoryGirl.create(:player) }
-    let!(:player2) { FactoryGirl.create(:player) }
+    let!(:player1) { create(:player) }
+    let!(:player2) { create(:player) }
 
     it "should return a formatted array of player handles for Bootstraps's typeahead" do
       expect(helper.player_handles).to eq "[\"#{player1.handle}\", \"#{player2.handle}\"]"

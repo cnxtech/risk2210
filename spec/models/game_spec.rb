@@ -4,7 +4,7 @@ describe Game do
 
   let(:map_ids) { Map.all.sample(3).map(&:id) }
   let(:faction_ids) { Faction.all.sample(2).map(&:id) }
-  let(:game) { FactoryGirl.create(:game, map_ids: map_ids[0..1]) }
+  let(:game) { create(:game, map_ids: map_ids[0..1]) }
 
   describe "has_map?" do
     it "should return true if a game has a map" do
@@ -23,8 +23,8 @@ describe Game do
   describe "percent_complete" do
     it "should return the percentage of the game that has been completed" do
       3.times do
-        FactoryGirl.create(:turn, game: game, game_player: game.game_players.first)
-        FactoryGirl.create(:turn, game: game, game_player: game.game_players.second)
+        create(:turn, game: game, game_player: game.game_players.first)
+        create(:turn, game: game, game_player: game.game_players.second)
       end
 
       expect(game.percent_complete).to eq(60.0)
@@ -34,8 +34,8 @@ describe Game do
   describe "turn_count" do
     it "should return the total number of turns the game has" do
       3.times do
-        FactoryGirl.create(:turn, game: game, game_player: game.game_players.first)
-        FactoryGirl.create(:turn, game: game, game_player: game.game_players.second)
+        create(:turn, game: game, game_player: game.game_players.first)
+        create(:turn, game: game, game_player: game.game_players.second)
       end
 
       expect(game.turn_count).to eq(6)
@@ -48,7 +48,7 @@ describe Game do
 
     before do
       2.times do |index|
-        player = FactoryGirl.create(:player)
+        player = create(:player)
         game_player_attributes[index.to_s] = {handle: player.handle, faction_id: faction_ids[index], color: GamePlayer::COLORS.sample, turn_order: index + 1}
       end
     end
@@ -61,7 +61,7 @@ describe Game do
     end
     it "should be invalid with more than 5 players" do
       4.times do |index|
-        player = FactoryGirl.create(:player)
+        player = create(:player)
         game_player_attributes[(index + 2).to_s] = {handle: player.handle, faction_id: faction_ids[index], color: GamePlayer::COLORS.sample}
       end
 
@@ -86,7 +86,7 @@ describe Game do
   end
 
   describe "save_event" do
-    let(:game) { FactoryGirl.create(:game, current_year: 1) }
+    let(:game) { create(:game, current_year: 1) }
     context "start_year" do
       it "should increment the year and set each game_player's turn order" do
         turn_order = {}
@@ -167,7 +167,7 @@ describe Game do
 
   describe "players_by_score" do
     it "should return the game players sorted by score" do
-      game = FactoryGirl.create(:game)
+      game = create(:game)
       game_player1 = game.game_players[0]
       game_player2 = game.game_players[1]
       game_player1.update_attribute(:territory_count, 15)

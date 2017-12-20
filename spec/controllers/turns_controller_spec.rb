@@ -2,11 +2,11 @@ require 'rails_helper'
 
 describe TurnsController do
 
-  let(:player1) { FactoryGirl.create(:player) }
-  let(:player2) { FactoryGirl.create(:player) }
+  let(:player1) { create(:player) }
+  let(:player2) { create(:player) }
   let(:continent_ids_1) { Continent.all.map(&:id).sample(4) }
   let(:continent_ids_2) { Continent.all.map(&:id).sample(4) }
-  let(:game) { FactoryGirl.create(:game, creator_id: player1.id, current_year: 1) }
+  let(:game) { create(:game, creator_id: player1.id, current_year: 1) }
   let(:game_player) { game.game_players[0] }
   let(:game_player2) { game.game_players[1] }
 

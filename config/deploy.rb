@@ -15,7 +15,10 @@ namespace :db do
   task :fetch do
     on roles(:app) do
       temp_path = "./tmp"
-      execute "cd /tmp && mongodump -db risk2210_#{fetch(:rails_env)} -o /tmp && tar --remove-files -czf risk2210_#{fetch(:rails_env)}.tar.gz risk2210_#{fetch(:rails_env)}"
+      within("/tmp") do
+        execute :mongodump, "-db risk2210_#{fetch(:rails_env)} -o /tmp"
+        execute :tar, "--remove-files -czf risk2210_#{fetch(:rails_env)}.tar.gz risk2210_#{fetch(:rails_env)}"
+      end
       download! "/tmp/risk2210_#{fetch(:rails_env)}.tar.gz", "#{temp_path}/risk2210_#{fetch(:rails_env)}.tar.gz"
       system "cd #{temp_path} && tar -xzvf risk2210_#{fetch(:rails_env)}.tar.gz"
       system "mongorestore --drop -d risk2210_development #{temp_path}/risk2210_#{fetch(:rails_env)}"

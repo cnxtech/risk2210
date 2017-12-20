@@ -1,164 +1,166 @@
 <% content_for :page_title, "Capitals Risk" %>
+<div class="well">
+  <h1>Capitals Risk &amp; Homefront Commander</h1>
+  <%= image_tag("capitals/card_back.bmp", width: 200) %>
+  <hr />
+  <p>Concept and design by <%= link_to "Mohawk", "http://boardgamegeek.com/user/mohawk", target: "_blank" %> and <%= link_to "Teleute", "http://boardgamegeek.com/user/teleute", target: "_blank" %></p>
 
-<h1>Capitals Risk &amp; Homefront Commander</h1>
-<%= image_tag("capitals/card_back.bmp", width: 200) %>
-<hr />
-<p>Concept and design by <%= link_to "Mohawk", "http://boardgamegeek.com/user/mohawk", target: "_blank" %> and <%= link_to "Teleute", "http://boardgamegeek.com/user/teleute", target: "_blank" %></p>
+  <div class="bundle-download-container">
+    <%= download_expansion_button("/expansions/capitals_expansion.zip") %>
+    <p class="description">The bundled expansion pack contains high-resolution versions of all Homefront Commander command cards, additional Land, Water, Space, and Diplomat cards, the rules, and PDF with cutouts of the commander units &amp; capital tokens.</p>
+  </div>
 
-<div class="bundle-download-container">
-  <%= download_expansion_button("/expansions/capitals_expansion.zip") %>
-  <p class="description">The bundled expansion pack contains high-resolution versions of all Homefront Commander command cards, additional Land, Water, Space, and Diplomat cards, the rules, and PDF with cutouts of the commander units &amp; capital tokens.</p>
-</div>
+  <h3>Rules</h3>
 
-<h2>Rules</h2>
+  <h4>Setup:</h4>
+  <p>
+  Set up the game board, Devastation markers, and initial MOD deployment as usual. Remove the Colony
+  Influence cards from the Command decks; you may, if desired, replace them with suitable alternatives (such as
+  False Intentions for the Diplomat deck). Once all initial MODs are on the board, each player takes the Land
+  Territory card from the deck corresponding to the territory in which he or she wants the Capital placed. When
+  all players have taken a card, turn them face-up and place a Capital of your color on that territory. Shuffle those
+  cards back into the deck afterwards.
+  </p>
 
-<h3>Setup:</h3>
-<p>
-Set up the game board, Devastation markers, and initial MOD deployment as usual. Remove the Colony
-Influence cards from the Command decks; you may, if desired, replace them with suitable alternatives (such as
-False Intentions for the Diplomat deck). Once all initial MODs are on the board, each player takes the Land
-Territory card from the deck corresponding to the territory in which he or she wants the Capital placed. When
-all players have taken a card, turn them face-up and place a Capital of your color on that territory. Shuffle those
-cards back into the deck afterwards.
-</p>
+  <h4>Gameplay:</h4>
+  <p>
+    In addition to typical Risk 2210 gameplay, add the following rules:
+    <ul>
+      <li>Capitals, and the territories they occupy, are immune to all negative Command Card effects. If you are playing with the Frontline Amoebas, they are not able to either invade or devastate capitals and should choose a different target.</li>
+      <li>If your Capital is captured by another player, you are not out of the game.</li>
+      <li>Any player with two capitals suffers no detriment for losing one of them.</li>
+      <li>No player may build a Space Station in the same territory as a Capital.</li>
+      <li>If you control your own Capital, you may hire a Homefront Commander for 3 Energy, who may be played in one of two ways, depending on player preference:
+        <ol>
+          <li>The Homefront Commander may not move away from your Capital, but allows all units in that territory to roll 8-sided dice on defense. In addition, if you have two Capitals and control both of them, you may Fortify Move both him and other MODs from one to the other as though they were connected. Also, any effect which relocates the Capital he is stationed in also relocates him.</li>
+          <li>The Homefront Commander is as mobile as any other Commander, and defends with a d8. If he is attacking a territory within 2 territories of your Capital, he may roll an 8-sided die; otherwise he rolls a 6-sided die.</li>
+        </ol>
+        ** In both cases, the Homefront Commander must be placed upon your Capital when he is first hired, and if you lose your Capital, the Homefront Commander is lost as well.
+      </li>
+      <li>If a player does not control his own Capital at the start of his turn, he may not collect his 3-Territory Bonus on that turn.</li>
+    </ul>
+  </p>
 
-<h3>Gameplay:</h3>
-<p>
-  In addition to typical Risk 2210 gameplay, add the following rules:
-  <ul>
-    <li>Capitals, and the territories they occupy, are immune to all negative Command Card effects. If you are playing with the Frontline Amoebas, they are not able to either invade or devastate capitals and should choose a different target.</li>
-    <li>If your Capital is captured by another player, you are not out of the game.</li>
-    <li>Any player with two capitals suffers no detriment for losing one of them.</li>
-    <li>No player may build a Space Station in the same territory as a Capital.</li>
-    <li>If you control your own Capital, you may hire a Homefront Commander for 3 Energy, who may be played in one of two ways, depending on player preference:
-      <ol>
-        <li>The Homefront Commander may not move away from your Capital, but allows all units in that territory to roll 8-sided dice on defense. In addition, if you have two Capitals and control both of them, you may Fortify Move both him and other MODs from one to the other as though they were connected. Also, any effect which relocates the Capital he is stationed in also relocates him.</li>
-        <li>The Homefront Commander is as mobile as any other Commander, and defends with a d8. If he is attacking a territory within 2 territories of your Capital, he may roll an 8-sided die; otherwise he rolls a 6-sided die.</li>
-      </ol>
-      ** In both cases, the Homefront Commander must be placed upon your Capital when he is first hired, and if you lose your Capital, the Homefront Commander is lost as well.
+  <h4>Winning the Game:</h4>
+  <p>
+  The game is no longer on a 5-turn time limit. Instead, the first player to control a set
+  number of enemy Capitals, as well as his own, wins the game. That number is: 3 or 4 players, 2 capitals. 5
+  players, 3 capitals. (With 6 players, take 4 enemy Capitals, but since 2210 is by itself a 5-player game, outside
+  sources must be tapped for this to be possible.) As an alternative, capturing all Capitals may be a valid victory
+  condition -- decide which condition to go for before play begins.
+  </p>
+
+  <h3>Command Cards</h3>
+  <p>Here's a detailed breakdown of the cards included in Capitol Risk:</p>
+
+  <h4>Homefront Commander</h4>
+  <ul class='command-card-listing'>
+    <li><strong>Corporate Secrets</strong><br />
+    Count: 2<br />
+    Cost: 0<br />
+    After an opponent plays a Frequency Jam card<br />
+    Ignore the effects of the Frequency Jam card and have the attacking player show his cards to the rest of the players.
     </li>
-    <li>If a player does not control his own Capital at the start of his turn, he may not collect his 3-Territory Bonus on that turn.</li>
+
+    <li><strong>Energy Awareness</strong><br />
+    Count: 2<br />
+    Cost: 0<br />
+    Before an invasion is declared<br />
+    For the rest of the year energy cost are decreased by 1 except for cards that already cost 0 or 1 energy
+    </li>
+
+    <li><strong>Infrastructure Improvements</strong><br />
+    Count: 2<br />
+    Cost: 0<br />
+    Play at any time<br />
+    Make a fortification from any territory you control to any territory other territory, even if they are not connected. This counts as your fortification move for the next turn.
+    </li>
+
+    <li><strong>New Atlantis</strong><br />
+    Count: 2<br />
+    Cost: 1<br />
+    Play at any time<br />
+    Move one of your capitials to a water territory of your choice that is under your control.
+    </li>
+
+    <li><strong>Partizan Alliance</strong><br />
+    Count: 2<br />
+    Cost: 1<br />
+    Play on your turn before your invasion or after an opponent invades your territory<br />
+    For this turn subtract 1 from your opponent's rolls between the attacking and defending territory.  This effects only the 1 territory.
+    </li>
+
+    <li><strong>Patriotic Fervor</strong><br />
+    Count: 2<br />
+    Cost: 1<br />
+    Play at any time<br />
+    Add 4 MODs to a territory that you have a capital on.
+    </li>
+
+    <li><strong>Seat of Power</strong><br />
+    Count: 3<br />
+    Cost: 1<br />
+    Play at any time<br />
+    Move one of your capitals to a land territory of your choice that is under your control.
+    </li>
+
+    <li><strong>Space-born Supremacy</strong><br />
+    Count: 2<br />
+    Cost: 1<br />
+    Play at any time<br />
+    Move one of your capitals to a lunar territory of your choice that is under your control.
+    </li>
+
+    <li><strong>Twin Capitals</strong><br />
+    Count: 2<br />
+    Cost: 2<br />
+    Play on your turn before your first invasion is declared<br />
+    Place an additional capital on one of your land territories. If you already have two capitials or have no land territories, discard this card and take another.
+    </li>
+
+    <li><strong>Wartime Voting Tax</strong><br />
+    Count: 1<br />
+    Cost: 2<br />
+    Play on your turn before your first invasion is declared<br />
+    Collect 2 energy and place 2 MODs for each capital you hold.
+    </li>
+
+    <li><strong>Major Propaganda</strong><br />
+    Count: 1<br />
+    Cost: 4<br />
+    Play on your turn before your first invasion is declared<br />
+    Roll two d8s.  Your opponents must remove that many MODs divided equally between them, rounded down.  They choose the MODs. Add the total MODs to your forces.
+    </li>
   </ul>
-</p>
+  <h4>Land, Water, Space, &amp; Diplomat Commanders</h4>
+  <p>You may optionally replace the colony influence cards with these cards:</p>
+  <ul class='command-card-listing'>
+    <li><strong>Boost of Morale (Land)</strong><br />
+    Count: 2<br />
+    Cost: 0<br />
+    Play on your turn before your first invasion is declared<br />
+    This turn, you may change the value of two of your dice to 8 during invastions to or from land territories.  Use this effect after both players roll.
+    </li>
 
-<h3>Winning the Game:</h3>
-<p>
-The game is no longer on a 5-turn time limit. Instead, the first player to control a set
-number of enemy Capitals, as well as his own, wins the game. That number is: 3 or 4 players, 2 capitals. 5
-players, 3 capitals. (With 6 players, take 4 enemy Capitals, but since 2210 is by itself a 5-player game, outside
-sources must be tapped for this to be possible.) As an alternative, capturing all Capitals may be a valid victory
-condition -- decide which condition to go for before play begins.
-</p>
+    <li><strong>False Intentions (Diplomat)</strong><br />
+    Count: 4<br />
+    Cost: 0<br />
+    Play on your turn before your first invasion is declared<br />
+    For the next invasion, the Diplomat Commander can attack with eight-sided dice.
+    </li>
 
-<h2>Command Cards</h2>
-<p>Here's a detailed breakdown of the cards included in Capitol Risk:</p>
+    <li><strong>Low Gravity (Space)</strong><br />
+    Count: 2<br />
+    Cost: 0<br />
+    When an opponent first declares an invasion into a moon territory you occupy.<br />
+    If your opponent wins this invasion, he may not move more units into the territory he invaded than the number of dice he last rolled.
+    </li>
 
-<h3>Homefront Commander</h3>
-
-<p><strong>Corporate Secrets</strong><br />
-Count: 2<br />
-Cost: 0<br />
-After an opponent plays a Frequency Jam card<br />
-Ignore the effects of the Frequency Jam card and have the attacking player show his cards to the rest of the players.
-</p>
-
-<p><strong>Energy Awareness</strong><br />
-Count: 2<br />
-Cost: 0<br />
-Before an invasion is declared<br />
-For the rest of the year energy cost are decreased by 1 except for cards that already cost 0 or 1 energy
-</p>
-
-<p><strong>Infrastructure Improvements</strong><br />
-Count: 2<br />
-Cost: 0<br />
-Play at any time<br />
-Make a fortification from any territory you control to any territory other territory, even if they are not connected. This counts as your fortification move for the next turn.
-</p>
-
-<p><strong>New Atlantis</strong><br />
-Count: 2<br />
-Cost: 1<br />
-Play at any time<br />
-Move one of your capitials to a water territory of your choice that is under your control.
-</p>
-
-<p><strong>Partizan Alliance</strong><br />
-Count: 2<br />
-Cost: 1<br />
-Play on your turn before your invasion or after an opponent invades your territory<br />
-For this turn subtract 1 from your opponent's rolls between the attacking and defending territory.  This effects only the 1 territory.
-</p>
-
-<p><strong>Patriotic Fervor</strong><br />
-Count: 2<br />
-Cost: 1<br />
-Play at any time<br />
-Add 4 MODs to a territory that you have a capital on.
-</p>
-
-<p><strong>Seat of Power</strong><br />
-Count: 3<br />
-Cost: 1<br />
-Play at any time<br />
-Move one of your capitals to a land territory of your choice that is under your control.
-</p>
-
-<p><strong>Space-born Supremacy</strong><br />
-Count: 2<br />
-Cost: 1<br />
-Play at any time<br />
-Move one of your capitals to a lunar territory of your choice that is under your control.
-</p>
-
-<p><strong>Twin Capitals</strong><br />
-Count: 2<br />
-Cost: 2<br />
-Play on your turn before your first invasion is declared<br />
-Place an additional capital on one of your land territories. If you already have two capitials or have no land territories, discard this card and take another.
-</p>
-
-<p><strong>Wartime Voting Tax</strong><br />
-Count: 1<br />
-Cost: 2<br />
-Play on your turn before your first invasion is declared<br />
-Collect 2 energy and place 2 MODs for each capital you hold.
-</p>
-
-<p><strong>Major Propaganda</strong><br />
-Count: 1<br />
-Cost: 4<br />
-Play on your turn before your first invasion is declared<br />
-Roll two d8s.  Your opponents must remove that many MODs divided equally between them, rounded down.  They choose the MODs. Add the total MODs to your forces.
-</p>
-
-<h3>Land, Water, Space, &amp; Diplomat Commanders</h3>
-<p>You may optionally replace the colony influence cards with these cards:</p>
-
-<p><strong>Boost of Morale (Land)</strong><br />
-Count: 2<br />
-Cost: 0<br />
-Play on your turn before your first invasion is declared<br />
-This turn, you may change the value of two of your dice to 8 during invastions to or from land territories.  Use this effect after both players roll.
-</p>
-
-<p><strong>False Intentions (Diplomat)</strong><br />
-Count: 4<br />
-Cost: 0<br />
-Play on your turn before your first invasion is declared<br />
-For the next invasion, the Diplomat Commander can attack with eight-sided dice.
-</p>
-
-<p><strong>Low Gravity (Space)</strong><br />
-Count: 2<br />
-Cost: 0<br />
-When an opponent first declares an invasion into a moon territory you occupy.<br />
-If your opponent wins this invasion, he may not move more units into the territory he invaded than the number of dice he last rolled.
-</p>
-
-<p><strong>Sunken Treasures (Water)</strong><br />
-Count: 2<br />
-Cost: 0<br />
-After you successfuly invade a water territory with your Naval Commander.<br />
-Collect 2 energy.  You may only play 1 copy of this card per turn.
-</p>
+    <li><strong>Sunken Treasures (Water)</strong><br />
+    Count: 2<br />
+    Cost: 0<br />
+    After you successfuly invade a water territory with your Naval Commander.<br />
+    Collect 2 energy.  You may only play 1 copy of this card per turn.
+    </li>
+  </ul>
+</div>

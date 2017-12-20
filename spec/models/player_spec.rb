@@ -13,17 +13,17 @@ describe Player do
 
   describe "profile_image_path" do
     it "should return the image from facebook if the image source is facebook" do
-      player = FactoryGirl.create(:player, image_source: Player::ImageSource::Facebook, facebook_image_url: "http://graph.facebook.com/753509648/picture?type=square")
+      player = create(:player, image_source: Player::ImageSource::Facebook, facebook_image_url: "http://graph.facebook.com/753509648/picture?type=square")
 
       expect(player.profile_image_path).to eq("https://graph.facebook.com/753509648/picture?type=square?type=normal")
     end
     it "should return the image from gravatar if the image source is gravatar" do
-      player = FactoryGirl.create(:player, image_source: Player::ImageSource::Gravatar)
+      player = create(:player, image_source: Player::ImageSource::Gravatar)
 
       expect(player.profile_image_path).to eq("https://www.gravatar.com/avatar/#{player.gravatar_hash}?size=100&default=https%3A%2F%2Frisk2210.net%2Fassets%2Fdefault_avatar.png")
     end
     it "should return the default image if no image source is specified" do
-      player = FactoryGirl.create(:player, image_source: nil)
+      player = create(:player, image_source: nil)
 
       expect(player.profile_image_path).to eq("https://risk2210.net/assets/default_avatar.png")
     end
@@ -31,7 +31,7 @@ describe Player do
 
   describe "change_password" do
 
-    let(:player) { FactoryGirl.create(:player, password: "secret1", password_confirmation: "secret1")}
+    let(:player) { create(:player, password: "secret1", password_confirmation: "secret1")}
 
     it "should add an error if the old password doesn't match" do
       success = player.change_password(old_password: "abc123", password: "abc123", password_confirmation: "abc123")
@@ -80,7 +80,7 @@ describe Player do
     it "should increment the login_count and set the last_login_at to now" do
       now = Time.mktime(2012, 10, 22, 14, 30)
       allow(Time).to receive(:now).and_return(now)
-      player = FactoryGirl.create(:player, login_count: 10, last_login_at: 10.days.ago)
+      player = create(:player, login_count: 10, last_login_at: 10.days.ago)
 
       player.set_login_stats
 
@@ -91,7 +91,7 @@ describe Player do
 
   describe "generate_gravatar_hash" do
     it "should generate the hash if the email is present" do
-      player = FactoryGirl.create(:player, gravatar_hash: nil)
+      player = create(:player, gravatar_hash: nil)
 
       expect(player.gravatar_hash).to_not be_nil
     end
@@ -100,7 +100,7 @@ describe Player do
   describe "deliver_welcome_email" do
     before { ActionMailer::Base.deliveries.clear }
     it "should send an email upon account creation" do
-      player = FactoryGirl.create(:player)
+      player = create(:player)
 
       expect(ActionMailer::Base.deliveries.size).to eq(1)
     end
@@ -117,16 +117,16 @@ describe Player do
 
   describe "link_game_players" do
     it "should link to any game_player records that have the same handle on create" do
-      game_player = FactoryGirl.create(:game_player, handle: "Jack", player: nil)
+      game_player = create(:game_player, handle: "Jack", player: nil)
 
-      player = FactoryGirl.create(:player, handle: "Jack")
+      player = create(:player, handle: "Jack")
       expect(game_player.reload.player).to eq(player)
     end
   end
 
   describe "request_password_reset!" do
     it "should update the password reset token and send an email with instructions" do
-      player = FactoryGirl.create(:player, password_reset_token: nil)
+      player = create(:player, password_reset_token: nil)
       ActionMailer::Base.deliveries.clear
 
       player.request_password_reset!
@@ -146,6 +146,18 @@ describe Player do
       player = FactoryGirl.build(:player, first_name: "", last_name: "")
 
       expect(player.name).to eq(player.slug)
+    end
+  end
+
+  describe "nearby" do
+    it 'returns nearby players' do
+      player = create(:player, city: "Chicago", state: "IL", zip_code: "60640")
+      nearby_player = create(:player, city: "Chicago", state: "IL", zip_code: "60640")
+
+      results = Player.nearby(player.coordinates)
+      expect(results.count).to eq(2)
+      expect(results).to include(player)
+      expect(results).to include(nearby_player)
     end
   end
 

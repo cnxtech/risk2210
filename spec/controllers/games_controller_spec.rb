@@ -2,8 +2,8 @@ require 'rails_helper'
 
 describe GamesController do
 
-  let(:player1) { FactoryGirl.create(:player) }
-  let(:player2) { FactoryGirl.create(:player) }
+  let(:player1) { create(:player) }
+  let(:player2) { create(:player) }
   let(:faction_ids) { Faction.all.map(&:id).sample(2) }
   let(:map_ids) { Map.all.map(&:id).sample(2) }
 
@@ -46,7 +46,7 @@ describe GamesController do
 
   describe "show" do
     it "should have the game and render successfully" do
-      game = FactoryGirl.create(:game)
+      game = create(:game)
 
       get :show, id: game
 
@@ -57,7 +57,7 @@ describe GamesController do
 
   describe "destroy" do
 
-    let!(:game) { FactoryGirl.create(:game, creator_id: player1.id) }
+    let!(:game) { create(:game, creator_id: player1.id) }
 
     it "should remove the game if the current player is the creator" do
       login player1
@@ -83,7 +83,7 @@ describe GamesController do
 
   describe "results" do
     it "should have the game and render successfully" do
-      game = FactoryGirl.create(:game, completed: true)
+      game = create(:game, completed: true)
 
       get :results, id: game
 
@@ -91,7 +91,7 @@ describe GamesController do
       expect(response).to be_success
     end
     it "should redirect to the game#show if the game isn't complete" do
-      game = FactoryGirl.create(:game, completed: false)
+      game = create(:game, completed: false)
 
       get :results, id: game
 
@@ -100,7 +100,7 @@ describe GamesController do
   end
 
   describe "update" do
-    let(:game) { FactoryGirl.create(:game, creator_id: player1.id, current_year: 1) }
+    let(:game) { create(:game, creator_id: player1.id, current_year: 1) }
     let(:game_player) { game.game_players[0] }
     let(:game_player2) { game.game_players[1] }
 

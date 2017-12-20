@@ -30,7 +30,7 @@ describe Authentication::Risk2210 do
     end
     it "should return nil if the player doesn't have the correct password" do
       allow(Time).to receive(:now).and_return(Time.mktime(2012, 7, 18, 14, 05))
-      player = FactoryGirl.create(:player, password: "secret1", login_count: 4, last_login_at: 1.week.ago)
+      player = create(:player, password: "secret1", login_count: 4, last_login_at: 1.week.ago)
       session = Authentication::Risk2210.new(password: "secret2", email: player.email)
 
       expect(session.authenticate).to be_nil
@@ -42,7 +42,7 @@ describe Authentication::Risk2210 do
     end
     it "should return the player if the player has the correct password" do
       allow(Time).to receive(:now).and_return(Time.mktime(2012, 7, 18, 14, 05))
-      player = FactoryGirl.create(:player, password: "secret1", login_count: 4, last_login_at: 1.week.ago)
+      player = create(:player, password: "secret1", login_count: 4, last_login_at: 1.week.ago)
       session = Authentication::Risk2210.new(password: "secret1", email: player.email)
 
       expect(session.authenticate).to eq(player)
@@ -51,7 +51,7 @@ describe Authentication::Risk2210 do
       expect(player.last_login_at).to_not eq(1.week.ago)
     end
     it "should set the remember me token on the player" do
-      FactoryGirl.create(:player, remember_me_token: nil, password: "secret1", email: "nick.desteffen@gmail.com")
+      create(:player, remember_me_token: nil, password: "secret1", email: "nick.desteffen@gmail.com")
 
       allow(SecureRandom).to receive(:hex).with(8).and_return("28eae6141a407dfd")
       player = Authentication::Risk2210.new(password: "secret1", email: "nick.desteffen@gmail.com").authenticate

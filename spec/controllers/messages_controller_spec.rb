@@ -2,14 +2,14 @@ require 'rails_helper'
 
 describe MessagesController do
 
-  let(:player) { FactoryGirl.create(:player) }
-  let(:other_player) { FactoryGirl.create(:player) }
+  let(:player) { create(:player) }
+  let(:other_player) { create(:player) }
 
   before { login(player) }
 
   describe "index" do
-    let!(:sent_message) { FactoryGirl.create(:message, sender: player, recipient: other_player) }
-    let!(:received_message) { FactoryGirl.create(:message, sender: other_player, recipient: player) }
+    let!(:sent_message) { create(:message, sender: player, recipient: other_player) }
+    let!(:received_message) { create(:message, sender: other_player, recipient: player) }
     context "sent filter" do
       it "should list all messages sent" do
         get :index, filter: "sent"
@@ -33,7 +33,7 @@ describe MessagesController do
   describe "new" do
     context "recipient parameter is present" do
       it "should have a message object setup with the recipient" do
-        recipient = FactoryGirl.create(:player)
+        recipient = create(:player)
 
         get :new, recipient: other_player.slug
 

@@ -4,8 +4,8 @@ describe ForumsController do
 
   describe "index" do
     it "should list all forums" do
-      FactoryGirl.create(:forum)
-      FactoryGirl.create(:forum)
+      create(:forum)
+      create(:forum)
 
       get :index
 
@@ -16,9 +16,9 @@ describe ForumsController do
 
   describe "show" do
     it "should have a forum" do
-      forum = FactoryGirl.create(:forum)
-      topic = FactoryGirl.create(:topic, forum: forum)
-      comment = FactoryGirl.create(:topic_comment, commentable: topic)
+      forum = create(:forum)
+      topic = create(:topic, forum: forum)
+      comment = create(:topic_comment, commentable: topic)
 
       get :show, id: forum.slug
 

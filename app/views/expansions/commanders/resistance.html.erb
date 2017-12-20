@@ -1,142 +1,145 @@
 <% content_for :page_title, "Resistance Commander Expansion" %>
+<div class="well">
+  <h1>Resistance Commander</h1>
+  <%= image_tag("resistance_commander/card_back.png", width: 200) %>
+  <h3>Rules</h3>
+  <p>The Resistance Commander receives an eight sided dice on defensive rolls and an eight sided dice when attacking territories that contain 3 or less defending units.</p>
 
-<h1>Resistance Commander</h1>
-<%= image_tag("resistance_commander/card_back.png", width: 200) %>
-<h2>Rules</h2>
-<p>The Resistance Commander receives an eight sided dice on defensive rolls and an eight sided dice when attacking territories that contain 3 or less defending units.</p>
+  <hr />
+  <p>Design and concept by <%= link_to "sklar", "http://boardgamegeek.com/user/sklar", target: "_blank" %>.</p>
+  <div class="bundle-download-container">
+    <%= download_expansion_button("/expansions/resistance_commander_expansion.zip") %>
+    <p class="description">The bundled expansion pack contains high-resolution versions of all Resistance Commander command cards and a PDF with cutouts of the commander units.</p>
+  </div>
 
-<hr />
-<p>Design and concept by <%= link_to "sklar", "http://boardgamegeek.com/user/sklar", target: "_blank" %>.</p>
-<div class="bundle-download-container">
-  <%= download_expansion_button("/expansions/resistance_commander_expansion.zip") %>
-  <p class="description">The bundled expansion pack contains high-resolution versions of all Resistance Commander command cards and a PDF with cutouts of the commander units.</p>
+  <h3>Command Cards</h3>
+  <p>Here's a detailed breakdown of the Resistance Commander deck:</p>
+
+  <ul class='command-card-listing'>
+    <li><strong>Battlefield Promotion</strong><br />
+    Count: 1<br />
+    Cost: 1<br />
+    Before First Invasion<br />
+    Remove 1 MOD from any territory you control and place a new commander of your choice in the same territory.
+    </li>
+
+    <li><strong>Counter Intelligence</strong><br />
+    Count: 1<br />
+    Cost: 1<br />
+    Opponent Invades<br />
+    Switch MODs and commanders on any two territories you control.
+    </li>
+
+    <li><strong>Dirty Death Trap</strong><br />
+    Count: 1<br />
+    Cost: 3<br />
+    Opponent Invades<br />
+    Roll a 6-sided die and destroy that many MODs in the invading territroy. Repeat for all adjacent territories (including the defending territory).
+    </li>
+
+    <li><strong>Frequency Jam</strong><br />
+    Count: 2<br />
+    Cost: 0<br />
+    Before First Invasion<br />
+    Choose a player. The chosen player cannot play command cards during your turn.
+    </li>
+
+    <li><strong>Hacked Machine Code</strong><br />
+    Count: 1<br />
+    Cost: 1<br />
+    Opponent Invades<br />
+    Destroy two MODs in the invading territory and place two MODs in the defending territory.
+    </li>
+
+    <li><strong>Insurgent Cell Revealed</strong><br />
+    Count: 2<br />
+    Cost: 2<br />
+    Before First Invasion<br />
+    Choose another player's territory containing only 1 MOD. Destroy that MOD and roll a 6-sided die. Place MODs in that territory equal to the number rolled.
+    </li>
+
+    <li><strong>Insurgent Fighters</strong><br />
+    Count: 2<br />
+    Cost: 0<br />
+    After All Units in Your Territoy are Defeated<br />
+    Your opponent does not gain control of this territory. Place 3 MODs on this territory. Your opponent may choose to continue the invasion.
+    </li>
+
+    <li><strong>Ion Defense Cannon</strong><br />
+    Count: 1<br />
+    Cost: 4<br />
+    End of Turn<br />
+    Place this card face-up in front of you. While it is in play, roll an additional 6-sided die when defending territories you control. Discard this card at the start of your next turn.
+    </li>
+
+    <li><strong>It's a Trap!</strong><br />
+    Count: 1<br />
+    Cost: 1<br />
+    Opponent Invades<br />
+    The invasion cannot be called off until your opponent gains control of the territory or they are no longer able to attack.
+    </li>
+
+    <li><strong>Low Ammo</strong><br />
+    Count: 1<br />
+    Cost: 2<br />
+    Opponent Invades<br />
+    The attacker may use at most 2 dice when attacking this territroy for the rest of the turn.
+    </li>
+
+    <li><strong>Niven Station</strong><br />
+    Count: 1<br />
+    Cost: 0<br />
+    Before First Invasion<br />
+    Place the space station card on the table. Put 1 MOD in each territory in the space station.
+    </li>
+
+    <li><strong>Nuclear Sabotage</strong><br />
+    Count: 1<br />
+    Cost: 3<br />
+    Before First Invasion<br />
+    Choose a territory with a Space Station and destroy the Space Station. Also destroy 1 MOD in the same territory and in all adjacent territories.
+    </li>
+
+    <li><strong>Return Fire</strong><br />
+    Count: 1<br />
+    Cost: 0<br />
+    Opponent Invades<br />
+    If your opponent fails to gain control of the territory during this turn, gain 5 additional MODs to place on your next turn.
+    </li>
+
+    <li><strong>Strategic Defense Initiative</strong><br />
+    Count: 1<br />
+    Cost: 2<br />
+    In Response to Nuclear Comm. Card<br />
+    Roll a 6-sided die. If you roll a 3 or higher, the Nuclear Command Card has no effect.
+    </li>
+
+    <li><strong>System Failure</strong><br />
+    Count: 1<br />
+    Cost: 3<br />
+    In Response to Any Command Card<br />
+    The Command Card being played has no effect. Gain the Command Card into your hand.
+    </li>
+
+    <li><strong>Traitorous Bribe</strong><br />
+    Count: 1<br />
+    Cost: 1<br />
+    Before First Invasion<br />
+    Choose an opponent. That opponent must pay you 3 energy or destroy a commander. If they destroy a commander, place the same commander in a territory you control.
+    </li>
+
+    <li><strong>Underground Railroad</strong><br />
+    Count: 1<br />
+    Cost: 0<br />
+    Before First Invasion<br />
+    You may make a fortification from any territory you control to any other territory you control. They need not be connected. You may not make a fortification move at the end of this turn.
+    </li>
+
+    <li><strong>Uprising</strong><br />
+    Count: 2<br />
+    Cost: 2<br />
+    Before First Invasion<br />
+    Choose a territory. All MODs except 1 must move to an adjacent territory controlled by the same player. If the player does not control an adjacent territory, destroy the MODs instead.
+    </li>
+  </ul>
 </div>
-
-<h2>Command Cards</h2>
-<p>Here's a detailed breakdown of the Resistance Commander deck:</p>
-
-<p><strong>Battlefield Promotion</strong><br />
-Count: 1<br />
-Cost: 1<br />
-Before First Invasion<br />
-Remove 1 MOD from any territory you control and place a new commander of your choice in the same territory.
-</p>
-
-<p><strong>Counter Intelligence</strong><br />
-Count: 1<br />
-Cost: 1<br />
-Opponent Invades<br />
-Switch MODs and commanders on any two territories you control.
-</p>
-
-<p><strong>Dirty Death Trap</strong><br />
-Count: 1<br />
-Cost: 3<br />
-Opponent Invades<br />
-Roll a 6-sided die and destroy that many MODs in the invading territroy. Repeat for all adjacent territories (including the defending territory).
-</p>
-
-<p><strong>Frequency Jam</strong><br />
-Count: 2<br />
-Cost: 0<br />
-Before First Invasion<br />
-Choose a player. The chosen player cannot play command cards during your turn.
-</p>
-
-<p><strong>Hacked Machine Code</strong><br />
-Count: 1<br />
-Cost: 1<br />
-Opponent Invades<br />
-Destroy two MODs in the invading territory and place two MODs in the defending territory.
-</p>
-
-<p><strong>Insurgent Cell Revealed</strong><br />
-Count: 2<br />
-Cost: 2<br />
-Before First Invasion<br />
-Choose another player's territory containing only 1 MOD. Destroy that MOD and roll a 6-sided die. Place MODs in that territory equal to the number rolled.
-</p>
-
-<p><strong>Insurgent Fighters</strong><br />
-Count: 2<br />
-Cost: 0<br />
-After All Units in Your Territoy are Defeated<br />
-Your opponent does not gain control of this territory. Place 3 MODs on this territory. Your opponent may choose to continue the invasion.
-</p>
-
-<p><strong>Ion Defense Cannon</strong><br />
-Count: 1<br />
-Cost: 4<br />
-End of Turn<br />
-Place this card face-up in front of you. While it is in play, roll an additional 6-sided die when defending territories you control. Discard this card at the start of your next turn.
-</p>
-
-<p><strong>It's a Trap!</strong><br />
-Count: 1<br />
-Cost: 1<br />
-Opponent Invades<br />
-The invasion cannot be called off until your opponent gains control of the territory or they are no longer able to attack.
-</p>
-
-<p><strong>Low Ammo</strong><br />
-Count: 1<br />
-Cost: 2<br />
-Opponent Invades<br />
-The attacker may use at most 2 dice when attacking this territroy for the rest of the turn.
-</p>
-
-<p><strong>Niven Station</strong><br />
-Count: 1<br />
-Cost: 0<br />
-Before First Invasion<br />
-Place the space station card on the table. Put 1 MOD in each territory in the space station.
-</p>
-
-<p><strong>Nuclear Sabotage</strong><br />
-Count: 1<br />
-Cost: 3<br />
-Before First Invasion<br />
-Choose a territory with a Space Station and destroy the Space Station. Also destroy 1 MOD in the same territory and in all adjacent territories.
-</p>
-
-<p><strong>Return Fire</strong><br />
-Count: 1<br />
-Cost: 0<br />
-Opponent Invades<br />
-If your opponent fails to gain control of the territory during this turn, gain 5 additional MODs to place on your next turn.
-</p>
-
-<p><strong>Strategic Defense Initiative</strong><br />
-Count: 1<br />
-Cost: 2<br />
-In Response to Nuclear Comm. Card<br />
-Roll a 6-sided die. If you roll a 3 or higher, the Nuclear Command Card has no effect.
-</p>
-
-<p><strong>System Failure</strong><br />
-Count: 1<br />
-Cost: 3<br />
-In Response to Any Command Card<br />
-The Command Card being played has no effect. Gain the Command Card into your hand.
-</p>
-
-<p><strong>Traitorous Bribe</strong><br />
-Count: 1<br />
-Cost: 1<br />
-Before First Invasion<br />
-Choose an opponent. That opponent must pay you 3 energy or destroy a commander. If they destroy a commander, place the same commander in a territory you control.
-</p>
-
-<p><strong>Underground Railroad</strong><br />
-Count: 1<br />
-Cost: 0<br />
-Before First Invasion<br />
-You may make a fortification from any territory you control to any other territory you control. They need not be connected. You may not make a fortification move at the end of this turn.
-</p>
-
-<p><strong>Uprising</strong><br />
-Count: 2<br />
-Cost: 2<br />
-Before First Invasion<br />
-Choose a territory. All MODs except 1 must move to an adjacent territory controlled by the same player. If the player does not control an adjacent territory, destroy the MODs instead.
-</p>

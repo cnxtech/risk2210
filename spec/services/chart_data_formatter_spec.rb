@@ -4,20 +4,20 @@ describe ChartDataFormatter do
 
   subject(:chart_data_formatter) { ChartDataFormatter.new(game, formatter: "to_a") }
 
-  let(:game) { FactoryGirl.create(:game) }
+  let(:game) { create(:game) }
 
   let(:game_player1) { game.game_players[0] }
   let(:game_player2) { game.game_players[1] }
 
   before do
     5.times do
-      game_player1_turn = FactoryGirl.create(:turn, game: game, game_player: game_player1)
-      FactoryGirl.create(:game_player_stat, turn: game_player1_turn, game_player: game_player1)
-      FactoryGirl.create(:game_player_stat, turn: game_player1_turn, game_player: game_player2)
+      game_player1_turn = create(:turn, game: game, game_player: game_player1)
+      create(:game_player_stat, turn: game_player1_turn, game_player: game_player1)
+      create(:game_player_stat, turn: game_player1_turn, game_player: game_player2)
 
-      game_player2_turn = FactoryGirl.create(:turn, game: game, game_player: game_player2)
-      FactoryGirl.create(:game_player_stat, turn: game_player2_turn, game_player: game_player1)
-      FactoryGirl.create(:game_player_stat, turn: game_player2_turn, game_player: game_player2)
+      game_player2_turn = create(:turn, game: game, game_player: game_player2)
+      create(:game_player_stat, turn: game_player2_turn, game_player: game_player1)
+      create(:game_player_stat, turn: game_player2_turn, game_player: game_player2)
     end
   end
 

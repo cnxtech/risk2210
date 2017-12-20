@@ -2,10 +2,10 @@ require 'rails_helper'
 
 describe TopicsController do
 
-  let(:player) { FactoryGirl.create(:player) }
-  let(:forum) { FactoryGirl.create(:forum) }
-  let(:topic) { FactoryGirl.create(:topic, forum: forum, view_count: 10) }
-  let!(:comment) { FactoryGirl.create(:topic_comment, commentable: topic) }
+  let(:player) { create(:player) }
+  let(:forum) { create(:forum) }
+  let(:topic) { create(:topic, forum: forum, view_count: 10) }
+  let!(:comment) { create(:topic_comment, commentable: topic) }
 
   describe "show" do
     it "should dislay a forum topic, all comments, and increment the topic view counter" do

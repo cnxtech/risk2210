@@ -51,7 +51,8 @@ class Player
 
   ## Indexes
   index({handle: 1, email: 1, uuid: 1}, {unique: true})
-  index zip_code: 1, city: 1, state: 1
+  index(zip_code: 1, city: 1, state: 1)
+  index({ coordinates: "2dsphere" }, { min: -1000, max: 1000} )
 
   attr_reader :password
 
@@ -72,7 +73,7 @@ class Player
 
   ## Scopes
   scope :public_profiles, ->() { where(public_profile: true).asc(:created_at) }
-  scope :nearby, ->(coordinates) { where(coordinates: {'$near' => coordinates, '$maxDistance' => FIFTY_MILES}) }
+  scope :nearby, ->(coordinates) { geo_near(coordinates).max_distance(FIFTY_MILES) }
 
   ## Facebook image size options
   ## square=50x50, small=50xVariable, normal=100xVariable, large=200xVariable

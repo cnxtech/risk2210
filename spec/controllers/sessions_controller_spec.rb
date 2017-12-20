@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe SessionsController do
 
-  let(:player) { FactoryGirl.create(:player, password: "secret1", password_confirmation: "secret1") }
+  let(:player) { create(:player, password: "secret1", password_confirmation: "secret1") }
 
   describe "destroy" do
     it "should log the user out" do
@@ -75,7 +75,7 @@ describe SessionsController do
     end
     context "attaching facebook authencation info to an existing user" do
       it "should update the existing user with Facebook's info" do
-        player = FactoryGirl.create(:player, email: "payton@dog.com")
+        player = create(:player, email: "payton@dog.com")
 
         expect{
           get :authenticate_facebook, provider: "facebook"

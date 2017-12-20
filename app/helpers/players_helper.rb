@@ -17,7 +17,7 @@ module PlayersHelper
       nearby_players = []
     else
       begin
-        nearby_players = Player.nearby(current_player.coordinates).except(current_player)
+        nearby_players = Player.nearby(current_player.coordinates).to_a.except(current_player)
       rescue Exception => exception
         nearby_players = []
       end

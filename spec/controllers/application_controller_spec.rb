@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe ApplicationController do
 
-  let(:player) { FactoryGirl.create(:player) }
+  let(:player) { create(:player) }
 
   describe "current_player" do
     it "returns the currently logged in player" do

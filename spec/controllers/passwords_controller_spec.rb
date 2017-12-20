@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe PasswordsController do
 
-  let(:player) { FactoryGirl.create(:player, password: "secret1", password_confirmation: "secret1") }
+  let(:player) { create(:player, password: "secret1", password_confirmation: "secret1") }
 
   describe "edit" do
     it "should have the player" do

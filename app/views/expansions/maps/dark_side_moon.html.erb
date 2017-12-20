@@ -1,19 +1,19 @@
 <% content_for :page_title, "Dark Side of the Moon Expansion" %>
+<div class="well">
+  <h1>Dark Side of the Moon</h1>
+  <p>Map layout by <%= link_to "Oksel", "http://boardgamegeek.com/user/Oksel", target: "_blank" %>, design by <%= link_to "MrMan2k3", "http://boardgamegeek.com/user/MrMan2k3", target: "_blank" %>.</p>
+  <hr />
 
-<h1>Dark Side of the Moon</h1>
-<p>Map layout by <%= link_to "Oksel", "http://boardgamegeek.com/user/Oksel", target: "_blank" %>, design by <%= link_to "MrMan2k3", "http://boardgamegeek.com/user/MrMan2k3", target: "_blank" %>.</p>
-<hr />
+  <div class="bundle-download-container">
+    <%= download_expansion_button("/expansions/dark_side_moon_expansion.zip") %>
+    <p class="description">The bundled expansion pack contains high-resolution versions of the Dark Side of the Moon map and each territory card.</p>
+  </div>
 
-<div class="bundle-download-container">
-  <%= download_expansion_button("/expansions/dark_side_moon_expansion.zip") %>
-  <p class="description">The bundled expansion pack contains high-resolution versions of the Dark Side of the Moon map and each territory card.</p>
+  <div class="bundle-download-container">
+    <%= download_expansion_button("/expansions/card_sheets/Earth_Territories_Lunar_Dark_Side.pdf", text: "Download Card Sheet") %>
+    <p class="description">A pdf for printing your own cards</p>
+  </div>
+
 </div>
-
-<div class="bundle-download-container">
-  <%= download_expansion_button("/expansions/card_sheets/Earth_Territories_Lunar_Dark_Side.pdf", text: "Download Card Sheet") %>
-  <p class="description">A pdf for printing your own cards</p>
-</div>
-
-<hr />
 
 <p><%= link_to image_tag("dark_side_moon/dark_side_of_the_moon.jpg"), asset_path("dark_side_moon/original/dark_side_of_the_moon.jpg"), target: "_blank" %></p>

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe Topic do
 
-  subject(:topic) { FactoryGirl.create(:topic, view_count: 10) }
+  subject(:topic) { create(:topic, view_count: 10) }
 
   describe "increment_view_counter" do
     it "should increment the view count of the topic" do

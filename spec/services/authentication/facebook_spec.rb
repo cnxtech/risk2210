@@ -40,7 +40,7 @@ describe Authentication::Facebook do
     end
     context "player has an existing account" do
       it "attaches the information from facebook to the existing account" do
-        initial_record = FactoryGirl.create(:player, email: "nick.desteffen@gmail.com", login_count: 2)
+        initial_record = create(:player, email: "nick.desteffen@gmail.com", login_count: 2)
 
         player = Authentication::Facebook.new(Fixtures::Facebook.me).authenticate
         initial_record.reload
@@ -54,7 +54,7 @@ describe Authentication::Facebook do
 
   describe "authenticate" do
     it "should login the user through their facebook authentication" do
-      player = FactoryGirl.create(:facebook_player, email: "nick.desteffen@gmail.com", login_count: 4, uid: me["uid"])
+      player = create(:facebook_player, email: "nick.desteffen@gmail.com", login_count: 4, uid: me["uid"])
 
       authorized_player = Authentication::Facebook.new(me).authenticate
       player.reload

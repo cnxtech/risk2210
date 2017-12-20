@@ -1,15 +1,12 @@
 <% content_for :page_title, "Europa Expansion" %>
+<div class="well">
+  <h1>Europa Expansion</h1>
+  <p>Map layout by <%= link_to "sklar", "http://boardgamegeek.com/user/sklar", target: "_blank" %>, design by <%= link_to "v0lrath", "http://boardgamegeek.com/user/v0lrath", target: "_blank" %>.</p>
+  <div class="bundle-download-container">
+    <%= download_expansion_button("/expansions/europa_expansion.zip") %>
+    <p class="description">The bundled expansion pack contains high-resolution versions of the Europa map and each territory card.</p>
+  </div>
 
-<h1>Europa Expansion</h1>
-
-<hr />
-
-<p>Map layout by <%= link_to "sklar", "http://boardgamegeek.com/user/sklar", target: "_blank" %>, design by <%= link_to "v0lrath", "http://boardgamegeek.com/user/v0lrath", target: "_blank" %>.</p>
-<div class="bundle-download-container">
-  <%= download_expansion_button("/expansions/europa_expansion.zip") %>
-  <p class="description">The bundled expansion pack contains high-resolution versions of the Europa map and each territory card.</p>
 </div>
-
-<hr />
 
 <p><%= link_to image_tag("europa/Europa.jpg"), asset_path("europa/original/Europa.jpg"), target: "_blank" %></p>

@@ -13,7 +13,7 @@ describe PasswordResetController do
   describe "create" do
     context "success" do
       it "should should deliver the email and redirect the player to the homepage" do
-        player = FactoryGirl.create(:player)
+        player = create(:player)
 
         post :create, player: {email: player.email}
 
@@ -35,7 +35,7 @@ describe PasswordResetController do
     context "token found" do
       it "should display the form to update the player's password" do
         token = SecureRandom.hex(8)
-        player = FactoryGirl.create(:player, password_reset_token: token)
+        player = create(:player, password_reset_token: token)
 
         get :show, token: token
 
@@ -55,7 +55,7 @@ describe PasswordResetController do
   describe "update" do
 
     let(:token) { SecureRandom.hex(8) }
-    let!(:player) { FactoryGirl.create(:player, password_reset_token: token) }
+    let!(:player) { create(:player, password_reset_token: token) }
 
     context "success" do
       it "should update the password and login the user" do

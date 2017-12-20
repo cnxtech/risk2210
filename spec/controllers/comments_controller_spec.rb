@@ -2,10 +2,10 @@ require 'rails_helper'
 
 describe CommentsController do
 
-  let(:player) { FactoryGirl.create(:player) }
-  let(:forum) { FactoryGirl.create(:forum) }
-  let(:topic) { FactoryGirl.create(:topic, forum: forum) }
-  let(:comment) { FactoryGirl.create(:topic_comment, commentable: topic, player: player) }
+  let(:player) { create(:player) }
+  let(:forum) { create(:forum) }
+  let(:topic) { create(:topic, forum: forum) }
+  let(:comment) { create(:topic_comment, commentable: topic, player: player) }
 
   describe "create" do
     context "user isn't logged in" do
@@ -67,7 +67,7 @@ describe CommentsController do
       expect(assigns(:comment)).to eq(comment)
     end
     it "should not allow a comment to be edited by player other than the player that created it" do
-      different_comment = FactoryGirl.create(:topic_comment, commentable: topic)
+      different_comment = create(:topic_comment, commentable: topic)
 
       get :edit, forum_id: forum, topic_id: topic, id: different_comment.id
 

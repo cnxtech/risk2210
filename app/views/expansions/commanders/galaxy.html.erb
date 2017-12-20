@@ -1,104 +1,106 @@
 <% content_for :page_title, "Galaxy Commander Expansion" %>
+<div class="well">
+  <h1>Galaxy Commander</h1>
+  <%= image_tag("galaxy_commander/card_back.png", width: 200) %>
+  <h3>Rules</h3>
+  <p>The Galaxy Commander is used when playing with multiple maps.  He receives an eight sided dice on defensive rolls and an eight sided dice when attacking between planets.</p>
 
-<h1>Galaxy Commander</h1>
-<%= image_tag("galaxy_commander/card_back.png", width: 200) %>
-<h2>Rules</h2>
-<p>The Galaxy Commander is used when playing with multiple maps.  He receives an eight sided dice on defensive rolls and an eight sided dice when attacking between planets.</p>
+  <p>Design and concept by <%= link_to "sklar", "http://boardgamegeek.com/user/sklar", target: "_blank" %>.</p>
+  <div class="bundle-download-container">
+    <%= download_expansion_button("/expansions/galaxy_commander_expansion.zip") %>
+    <p class="description">The bundled expansion pack contains high-resolution versions of all Galaxy Commander command cards and a PDF with cutouts of the commander units.</p>
+  </div>
 
-<hr />
-<p>Design and concept by <%= link_to "sklar", "http://boardgamegeek.com/user/sklar", target: "_blank" %>.</p>
-<div class="bundle-download-container">
-  <%= download_expansion_button("/expansions/galaxy_commander_expansion.zip") %>
-  <p class="description">The bundled expansion pack contains high-resolution versions of all Galaxy Commander command cards and a PDF with cutouts of the commander units.</p>
+  <h3>Command Cards</h3>
+  <p>Here's a detailed breakdown of the Galaxy Commander deck:</p>
+
+  <ul class='command-card-listing'>
+    <li>
+    <strong>Acquired Access Codes</strong><br />
+    Count: 2<br />
+    Cost: 2<br />
+    Before First Invasion<br />
+    For any interplanetary attack you launch this turn, you may attack any space stations in addition to C.S.S.'s.
+    </li>
+
+    <li>
+    <strong>Assemble MODs</strong><br />
+    Count: 2<br />
+    Cost: 1<br />
+    Before First Invasion<br />
+    Place 3 MODs on any one territory you occupy that contains a C.S.S.
+    </li>
+
+    <li>
+    <strong>C.S.S. Relocation</strong><br />
+    Count: 2<br />
+    Cost: 3<br />
+    Before First Invasion<br />
+    You may move a C.S.S. you control to any other territory you control on the same continent.
+    </li>
+
+    <li>
+    <strong>Der Kapitän</strong><br />
+    Count: 1<br />
+    Cost: 8<br />
+    Before First Invasion<br />
+    Gather troops on a continent you control, leaving at most 2 MODs in each territory. With these troops, immediately launch.
+    </li>
+
+    <li>
+    <strong>Frequency Jam</strong><br />
+    Count: 3<br />
+    Cost: 0<br />
+    Before First Invasion Choose a player. The chosen player cannot play command cards during your turn.
+    </li>
+
+    <li>
+    <strong>Improved IpT</strong><br />
+    Count: 4<br />
+    Cost: 5<br />
+    Before First Invasion<br />
+    For the duration of your turn, you may attack a C.S.S. on any planet from an space station or C.S.S. you control, even if you
+    already have troops on that planet.
+    </li>
+
+    <li>
+    <strong>Improved Production</strong><br />
+    Count: 2<br />
+    Cost: 3<br />
+    Before First Invasion<br />
+    For each C.S.S. you control, immediately collect 1 energy and deploy 1 MOD.
+    </li>
+
+    <li>
+    <strong>Reactor Malfunction</strong><br />
+    Count: 1<br />
+    Cost: 18<br />
+    Before First Invasion<br />
+    Place a devastation marker on any one territory containing a C.S.S. Destroy all units, commanders, and space stations on that territory.
+    </li>
+
+    <li>
+    <strong>Solar Flare</strong><br />
+    Count: 1<br />
+    Cost: 4<br />
+    Before First Invasion<br />
+    Roll a 6-sided die. Destroy one unit in each territory containing 2 or more MODs on the planet rolled. 1= Earth, 2= Mars, 3= Io, 4= Europa, 5-6= Roll Again.
+    </li>
+
+    <li>
+    <strong>Stealth MODs</strong><br />
+    Count: 3<br />
+    Cost: 0<br />
+    Opponent invades<br />
+    Place 3 additional defending MODs in the defending territory.
+    </li>
+
+    <li>
+    <strong>Yaven VI</strong><br />
+    Count: 1<br />
+    Cost: 0<br />
+    Before First Invasion<br />
+    Place the space station card on the table. Put 1 MOD in each territory in the space station.
+    </li>
+  </ul>
 </div>
-
-<h2>Command Cards</h2>
-<p>Here's a detailed breakdown of the Galaxy Commander deck:</p>
-
-<p>
-<strong>Acquired Access Codes</strong><br />
-Count: 2<br />
-Cost: 2<br />
-Before First Invasion<br />
-For any interplanetary attack you launch this turn, you may attack any space stations in addition to C.S.S.'s.
-</p>
-
-<p>
-<strong>Assemble MODs</strong><br />
-Count: 2<br />
-Cost: 1<br />
-Before First Invasion<br />
-Place 3 MODs on any one territory you occupy that contains a C.S.S.
-</p>
-
-<p>
-<strong>C.S.S. Relocation</strong><br />
-Count: 2<br />
-Cost: 3<br />
-Before First Invasion<br />
-You may move a C.S.S. you control to any other territory you control on the same continent.
-</p>
-
-<p>
-<strong>Der Kapitän</strong><br />
-Count: 1<br />
-Cost: 8<br />
-Before First Invasion<br />
-Gather troops on a continent you control, leaving at most 2 MODs in each territory. With these troops, immediately launch.
-</p>
-
-<p>
-<strong>Frequency Jam</strong><br />
-Count: 3<br />
-Cost: 0<br />
-Before First Invasion Choose a player. The chosen player cannot play command cards during your turn.
-</p>
-
-<p>
-<strong>Improved IpT</strong><br />
-Count: 4<br />
-Cost: 5<br />
-Before First Invasion<br />
-For the duration of your turn, you may attack a C.S.S. on any planet from an space station or C.S.S. you control, even if you
-already have troops on that planet.
-</p>
-
-<p>
-<strong>Improved Production</strong><br />
-Count: 2<br />
-Cost: 3<br />
-Before First Invasion<br />
-For each C.S.S. you control, immediately collect 1 energy and deploy 1 MOD.
-</p>
-
-<p>
-<strong>Reactor Malfunction</strong><br />
-Count: 1<br />
-Cost: 18<br />
-Before First Invasion<br />
-Place a devastation marker on any one territory containing a C.S.S. Destroy all units, commanders, and space stations on that territory.
-</p>
-
-<p>
-<strong>Solar Flare</strong><br />
-Count: 1<br />
-Cost: 4<br />
-Before First Invasion<br />
-Roll a 6-sided die. Destroy one unit in each territory containing 2 or more MODs on the planet rolled. 1= Earth, 2= Mars, 3= Io, 4= Europa, 5-6= Roll Again.
-</p>
-
-<p>
-<strong>Stealth MODs</strong><br />
-Count: 3<br />
-Cost: 0<br />
-Opponent invades<br />
-Place 3 additional defending MODs in the defending territory.
-</p>
-
-<p>
-<strong>Yaven VI</strong><br />
-Count: 1<br />
-Cost: 0<br />
-Before First Invasion<br />
-Place the space station card on the table. Put 1 MOD in each territory in the space station.
-</p>
