@@ -2,8 +2,8 @@ require 'rails_helper'
 
 describe Turn do
 
-  let(:game) { FactoryGirl.build(:game) }
-  let(:next_player) { FactoryGirl.build(:game_player, turn_order: 3) }
+  let(:game) { build(:game) }
+  let(:next_player) { build(:game_player, turn_order: 3) }
 
   describe "set_current_player" do
     it "should update the current_player on the game to be the player with the next turn_order" do

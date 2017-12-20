@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :base_comment, class: Comment do
     player
     body { Faker::Lorem.sentences }

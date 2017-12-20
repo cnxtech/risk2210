@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :base_player, class: "Player" do
     handle { "#{Faker::Name.first_name}-#{rand(100)}" }
     first_name { Faker::Name.first_name }

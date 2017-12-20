@@ -4,7 +4,7 @@ describe ApplicationHelper do
 
   describe "error_messages_for" do
     it "builds out error messages with the object" do
-      player = FactoryGirl.build(:player, email: nil)
+      player = build(:player, email: nil)
       player.valid?
 
       error_messages = helper.error_messages_for(player)

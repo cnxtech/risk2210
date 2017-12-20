@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :turn do
     game
     game_player

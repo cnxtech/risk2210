@@ -4,7 +4,7 @@ describe Player do
 
   describe "registration" do
     it "should require a password if the player is not registering through Facebook" do
-      player = FactoryGirl.build(:player, email: Faker::Internet.free_email, handle: Faker::Name.first_name, password: nil, password_confirmation: nil)
+      player = build(:player, email: Faker::Internet.free_email, handle: Faker::Name.first_name, password: nil, password_confirmation: nil)
 
       expect(player).to_not be_valid
       expect(player.errors[:password_digest]).to_not be_nil
@@ -60,7 +60,7 @@ describe Player do
 
   describe "location" do
     it "format the city, state, and zip code" do
-      player = FactoryGirl.build(:player, city: "Chicago", state: "IL", zip_code: "60640")
+      player = build(:player, city: "Chicago", state: "IL", zip_code: "60640")
 
       expect(player.location).to eq("Chicago, IL 60640")
     end
@@ -68,7 +68,7 @@ describe Player do
 
   describe "password=" do
     it "should encrypt the password and set the password_digest field" do
-      player = FactoryGirl.build(:player, password: nil)
+      player = build(:player, password: nil)
 
       player.password = "secret1"
 
@@ -108,7 +108,7 @@ describe Player do
 
   describe "valid_password?" do
     it "should return true if the unencrypted_password matches the player's password" do
-      player = FactoryGirl.build(:player, password: "password", password_confirmation: "password")
+      player = build(:player, password: "password", password_confirmation: "password")
 
       expect(player.valid_password?("password")).to be_truthy
       expect(player.valid_password?("password1")).to be_falsey
@@ -138,12 +138,12 @@ describe Player do
 
   describe "name" do
     it "should concatenate first and last names" do
-      player = FactoryGirl.build(:player, first_name: "Jack", last_name: "Sparrow")
+      player = build(:player, first_name: "Jack", last_name: "Sparrow")
 
       expect(player.name).to eq("Jack Sparrow")
     end
     it "should return the slug if first and last name are both blank" do
-      player = FactoryGirl.build(:player, first_name: "", last_name: "")
+      player = build(:player, first_name: "", last_name: "")
 
       expect(player.name).to eq(player.slug)
     end

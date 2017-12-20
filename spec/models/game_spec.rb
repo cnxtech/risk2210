@@ -65,20 +65,20 @@ describe Game do
         game_player_attributes[(index + 2).to_s] = {handle: player.handle, faction_id: faction_ids[index], color: GamePlayer::COLORS.sample}
       end
 
-      game = FactoryGirl.build(:game, map_ids: map_ids[0..1], game_players_attributes: game_player_attributes)
+      game = build(:game, map_ids: map_ids[0..1], game_players_attributes: game_player_attributes)
 
       expect(game).to_not be_valid
       expect(game.errors[:base]).to include("You can't have more than five players.")
     end
     it "should be invalid without any maps" do
-      game = FactoryGirl.build(:game, map_ids: [], game_players_attributes: game_player_attributes)
+      game = build(:game, map_ids: [], game_players_attributes: game_player_attributes)
 
       expect(game).to_not be_valid
       expect(game.errors[:base]).to include("You must choose one or more maps to play.")
     end
     it "should be invalid if all players don't have a unique starting turn order" do
       game_player_attributes["1"][:turn_order] = 1
-      game = FactoryGirl.build(:game, map_ids: map_ids[0..1], game_players_attributes: game_player_attributes)
+      game = build(:game, map_ids: map_ids[0..1], game_players_attributes: game_player_attributes)
 
       expect(game).to_not be_valid
       expect(game.errors[:base]).to include("Every player must have a unique starting turn order.")
@@ -152,8 +152,8 @@ describe Game do
 
   describe "set_current_player" do
     it "should set the current_player to the game_player with the first turn order on create" do
-      game = FactoryGirl.build(:game)
-      game.game_players << FactoryGirl.build(:game_player, turn_order: 3)
+      game = build(:game)
+      game.game_players << build(:game_player, turn_order: 3)
       game.game_players[0].turn_order = 3
       game.game_players[1].turn_order = 1
       game.game_players[2].turn_order = 2

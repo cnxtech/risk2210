@@ -43,7 +43,7 @@ describe GamePlayer do
     it "should return the sum of the continent bonuses" do
       continent1 = Continent.all.sample(1).first
       continent2 = Continent.all.sample(1).first
-      game_player = FactoryGirl.build(:game_player)
+      game_player = build(:game_player)
       game_player.continent_ids = [continent1.id, continent2.id]
 
       expect(game_player.continent_bonus).to eq(continent1.bonus + continent2.bonus)
@@ -52,7 +52,7 @@ describe GamePlayer do
 
   describe "colony_influence_bonus" do
     it "should multiply the number of colony influence cards by 3" do
-      game_player = FactoryGirl.build(:game_player, colony_influence: 3)
+      game_player = build(:game_player, colony_influence: 3)
 
       expect(game_player.colony_influence_bonus).to eq(9)
     end
@@ -62,7 +62,7 @@ describe GamePlayer do
     it "should calculate the player's final score" do
       continent1 = Continent.all.sample(1).first
       continent2 = Continent.all.sample(1).first
-      game_player = FactoryGirl.build(:game_player, colony_influence: 2, territory_count: 30)
+      game_player = build(:game_player, colony_influence: 2, territory_count: 30)
       game_player.continent_ids = [continent1.id, continent2.id]
 
       expect(game_player.final_score).to eq(30 + continent1.bonus + continent2.bonus + (2 * 3))
@@ -72,7 +72,7 @@ describe GamePlayer do
   describe "starting_space_stations" do
     it "return the starting space station count of the game_player's faction" do
       faction = Faction.random
-      game_player = FactoryGirl.build(:game_player, faction: faction)
+      game_player = build(:game_player, faction: faction)
 
       expect(game_player.starting_space_stations).to eq(faction.space_stations)
     end

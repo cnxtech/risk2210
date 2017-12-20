@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe GamesHelper do
 
-  let(:game) { FactoryGirl.build(:game) }
+  let(:game) { build(:game) }
 
   describe "progress_bar" do
     it "should return a div with the game progress bar" do

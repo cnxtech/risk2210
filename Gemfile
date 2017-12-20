@@ -44,7 +44,7 @@ end
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.7.2'
-  gem 'factory_girl_rails', '~> 4.7.0'
+  gem 'factory_bot_rails', '~> 4.8.2'
   gem 'database_cleaner', '~> 1.6.2'
   gem 'byebug', '~> 9.1.0'
   gem 'faker', '~> 1.8.5'

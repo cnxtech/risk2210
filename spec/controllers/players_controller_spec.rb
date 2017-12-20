@@ -101,7 +101,7 @@ describe PlayersController do
 
   describe "create" do
     it "should create a player" do
-      post :create, player: FactoryGirl.attributes_for(:player)
+      post :create, player: attributes_for(:player)
 
       expect(response).to redirect_to edit_player_path(assigns(:player))
       expect(flash.notice).to_not be_nil
