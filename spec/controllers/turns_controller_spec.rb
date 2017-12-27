@@ -17,23 +17,24 @@ describe TurnsController do
       expect {
         post :create,
           game_id: game.id,
-          game_player_id: game_player.id,
+          game_player_id: game_player.id.to_s,
           year: 1,
           order: 1,
+          format: :json,
           game_player_stats_attributes: [
           {
-            game_player_id: game_player.id,
+            game_player_id: game_player.id.to_s,
             energy:           21,
             units:            21,
             territory_count:  20,
-            continent_ids: continent_ids_1
+            continent_ids: continent_ids_1.map(&:to_s)
           },
           {
-            game_player_id: game_player2.id,
+            game_player_id: game_player2.id.to_s,
             energy:           14,
             units:            14,
             territory_count:  14,
-            continent_ids: continent_ids_2
+            continent_ids: continent_ids_2.map(&:to_s)
           }
         ]
       }.to change(Turn, :count).by(1)
@@ -50,15 +51,16 @@ describe TurnsController do
 
       expect {
         post :create,
-          game_id: game.id,
+          game_id: game.id.to_s,
           game_player_id: "",
           year: 2,
           turn_order: 3,
+          format: :json,
           game_player_stats_attributes: [{
             energy: 14,
             units: 14,
             territory_count: 20,
-            continent_ids: continent_ids_1
+            continent_ids: continent_ids_1.map(&:to_s)
           }
         ]
       }.to change(Turn, :count).by(0)
@@ -72,15 +74,16 @@ describe TurnsController do
 
       expect {
        post :create,
-        game_id: game.id,
-        game_player_id: game_player.id,
+        game_id: game.id.to_s,
+        game_player_id: game_player.id.to_s,
         turn_order: 3,
         year: 2,
+        format: :json,
         game_player_stats_attributes: [{
           energy: 14,
           units: 14,
           territorie_count: 20,
-          continent_ids: continent_ids_1
+          continent_ids: continent_ids_1.map(&:to_s)
         }]
       }.to change(Turn, :count).by(0)
 

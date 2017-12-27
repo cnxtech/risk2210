@@ -15,15 +15,15 @@ gem 'jquery-rails', '~> 4.3.1'
 gem 'redcarpet', '~> 3.4.0'
 gem 'simple_form', '~> 3.5.0'
 gem 'cocoon', '~> 1.2.11'
-gem 'active_model_serializers', '~> 0.8.4'
+gem 'jbuilder', '~> 2.7.0'
 
 ## Backbone
 gem 'ejs', '~> 1.1.1'
 gem 'eco', '~> 1.0.0'
 
 ## Mongo DB
-gem 'mongoid', '~> 5.1.4'
-gem 'mongoid-slug', '~> 5.2.0'
+gem 'mongoid', '~> 5.2.1'
+gem 'mongoid-slug', '~> 5.3.3'
 gem 'geocoder', '~> 1.4.5'
 gem 'mongoid_scribe', '~> 0.3.0'
 
