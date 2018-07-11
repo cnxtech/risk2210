@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :topic do
     forum
+    player
     subject "Subject"
     view_count 1
     comment_count 0

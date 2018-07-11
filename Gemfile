@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem 'rails', '4.2.10'
+gem 'rails', '5.0.6'
 
 ## Assets
 gem 'sass-rails', '~> 5.0.6'
@@ -8,7 +8,7 @@ gem 'coffee-rails', '~> 4.2.2'
 gem 'uglifier', '~> 4.0.2'
 gem 'bootstrap-sass', '3.3.7'
 gem 'font-awesome-rails', '~> 4.7.0.2'
-gem 'quiet_assets', '~> 1.1.0'
+#gem 'quiet_assets', '~> 1.1.0'
 
 ## Frontend / Views
 gem 'jquery-rails', '~> 4.3.1'
@@ -22,7 +22,7 @@ gem 'ejs', '~> 1.1.1'
 gem 'eco', '~> 1.0.0'
 
 ## Mongo DB
-gem 'mongoid', '~> 5.2.1'
+gem 'mongoid', '~> 6.0.3'
 gem 'mongoid-slug', '~> 5.3.3'
 gem 'geocoder', '~> 1.4.5'
 gem 'mongoid_scribe', '~> 0.3.0'

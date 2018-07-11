@@ -2,9 +2,9 @@ class CommentsController < ApplicationController
 
   active_tab :forums
 
-  before_filter :find_forum
-  before_filter :find_topic
-  before_filter :login_required
+  before_action :find_forum
+  before_action :find_topic
+  before_action :login_required
 
   def create
     if params[:comment_parent_id].present?
