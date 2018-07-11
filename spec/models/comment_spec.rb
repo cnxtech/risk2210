@@ -36,7 +36,7 @@ describe Comment do
       expect(second_comment.topic).to eq(topic)
     end
     it "should return nil if the parent is nil" do
-      comment = create(:base_comment, commentable: nil)
+      comment = create(:comment, commentable: nil)
 
       expect(comment.topic).to be_nil
     end

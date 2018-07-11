@@ -1,8 +1,8 @@
 class TurnsController < ApplicationController
 
-  before_filter :login_required
-  before_filter :find_game
-  before_filter :validate_owner
+  before_action :login_required
+  before_action :find_game
+  before_action :validate_owner
 
   def create
     @turn = @game.turns.build(turn_params)

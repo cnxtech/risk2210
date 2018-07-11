@@ -1,8 +1,8 @@
 class GamesController < ApplicationController
 
-  before_filter :login_required, only: [:new, :create, :destroy]
-  before_filter :find_game, only: [:show, :update, :destroy, :results]
-  before_filter :validate_creator, only: [:update, :destroy]
+  before_action :login_required, only: [:new, :create, :destroy]
+  before_action :find_game, only: [:show, :update, :destroy, :results]
+  before_action :validate_creator, only: [:update, :destroy]
 
   layout "no_sidebar"
 

@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :base_player, class: "Player" do
+  factory :player, aliases: [:creator], class: Player do
     handle { "#{Faker::Name.first_name}-#{rand(100)}" }
     first_name { Faker::Name.first_name }
     last_name { Faker::Name.last_name }
@@ -26,13 +26,10 @@ FactoryBot.define do
     updated_at { Time.now }
   end
 
-  factory :player, parent: :base_player, aliases: [:creator] do
-    password "secret1"
-    password_confirmation { password }
-  end
-  factory :facebook_player, parent: :base_player do
+  factory :facebook_player, parent: :player do
     provider "facebook"
     uid "652508698"
+    password nil
   end
 
 end

@@ -2,9 +2,9 @@ class TopicsController < ApplicationController
 
   active_tab :forums
 
-  before_filter :find_forum
-  before_filter :find_topic, only: [:show]
-  before_filter :login_required, only: [:create]
+  before_action :find_forum
+  before_action :find_topic, only: [:show]
+  before_action :login_required, only: [:create]
 
   def show
     unless topics_viewed.include?(@topic.id)
