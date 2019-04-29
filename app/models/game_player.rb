@@ -32,8 +32,12 @@ class GamePlayer
 
   def handle=(value)
     write_attribute(:handle, value)
-    if player = Player.find(value.to_url)
-      self.player = player
+    begin
+      if record = Player.find(value.to_url)
+        self.player = record
+      end
+    rescue Mongoid::Errors::DocumentNotFound => exception
+      ## NOOP
     end
   end
 

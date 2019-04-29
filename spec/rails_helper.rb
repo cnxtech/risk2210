@@ -18,7 +18,7 @@ RSpec.configure do |config|
     load_maps
     DatabaseCleaner.strategy = :truncation, {except: ["factions", "maps", "continents"]}
     DatabaseCleaner.orm = "mongoid"
-    FactoryBot.lint
+    #FactoryBot.lint
   end
 
   config.before(:each) do

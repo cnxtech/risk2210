@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem 'rails', '5.0.6'
+gem 'rails', '5.0.0'
 
 ## Assets
 gem 'sass-rails', '~> 5.0.6'
@@ -22,7 +22,7 @@ gem 'ejs', '~> 1.1.1'
 gem 'eco', '~> 1.0.0'
 
 ## Mongo DB
-gem 'mongoid', '~> 6.0.3'
+gem 'mongoid', '~> 6.0.0'
 gem 'mongoid-slug', '~> 5.3.3'
 gem 'geocoder', '~> 1.4.9'
 gem 'mongoid_scribe', '~> 0.3.0'

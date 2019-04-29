@@ -1,7 +1,7 @@
 class Player
   include Mongoid::Document
   include Mongoid::Timestamps
-  #include Mongoid::Slug
+  include Mongoid::Slug
   include Geocoder::Model::Mongoid
 
   module ImageSource

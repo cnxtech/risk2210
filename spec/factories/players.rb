@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :player, aliases: [:creator], class: Player do
-    handle { "#{Faker::Name.first_name}-#{rand(100)}" }
+    handle { "#{Faker::Name.first_name}#{rand(100)}" }
     first_name { Faker::Name.first_name }
     last_name { Faker::Name.last_name }
     email { Faker::Internet.free_email }
